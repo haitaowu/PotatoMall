@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tabbar Controller-->
         <scene sceneID="V52-1V-jTV">
             <objects>
-                <tabBarController id="QTg-pB-xLK" sceneMemberID="viewController">
+                <tabBarController id="QTg-pB-xLK" customClass="HTTabbarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="F6k-Ct-1ET">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

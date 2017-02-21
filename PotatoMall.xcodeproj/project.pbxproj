@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */; };
-		BE30997A1E5C71AE0062EBA9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3099791E5C71AE0062EBA9 /* ViewController.m */; };
-		BE30997D1E5C71AE0062EBA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE30997B1E5C71AE0062EBA9 /* Main.storyboard */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
-		BE3099821E5C71AE0062EBA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
-		BEC06DBB1E5C771F00667D73 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DBA1E5C771F00667D73 /* Info.plist */; };
+		BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD41E5C796300667D73 /* Home.storyboard */; };
+		BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD61E5C796D00667D73 /* Purchase.storyboard */; };
+		BEC06DD91E5C797500667D73 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD81E5C797500667D73 /* Me.storyboard */; };
+		BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */; };
+		BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE30997B1E5C71AE0062EBA9 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +23,6 @@
 		786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PotatoMall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D94E15617EABD70CA237FA /* Pods-PotatoMall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatoMall.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall.release.xcconfig"; sourceTree = "<group>"; };
 		BE30996F1E5C71AD0062EBA9 /* PotatoMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotatoMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE3099781E5C71AE0062EBA9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BE3099791E5C71AE0062EBA9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BE30997C1E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE3099811E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +30,13 @@
 		BEC06DAE1E5C76D300667D73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		BEC06DB81E5C76F500667D73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BEC06DBA1E5C771F00667D73 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEC06DD41E5C796300667D73 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		BEC06DD61E5C796D00667D73 /* Purchase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
+		BEC06DD81E5C797500667D73 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		BEC06DDA1E5C79C700667D73 /* HTTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTabbarController.h; sourceTree = "<group>"; };
+		BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTabbarController.m; sourceTree = "<group>"; };
+		BEC06DDE1E5C7A6D00667D73 /* TudouColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TudouColor.h; sourceTree = "<group>"; };
+		BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TuDouPrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				BEC06DAC1E5C76D300667D73 /* Classes */,
-				BE3099781E5C71AE0062EBA9 /* ViewController.h */,
-				BE3099791E5C71AE0062EBA9 /* ViewController.m */,
 				BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */,
 				BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */,
+				BE30997B1E5C71AE0062EBA9 /* Main.storyboard */,
+				BEC06DBA1E5C771F00667D73 /* Info.plist */,
 				BE3099721E5C71AE0062EBA9 /* Supporting Files */,
 			);
 			path = PotatoMall;
@@ -96,7 +102,6 @@
 		BE3099721E5C71AE0062EBA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BEC06DBA1E5C771F00667D73 /* Info.plist */,
 				BEC06DB81E5C76F500667D73 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -105,10 +110,10 @@
 		BEC06DAC1E5C76D300667D73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BEC06DAF1E5C76D300667D73 /* Base */,
 				BEC06DCC1E5C792600667D73 /* Home(首页) */,
 				BEC06DC81E5C78F600667D73 /* Purchase(采购) */,
 				BEC06DD01E5C792600667D73 /* Me(我) */,
-				BEC06DAF1E5C76D300667D73 /* Base */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 		BEC06DAF1E5C76D300667D73 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				BEC06DDD1E5C7A3F00667D73 /* macro */,
 				BEC06DC11E5C785000667D73 /* controller */,
 				BEC06DBC1E5C77D000667D73 /* category */,
 				BEC06DBD1E5C77D000667D73 /* http */,
@@ -145,6 +151,7 @@
 			children = (
 				BEC06DAE1E5C76D300667D73 /* AppDelegate.m */,
 				BEC06DAD1E5C76D300667D73 /* AppDelegate.h */,
+				BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */,
 			);
 			path = other;
 			sourceTree = "<group>";
@@ -159,7 +166,6 @@
 		BEC06DC01E5C77D000667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				BE30997B1E5C71AE0062EBA9 /* Main.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -167,6 +173,8 @@
 		BEC06DC11E5C785000667D73 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				BEC06DDA1E5C79C700667D73 /* HTTabbarController.h */,
+				BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 		BEC06DCB1E5C78F600667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BEC06DD61E5C796D00667D73 /* Purchase.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -229,6 +238,7 @@
 		BEC06DCF1E5C792600667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BEC06DD41E5C796300667D73 /* Home.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -260,8 +270,17 @@
 		BEC06DD31E5C792600667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BEC06DD81E5C797500667D73 /* Me.storyboard */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		BEC06DDD1E5C7A3F00667D73 /* macro */ = {
+			isa = PBXGroup;
+			children = (
+				BEC06DDE1E5C7A6D00667D73 /* TudouColor.h */,
+			);
+			path = macro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,10 +345,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE3099821E5C71AE0062EBA9 /* LaunchScreen.storyboard in Resources */,
+				BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */,
+				BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */,
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
-				BEC06DBB1E5C771F00667D73 /* Info.plist in Resources */,
-				BE30997D1E5C71AE0062EBA9 /* Main.storyboard in Resources */,
+				BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */,
+				BEC06DD91E5C797500667D73 /* Me.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +410,7 @@
 			files = (
 				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
 				BEC06DB91E5C76F500667D73 /* main.m in Sources */,
-				BE30997A1E5C71AE0062EBA9 /* ViewController.m in Sources */,
+				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +423,6 @@
 				BE30997C1E5C71AE0062EBA9 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ../../..;
 			sourceTree = "<group>";
 		};
 		BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */ = {
@@ -511,7 +530,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YTV9736654;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PotatoMall/Classes/Base/other/TuDouPrefixHeader.pch";
 				INFOPLIST_FILE = PotatoMall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xianz.PotatoMall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -524,7 +546,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YTV9736654;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PotatoMall/Classes/Base/other/TuDouPrefixHeader.pch";
 				INFOPLIST_FILE = PotatoMall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xianz.PotatoMall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
