@@ -7,25 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE3099741E5C71AE0062EBA9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3099731E5C71AE0062EBA9 /* main.m */; };
-		BE3099771E5C71AE0062EBA9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3099761E5C71AE0062EBA9 /* AppDelegate.m */; };
+		4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */; };
 		BE30997A1E5C71AE0062EBA9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3099791E5C71AE0062EBA9 /* ViewController.m */; };
 		BE30997D1E5C71AE0062EBA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE30997B1E5C71AE0062EBA9 /* Main.storyboard */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
 		BE3099821E5C71AE0062EBA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */; };
+		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
+		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
+		BEC06DBB1E5C771F00667D73 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DBA1E5C771F00667D73 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FAB3FE170A80D905C8EBAD6 /* Pods-PotatoMall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatoMall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall.debug.xcconfig"; sourceTree = "<group>"; };
+		786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PotatoMall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D94E15617EABD70CA237FA /* Pods-PotatoMall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatoMall.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall.release.xcconfig"; sourceTree = "<group>"; };
 		BE30996F1E5C71AD0062EBA9 /* PotatoMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotatoMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE3099731E5C71AE0062EBA9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BE3099751E5C71AE0062EBA9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BE3099761E5C71AE0062EBA9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BE3099781E5C71AE0062EBA9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BE3099791E5C71AE0062EBA9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BE30997C1E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE3099811E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BE3099831E5C71AE0062EBA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
+		BEC06DAE1E5C76D300667D73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
+		BEC06DB81E5C76F500667D73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BEC06DBA1E5C771F00667D73 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +38,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94F3168BB54E218012B16116 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99153BE78D3DDACF85131DF1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3FAB3FE170A80D905C8EBAD6 /* Pods-PotatoMall.debug.xcconfig */,
+				81D94E15617EABD70CA237FA /* Pods-PotatoMall.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BE3099661E5C71AD0062EBA9 = {
 			isa = PBXGroup;
 			children = (
 				BE3099711E5C71AD0062EBA9 /* PotatoMall */,
 				BE3099701E5C71AD0062EBA9 /* Products */,
+				99153BE78D3DDACF85131DF1 /* Pods */,
+				94F3168BB54E218012B16116 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,14 +83,11 @@
 		BE3099711E5C71AD0062EBA9 /* PotatoMall */ = {
 			isa = PBXGroup;
 			children = (
-				BE3099751E5C71AE0062EBA9 /* AppDelegate.h */,
-				BE3099761E5C71AE0062EBA9 /* AppDelegate.m */,
+				BEC06DAC1E5C76D300667D73 /* Classes */,
 				BE3099781E5C71AE0062EBA9 /* ViewController.h */,
 				BE3099791E5C71AE0062EBA9 /* ViewController.m */,
-				BE30997B1E5C71AE0062EBA9 /* Main.storyboard */,
 				BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */,
 				BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */,
-				BE3099831E5C71AE0062EBA9 /* Info.plist */,
 				BE3099721E5C71AE0062EBA9 /* Supporting Files */,
 			);
 			path = PotatoMall;
@@ -74,9 +96,172 @@
 		BE3099721E5C71AE0062EBA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BE3099731E5C71AE0062EBA9 /* main.m */,
+				BEC06DBA1E5C771F00667D73 /* Info.plist */,
+				BEC06DB81E5C76F500667D73 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEC06DAC1E5C76D300667D73 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BEC06DCC1E5C792600667D73 /* Home(首页) */,
+				BEC06DC81E5C78F600667D73 /* Purchase(采购) */,
+				BEC06DD01E5C792600667D73 /* Me(我) */,
+				BEC06DAF1E5C76D300667D73 /* Base */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BEC06DAF1E5C76D300667D73 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BEC06DC11E5C785000667D73 /* controller */,
+				BEC06DBC1E5C77D000667D73 /* category */,
+				BEC06DBD1E5C77D000667D73 /* http */,
+				BEC06DBE1E5C77D000667D73 /* other */,
+				BEC06DBF1E5C77D000667D73 /* util */,
+				BEC06DC01E5C77D000667D73 /* view */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BEC06DBC1E5C77D000667D73 /* category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		BEC06DBD1E5C77D000667D73 /* http */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = http;
+			sourceTree = "<group>";
+		};
+		BEC06DBE1E5C77D000667D73 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				BEC06DAE1E5C76D300667D73 /* AppDelegate.m */,
+				BEC06DAD1E5C76D300667D73 /* AppDelegate.h */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		BEC06DBF1E5C77D000667D73 /* util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		BEC06DC01E5C77D000667D73 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BE30997B1E5C71AE0062EBA9 /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BEC06DC11E5C785000667D73 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BEC06DC81E5C78F600667D73 /* Purchase(采购) */ = {
+			isa = PBXGroup;
+			children = (
+				BEC06DC91E5C78F600667D73 /* controller */,
+				BEC06DCA1E5C78F600667D73 /* model */,
+				BEC06DCB1E5C78F600667D73 /* view */,
+			);
+			path = "Purchase(采购)";
+			sourceTree = "<group>";
+		};
+		BEC06DC91E5C78F600667D73 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BEC06DCA1E5C78F600667D73 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BEC06DCB1E5C78F600667D73 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BEC06DCC1E5C792600667D73 /* Home(首页) */ = {
+			isa = PBXGroup;
+			children = (
+				BEC06DCD1E5C792600667D73 /* controller */,
+				BEC06DCE1E5C792600667D73 /* model */,
+				BEC06DCF1E5C792600667D73 /* view */,
+			);
+			path = "Home(首页)";
+			sourceTree = "<group>";
+		};
+		BEC06DCD1E5C792600667D73 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BEC06DCE1E5C792600667D73 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BEC06DCF1E5C792600667D73 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BEC06DD01E5C792600667D73 /* Me(我) */ = {
+			isa = PBXGroup;
+			children = (
+				BEC06DD11E5C792600667D73 /* controller */,
+				BEC06DD21E5C792600667D73 /* model */,
+				BEC06DD31E5C792600667D73 /* view */,
+			);
+			path = "Me(我)";
+			sourceTree = "<group>";
+		};
+		BEC06DD11E5C792600667D73 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BEC06DD21E5C792600667D73 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BEC06DD31E5C792600667D73 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +271,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE3099861E5C71AE0062EBA9 /* Build configuration list for PBXNativeTarget "PotatoMall" */;
 			buildPhases = (
+				A8ABF135612A24D8DF00240B /* [CP] Check Pods Manifest.lock */,
 				BE30996B1E5C71AD0062EBA9 /* Sources */,
 				BE30996C1E5C71AD0062EBA9 /* Frameworks */,
 				BE30996D1E5C71AD0062EBA9 /* Resources */,
+				43070B6527AA16E5FE52DBB2 /* [CP] Embed Pods Frameworks */,
+				2BC7C1225AD032E4687227DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,20 +328,69 @@
 			files = (
 				BE3099821E5C71AE0062EBA9 /* LaunchScreen.storyboard in Resources */,
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
+				BEC06DBB1E5C771F00667D73 /* Info.plist in Resources */,
 				BE30997D1E5C71AE0062EBA9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2BC7C1225AD032E4687227DB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43070B6527AA16E5FE52DBB2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8ABF135612A24D8DF00240B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BE30996B1E5C71AD0062EBA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
+				BEC06DB91E5C76F500667D73 /* main.m in Sources */,
 				BE30997A1E5C71AE0062EBA9 /* ViewController.m in Sources */,
-				BE3099771E5C71AE0062EBA9 /* AppDelegate.m in Sources */,
-				BE3099741E5C71AE0062EBA9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +403,7 @@
 				BE30997C1E5C71AE0062EBA9 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../../..;
 			sourceTree = "<group>";
 		};
 		BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */ = {
@@ -269,6 +507,7 @@
 		};
 		BE3099871E5C71AE0062EBA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FAB3FE170A80D905C8EBAD6 /* Pods-PotatoMall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YTV9736654;
@@ -281,6 +520,7 @@
 		};
 		BE3099881E5C71AE0062EBA9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D94E15617EABD70CA237FA /* Pods-PotatoMall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YTV9736654;
@@ -310,6 +550,7 @@
 				BE3099881E5C71AE0062EBA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
