@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="1095.2" y="386.35682158920542"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navgation Controller-->
         <scene sceneID="maT-us-C34">
             <objects>
-                <navigationController storyboardIdentifier="PurchaseNav" automaticallyAdjustsScrollViewInsets="NO" id="OdT-Ve-BVg" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PurchaseNav" automaticallyAdjustsScrollViewInsets="NO" id="OdT-Ve-BVg" customClass="HTNavgationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R0V-eY-7gA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

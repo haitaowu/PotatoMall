@@ -7,6 +7,7 @@
 //
 
 #import "HTTabbarController.h"
+#import "HTNavgationController.h"
 
 @interface HTTabbarController ()
 
@@ -17,33 +18,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIStoryboard *homeStory = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
-    UINavigationController *homeNav = [homeStory instantiateViewControllerWithIdentifier:@"HomeNav"];
+    HTNavgationController *homeNav = [homeStory instantiateViewControllerWithIdentifier:@"HomeNav"];
     [self addSubControllerWithChildControlelr:homeNav imageName:@"TabBar1" selectdImgName:@"TabBar1Sel" title:@"首页"];
     
     UIStoryboard *knowStory = [UIStoryboard storyboardWithName:@"Purchase" bundle:nil];
-    UINavigationController *knowNav = [knowStory instantiateViewControllerWithIdentifier:@"PurchaseNav"];
+    HTNavgationController *knowNav = [knowStory instantiateViewControllerWithIdentifier:@"PurchaseNav"];
     [self addSubControllerWithChildControlelr:knowNav imageName:@"TabBar2" selectdImgName:@"TabBar2Sel" title:@"采购"];
     
     UIStoryboard *shoppingStory = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
-    UINavigationController *shoppingNav = [shoppingStory instantiateViewControllerWithIdentifier:@"MeNav"];
+    HTNavgationController *shoppingNav = [shoppingStory instantiateViewControllerWithIdentifier:@"MeNav"];
     [self addSubControllerWithChildControlelr:shoppingNav imageName:@"TabBar4" selectdImgName:@"TabBar4Sel" title:@"我"];
 }
 
 
-- (void)addSubControllerWithChildControlelr:(UINavigationController*)navController imageName:(NSString*)imgName selectdImgName:(NSString*)selectedImageName title:(NSString*)title
+- (void)addSubControllerWithChildControlelr:(HTNavgationController*)navController imageName:(NSString*)imgName selectdImgName:(NSString*)selectedImageName title:(NSString*)title
 {
     UIViewController *childControl =  [[navController childViewControllers] firstObject];
     childControl.tabBarItem.image = [UIImage imageNamed:imgName];
     childControl.tabBarItem.selectedImage = [UIImage imageNamed:selectedImageName];
     childControl.tabBarItem.title = title;
     
-    //2.set title attributes
+    //.set title attributes selected color
     NSMutableDictionary *normalAttri = [NSMutableDictionary dictionary];
-    [normalAttri setObject:kMainTitleColor forKey:NSForegroundColorAttributeName];
+    [normalAttri setObject:kMainTabBarNormalTitleColor forKey:NSForegroundColorAttributeName];
     [childControl.tabBarItem setTitleTextAttributes:normalAttri forState:UIControlStateNormal];
     
+    //.set title attributes normal color
     NSMutableDictionary *selectedAttri = [NSMutableDictionary dictionary];
-    [selectedAttri setObject:kMainBackgroundColor forKey:NSForegroundColorAttributeName];
+    [selectedAttri setObject:kMainTabBarSelectedTitleColor forKey:NSForegroundColorAttributeName];
     [childControl.tabBarItem setTitleTextAttributes:selectedAttri forState:UIControlStateSelected];
     
     [self addChildViewController:navController];

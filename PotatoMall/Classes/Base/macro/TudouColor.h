@@ -11,5 +11,12 @@
 #define RGBA(R/*红*/, G/*绿*/, B/*蓝*/, A/*透明*/) \
 [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
 
-#define kMainTitleColor                     UIColorFromRGB(0x888888)
-#define kMainBackgroundColor              RGBA(255, 68, 115, 1)
+#define kMainTitleColor                         UIColorFromRGB(0x888888)
+
+#define kMainBackgroundColor                    RGBA(255, 68, 115, 1)
+
+#define kMainNavigationBarColor                 RGBA(253, 187, 63, 1)
+
+//tabbar color 
+#define kMainTabBarSelectedTitleColor           kMainNavigationBarColor
+#define kMainTabBarNormalTitleColor             RGBA(184, 184, 194, 1)

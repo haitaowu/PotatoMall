@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
+		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
+		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
 		BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD41E5C796300667D73 /* Home.storyboard */; };
@@ -26,6 +28,10 @@
 		BE30997C1E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE3099811E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNavgationController.h; sourceTree = "<group>"; };
+		BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNavgationController.m; sourceTree = "<group>"; };
+		BEAAA5F61E5D8069008943EC /* HomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableController.h; sourceTree = "<group>"; };
+		BEAAA5F71E5D8069008943EC /* HomeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableController.m; sourceTree = "<group>"; };
 		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
 		BEC06DAE1E5C76D300667D73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		BEC06DB81E5C76F500667D73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -175,6 +181,8 @@
 			children = (
 				BEC06DDA1E5C79C700667D73 /* HTTabbarController.h */,
 				BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */,
+				BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */,
+				BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -224,6 +232,8 @@
 		BEC06DCD1E5C792600667D73 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				BEAAA5F61E5D8069008943EC /* HomeTableController.h */,
+				BEAAA5F71E5D8069008943EC /* HomeTableController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -409,6 +419,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
+				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
+				BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */,
 				BEC06DB91E5C76F500667D73 /* main.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 			);
