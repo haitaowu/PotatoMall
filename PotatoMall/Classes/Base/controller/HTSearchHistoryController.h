@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HTSearchHistoryController : UIViewController<UISearchBarDelegate>
+typedef void(^ClickSearchBlock)(NSString *word);
 
+@interface HTSearchHistoryController : UIViewController<UISearchBarDelegate>
+@property (nonatomic,copy) ClickSearchBlock searchBlock;
 @end

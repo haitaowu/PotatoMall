@@ -9,6 +9,7 @@
 #import "HomeTableController.h"
 #import "HTSearchHistoryController.h"
 #import "HTCustomeSearchBar.h"
+#import "SearchTableController.h"
 
 @interface HomeTableController ()
 @property (nonatomic,weak)HTCustomeSearchBar *searchBar;
@@ -21,6 +22,16 @@
     [self setupUI];
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"searchSegue"]) {
+        SearchTableController *destinationControl = (SearchTableController*)[segue destinationViewController];
+        destinationControl.searchWord = sender;
+    }
+}
+
+#pragma mark - setup UI
 - (void)setupUI
 {
     __block typeof(self) blockSelf = self;
@@ -30,11 +41,14 @@
     self.navigationItem.titleView = searchField;
 }
 
-#pragma mark - setup UI
 - (void)showSearchHistoryView
 {
-    HTSearchHistoryController *searchHistory = [[HTSearchHistoryController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchHistory];
+    HTSearchHistoryController *searchHistoryControl = [[HTSearchHistoryController alloc] init];
+    __block typeof(self) blockSelf = self;
+    searchHistoryControl.searchBlock = ^(NSString *word){
+        [blockSelf performSegueWithIdentifier:@"searchSegue" sender:word];
+    };
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchHistoryControl];
     [self presentViewController:navController animated:NO completion:nil];
 }
 

@@ -48,6 +48,11 @@
     return rect;
 }
 
+- (void)updatePlaceholder:(NSString*)placeholder
+{
+   self.attributedPlaceholder = [self attriHolderWithPlaceholder:placeholder]; 
+}
+
 #pragma mark - setup ui
 - (void)setupUIWithPlaceholder:(NSString*)placeholder
 {
@@ -61,12 +66,16 @@
     self.leftView = leftV;
     self.leftViewMode = UITextFieldViewModeAlways;
     self.font = [UIFont systemFontOfSize:13];
-
-    NSDictionary *attris = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont systemFontOfSize:13],NSFontAttributeName,nil];
-    NSAttributedString *attriStrHolder = [[NSAttributedString alloc] initWithString:placeholder attributes:attris];
-    self.attributedPlaceholder = attriStrHolder;
+    self.attributedPlaceholder = [self attriHolderWithPlaceholder:placeholder];
     self.backgroundColor = kSearchBarBGColor;
     self.layer.cornerRadius = seachbarHeight * 0.15;
+}
+
+-(NSAttributedString*)attriHolderWithPlaceholder:(NSString*)placeholder
+{
+    NSDictionary *attris = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont systemFontOfSize:13],NSFontAttributeName,nil];
+    NSAttributedString *attriStrHolder = [[NSAttributedString alloc] initWithString:placeholder attributes:attris];
+    return attriStrHolder;
 }
 
 #pragma mark - UITextFieldDelegate

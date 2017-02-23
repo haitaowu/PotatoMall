@@ -13,4 +13,5 @@ typedef void(^BeginEditingBlock)();
 @interface HTCustomeSearchBar : UITextField<UITextFieldDelegate>
 - (instancetype)initWithPlaceholder:(NSString*)placeholder;
 + (instancetype)searchbarWithPlaceholder:(NSString*)placeholder editBlock:(BeginEditingBlock)editBlock;
+- (void)updatePlaceholder:(NSString*)placeholder;
 @end

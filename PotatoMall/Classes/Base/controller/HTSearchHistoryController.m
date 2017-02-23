@@ -17,7 +17,12 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupUI];
+    [self setupSearchBarAppearUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -26,26 +31,30 @@
     [self.searchBar becomeFirstResponder];
 }
 
-#pragma mark - setup UI 
-- (void)setupUI
+-(UISearchBar *)searchBar
 {
-    // searchar
-    UISearchBar *searchbar = [[UISearchBar alloc] init];
-    searchbar.width = kScreenWidth * 0.8;
-    self.navigationItem.titleView = searchbar;
+    if(_searchBar== nil)
+    {
+        UISearchBar *seabar = [[UISearchBar alloc] init];
+        _searchBar  = seabar;
+        seabar.width = kScreenWidth * 0.8;
+        self.navigationItem.titleView = seabar;
+        seabar.placeholder = @"搜索";
+        [seabar setShowsCancelButton:YES];
+        [seabar setDelegate:self];
+        UITextField *txfSearchField = [seabar valueForKey:@"_searchField"];
+        txfSearchField.backgroundColor = kHistorySearchBarBGColor;
+    }
+    return _searchBar;
+}
+
+#pragma mark - setup UI 
+- (void)setupSearchBarAppearUI
+{
     UINavigationBar *navBar = [UINavigationBar appearance];
     [navBar setBarTintColor:[UIColor whiteColor]];
-    
-    searchbar.placeholder = @"搜索";
-    [searchbar setShowsCancelButton:YES];
-    [searchbar setDelegate:self];
-    self.searchBar = searchbar;
-    
-    searchbar.tintColor = kHistorySearchBarTitleColor;
-    searchbar.barTintColor = kHistorySearchBarTitleColor;
-    
-    UITextField *txfSearchField = [searchbar valueForKey:@"_searchField"];
-    txfSearchField.backgroundColor = kHistorySearchBarBGColor;
+    self.searchBar.tintColor = kHistorySearchBarTitleColor;
+    self.searchBar.barTintColor = kHistorySearchBarTitleColor;
 }
 
 
@@ -62,6 +71,15 @@
     [self tapBackBtn];
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *word = searchBar.text;
+    if (self.searchBlock != nil) {
+        [self tapBackBtn];
+        self.searchBlock(word);
+    }
+    
+}
 
 
 

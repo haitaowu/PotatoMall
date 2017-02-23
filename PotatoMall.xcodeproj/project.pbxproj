@@ -10,6 +10,7 @@
 		4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
 		BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */; };
+		BE5B80391E5F15CD005FDE1A /* SearchTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B80381E5F15CD005FDE1A /* SearchTableController.m */; };
 		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
 		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
 		BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */; };
@@ -35,6 +36,8 @@
 		BE3099811E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE5535491E5EA17A0021E2C6 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
 		BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
+		BE5B80371E5F15CD005FDE1A /* SearchTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableController.h; sourceTree = "<group>"; };
+		BE5B80381E5F15CD005FDE1A /* SearchTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableController.m; sourceTree = "<group>"; };
 		BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNavgationController.h; sourceTree = "<group>"; };
 		BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNavgationController.m; sourceTree = "<group>"; };
 		BEAAA5F61E5D8069008943EC /* HomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableController.h; sourceTree = "<group>"; };
@@ -53,6 +56,8 @@
 		BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTabbarController.m; sourceTree = "<group>"; };
 		BEC06DDE1E5C7A6D00667D73 /* TudouColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TudouColor.h; sourceTree = "<group>"; };
 		BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TuDouPrefixHeader.pch; sourceTree = "<group>"; };
+		BED016A71E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		BED016A81E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		BED604BD1E5DF7E6002BB119 /* HTCustomeSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCustomeSearchBar.h; sourceTree = "<group>"; };
 		BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCustomeSearchBar.m; sourceTree = "<group>"; };
 		BEE29C5A1E5E814800DF3782 /* HTSearchHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSearchHistoryController.h; sourceTree = "<group>"; };
@@ -258,6 +263,8 @@
 			children = (
 				BEAAA5F61E5D8069008943EC /* HomeTableController.h */,
 				BEAAA5F71E5D8069008943EC /* HomeTableController.m */,
+				BE5B80371E5F15CD005FDE1A /* SearchTableController.h */,
+				BE5B80381E5F15CD005FDE1A /* SearchTableController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -446,6 +453,7 @@
 			files = (
 				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
 				BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */,
+				BE5B80391E5F15CD005FDE1A /* SearchTableController.m in Sources */,
 				BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */,
@@ -463,6 +471,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE30997C1E5C71AE0062EBA9 /* Base */,
+				BED016A81E5EFD120033154D /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -471,6 +480,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE3099811E5C71AE0062EBA9 /* Base */,
+				BED016A71E5EFD120033154D /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -482,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -529,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
