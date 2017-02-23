@@ -20,3 +20,9 @@
 //tabbar color 
 #define kMainTabBarSelectedTitleColor           kMainNavigationBarColor
 #define kMainTabBarNormalTitleColor             RGBA(184, 184, 194, 1)
+
+#define kSearchBarBGColor                       RGBA(237 ,175	,63, 1)
+
+#define kHistorySearchBarBGColor                RGBA(239 ,239,239, 1)
+#define kHistorySearchBarTitleColor             RGBA(88 ,88	,88, 1)
+

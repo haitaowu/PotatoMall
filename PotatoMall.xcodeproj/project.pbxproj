@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
+		BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */; };
 		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
 		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
+		BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
 		BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD41E5C796300667D73 /* Home.storyboard */; };
@@ -18,6 +20,9 @@
 		BEC06DD91E5C797500667D73 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD81E5C797500667D73 /* Me.storyboard */; };
 		BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */; };
 		BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE30997B1E5C71AE0062EBA9 /* Main.storyboard */; };
+		BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */; };
+		BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */; };
+		BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +33,15 @@
 		BE30997C1E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE3099811E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BE5535491E5EA17A0021E2C6 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
+		BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
 		BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNavgationController.h; sourceTree = "<group>"; };
 		BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNavgationController.m; sourceTree = "<group>"; };
 		BEAAA5F61E5D8069008943EC /* HomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableController.h; sourceTree = "<group>"; };
 		BEAAA5F71E5D8069008943EC /* HomeTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableController.m; sourceTree = "<group>"; };
+		BEAAA5F91E5D85E8008943EC /* UIView+PositionExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PositionExt.h"; sourceTree = "<group>"; };
+		BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PositionExt.m"; sourceTree = "<group>"; };
+		BEAAA5FC1E5D8948008943EC /* TudouUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TudouUtil.h; sourceTree = "<group>"; };
 		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
 		BEC06DAE1E5C76D300667D73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		BEC06DB81E5C76F500667D73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -43,6 +53,11 @@
 		BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTabbarController.m; sourceTree = "<group>"; };
 		BEC06DDE1E5C7A6D00667D73 /* TudouColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TudouColor.h; sourceTree = "<group>"; };
 		BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TuDouPrefixHeader.pch; sourceTree = "<group>"; };
+		BED604BD1E5DF7E6002BB119 /* HTCustomeSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCustomeSearchBar.h; sourceTree = "<group>"; };
+		BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCustomeSearchBar.m; sourceTree = "<group>"; };
+		BEE29C5A1E5E814800DF3782 /* HTSearchHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSearchHistoryController.h; sourceTree = "<group>"; };
+		BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSearchHistoryController.m; sourceTree = "<group>"; };
+		BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTSearchHistoryController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +156,10 @@
 		BEC06DBC1E5C77D000667D73 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				BEAAA5F91E5D85E8008943EC /* UIView+PositionExt.h */,
+				BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */,
+				BE5535491E5EA17A0021E2C6 /* UIViewController+NavigationBar.h */,
+				BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -172,6 +191,8 @@
 		BEC06DC01E5C77D000667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BED604BD1E5DF7E6002BB119 /* HTCustomeSearchBar.h */,
+				BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -183,6 +204,9 @@
 				BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */,
 				BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */,
 				BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */,
+				BEE29C5A1E5E814800DF3782 /* HTSearchHistoryController.h */,
+				BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */,
+				BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -289,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				BEC06DDE1E5C7A6D00667D73 /* TudouColor.h */,
+				BEAAA5FC1E5D8948008943EC /* TudouUtil.h */,
 			);
 			path = macro;
 			sourceTree = "<group>";
@@ -357,6 +382,7 @@
 			files = (
 				BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */,
 				BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */,
+				BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */,
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
 				BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */,
 				BEC06DD91E5C797500667D73 /* Me.storyboard in Resources */,
@@ -419,9 +445,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
+				BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */,
+				BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */,
 				BEC06DB91E5C76F500667D73 /* main.m in Sources */,
+				BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */,
+				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

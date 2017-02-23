@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OoD-Vz-VLt" id="RNl-Vv-JIH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -31,7 +31,9 @@
                             <outlet property="delegate" destination="pRV-gY-6bO" id="dQR-zJ-5wW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="首页" id="TE9-VD-viY"/>
+                    <navigationItem key="navigationItem" title="首页" id="TE9-VD-viY">
+                        <barButtonItem key="rightBarButtonItem" image="nav_scan" id="s1z-lG-67G"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGu-d7-XZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,4 +58,7 @@
             <point key="canvasLocation" x="156" y="386.35682158920542"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="nav_scan" width="21" height="21"/>
+    </resources>
 </document>
