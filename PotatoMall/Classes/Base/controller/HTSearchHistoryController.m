@@ -52,9 +52,13 @@
 - (void)setupSearchBarAppearUI
 {
     UINavigationBar *navBar = [UINavigationBar appearance];
-    [navBar setBarTintColor:[UIColor whiteColor]];
+//    [navBar setBarTintColor:[UIColor whiteColor]];
+//    [navBar setBackgroundColor:[UIColor whiteColor]];
     self.searchBar.tintColor = kHistorySearchBarTitleColor;
     self.searchBar.barTintColor = kHistorySearchBarTitleColor;
+    
+    UIImage *img_bg = [UIImage imageNamed:@"nav_bgW"];
+    [navBar setBackgroundImage:img_bg forBarMetrics:UIBarMetricsDefault];
 }
 
 

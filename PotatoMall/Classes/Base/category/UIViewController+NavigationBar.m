@@ -7,17 +7,23 @@
 //
 
 #import "UIViewController+NavigationBar.h"
+#import "UIImage+Color.h"
+
+
 
 @implementation UIViewController (NavigationBar)
 
 - (void)setNavigationBarMainStyle
 {
-    UIColor *navBarColor = kMainNavigationBarColor;
+//    UIColor *navBarColor = kMainNavigationBarColor;
     UINavigationBar *navBar = [UINavigationBar appearance];
-    [navBar setBarTintColor:navBarColor];
-    [navBar setBackgroundColor:navBarColor];
+    [navBar setTranslucent:NO];
+//    [navBar setBarTintColor:navBarColor];
+//    [navBar setBackgroundColor:navBarColor];
     [navBar setTintColor:[UIColor whiteColor]];
-    UIImage *img_bg = [UIImage imageNamed:@"nav_bg_empty"];
+    
+//    UIImage *img_bg = [UIImage imageNamed:@"nav_bgY"];
+    UIImage *img_bg = [UIImage imageWithColor:kMainNavigationBarColor];
     [navBar setBackgroundImage:img_bg forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[UIImage new]];
     NSDictionary *navBarAttries = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil];
