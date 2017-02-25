@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */; };
+		BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2FDFCB1E61219B00A96E17 /* HomwTableHeader.m */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
 		BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5496A91E60321C00A19940 /* RequestUtil.m */; };
 		BE5496AF1E60347700A19940 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5496AE1E60347700A19940 /* Reachability.m */; };
@@ -35,6 +36,8 @@
 		3FAB3FE170A80D905C8EBAD6 /* Pods-PotatoMall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatoMall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall.debug.xcconfig"; sourceTree = "<group>"; };
 		786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PotatoMall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D94E15617EABD70CA237FA /* Pods-PotatoMall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatoMall.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall.release.xcconfig"; sourceTree = "<group>"; };
+		BE2FDFCA1E61219B00A96E17 /* HomwTableHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomwTableHeader.h; sourceTree = "<group>"; };
+		BE2FDFCB1E61219B00A96E17 /* HomwTableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomwTableHeader.m; sourceTree = "<group>"; };
 		BE30996F1E5C71AD0062EBA9 /* PotatoMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotatoMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE30997C1E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 				BE5B80401E5F2783005FDE1A /* SectionHeaderTitle.h */,
 				BE5B80411E5F2783005FDE1A /* SectionHeaderTitle.m */,
 				BE5B803A1E5F1EDA005FDE1A /* cell */,
+				BE2FDFCA1E61219B00A96E17 /* HomwTableHeader.h */,
+				BE2FDFCB1E61219B00A96E17 /* HomwTableHeader.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				BE5B80421E5F2783005FDE1A /* SectionHeaderTitle.m in Sources */,
 				BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */,
 				BE5496AF1E60347700A19940 /* Reachability.m in Sources */,
+				BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */,
 				BE5B803E1E5F1F12005FDE1A /* HotArticleCell.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,

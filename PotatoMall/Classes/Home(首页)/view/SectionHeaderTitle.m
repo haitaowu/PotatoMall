@@ -39,8 +39,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-//    self.backgroundColor = [UIColor blueColor];
-    CGFloat deltaY = 8;
     
     CGSize viewSize = self.frame.size;
     [self.titleView sizeToFit];

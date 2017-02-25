@@ -12,6 +12,7 @@
 #import "SearchTableController.h"
 #import "HotArticleCell.h"
 #import "SectionHeaderTitle.h"
+#import "HomwTableHeader.h"
 
 
 static NSString *HotArticleCellID = @"HotArticleCellID";
@@ -49,7 +50,12 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     self.navigationItem.titleView = searchField;
     
     //tableView tableHeaderView
-    self.tableView.tableHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xilan"]];
+    
+    HomwTableHeader *headerView = [[HomwTableHeader alloc] init];
+    headerView.frame = CGRectMake(0, 0, kScreenWidth, 100);
+    NSArray *imgs = @[@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo"];
+    [headerView loadAdsWithImages:imgs];
+    self.tableView.tableHeaderView = headerView;
 }
 
 - (void)showSearchHistoryView
