@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void(^TapAdBlock)(id sender);
 
 @interface HomwTableHeader : UIView
+@property (nonatomic,copy) TapAdBlock adBlock;
 - (void)loadAdsWithImages:(id)imgs;
 
 @end

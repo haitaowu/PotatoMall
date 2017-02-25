@@ -11,6 +11,7 @@
 
 @interface HomwTableHeader()<SDCycleScrollViewDelegate>
 @property (nonatomic,strong) SDCycleScrollView *cycleScrollView;
+@property (nonatomic,strong)NSArray *imgs;
 @end
 
 @implementation HomwTableHeader
@@ -24,6 +25,7 @@
     }
     return self;
 }
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -36,19 +38,22 @@
     UIImage *placeholderImage = [UIImage imageNamed:@"tudou"];
     self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.bounds delegate:self placeholderImage:placeholderImage];
     [self addSubview:self.cycleScrollView];
-//    NSArray *imgs = @[@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo"];
-//    self.cycleScrollView.imageURLStringsGroup = imgs;
 }
 
 #pragma mark - public methods
 - (void)loadAdsWithImages:(id)imgs
 {
+    self.imgs = imgs;
     self.cycleScrollView.imageURLStringsGroup = imgs;
 }
 
 #pragma mark - SDCycleScrollViewDelegate
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
-//    HTLog(@"tap at index %ld",index);
+    if (self.adBlock != nil) {
+        id sender = self.imgs[index];
+        self.adBlock(sender);
+    }
 }
+
 @end

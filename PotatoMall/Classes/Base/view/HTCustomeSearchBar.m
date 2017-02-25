@@ -81,12 +81,18 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSLog(@"UITextFieldDelegate ");
     if (self.editBlock != nil) {
         self.editBlock();
     }
     return NO;
 }
+
+
+
+
+
+
+
 
 
 /*    NSMutableParagraphStyle *style = [self.defaultTextAttributes[NSParagraphStyleAttributeName] mutableCopy];

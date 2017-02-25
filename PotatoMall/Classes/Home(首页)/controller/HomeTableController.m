@@ -48,14 +48,20 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         [blockSelf showSearchHistoryView];
     }];
     self.navigationItem.titleView = searchField;
-    
+    [self setupTableheaderView];
+}
+
+- (void)setupTableheaderView
+{
     //tableView tableHeaderView
-    
     HomwTableHeader *headerView = [[HomwTableHeader alloc] init];
     headerView.frame = CGRectMake(0, 0, kScreenWidth, 100);
     NSArray *imgs = @[@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo"];
     [headerView loadAdsWithImages:imgs];
     self.tableView.tableHeaderView = headerView;
+    headerView.adBlock = ^(id adInfo){
+        HTLog(@"click ad info ");
+    };
 }
 
 - (void)showSearchHistoryView
