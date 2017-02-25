@@ -13,9 +13,16 @@
 @end
 
 @implementation BaseTableViewController
+
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupBaseUI];
+}
+
+- (BOOL)hidesBottomBarWhenPushed
+{
+    return YES;
 }
 
 #pragma mark - setupui
@@ -38,5 +45,7 @@
 - (void)tapBackBtn {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 
 @end

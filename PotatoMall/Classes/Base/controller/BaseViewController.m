@@ -12,11 +12,17 @@
 
 @end
 
-@implementation BaseViewController
 
+@implementation BaseViewController
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+}
+
+- (BOOL)hidesBottomBarWhenPushed
+{
+    return YES;
 }
 
 - (void)setupUI
@@ -33,10 +39,13 @@
     self.navigationItem.leftBarButtonItems = @[spaceItem,leftBarItem];
 }
 
-
 #pragma mark - selectors
 - (void)tapBackBtn {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
+
 
 @end
