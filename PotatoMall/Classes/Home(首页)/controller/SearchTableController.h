@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewController.h"
 
-@interface SearchTableController : UITableViewController
+@interface SearchTableController : BaseTableViewController
+
 @property (nonatomic,copy) NSString *searchWord;
 
 @end

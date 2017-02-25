@@ -37,6 +37,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     if ([segue.identifier isEqualToString:@"searchSegue"]) {
         SearchTableController *destinationControl = (SearchTableController*)[segue destinationViewController];
         destinationControl.searchWord = sender;
+    }else if ([segue.identifier isEqualToString:@"detailSegue"]) {
     }
 }
 
@@ -106,6 +107,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"detailSegue" sender:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
