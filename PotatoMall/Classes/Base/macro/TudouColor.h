@@ -11,7 +11,7 @@
 #define RGBA(R/*红*/, G/*绿*/, B/*蓝*/, A/*透明*/) \
 [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
 
-#define kMainTitleColor                         UIColorFromRGB(0x888888)
+#define kHotArticleitleColor                    UIColorFromRGB(0x3E3E3E)
 
 #define kMainBackgroundColor                    RGBA(255, 68, 115, 1)
 

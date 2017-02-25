@@ -19,15 +19,15 @@
     [super viewDidLoad];
     UIStoryboard *homeStory = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
     HTNavgationController *homeNav = [homeStory instantiateViewControllerWithIdentifier:@"HomeNav"];
-    [self addSubControllerWithChildControlelr:homeNav imageName:@"TabBar1" selectdImgName:@"TabBar1Sel" title:@"首页"];
+    [self addSubControllerWithChildControlelr:homeNav imageName:@"tabhome" selectdImgName:@"tabhome_selt" title:@"首页"];
     
     UIStoryboard *knowStory = [UIStoryboard storyboardWithName:@"Purchase" bundle:nil];
     HTNavgationController *knowNav = [knowStory instantiateViewControllerWithIdentifier:@"PurchaseNav"];
-    [self addSubControllerWithChildControlelr:knowNav imageName:@"TabBar2" selectdImgName:@"TabBar2Sel" title:@"采购"];
+    [self addSubControllerWithChildControlelr:knowNav imageName:@"tabchart" selectdImgName:@"tabchart_selt" title:@"采购"];
     
     UIStoryboard *shoppingStory = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
     HTNavgationController *shoppingNav = [shoppingStory instantiateViewControllerWithIdentifier:@"MeNav"];
-    [self addSubControllerWithChildControlelr:shoppingNav imageName:@"TabBar4" selectdImgName:@"TabBar4Sel" title:@"我"];
+    [self addSubControllerWithChildControlelr:shoppingNav imageName:@"tabme" selectdImgName:@"tabme_selt" title:@"我"];
 }
 
 

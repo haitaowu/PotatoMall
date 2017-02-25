@@ -10,6 +10,11 @@
 #import "HTSearchHistoryController.h"
 #import "HTCustomeSearchBar.h"
 #import "SearchTableController.h"
+#import "HotArticleCell.h"
+#import "SectionHeaderTitle.h"
+
+
+static NSString *HotArticleCellID = @"HotArticleCellID";
 
 @interface HomeTableController ()
 @property (nonatomic,weak)HTCustomeSearchBar *searchBar;
@@ -20,6 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    
+    UINib *articleCellNib = [UINib nibWithNibName:@"HotArticleCell" bundle:nil];
+    [self.tableView registerNib:articleCellNib forCellReuseIdentifier:HotArticleCellID];
 }
 
 
@@ -39,10 +47,14 @@
         [blockSelf showSearchHistoryView];
     }];
     self.navigationItem.titleView = searchField;
+    
+    //tableView tableHeaderView
+    self.tableView.tableHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xilan"]];
 }
 
 - (void)showSearchHistoryView
 {
+    //不使用变量持有它，否则naivationBar的背景色没有办法改变回去。
     HTSearchHistoryController *searchHistoryControl = [[HTSearchHistoryController alloc] init];
     __block typeof(self) blockSelf = self;
     searchHistoryControl.searchBlock = ^(NSString *word){
@@ -57,14 +69,42 @@
     return 10;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    HotArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:HotArticleCellID];
     return cell;
+}
+
+
+#pragma mark - UITableView --- Table view  delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 50;
+    }else{
+        return 0.001;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.001;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 180;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    SectionHeaderTitle *titleHeader = [[SectionHeaderTitle alloc] initWithTitle:@"热门文章"];
+    return titleHeader;
 }
 
 
