@@ -13,7 +13,6 @@
 
 #define kHotArticleitleColor                    UIColorFromRGB(0x3E3E3E)
 
-#define kMainBackgroundColor                    RGBA(255, 68, 115, 1)
 
 #define kMainNavigationBarColor                 RGBA(253, 187, 63, 1)
 

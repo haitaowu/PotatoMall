@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "HTNavgationController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    CGRect bounds = [UIScreen mainScreen].bounds;
+    self.window = [[UIWindow alloc] initWithFrame:bounds];
+    UIStoryboard *loginStory = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    HTNavgationController *loginNav = [loginStory instantiateViewControllerWithIdentifier:@"loginNav"];
+    self.window.rootViewController = loginNav;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
