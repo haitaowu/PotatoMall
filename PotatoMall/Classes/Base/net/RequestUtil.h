@@ -12,19 +12,15 @@
 //-6乐观锁异常;1:业务参数不符合要求(格式未通过校验)"
 
 typedef enum{
-    StatusTypSuccess = 0,               //0通常情况下表示业务数据操作成功
+    StatusTypFail = 1000,               //操作失败
+    StatusTypSuccess = 1001,            //操作成功
     StatusTypNetWorkError = 1,          //1网络联接问题
-    StatusTypeSystemMaintenance = -1,   //-1系统维护
-    StatusTypeLowVersion = -2,          //-2客户端需要升级
-    StatusTypeWrongInterface = -3,      //-3服务器接口错误
-    StatusTypeNoAuthority = -4,         //-4客户端目前没权限访问
-    StatusTypeIllegalUser= -5           //-5非法客户端
 }StatusType;
 
 
 
-typedef void(^ReqSucess)(StatusType status,NSString* msg,id list);
-typedef void(^ReqFail)(StatusType type,NSString* msg);
+typedef void(^ReqSucess)(int status,NSString* msg,id list);
+typedef void(^ReqFail)(int type,NSString* msg);
 
 
 @interface RequestUtil : NSObject

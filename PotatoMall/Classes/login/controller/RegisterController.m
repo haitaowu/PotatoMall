@@ -57,7 +57,7 @@
     RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     self.codeBtn = rightBtn;
-    [rightBtn addTarget:self action:@selector(requestCode) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
     [self updateCodeBtnUIWith:YES];
     CGFloat rightViewHeight = 30;
     CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
@@ -195,14 +195,25 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)requestCode
+- (void)requestRegisterCode
 {
     NSString *phoneTxt = self.phoneTextField.text;
     if (![phoneTxt rightPhoneNumFormat]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
         return;
     }
-    [self.view endEditing:YES];
+    
+    [SVProgressHUD showInfoWithStatus:@"请求验证码"];
+    NSString *subUrl = @"user/getCheckCode";
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqCodeType,nil];
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
+        [self cuntingDown];
+        [SVProgressHUD showErrorWithStatus:msg];
+    } reqFail:^(int type, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        [self cuntingDown];
+    }];
 }
 
 - (IBAction)tapRegisterBtn:(id)sender {

@@ -11,5 +11,6 @@
 @interface AppInfoHelper : NSObject
 
 + (NSString*)currentDeviceIdentifier;
++ (NSString*)shortVersionString;
 
 @end

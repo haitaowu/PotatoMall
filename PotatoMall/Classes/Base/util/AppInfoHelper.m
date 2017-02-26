@@ -15,4 +15,12 @@
 {
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
+
++ (NSString*)shortVersionString
+{
+    NSString *version = [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    return version;
+}
+
+
 @end

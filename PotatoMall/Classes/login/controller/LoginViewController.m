@@ -111,6 +111,7 @@
     [self.tableView endEditing:YES];
     NSString *accountTxt = self.accountTextField.text;
     NSString *pwdTxt = self.pwdTextField.text;
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
     if (accountTxt.length <= 0) {
         [SVProgressHUD showErrorWithStatus:@"请输入账号"];
         return;

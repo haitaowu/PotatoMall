@@ -66,7 +66,7 @@
     RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     self.codeBtn = rightBtn;
-    [rightBtn addTarget:self action:@selector(requestCode) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
     [self updateCodeBtnUIWith:YES];
     CGFloat rightViewHeight = 25;
     CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
@@ -119,8 +119,25 @@
 
 
 #pragma mark -  IBaction methods
-- (void)requestCode
+- (void)requestRegisterCode
 {
+    NSString *phoneTxt = self.phoneTextField.text;
+    if (![phoneTxt rightPhoneNumFormat]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
+        return;
+    }
+    
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+    NSString *subUrl = @"user/getCheckCode";
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@%@",BASEURL,subUrl,phoneTxt];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqCodeType,nil];
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
+       [self cuntingDown];
+        [SVProgressHUD showErrorWithStatus:msg];
+    } reqFail:^(int type, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+       [self cuntingDown];
+    }];
 }
 
 
@@ -164,11 +181,6 @@
     }
 }
 
-//- (void)popToLoginController
-//{
-//    UIViewController *loginControl = self.navigationController.childViewControllers[1];
-//    [self.navigationController popToViewController:loginControl animated:NO];
-//}
 
 #pragma mark - requset server
 - (void)requestServerModifyPwdWithParams:(NSDictionary*)params

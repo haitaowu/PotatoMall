@@ -26,13 +26,13 @@
 
 - (void)viewDidLoad {
     //left navigationBar item
-    UIImage *leftImage =[UIImage imageNamed:@"arrow-left.png"];
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setImage:leftImage forState:UIControlStateNormal];
-    leftBtn.frame = CGRectMake(0, 0, 30, 30);
-    [leftBtn addTarget:self action:@selector(tapBackBtn:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    self.navigationItem.leftBarButtonItem = leftBarItem;
+//    UIImage *leftImage =[UIImage imageNamed:@"arrow-left.png"];
+//    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [leftBtn setImage:leftImage forState:UIControlStateNormal];
+//    leftBtn.frame = CGRectMake(0, 0, 30, 30);
+//    [leftBtn addTarget:self action:@selector(tapBackBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+//    self.navigationItem.leftBarButtonItem = leftBarItem;
     
     
 }
@@ -49,9 +49,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
 
 
 

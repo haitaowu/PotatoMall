@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewController.h"
 
-@interface PwdBackController : UITableViewController
+@interface PwdBackController : BaseTableViewController
 @property (nonatomic,strong)NSDictionary *params;
 
 @end

@@ -12,6 +12,8 @@
 #define     kPhone                          @"phone"
 #define     kPassword                       @"password"
 #define     kVerfiyCode                     @"verfiyCode"
+#define     kReqCodeType                    @"type"
+#define     kData                           @"data"
 
 //user account password
 #define     kLoginAccountKey                @"loginAccountKey"
