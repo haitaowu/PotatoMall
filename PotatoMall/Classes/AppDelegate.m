@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AppInfoHelper.h"
 #import "HTNavgationController.h"
 
 @interface AppDelegate ()
@@ -22,6 +23,8 @@
     UIStoryboard *loginStory = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     HTNavgationController *loginNav = [loginStory instantiateViewControllerWithIdentifier:@"loginNav"];
     self.window.rootViewController = loginNav;
+    NSString *devieIdtentifier = [AppInfoHelper currentDeviceIdentifier];
+    HTLog(@"identifier = %@",devieIdtentifier);
     [self.window makeKeyAndVisible];
     return YES;
 }

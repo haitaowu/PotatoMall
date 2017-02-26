@@ -22,13 +22,20 @@
 		BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7A91E61B3F700C4B1D0 /* Reachability.m */; };
 		BE5ED7AD1E61B73E00C4B1D0 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7AC1E61B73E00C4B1D0 /* MeController.m */; };
 		BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7AF1E61C06000C4B1D0 /* UIImage+Color.m */; };
-		BE5ED7B61E624EA000C4B1D0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5ED7B51E624EA000C4B1D0 /* Login.storyboard */; };
 		BE5ED7C01E6256C300C4B1D0 /* RadiusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7BF1E6256C300C4B1D0 /* RadiusButton.m */; };
 		BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7C21E62579700C4B1D0 /* NSString+Extentsion.m */; };
-		BE5ED7CD1E6258CD00C4B1D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7C61E6258CD00C4B1D0 /* LoginViewController.m */; };
-		BE5ED7CE1E6258CD00C4B1D0 /* PasswordBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7C81E6258CD00C4B1D0 /* PasswordBackController.m */; };
-		BE5ED7CF1E6258CD00C4B1D0 /* PwdBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7CA1E6258CD00C4B1D0 /* PwdBackController.m */; };
-		BE5ED7D01E6258CD00C4B1D0 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7CC1E6258CD00C4B1D0 /* RegisterController.m */; };
+		BE5ED7D31E628DD800C4B1D0 /* AppInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7D21E628DD800C4B1D0 /* AppInfoHelper.m */; };
+		BE5ED7DA1E62B14D00C4B1D0 /* UserModelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7D91E62B14D00C4B1D0 /* UserModelUtil.m */; };
+		BE5ED7E51E62B29000C4B1D0 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7DE1E62B29000C4B1D0 /* GTMBase64.m */; };
+		BE5ED7E61E62B29000C4B1D0 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7E01E62B29000C4B1D0 /* README.md */; };
+		BE5ED7E71E62B29000C4B1D0 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7E21E62B29000C4B1D0 /* NSData+AES.m */; };
+		BE5ED7E81E62B29000C4B1D0 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7E41E62B29000C4B1D0 /* SecurityUtil.m */; };
+		BE5ED7F81E62B90900C4B1D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7EC1E62B90900C4B1D0 /* LoginViewController.m */; };
+		BE5ED7F91E62B90900C4B1D0 /* PasswordBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7EE1E62B90900C4B1D0 /* PasswordBackController.m */; };
+		BE5ED7FA1E62B90900C4B1D0 /* PwdBackController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7F01E62B90900C4B1D0 /* PwdBackController.m */; };
+		BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7F21E62B90900C4B1D0 /* RegisterController.m */; };
+		BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7F51E62B90900C4B1D0 /* UserModel.m */; };
+		BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5ED7F71E62B90900C4B1D0 /* Login.storyboard */; };
 		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
 		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
 		BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */; };
@@ -77,19 +84,34 @@
 		BE5ED7AC1E61B73E00C4B1D0 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
 		BE5ED7AE1E61C06000C4B1D0 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		BE5ED7AF1E61C06000C4B1D0 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
-		BE5ED7B51E624EA000C4B1D0 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BE5ED7BE1E6256C300C4B1D0 /* RadiusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusButton.h; sourceTree = "<group>"; };
 		BE5ED7BF1E6256C300C4B1D0 /* RadiusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusButton.m; sourceTree = "<group>"; };
 		BE5ED7C11E62579700C4B1D0 /* NSString+Extentsion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extentsion.h"; sourceTree = "<group>"; };
 		BE5ED7C21E62579700C4B1D0 /* NSString+Extentsion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extentsion.m"; sourceTree = "<group>"; };
-		BE5ED7C51E6258CD00C4B1D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		BE5ED7C61E6258CD00C4B1D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		BE5ED7C71E6258CD00C4B1D0 /* PasswordBackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordBackController.h; sourceTree = "<group>"; };
-		BE5ED7C81E6258CD00C4B1D0 /* PasswordBackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordBackController.m; sourceTree = "<group>"; };
-		BE5ED7C91E6258CD00C4B1D0 /* PwdBackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdBackController.h; sourceTree = "<group>"; };
-		BE5ED7CA1E6258CD00C4B1D0 /* PwdBackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdBackController.m; sourceTree = "<group>"; };
-		BE5ED7CB1E6258CD00C4B1D0 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
-		BE5ED7CC1E6258CD00C4B1D0 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		BE5ED7D11E628DD800C4B1D0 /* AppInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoHelper.h; sourceTree = "<group>"; };
+		BE5ED7D21E628DD800C4B1D0 /* AppInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoHelper.m; sourceTree = "<group>"; };
+		BE5ED7D71E62A3DC00C4B1D0 /* TDKeyStringUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDKeyStringUrl.h; sourceTree = "<group>"; };
+		BE5ED7D81E62B14D00C4B1D0 /* UserModelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModelUtil.h; sourceTree = "<group>"; };
+		BE5ED7D91E62B14D00C4B1D0 /* UserModelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModelUtil.m; sourceTree = "<group>"; };
+		BE5ED7DD1E62B29000C4B1D0 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		BE5ED7DE1E62B29000C4B1D0 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		BE5ED7DF1E62B29000C4B1D0 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		BE5ED7E01E62B29000C4B1D0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BE5ED7E11E62B29000C4B1D0 /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		BE5ED7E21E62B29000C4B1D0 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
+		BE5ED7E31E62B29000C4B1D0 /* SecurityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
+		BE5ED7E41E62B29000C4B1D0 /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
+		BE5ED7EB1E62B90900C4B1D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BE5ED7EC1E62B90900C4B1D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BE5ED7ED1E62B90900C4B1D0 /* PasswordBackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordBackController.h; sourceTree = "<group>"; };
+		BE5ED7EE1E62B90900C4B1D0 /* PasswordBackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordBackController.m; sourceTree = "<group>"; };
+		BE5ED7EF1E62B90900C4B1D0 /* PwdBackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdBackController.h; sourceTree = "<group>"; };
+		BE5ED7F01E62B90900C4B1D0 /* PwdBackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdBackController.m; sourceTree = "<group>"; };
+		BE5ED7F11E62B90900C4B1D0 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		BE5ED7F21E62B90900C4B1D0 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		BE5ED7F41E62B90900C4B1D0 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		BE5ED7F51E62B90900C4B1D0 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		BE5ED7F71E62B90900C4B1D0 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNavgationController.h; sourceTree = "<group>"; };
 		BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNavgationController.m; sourceTree = "<group>"; };
 		BEAAA5F61E5D8069008943EC /* HomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableController.h; sourceTree = "<group>"; };
@@ -207,6 +229,7 @@
 		BE5ED7A61E61B3F700C4B1D0 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				BE5ED7DB1E62B29000C4B1D0 /* AES */,
 				BE5ED7A71E61B3F700C4B1D0 /* Reachability */,
 			);
 			path = lib;
@@ -221,31 +244,6 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		BE5ED7B11E624E4500C4B1D0 /* login */ = {
-			isa = PBXGroup;
-			children = (
-				BE5ED7C41E6258CD00C4B1D0 /* controller */,
-				BE5ED7B31E624E4500C4B1D0 /* model */,
-				BE5ED7B41E624E4500C4B1D0 /* view */,
-			);
-			path = login;
-			sourceTree = "<group>";
-		};
-		BE5ED7B31E624E4500C4B1D0 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		BE5ED7B41E624E4500C4B1D0 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				BE5ED7B51E624EA000C4B1D0 /* Login.storyboard */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		BE5ED7BD1E6256C300C4B1D0 /* button */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,30 +253,80 @@
 			path = button;
 			sourceTree = "<group>";
 		};
-		BE5ED7C41E6258CD00C4B1D0 /* controller */ = {
+		BE5ED7DB1E62B29000C4B1D0 /* AES */ = {
 			isa = PBXGroup;
 			children = (
-				BE5ED7C51E6258CD00C4B1D0 /* LoginViewController.h */,
-				BE5ED7C61E6258CD00C4B1D0 /* LoginViewController.m */,
-				BE5ED7C71E6258CD00C4B1D0 /* PasswordBackController.h */,
-				BE5ED7C81E6258CD00C4B1D0 /* PasswordBackController.m */,
-				BE5ED7C91E6258CD00C4B1D0 /* PwdBackController.h */,
-				BE5ED7CA1E6258CD00C4B1D0 /* PwdBackController.m */,
-				BE5ED7CB1E6258CD00C4B1D0 /* RegisterController.h */,
-				BE5ED7CC1E6258CD00C4B1D0 /* RegisterController.m */,
+				BE5ED7DC1E62B29000C4B1D0 /* GTMBase64 */,
+				BE5ED7E11E62B29000C4B1D0 /* NSData+AES.h */,
+				BE5ED7E21E62B29000C4B1D0 /* NSData+AES.m */,
+				BE5ED7E31E62B29000C4B1D0 /* SecurityUtil.h */,
+				BE5ED7E41E62B29000C4B1D0 /* SecurityUtil.m */,
+			);
+			path = AES;
+			sourceTree = "<group>";
+		};
+		BE5ED7DC1E62B29000C4B1D0 /* GTMBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				BE5ED7DD1E62B29000C4B1D0 /* GTMBase64.h */,
+				BE5ED7DE1E62B29000C4B1D0 /* GTMBase64.m */,
+				BE5ED7DF1E62B29000C4B1D0 /* GTMDefines.h */,
+				BE5ED7E01E62B29000C4B1D0 /* README.md */,
+			);
+			path = GTMBase64;
+			sourceTree = "<group>";
+		};
+		BE5ED7E91E62B90900C4B1D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BE5ED7EA1E62B90900C4B1D0 /* controller */,
+				BE5ED7F31E62B90900C4B1D0 /* model */,
+				BE5ED7F61E62B90900C4B1D0 /* view */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		BE5ED7EA1E62B90900C4B1D0 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				BE5ED7EB1E62B90900C4B1D0 /* LoginViewController.h */,
+				BE5ED7EC1E62B90900C4B1D0 /* LoginViewController.m */,
+				BE5ED7ED1E62B90900C4B1D0 /* PasswordBackController.h */,
+				BE5ED7EE1E62B90900C4B1D0 /* PasswordBackController.m */,
+				BE5ED7EF1E62B90900C4B1D0 /* PwdBackController.h */,
+				BE5ED7F01E62B90900C4B1D0 /* PwdBackController.m */,
+				BE5ED7F11E62B90900C4B1D0 /* RegisterController.h */,
+				BE5ED7F21E62B90900C4B1D0 /* RegisterController.m */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		BE5ED7F31E62B90900C4B1D0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BE5ED7F41E62B90900C4B1D0 /* UserModel.h */,
+				BE5ED7F51E62B90900C4B1D0 /* UserModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BE5ED7F61E62B90900C4B1D0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BE5ED7F71E62B90900C4B1D0 /* Login.storyboard */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		BEC06DAC1E5C76D300667D73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				BEC06DAF1E5C76D300667D73 /* Base */,
-				BE5ED7B11E624E4500C4B1D0 /* login */,
-				BE5ED7A61E61B3F700C4B1D0 /* lib */,
+				BE5ED7E91E62B90900C4B1D0 /* Login */,
 				BEC06DCC1E5C792600667D73 /* Home(首页) */,
 				BEC06DC81E5C78F600667D73 /* Purchase(采购) */,
 				BEC06DD01E5C792600667D73 /* Me(我) */,
+				BE5ED7A61E61B3F700C4B1D0 /* lib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -315,8 +363,8 @@
 		BEC06DBE1E5C77D000667D73 /* other */ = {
 			isa = PBXGroup;
 			children = (
-				BEC06DAE1E5C76D300667D73 /* AppDelegate.m */,
 				BEC06DAD1E5C76D300667D73 /* AppDelegate.h */,
+				BEC06DAE1E5C76D300667D73 /* AppDelegate.m */,
 				BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */,
 			);
 			path = other;
@@ -325,6 +373,10 @@
 		BEC06DBF1E5C77D000667D73 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				BE5ED7D11E628DD800C4B1D0 /* AppInfoHelper.h */,
+				BE5ED7D21E628DD800C4B1D0 /* AppInfoHelper.m */,
+				BE5ED7D81E62B14D00C4B1D0 /* UserModelUtil.h */,
+				BE5ED7D91E62B14D00C4B1D0 /* UserModelUtil.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -471,6 +523,7 @@
 			children = (
 				BEC06DDE1E5C7A6D00667D73 /* TudouColor.h */,
 				BEAAA5FC1E5D8948008943EC /* TudouUtil.h */,
+				BE5ED7D71E62A3DC00C4B1D0 /* TDKeyStringUrl.h */,
 			);
 			path = macro;
 			sourceTree = "<group>";
@@ -537,7 +590,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE5ED7B61E624EA000C4B1D0 /* Login.storyboard in Resources */,
+				BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */,
 				BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */,
 				BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */,
 				BE5B803F1E5F1F12005FDE1A /* HotArticleCell.xib in Resources */,
@@ -603,30 +656,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE5ED7F81E62B90900C4B1D0 /* LoginViewController.m in Sources */,
 				BE5ED7C01E6256C300C4B1D0 /* RadiusButton.m in Sources */,
-				BE5ED7CD1E6258CD00C4B1D0 /* LoginViewController.m in Sources */,
 				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
-				BE5ED7CE1E6258CD00C4B1D0 /* PasswordBackController.m in Sources */,
+				BE5ED7E61E62B29000C4B1D0 /* README.md in Sources */,
+				BE5ED7E71E62B29000C4B1D0 /* NSData+AES.m in Sources */,
 				BE5ED7A01E619FAC00C4B1D0 /* AritcleDetailController.m in Sources */,
 				BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */,
+				BE5ED7E51E62B29000C4B1D0 /* GTMBase64.m in Sources */,
 				BE5ED7AD1E61B73E00C4B1D0 /* MeController.m in Sources */,
+				BE5ED7D31E628DD800C4B1D0 /* AppInfoHelper.m in Sources */,
 				BE5B80391E5F15CD005FDE1A /* SearchTableController.m in Sources */,
+				BE5ED7DA1E62B14D00C4B1D0 /* UserModelUtil.m in Sources */,
 				BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
-				BE5ED7D01E6258CD00C4B1D0 /* RegisterController.m in Sources */,
+				BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */,
 				BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */,
 				BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */,
 				BE5ED79A1E619C3600C4B1D0 /* BaseViewController.m in Sources */,
 				BEC06DB91E5C76F500667D73 /* main.m in Sources */,
 				BE5B80421E5F2783005FDE1A /* SectionHeaderTitle.m in Sources */,
+				BE5ED7E81E62B29000C4B1D0 /* SecurityUtil.m in Sources */,
 				BE5ED79D1E619E6A00C4B1D0 /* BaseTableViewController.m in Sources */,
 				BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */,
-				BE5ED7CF1E6258CD00C4B1D0 /* PwdBackController.m in Sources */,
 				BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */,
 				BE5B803E1E5F1F12005FDE1A /* HotArticleCell.m in Sources */,
+				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
 				BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */,
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */,
+				BE5ED7FA1E62B90900C4B1D0 /* PwdBackController.m in Sources */,
+				BE5ED7F91E62B90900C4B1D0 /* PasswordBackController.m in Sources */,
 				BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 			);
