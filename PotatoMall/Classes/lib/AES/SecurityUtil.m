@@ -58,12 +58,10 @@
 +(NSString*)encryptAESData:(NSString*)string {
     NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
     NSData * encryptedData = [data AES256ParmEncrypt];
-
     return [self convertDataToHexStr:encryptedData];
 }
 
 #pragma mark - AES 十六进制解密
-
 +(NSString*)decryptAES:(NSString *)string {
     NSData * data = [self convertHexStrToData:string] ;
     NSData * decryData = [data AES256ParmDecrypt];

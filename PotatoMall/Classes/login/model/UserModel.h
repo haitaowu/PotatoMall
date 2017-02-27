@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+//{"user":{"phone":"18061955875","userId":2313,"userName":"18061955875","userType":"1"}}
+
+
 @interface UserModel : NSObject
 /**详情地址*/
 @property (nonatomic,copy) NSString *address;
@@ -35,5 +38,7 @@
 @property (nonatomic,strong) NSNumber *userId;
 /**用户名称*/
 @property (nonatomic,copy) NSString *userName;
+/**用户*/
+@property (nonatomic,copy) NSString *userType;
 
 @end

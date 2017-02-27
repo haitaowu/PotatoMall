@@ -6,7 +6,7 @@
 //  Copyright © 2017 taotao. All rights reserved.
 //
 
-//define key
+//define params key
 #define     kDeviceTokenKey                 @"deviceToken"
 #define     kVersionKey                     @"version"
 #define     kPhone                          @"phone"
@@ -15,6 +15,9 @@
 #define     kVerfiyCode                     @"verfiyCode"
 #define     kReqCodeType                    @"type"
 #define     kData                           @"data"
+#define     kPageNo                         @"pageNo"
+#define     kPageSize                       @"pageSize"
+#define     kSeachKey                       @"seachKey"
 
 //user account password
 #define     kLoginAccountKey                @"loginAccountKey"

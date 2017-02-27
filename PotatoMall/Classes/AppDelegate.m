@@ -18,10 +18,10 @@
 
 #pragma mark - override methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    CGRect bounds = [UIScreen mainScreen].bounds;
-    self.window = [[UIWindow alloc] initWithFrame:bounds];
-    [self setupLoginView];
-    [self.window makeKeyAndVisible];
+//    CGRect bounds = [UIScreen mainScreen].bounds;
+//    self.window = [[UIWindow alloc] initWithFrame:bounds];
+//    [self setupLoginView];
+//    [self.window makeKeyAndVisible];
     
     //add servers
     [self registerObserversforNotification];

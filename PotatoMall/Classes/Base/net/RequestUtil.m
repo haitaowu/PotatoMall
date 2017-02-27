@@ -25,8 +25,9 @@
     [manager POST:url parameters:finalParams progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSNumber *codeNum = responseObject[@"code"];
         NSString *msg = responseObject[@"msg"];
+        id data = responseObject[@"data"];
         if ([codeNum intValue] == StatusTypSuccess) {
-            success(StatusTypSuccess,msg,nil);
+            success(StatusTypSuccess,msg,data);
         }else{
             fail([codeNum intValue],msg);
         }

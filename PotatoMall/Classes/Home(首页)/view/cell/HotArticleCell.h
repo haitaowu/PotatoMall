@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArticleModel.h"
+
 
 @interface HotArticleCell : UITableViewCell
-
+@property (nonatomic,copy) ArticleModel *model;
 @end

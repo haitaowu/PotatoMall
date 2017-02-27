@@ -7,18 +7,25 @@
 //
 
 #import "HotArticleCell.h"
-
+@interface HotArticleCell ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *picView;
+@end
 @implementation HotArticleCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+#pragma mark -  setter and getter methods 
+- (void)setModel:(ArticleModel *)model
+{
+    _model = model;
+    self.titleLabel.text = model.title;
+    self.dateLabel.text = model.createDate;
+    
 }
+
 
 @end

@@ -19,7 +19,7 @@ typedef enum{
 
 
 
-typedef void(^ReqSucess)(int status,NSString* msg,id list);
+typedef void(^ReqSucess)(int status,NSString* msg,id data);
 typedef void(^ReqFail)(int type,NSString* msg);
 
 

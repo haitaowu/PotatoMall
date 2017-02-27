@@ -106,6 +106,7 @@
     }
 }
 
+#pragma mark - requset server
 //点击注册新用户
 - (IBAction)tapLoginBtn:(id)sender {
     [self.tableView endEditing:YES];
@@ -122,9 +123,11 @@
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:accountTxt,kAccount,pwdTxt,kPassword, nil];
         NSString *subUrl = @"user/login";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [SVProgressHUD showWithStatus:msg];
             if (status == StatusTypSuccess) {
+                NSString *dataStr = [DataUtil decryptStringWith:data];
+//                id user
                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
             }
         } reqFail:^(int type, NSString *msg) {
