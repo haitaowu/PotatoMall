@@ -10,6 +10,7 @@
 #define     kDeviceTokenKey                 @"deviceToken"
 #define     kVersionKey                     @"version"
 #define     kPhone                          @"phone"
+#define     kAccount                        @"account"
 #define     kPassword                       @"password"
 #define     kVerfiyCode                     @"verfiyCode"
 #define     kReqCodeType                    @"type"

@@ -35,7 +35,7 @@ static UserModelUtil *instance = nil;
 #pragma mark - public methods
 + (NSString*)encryPwdWithPassword:(NSString*) password
 {
-    NSString *encryptedPWD = [SecurityUtil encryptAESBase64:password];
+    NSString *encryptedPWD = [SecurityUtil encryptAESData:password];
     return encryptedPWD;
 }
 

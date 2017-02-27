@@ -210,13 +210,13 @@
         return;
     }
     
-    [SVProgressHUD showInfoWithStatus:@"请求验证码"];
+    [SVProgressHUD showWithStatus:@"请求验证码"];
     NSString *subUrl = @"user/getCheckCode";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqCodeType,nil];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
         [self cuntingDown];
-        [SVProgressHUD showErrorWithStatus:msg];
+        [SVProgressHUD showWithStatus:msg];
     } reqFail:^(int type, NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];
         [self cuntingDown];

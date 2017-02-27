@@ -119,11 +119,11 @@
         return;
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:accountTxt,kPhone,pwdTxt,kPassword, nil];
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:accountTxt,kAccount,pwdTxt,kPassword, nil];
         NSString *subUrl = @"user/login";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
-            [SVProgressHUD showErrorWithStatus:msg];
+            [SVProgressHUD showWithStatus:msg];
             if (status == StatusTypSuccess) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
             }
