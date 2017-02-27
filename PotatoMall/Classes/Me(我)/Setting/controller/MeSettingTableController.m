@@ -19,6 +19,11 @@
     self.title = @"设置"; 
 }
 
+#pragma mark - private methods
+- (void)userTapLogout
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLogoutSuccessNotification object:nil];
+}
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -37,6 +42,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
+        [self userTapLogout];
         HTLog(@"user tap logout button ");
     }
 }

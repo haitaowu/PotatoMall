@@ -48,7 +48,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-#pragma mark - setup UI 
+#pragma mark - setup UI
 -(void)setupLoginView
 {
     UIStoryboard *loginStory = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
@@ -63,7 +63,17 @@
 {
     //add login success  observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginSuccess) name:kLoginSuccessNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogoutSuccess) name:kUserLogoutSuccessNotification object:nil];
 }
+
+#pragma mark - update ui
+- (void)userLogoutSuccess
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UITabBarController *loginNav = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginNav"];
+    self.window.rootViewController = loginNav;
+}
+
 //用户选择阶段 进入主界面
 - (void)userLoginSuccess
 {
