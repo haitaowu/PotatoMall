@@ -81,7 +81,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 
 - (void)setupTableViewFooter
 {
-    MJRefreshAutoFooter  *footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    MJRefreshAutoNormalFooter  *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         self.pageNo ++;
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[kPageNo] = @(self.pageNo);
@@ -117,6 +117,15 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     [self presentViewController:navController animated:NO completion:nil];
 }
 
+#pragma mark - private methods
+- (NSMutableArray*)articlesWithData:(id)data
+{
+    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+    NSArray *list = [dict objectForKey:@"list"];
+    NSArray *articles = [ArticleModel mj_objectArrayWithKeyValuesArray:list];
+    return [NSMutableArray arrayWithArray:articles];
+}
+
 #pragma mark - requset server
 - (void)requestMoreArticlesWith:(NSDictionary*)params
 {
@@ -128,7 +137,13 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [self.tableView.mj_footer endRefreshing];
-//            [self.articlesArray addObjectsFromArray:data];
+            if (status == StatusTypSuccess) {
+                NSMutableArray *moreData = [self articlesWithData:data];
+                if ([moreData count] > 0) {
+                    [self.articlesArray addObject:moreData];
+                }
+            }
+            
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_footer endRefreshing];
@@ -148,12 +163,10 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
             [SVProgressHUD showInfoWithStatus:msg];
             [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
-                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
-                NSArray *list = [dict objectForKey:@"list"];
-                NSArray *articles = [ArticleModel mj_objectArrayWithKeyValuesArray:list];
-                self.articlesArray = [NSMutableArray arrayWithArray:articles];
-                [self.tableView reloadData];
+                self.articlesArray = [self articlesWithData:data];
+                [self.tableView.mj_footer setHidden:NO];
             }
+            [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_header endRefreshing];
             [SVProgressHUD showErrorWithStatus:msg];
@@ -169,7 +182,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HotArticleCell *cell = [tableView dequeueReusableCellWithIdentifier:HotArticleCellID];
-    ArticleModel *model = self.articlesArray[indexPath.section];
+    ArticleModel *model = self.articlesArray[indexPath.row];
     [cell setModel:model];
     return cell;
 }

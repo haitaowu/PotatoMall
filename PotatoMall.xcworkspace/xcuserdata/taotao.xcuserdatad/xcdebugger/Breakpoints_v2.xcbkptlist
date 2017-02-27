@@ -138,7 +138,7 @@
                   moduleName = "PotatoMall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Login/controller/RegisterController.m"
-                  timestampString = "509899632.23023"
+                  timestampString = "509900599.754824"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "217"
@@ -153,7 +153,7 @@
                   moduleName = "PotatoMall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Login/controller/RegisterController.m"
-                  timestampString = "509899632.231472"
+                  timestampString = "509900599.757436"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "217"
@@ -218,12 +218,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/controller/HomeTableController.m"
-            timestampString = "509899658.769748"
+            timestampString = "509900190.189524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "-requestAritclesWith:"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-requestMoreArticlesWith:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,13 +233,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/util/DataUtil.m"
-            timestampString = "509897406.707385"
+            filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/controller/HomeTableController.m"
+            timestampString = "509900690.817408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "+dictionaryWithJsonStr:"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "-requestAritclesWith:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
