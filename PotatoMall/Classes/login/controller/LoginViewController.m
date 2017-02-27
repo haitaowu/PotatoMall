@@ -106,19 +106,32 @@
     }
 }
 
-
+//点击注册新用户
 - (IBAction)tapLoginBtn:(id)sender {
     [self.tableView endEditing:YES];
     NSString *accountTxt = self.accountTextField.text;
     NSString *pwdTxt = self.pwdTextField.text;
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
     if (accountTxt.length <= 0) {
-        [SVProgressHUD showErrorWithStatus:@"请输入账号"];
+        [SVProgressHUD showErrorWithStatus:kAlertEnterAccountMsg];
+        return;
+    }else if (pwdTxt.length <= 0) {
+        [SVProgressHUD showErrorWithStatus:kAlertEnterPasswordMsg];
         return;
     }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:accountTxt,kPhone,pwdTxt,kPassword, nil];
+        NSString *subUrl = @"user/login";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
+            [SVProgressHUD showErrorWithStatus:msg];
+            if (status == StatusTypSuccess) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
     }
+    
 }
-
-#pragma mark - private methods
 
 @end

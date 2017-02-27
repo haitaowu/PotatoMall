@@ -180,6 +180,12 @@
 - (NSMutableDictionary*)paramsByCurrentUser
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *pwdTxt = self.pwdTextField.text;
+    NSString *phoneTxt = self.phoneTextField.text;
+    NSString *codeTxt = self.codeTextField.text;
+    params[kPhone] = phoneTxt;
+    params[kPassword] = pwdTxt;
+    params[kVerfiyCode] = codeTxt;
     return params;
 }
 
@@ -195,6 +201,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//请求验证码
 - (void)requestRegisterCode
 {
     NSString *phoneTxt = self.phoneTextField.text;
@@ -237,36 +244,26 @@
         [SVProgressHUD showErrorWithStatus:@"密码必须6-15位哦"];
         return;
     }else{
-        [self requestRegisterNewUserWithPwd:pwdTxt];
+        [self requestRegisterNewUser];
         
     }
 }
 
 #pragma mark - requset server
-- (void)requestRegisterNewUserWithPwd:(NSString*)pwdTxt
+- (void)requestRegisterNewUser
 {
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-    NSString *subUrl = @"api/s/register";
-//    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASE_URL2,subUrl];
+    NSString *subUrl = @"user/register";
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
     NSMutableDictionary *params = [self paramsByCurrentUser];
-//    [HttpTools POSTWithURL:reqUrl params:params reqSuccess:^(int status,NSString *msg, id entity, id list) {
-//        HTLog(@"entity = %@ --- list = %@",entity,list);
-//        [SVProgressHUD showSuccessWithStatus:msg];
-//        // save user account and password
-//        NSString *phoneTxt = self.phoneTextField.text;
-//        //user register success
-//        [self userRegisterSuccess];
-//        if ([UserUtil sharedInstance].userModel == nil) {
-//            [self registerSuccessWith:entity account:phoneTxt pwd:pwdTxt];
-//        }else{
-//            [UserUtil sharedInstance].userModel = [UserModel mj_objectWithKeyValues:entity];
-//            [UserUtil saveUser:phoneTxt password:pwdTxt];
-//            [UserUtil keyChainSaveAccount:phoneTxt password:pwdTxt];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
-//        }
-//    } reqFail:^(StatusType type,NSString* msg) {
-//        [SVProgressHUD showErrorWithStatus:msg];
-//    }];
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        if (status == StatusTypSuccess) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    } reqFail:^(int type, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+    }];
 }
 
 

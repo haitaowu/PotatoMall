@@ -18,8 +18,13 @@
 //user account password
 #define     kLoginAccountKey                @"loginAccountKey"
 #define     kEncryPwdKey                    @"EncryPwdKey"
-//define
+//define notification
+#define     kLoginSuccessNotification                       @"LoginSuccessNotification"
+#define     kUserLogoutSuccessNotification                  @"UserLogoutSuccessNotification"
 
+//alert info msessage
+#define     kAlertEnterAccountMsg            @"请输入账号"
+#define     kAlertEnterPasswordMsg           @"请输入密码"
 //define url base
 #define     BASEURL                         @"http://121.42.197.212:8082/api/"
 

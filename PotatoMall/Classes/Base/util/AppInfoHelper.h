@@ -12,5 +12,6 @@
 
 + (NSString*)currentDeviceIdentifier;
 + (NSString*)shortVersionString;
++ (NSArray*)arrayWithPlistFile:(NSString*)fileName;
 
 @end

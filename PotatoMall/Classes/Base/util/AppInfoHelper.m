@@ -23,4 +23,12 @@
 }
 
 
++ (NSArray*)arrayWithPlistFile:(NSString*)fileName
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
+    NSArray *array = [NSArray arrayWithContentsOfFile:filePath];
+    return array;
+}
+
+
 @end
