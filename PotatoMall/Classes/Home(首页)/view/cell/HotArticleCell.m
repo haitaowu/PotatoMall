@@ -24,7 +24,11 @@
     _model = model;
     self.titleLabel.text = model.title;
     self.dateLabel.text = model.createDate;
-    
+    if (model.imgSrc != nil) {
+        NSURL *picUrl = [NSURL URLWithString:model.imgSrc];
+        UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
+        [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
+    }
 }
 
 

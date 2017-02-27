@@ -17,3 +17,4 @@
 #import "DataUtil.h"
 #import "MJRefresh.h"
 #import "MJExtension.h"
+#import "UIImageView+WebCache.h"
