@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
-@property (nonatomic,weak)RadiusButton *codeBtn;
+@property (nonatomic,weak)  IBOutlet UIButton *codeBtn;
 @property (nonatomic,strong)NSTimer *countTimer;
 @property (nonatomic,assign) int  countNum;
 @end
@@ -63,18 +63,18 @@
 - (void)setupUI
 {
     //password textfield rightview
-    RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    self.codeBtn = rightBtn;
-    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
-    [self updateCodeBtnUIWith:YES];
-    CGFloat rightViewHeight = 25;
-    CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
-    CGRect rightFrame = CGRectMake(0, rightViewY, 80, rightViewHeight);
-    rightBtn.frame = rightFrame;
-    //    [self.view addSubview:rightBtn];
-    _codeTextField.rightView = rightBtn;
-    _codeTextField.rightViewMode = UITextFieldViewModeAlways;
+//    RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
+//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+//    self.codeBtn = rightBtn;
+//    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
+//    [self updateCodeBtnUIWith:YES];
+//    CGFloat rightViewHeight = 25;
+//    CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
+//    CGRect rightFrame = CGRectMake(0, rightViewY, 80, rightViewHeight);
+//    rightBtn.frame = rightFrame;
+//    //    [self.view addSubview:rightBtn];
+//    _codeTextField.rightView = rightBtn;
+//    _codeTextField.rightViewMode = UITextFieldViewModeAlways;
     
     
     UIImage *rightImgOpen  =[UIImage imageNamed:@"uneye"];
@@ -119,7 +119,7 @@
 
 
 #pragma mark -  IBaction methods
-- (void)requestRegisterCode
+- (IBAction)requestRegisterCode
 {
     NSString *phoneTxt = self.phoneTextField.text;
     if (![phoneTxt rightPhoneNumFormat]) {

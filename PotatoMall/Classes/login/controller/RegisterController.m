@@ -26,7 +26,7 @@
 //@property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
-@property (nonatomic,weak)RadiusButton *codeBtn;
+@property (nonatomic,weak)  IBOutlet UIButton *codeBtn;
 @property (nonatomic,assign) int  countNum;
 @property (nonatomic,strong)NSTimer *countTimer;
 @property (nonatomic,strong) UIImage *rightImage;
@@ -54,18 +54,18 @@
 - (void)setupUI
 {
     //request code textfield right button
-    RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    self.codeBtn = rightBtn;
-    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
-    [self updateCodeBtnUIWith:YES];
-    CGFloat rightViewHeight = 30;
-    CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
-    CGRect rightFrame = CGRectMake(0, rightViewY, 80, rightViewHeight);
-    rightBtn.frame = rightFrame;
-//    [self.view addSubview:rightBtn];
-    _codeTextField.rightView = rightBtn;
-    _codeTextField.rightViewMode = UITextFieldViewModeAlways;
+//    RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
+//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+//    self.codeBtn = rightBtn;
+//    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
+//    [self updateCodeBtnUIWith:YES];
+//    CGFloat rightViewHeight = 30;
+//    CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
+//    CGRect rightFrame = CGRectMake(0, rightViewY, 80, rightViewHeight);
+//    rightBtn.frame = rightFrame;
+////    [self.view addSubview:rightBtn];
+//    _codeTextField.rightView = rightBtn;
+//    _codeTextField.rightViewMode = UITextFieldViewModeAlways;
     
     //password textfield rightview
     _rightImage =[UIImage imageNamed:@"uneye"];
@@ -202,7 +202,7 @@
 }
 
 //请求验证码
-- (void)requestRegisterCode
+- (IBAction)requestRegisterCode
 {
     NSString *phoneTxt = self.phoneTextField.text;
     if (![phoneTxt rightPhoneNumFormat]) {
