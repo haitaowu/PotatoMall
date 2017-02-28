@@ -41,6 +41,9 @@
 		BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E11E645E6B00F92C46 /* DataUtil.m */; };
 		BE8FA4E51E6460F500F92C46 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E41E6460F500F92C46 /* User.m */; };
 		BE8FA4E81E646C2D00F92C46 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E71E646C2D00F92C46 /* ArticleModel.m */; };
+		BE93AF281E65B7BF001F99BC /* SeachSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE93AF271E65B7BF001F99BC /* SeachSectionHeader.m */; };
+		BE93AF2C1E65B88E001F99BC /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE93AF2A1E65B88E001F99BC /* SearchCell.m */; };
+		BE93AF2D1E65B88E001F99BC /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE93AF2B1E65B88E001F99BC /* SearchCell.xib */; };
 		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
 		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
 		BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */; };
@@ -129,6 +132,11 @@
 		BE8FA4E41E6460F500F92C46 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BE8FA4E61E646C2D00F92C46 /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleModel.h; sourceTree = "<group>"; };
 		BE8FA4E71E646C2D00F92C46 /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleModel.m; sourceTree = "<group>"; };
+		BE93AF261E65B7BF001F99BC /* SeachSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeachSectionHeader.h; sourceTree = "<group>"; };
+		BE93AF271E65B7BF001F99BC /* SeachSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeachSectionHeader.m; sourceTree = "<group>"; };
+		BE93AF291E65B88E001F99BC /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		BE93AF2A1E65B88E001F99BC /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		BE93AF2B1E65B88E001F99BC /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNavgationController.h; sourceTree = "<group>"; };
 		BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNavgationController.m; sourceTree = "<group>"; };
 		BEAAA5F61E5D8069008943EC /* HomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableController.h; sourceTree = "<group>"; };
@@ -477,8 +485,13 @@
 			isa = PBXGroup;
 			children = (
 				BE5ED7BD1E6256C300C4B1D0 /* button */,
+				BE93AF261E65B7BF001F99BC /* SeachSectionHeader.h */,
+				BE93AF271E65B7BF001F99BC /* SeachSectionHeader.m */,
 				BED604BD1E5DF7E6002BB119 /* HTCustomeSearchBar.h */,
 				BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */,
+				BE93AF291E65B88E001F99BC /* SearchCell.h */,
+				BE93AF2A1E65B88E001F99BC /* SearchCell.m */,
+				BE93AF2B1E65B88E001F99BC /* SearchCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -708,6 +721,7 @@
 				BE59A4711E63CEE00077D9AD /* MeMenus.plist in Resources */,
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
 				BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */,
+				BE93AF2D1E65B88E001F99BC /* SearchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,8 +815,10 @@
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */,
 				BE5ED7FA1E62B90900C4B1D0 /* PwdBackController.m in Sources */,
+				BE93AF2C1E65B88E001F99BC /* SearchCell.m in Sources */,
 				BE8FA4E51E6460F500F92C46 /* User.m in Sources */,
 				BE5ED7F91E62B90900C4B1D0 /* PasswordBackController.m in Sources */,
+				BE93AF281E65B7BF001F99BC /* SeachSectionHeader.m in Sources */,
 				BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 			);

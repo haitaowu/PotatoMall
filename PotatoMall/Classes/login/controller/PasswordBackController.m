@@ -130,7 +130,7 @@
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
     NSString *subUrl = @"user/getCheckCode";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@%@",BASEURL,subUrl,phoneTxt];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqCodeType,nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqType,nil];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
        [self cuntingDown];
         [SVProgressHUD showErrorWithStatus:msg];

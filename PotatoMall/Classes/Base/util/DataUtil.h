@@ -8,7 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+#define kTableName                      @"HomeSearch"
+#define kColID                          @"ID"
+#define kColTitle                       @"title"
+
+
 @interface DataUtil : NSObject
++(instancetype)shareInstance;
 + (NSString*)decryptStringWith:(NSString*)crptStr;
 + (NSDictionary*)dictionaryWithJsonStr:(id)jsonStr;
+
+- (void)saveHomeSerachRecordWithTitle:(NSString*)title;
+- (NSArray*)queryHomeSerachRecord;
+- (BOOL)deleteHomeSerachRecord:(NSDictionary*)record;
+- (BOOL)deleteHomeSerachAllRecord;
+
 @end

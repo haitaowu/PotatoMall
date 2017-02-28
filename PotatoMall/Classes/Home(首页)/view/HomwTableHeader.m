@@ -8,6 +8,7 @@
 
 #import "HomwTableHeader.h"
 #import "SDCycleScrollView.h"
+#import "ArticleModel.h"
 
 @interface HomwTableHeader()<SDCycleScrollViewDelegate>
 @property (nonatomic,strong) SDCycleScrollView *cycleScrollView;
@@ -43,8 +44,15 @@
 #pragma mark - public methods
 - (void)loadAdsWithImages:(id)imgs
 {
-    self.imgs = imgs;
-    self.cycleScrollView.imageURLStringsGroup = imgs;
+    NSMutableArray *imgArray = [NSMutableArray array];
+    for (ArticleModel *obj in imgs){
+        NSString *imgSrc = [obj.imgSrc copy];
+        if (imgSrc != nil) {
+            [imgArray addObject:imgSrc];
+        }
+    }
+    self.imgs = imgArray;
+    self.cycleScrollView.imageURLStringsGroup = imgArray;
 }
 
 #pragma mark - SDCycleScrollViewDelegate

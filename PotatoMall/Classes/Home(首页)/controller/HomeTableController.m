@@ -23,6 +23,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 @property (nonatomic,assign) int pageNo;
 @property (nonatomic,assign) int pageSize;
 @property (nonatomic,strong)NSMutableArray *articlesArray;
+@property (nonatomic,strong)HomwTableHeader *headerView;
 @end
 
 @implementation HomeTableController
@@ -31,8 +32,8 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     [super viewDidLoad];
     self.pageSize = 10;
     [self setupUI];
-    
     [self setupTableView];
+    [self fetchAdsInfo];
 }
 
 
@@ -53,7 +54,6 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         [blockSelf showSearchHistoryView];
     }];
     self.navigationItem.titleView = searchField;
-    [self setupTableheaderView];
 }
 
 - (void)setupTableView
@@ -61,6 +61,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     UINib *articleCellNib = [UINib nibWithNibName:@"HotArticleCell" bundle:nil];
     [self.tableView registerNib:articleCellNib forCellReuseIdentifier:HotArticleCellID];
     
+    [self setupTableheaderView];
     [self setupTableViewHeader];
     [self setupTableViewFooter];
 }
@@ -72,6 +73,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[kPageNo] = @(self.pageNo);
         params[kPageSize] = @(self.pageSize);
+        params[kReqType] = @"107";
         [self requestAritclesWith:params];
     }];
     
@@ -86,6 +88,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[kPageNo] = @(self.pageNo);
         params[kPageSize] = @(self.pageSize);
+        params[kReqType] = @"107";
         [self requestMoreArticlesWith:params];
     }];
     self.tableView.mj_footer = footer;
@@ -97,12 +100,11 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     //tableView tableHeaderView
     HomwTableHeader *headerView = [[HomwTableHeader alloc] init];
     headerView.frame = CGRectMake(0, 0, kScreenWidth, 100);
-    NSArray *imgs = @[@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo",@"http://static.xianzhongwang.com/Fi0kG4sv9RVle3hMudh6WVcoQUdo"];
-    [headerView loadAdsWithImages:imgs];
     self.tableView.tableHeaderView = headerView;
     headerView.adBlock = ^(id adInfo){
         HTLog(@"click ad info ");
     };
+    self.headerView = headerView;
 }
 
 - (void)showSearchHistoryView
@@ -169,6 +171,28 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_header endRefreshing];
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
+- (void)fetchAdsInfo
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView reloadData];
+    }else{
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[kReqType] = @"106";
+        NSString *subUrl = @"article/list";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD showInfoWithStatus:msg];
+            if (status == StatusTypSuccess) {
+                NSArray *array = [self articlesWithData:data];
+                [self.headerView loadAdsWithImages:array];
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
         }];
     }

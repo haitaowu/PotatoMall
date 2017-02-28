@@ -13,7 +13,7 @@
 #define     kAccount                        @"account"
 #define     kPassword                       @"password"
 #define     kVerfiyCode                     @"verfiyCode"
-#define     kReqCodeType                    @"type"
+#define     kReqType                        @"type"
 #define     kData                           @"data"
 #define     kPageNo                         @"pageNo"
 #define     kPageSize                       @"pageSize"

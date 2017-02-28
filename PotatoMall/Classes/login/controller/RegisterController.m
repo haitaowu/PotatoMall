@@ -213,7 +213,7 @@
     [SVProgressHUD showWithStatus:@"请求验证码"];
     NSString *subUrl = @"user/getCheckCode";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqCodeType,nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqType,nil];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
         [self cuntingDown];
         [SVProgressHUD showWithStatus:msg];
