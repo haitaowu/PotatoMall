@@ -41,21 +41,24 @@
 #pragma mark - setup update ui
 - (void)setupUI
 {
-    UIImageView *bgImgView = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:kMainNavigationBarColor]];
-    [self.tableView setBackgroundView:bgImgView];
-    // right UIBarButtonItem
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(tapRegistger)];
-    
     //password textfield rightview
-    _rightImage =[UIImage imageNamed:@"eye_close.png"];
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn addTarget:self action:@selector(closeEye:) forControlEvents:UIControlEventTouchUpInside];
-    [rightBtn setImage:_rightImage forState:UIControlStateNormal];
+    UIImage *accountImage =[UIImage imageNamed:@"login_account"];
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setImage:accountImage forState:UIControlStateNormal];
 //    UIImageView *rightView = [[UIImageView alloc] init];
-    CGRect rightFrame = CGRectMake(0, 0, 20, 20);
-    rightBtn.frame = rightFrame;
-    _pwdTextField.rightView = rightBtn;
-    _pwdTextField.rightViewMode = UITextFieldViewModeAlways;
+    CGRect rightFrame = CGRectMake(0, 0, 30, 30);
+    leftBtn.frame = rightFrame;
+    _accountTextField.leftView = leftBtn;
+    _accountTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    UIImage *pwdImage =[UIImage imageNamed:@"login_lock"];
+    UIButton *pwdLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pwdLeftBtn setImage:pwdImage forState:UIControlStateNormal];
+    //    UIImageView *rightView = [[UIImageView alloc] init];
+    CGRect pwLeftF = CGRectMake(0, 0, 30, 30);
+    pwdLeftBtn.frame = pwLeftF;
+    _pwdTextField.leftView = pwdLeftBtn;
+    _pwdTextField.leftViewMode = UITextFieldViewModeAlways;
     
     
     UIView *view = [[UIView alloc] init];
@@ -83,28 +86,6 @@
     [self.view endEditing:NO];
 }
 
-#pragma mark -  IBaction  selectors methods
-- (void)tapRegistger
-{
-    [self performSegueWithIdentifier:@"register" sender:nil];
-}
-
-- (void)closeEye:(id)sender
-{
-    UIButton *button = (UIButton *)sender;
-    button.selected = !button.selected;
-    
-    if (button.selected) {
-        self.pwdTextField.secureTextEntry = NO;
-        _rightImage = [UIImage imageNamed:@"eye_open.png"];
-        [button setImage:_rightImage forState:UIControlStateSelected];
-        
-    } else {
-        self.pwdTextField.secureTextEntry = YES;
-        _rightImage = [UIImage imageNamed:@"eye_close.png"];
-        [button setImage:_rightImage forState:UIControlStateNormal];
-    }
-}
 
 #pragma mark - requset server
 //点击注册新用户
