@@ -19,12 +19,27 @@
 #define     kPageSize                       @"pageSize"
 #define     kSeachKey                       @"seachKey"
 
+#define     kAvatarKey                       @"avatar"
+#define     kUserIdKey                       @"userId"
+#define     kNickNameKey                     @"nickName"
+#define     kRealNameKey                     @"realName"
+#define     kIdCardKey                       @"idCard"
+#define     kSexKey                          @"sex"
+#define     kProvinceCodeKey                 @"provinceCode"
+#define     kDistrictCodeKey                 @"districtCode"
+#define     kCityCodeKey                     @"cityCode"
+#define     kAddressNameKey                  @"addressName"
+
+#define     kParentIdKey                    @"parentId"
+
+
 //user account password
 #define     kLoginAccountKey                @"loginAccountKey"
 #define     kEncryPwdKey                    @"EncryPwdKey"
 //define notification
 #define     kLoginSuccessNotification                       @"LoginSuccessNotification"
 #define     kUserLogoutSuccessNotification                  @"UserLogoutSuccessNotification"
+#define     kSelectedCityNotification                       @"kSelectedCityNotification"
 
 //alert info msessage
 #define     kAlertEnterAccountMsg            @"请输入账号"

@@ -7,6 +7,7 @@
 //
 
 #import "UserIDController.h"
+#import "AccountInfoTableController.h"
 
 @interface UserIDController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
@@ -37,6 +38,7 @@
 #pragma mark - setup UI 
 - (void)setScrollUI
 {
+//    self.view. =
     //scrollview content size
     CGFloat width = kScreenWidth + kScreenWidth * 0.5;
     self.scrollview.contentSize = CGSizeMake(width, 0);
@@ -104,12 +106,20 @@
 {
 }
 
+//选择角色进入下一步
+- (IBAction)tapNextStepBtn:(id)sender {
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    if (self.farmerView.selected == YES){
+        model.userType = @"1";
+    }else{
+        model.userType = @"3";
+    }
+    [self performSegueWithIdentifier:@"accountInfoSegue" sender:nil];
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat scrollWidth = scrollView.bounds.size.width;
-    CGFloat contentX = scrollView.contentOffset.x;
-//    self.farmerView.alpha = 0.3;
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {

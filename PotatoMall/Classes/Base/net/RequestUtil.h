@@ -38,6 +38,16 @@ typedef void(^ReqFail)(int type,NSString* msg);
 + (void)POSTWithURL:(NSString *)url params:(id)params reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail;
 
 
+/**
+ *  发送一个POST请求 带有头像参数
+ *
+ *  @param url     请求路径
+ *  @param params  请求参数
+ *  @param success 请求成功后的回调
+ *  @param fail 请求失败后的回调
+ */
+
++ (void)POSTUserWithURL:(NSString *)url params:(id)params image:(UIImage*)img reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail;
 
 /**
  *  发送一个GET请求

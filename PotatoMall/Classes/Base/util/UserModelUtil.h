@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserModel.h"
 
-@class UserModel;
 
 typedef enum{
     NoRegister,

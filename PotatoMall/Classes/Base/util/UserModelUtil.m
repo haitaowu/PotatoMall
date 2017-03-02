@@ -8,7 +8,6 @@
 
 #import "UserModelUtil.h"
 #import "SecurityUtil.h"
-#import "UserModel.h"
 
 
 #define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
