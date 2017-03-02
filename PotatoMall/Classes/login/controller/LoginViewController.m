@@ -95,7 +95,6 @@
 #pragma mark - selectors
 - (void)textStrDidChange:(UITextField*)sender
 {
-    NSString *acouStr = self.accountTextField.text;
     [self updateRegistBtnEnableStatus];
 }
 

@@ -10,6 +10,7 @@
 #import<AVFoundation/AVCaptureDevice.h>
 #import<AVFoundation/AVMediaFormat.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "NSString+Extentsion.h"
 
 
 @interface AccountInfoTableController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nickNameField;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
+@property (nonatomic,strong)UIImage *avatarImg;
 
 @end
 
@@ -81,11 +83,31 @@
     NSString *adr = sender.object;
     HTLog(@"address = %@",adr);
     self.adrLabel.text = adr;
+    [UserModelUtil sharedInstance].userModel.address = adr;
     [self.navigationController popToViewController:self animated:YES];
 }
+
 - (IBAction)submitUserInfo:(id)sender {
-    NSDictionary *params = [self userParams];
-    [self submitUserInfoWith:params];
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    if (self.avatarImg == nil) {
+    [SVProgressHUD showInfoWithStatus:@"请选择头像"];
+    return;
+    }else if ([self.nickNameField.text strWithoutSpace].length <= 0) {
+        [SVProgressHUD showInfoWithStatus:@"请输入昵称"];
+        return;
+    }else if ([self.realNameField.text strWithoutSpace].length <= 0) {
+        [SVProgressHUD showInfoWithStatus:@"请输入真实姓名"];
+        return;
+    }else if ([self.idTextField.text strWithoutSpace].length <= 0) {
+        [SVProgressHUD showInfoWithStatus:@"请输入身份证"];
+        return;
+    }else if ((model.address == nil)||(model.address.length <= 0)) {
+        [SVProgressHUD showInfoWithStatus:@"请选择地址"];
+        return;
+    }else{
+        NSDictionary *params = [self userParams];
+        [self submitUserInfoWith:params];
+    }
 }
 
 #pragma mark - private methods
@@ -95,14 +117,14 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[kUserIdKey] = model.userId;
     params[kReqType] = model.userType;
-    params[kNickNameKey] = @"nickName";
-    params[kRealNameKey] = @"realName";
-    params[kIdCardKey] = @"32072219870638329";
+    params[kNickNameKey] = self.nickNameField.text;
+    params[kRealNameKey] = self.realNameField.text;
+    params[kIdCardKey] = self.idTextField.text;
     params[kSexKey] = @"0";
     params[kProvinceCodeKey] = [NSString stringWithFormat:@"%@",model.proviceId];
-    params[kCityCodeKey] = [NSString stringWithFormat:@"%@",model.proviceId];
-    params[kDistrictCodeKey] = [NSString stringWithFormat:@"%@",model.proviceId];
-    params[kAddressNameKey] = self.adrLabel.text;
+    params[kCityCodeKey] = [NSString stringWithFormat:@"%@",model.cityId];
+    params[kDistrictCodeKey] = [NSString stringWithFormat:@"%@",model.districtId];
+    params[kAddressNameKey] = model.address;
     return params;
 }
 
@@ -180,6 +202,7 @@
 {
     HTLog(@"didFinishPickingImage");
     [self dismissViewControllerAnimated:YES completion:^{
+        self.avatarImg= image;
         [self updateAvatarView:image];
     }];
 }
