@@ -10,7 +10,12 @@
 
 @implementation NSString (Extentsion)
 
-#pragma mark - public methods 
+#pragma mark - public methods
+- (NSString*)strWithoutSpace
+{
+    NSString *str = [self stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return str;
+}
 - (NSString*)ymdFromDetailDate
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

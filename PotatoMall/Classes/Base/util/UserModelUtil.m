@@ -8,6 +8,12 @@
 
 #import "UserModelUtil.h"
 #import "SecurityUtil.h"
+#import "UserModel.h"
+
+
+#define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
+#define kAccountInfoPath            [kLibPath stringByAppendingPathComponent:@"accountInfo.data"]
+
 
 static UserModelUtil *instance = nil;
 
@@ -31,15 +37,55 @@ static UserModelUtil *instance = nil;
     });
     return instance;
 }
+#pragma mark -  getter methods 
+- (UserModel*)userModel
+{
+    if (_userModel == nil) {
+        return [self unArchiveUserModel];
+    }else{
+        return _userModel;
+    }
+}
 
 #pragma mark - public methods
+- (UserModel*)unArchiveUserModel
+{
+    _userModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kAccountInfoPath];
+    return _userModel;
+}
+
+- (void)archiveUserModel:(UserModel*)accountModel
+{
+    _userModel = accountModel;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        [NSKeyedArchiver archiveRootObject:accountModel toFile:kAccountInfoPath];
+    });
+}
+
+/**是否登录*/
+- (UserState)userState
+{
+    if(self.userModel == nil){
+        return NoRegister;
+    }else{
+        if(self.userModel.userType == nil){
+            return NoCompleted;
+        }else{
+            return Completed;
+        }
+    }
+}
+
+/**加密密码*/
 + (NSString*)encryPwdWithPassword:(NSString*) password
 {
     NSString *encryptedPWD = [SecurityUtil encryptAESData:password];
     return encryptedPWD;
 }
 
-//存储用户名与密码。
+
+/**存储用户名与密码*/
 + (void)saveUser:(NSString*)account password:(NSString*)password
 {
     NSString *encryPwd = nil;
@@ -51,14 +97,14 @@ static UserModelUtil *instance = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-//登录的用户名
+/**登录的用户名*/
 + (NSString*)userAccount
 {
     NSString *account = [[NSUserDefaults standardUserDefaults] objectForKey:kLoginAccountKey];
     return account;
 }
 
-//登录的用户密码
+/**登录的用户密码*/
 + (NSString*)userPassword
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kEncryPwdKey];

@@ -8,15 +8,17 @@
 
 #import "LoginViewController.h"
 #import "MJExtension.h"
-#import "UIImage+Color.h"
+#import "StateRadiusBtn.h"
+#import "NSString+Extentsion.h"
 
 #define kSectionCount                           1
 #define kSectionFirstIdx                        0
 #define kRowsCountSectionFirst                  4
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
+@property (weak, nonatomic) IBOutlet StateRadiusBtn *loginBtn;
 @property (nonatomic,strong) UIImage *rightImage;
 @end
 
@@ -25,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    [self updateUIWithUserState];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,6 +42,13 @@
 
 
 #pragma mark - setup update ui
+- (void)updateUIWithUserState
+{
+    if ([[UserModelUtil sharedInstance] userState] == NoCompleted) {
+        [self performSegueWithIdentifier:@"idSegue" sender:nil];
+    }
+}
+
 - (void)setupUI
 {
     //password textfield rightview
@@ -50,6 +60,7 @@
     leftBtn.frame = rightFrame;
     _accountTextField.leftView = leftBtn;
     _accountTextField.leftViewMode = UITextFieldViewModeAlways;
+    [_accountTextField addTarget:self action:@selector(textStrDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     UIImage *pwdImage =[UIImage imageNamed:@"login_lock"];
     UIButton *pwdLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -64,6 +75,34 @@
     UIView *view = [[UIView alloc] init];
     UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:view];
     self.navigationItem.leftBarButtonItems = @[leftBarItem];
+    
+    [_pwdTextField addTarget:self action:@selector(textStrDidChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
+#pragma mark - private methods
+- (void)updateRegistBtnEnableStatus
+{
+    NSString *accountStr = [self.accountTextField.text strWithoutSpace];;
+    NSString *pwdStr = [self.pwdTextField.text strWithoutSpace];
+    if ((accountStr.length > 0)&&(pwdStr.length > 0)) {
+        self.loginBtn.enabled = YES;
+    }else{
+        self.loginBtn.enabled = NO;
+    }
+    
+}
+
+#pragma mark - selectors
+- (void)textStrDidChange:(UITextField*)sender
+{
+    NSString *acouStr = self.accountTextField.text;
+    [self updateRegistBtnEnableStatus];
+}
+
+#pragma mark - UIScorllView delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:NO];
 }
 
 #pragma mark - UITableView --- Table view  delegate
@@ -80,15 +119,23 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - UIScorllView delegate 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+#pragma mark - UITextFieldDelegate
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    [self updateRegistBtnEnableStatus];
+//    return YES;
+//}
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.view endEditing:NO];
+//    [self updateRegistBtnEnableStatus];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
 }
 
 
 #pragma mark - requset server
-//点击注册新用户
+//点击登录
 - (IBAction)tapLoginBtn:(id)sender {
     [self.tableView endEditing:YES];
     NSString *accountTxt = self.accountTextField.text;

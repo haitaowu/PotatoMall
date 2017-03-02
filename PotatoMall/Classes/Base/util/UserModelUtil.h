@@ -8,14 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+@class UserModel;
+
+typedef enum{
+    NoRegister,
+    NoCompleted,
+    Completed,
+} UserState;
+
+
 @interface UserModelUtil : NSObject
+
+//property
+@property (nonatomic,strong)UserModel *userModel;
+
++(instancetype)sharedInstance;
+
+//account info
+- (UserModel*)unArchiveUserModel;
+- (void)archiveUserModel:(UserModel*)accounModel;
+- (UserState)userState;
+
 
 //NSUserDefaults
 + (void)saveUser:(NSString*)account password:(NSString*)password;
-
 + (NSString*)userAccount;
 + (NSString*)userPassword;
-
 + (NSString*)encryPwdWithPassword:(NSString*) password;
 
 @end

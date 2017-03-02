@@ -31,11 +31,4 @@
     self.layer.cornerRadius = 5;
 }
 
-- (void)setHighlighted:(BOOL)highlighted
-{}
-- (void)setSelected:(BOOL)selected
-{}
-- (void)setAdjustsImageWhenHighlighted:(BOOL)adjustsImageWhenHighlighted
-{}
-
 @end

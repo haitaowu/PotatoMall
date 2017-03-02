@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     CGRect bounds = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:bounds];
-    [self setupLoginView];
+    [self showViewWithUserState];
     [self.window makeKeyAndVisible];
     
     //add servers
@@ -48,6 +48,17 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
+#pragma mark - update UI methods
+- (void)showViewWithUserState
+{
+    if ([[UserModelUtil sharedInstance] userState] == NoRegister) {
+        [self setupLoginView];
+    }else if ([[UserModelUtil sharedInstance] userState] == NoCompleted) {
+        [self setupLoginView];
+    }else{
+        [self userLoginSuccess];
+    }
+}
 #pragma mark - setup UI
 -(void)setupLoginView
 {

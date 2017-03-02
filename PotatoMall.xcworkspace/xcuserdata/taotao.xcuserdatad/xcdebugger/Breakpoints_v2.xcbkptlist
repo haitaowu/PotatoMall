@@ -106,75 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Login/controller/RegisterController.m"
-            timestampString = "509797346.852361"
+            timestampString = "510123828.126049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "-requestRegisterCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Login/controller/RegisterController.m"
-            timestampString = "509797346.852361"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "-requestRegisterCode"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RegisterController requestRegisterCode]"
-                  moduleName = "PotatoMall"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Login/controller/RegisterController.m"
-                  timestampString = "509900599.754824"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "217"
-                  endingLineNumber = "217"
-                  offsetFromSymbolStart = "464">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__41-[RegisterController requestRegisterCode]_block_invoke"
-                  moduleName = "PotatoMall"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Login/controller/RegisterController.m"
-                  timestampString = "509900599.757436"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "217"
-                  endingLineNumber = "217"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Login/controller/RegisterController.m"
-            timestampString = "509800496.478831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-requestRegisterNewUser"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Login/controller/LoginViewController.m"
-            timestampString = "509988357.948122"
+            timestampString = "510124031.417842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-tapLoginBtn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -240,6 +176,38 @@
             startingLineNumber = "168"
             endingLineNumber = "168"
             landmarkName = "-requestAritclesWith:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Login/controller/RegisterController.m"
+            timestampString = "510123828.126049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "-requestRegisterNewUser"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Login/controller/RegisterController.m"
+            timestampString = "510122804.871288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "-userModelWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

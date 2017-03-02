@@ -78,6 +78,9 @@
                                                             <color key="value" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="dFW-U8-Tx8" id="2G0-Ln-OlY"/>
+                                                    </connections>
                                                 </textField>
                                                 <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rba-ea-GTz">
                                                     <rect key="frame" x="38" y="59" width="299" height="1"/>
@@ -140,7 +143,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHi-qp-fPp" customClass="RadiusButton">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHi-qp-fPp" customClass="StateRadiusBtn">
                                                     <rect key="frame" x="38" y="18" width="299" height="40"/>
                                                     <color key="backgroundColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -191,7 +194,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="accountTextField" destination="WXC-Fe-LFX" id="0eC-Rr-pgo"/>
+                        <outlet property="loginBtn" destination="VHi-qp-fPp" id="iPr-Oi-JQj"/>
                         <outlet property="pwdTextField" destination="aiV-9G-dcO" id="rSI-E3-b4a"/>
+                        <segue destination="5uI-IN-mqc" kind="show" identifier="idSegue" id="nlg-Y0-x4E"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uRb-lw-8uP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,7 +239,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1a-Dx-S4H">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1a-Dx-S4H" customClass="HTTextField">
                                                     <rect key="frame" x="38" y="8" width="299" height="44"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -263,7 +268,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dqf-cd-8cB">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dqf-cd-8cB" customClass="HTTextField">
                                                     <rect key="frame" x="38" y="8" width="206.5" height="44"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -274,9 +279,10 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0U-Xy-WSD">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0U-Xy-WSD">
                                                     <rect key="frame" x="252.5" y="8" width="84.5" height="44"/>
                                                     <color key="backgroundColor" red="0.29411764705882354" green="0.88235294117647056" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="获取验证码">
                                                         <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -305,7 +311,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码：8-15位数字或英文" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cy8-Vv-D2t">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码：8-15位数字或英文" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cy8-Vv-D2t" customClass="HTTextField">
                                                     <rect key="frame" x="38" y="8" width="299" height="44"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -347,9 +353,6 @@
                                                             <exclude reference="Udq-yf-hUc"/>
                                                         </mask>
                                                     </variation>
-                                                    <connections>
-                                                        <action selector="tapRegisterBtn:" destination="Gcg-Qd-vdM" eventType="touchUpInside" id="YVm-X4-j14"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我接受土豆集团的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGd-4B-frC">
                                                     <rect key="frame" x="63" y="14" width="115" height="17"/>
@@ -388,7 +391,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyi-zN-N2w" customClass="RadiusButton">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyi-zN-N2w" customClass="StateRadiusBtn">
                                                     <rect key="frame" x="38" y="28" width="299" height="40"/>
                                                     <color key="backgroundColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -430,17 +433,114 @@
                             <outlet property="delegate" destination="Gcg-Qd-vdM" id="WTF-ID-FPz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="注册" id="ebb-wr-ryh"/>
+                    <navigationItem key="navigationItem" title="注册" id="ebb-wr-ryh">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Cqb-mz-Mpk">
+                            <connections>
+                                <segue destination="5uI-IN-mqc" kind="show" id="Vxg-v2-nDL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="codeBtn" destination="E0U-Xy-WSD" id="aS1-tQ-8HT"/>
                         <outlet property="codeTextField" destination="dqf-cd-8cB" id="2xq-Ul-xDl"/>
                         <outlet property="phoneTextField" destination="A1a-Dx-S4H" id="MvY-EF-s5x"/>
                         <outlet property="pwdTextField" destination="cy8-Vv-D2t" id="ms6-nr-d52"/>
+                        <outlet property="registerBtn" destination="kyi-zN-N2w" id="dmj-Jl-Rea"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTc-ai-yCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4546" y="182"/>
+            <point key="canvasLocation" x="4545" y="-198"/>
+        </scene>
+        <!--请选择账号身份-->
+        <scene sceneID="qsH-w4-TcB">
+            <objects>
+                <viewController id="5uI-IN-mqc" customClass="UserIDController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P4w-D9-Hhe"/>
+                        <viewControllerLayoutGuide type="bottom" id="2za-2E-kNh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VSD-Mg-Zrf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*账号身份选择后无法随意更改，需想再次变更必须提交审核申请，请按实情谨慎选择。" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlG-i4-DWz">
+                                <rect key="frame" x="20" y="84" width="335" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OP4-hx-XZc">
+                                <rect key="frame" x="0.0" y="198.5" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="iO0-sj-oVE"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="5uI-IN-mqc" id="jtk-6h-uy0"/>
+                                </connections>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="从事马铃薯批发/采购的个人或者企业" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkM-VO-0g0">
+                                <rect key="frame" x="94" y="364.5" width="187.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dab-YC-hNb" customClass="RadiusButton">
+                                <rect key="frame" x="30" y="414" width="315" height="40"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Ep9-lP-HZo"/>
+                                    <constraint firstAttribute="height" constant="40" id="qrh-fZ-27N"/>
+                                </constraints>
+                                <state key="normal" title="下一步">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ep9-lP-HZo"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="tapPwdBackrBtn:" destination="o7R-V2-f3g" eventType="touchUpInside" id="RTM-GE-9Nw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="马铃薯采购商" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKN-KG-HjJ">
+                                <rect key="frame" x="132.5" y="147" width="110.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dab-YC-hNb" firstAttribute="centerX" secondItem="VSD-Mg-Zrf" secondAttribute="centerX" id="BoT-IE-8gQ"/>
+                            <constraint firstItem="OP4-hx-XZc" firstAttribute="top" secondItem="XKN-KG-HjJ" secondAttribute="bottom" constant="30" id="Dxy-Tm-UOT"/>
+                            <constraint firstItem="IkM-VO-0g0" firstAttribute="top" secondItem="OP4-hx-XZc" secondAttribute="bottom" constant="16" id="EqQ-on-JVA"/>
+                            <constraint firstItem="LlG-i4-DWz" firstAttribute="top" secondItem="P4w-D9-Hhe" secondAttribute="bottom" constant="20" id="F56-o0-DKy"/>
+                            <constraint firstAttribute="trailing" secondItem="OP4-hx-XZc" secondAttribute="trailing" id="RVb-id-B6C"/>
+                            <constraint firstItem="IkM-VO-0g0" firstAttribute="centerX" secondItem="VSD-Mg-Zrf" secondAttribute="centerX" id="TPh-3e-Fla"/>
+                            <constraint firstItem="LlG-i4-DWz" firstAttribute="leading" secondItem="VSD-Mg-Zrf" secondAttribute="leading" constant="20" id="Yhy-sF-Ycr"/>
+                            <constraint firstItem="OP4-hx-XZc" firstAttribute="leading" secondItem="VSD-Mg-Zrf" secondAttribute="leading" id="ZDa-j4-L7R"/>
+                            <constraint firstItem="dab-YC-hNb" firstAttribute="top" secondItem="IkM-VO-0g0" secondAttribute="bottom" constant="16" id="ZiA-Xw-5cI"/>
+                            <constraint firstItem="XKN-KG-HjJ" firstAttribute="centerX" secondItem="VSD-Mg-Zrf" secondAttribute="centerX" id="eK9-Zj-Mma"/>
+                            <constraint firstAttribute="trailing" secondItem="LlG-i4-DWz" secondAttribute="trailing" constant="20" id="eN8-j4-hu3"/>
+                            <constraint firstItem="OP4-hx-XZc" firstAttribute="centerX" secondItem="VSD-Mg-Zrf" secondAttribute="centerX" id="ecw-83-DVb"/>
+                            <constraint firstItem="IkM-VO-0g0" firstAttribute="width" secondItem="VSD-Mg-Zrf" secondAttribute="width" multiplier="0.5" id="k6e-CD-CRP"/>
+                            <constraint firstItem="dab-YC-hNb" firstAttribute="leading" secondItem="VSD-Mg-Zrf" secondAttribute="leading" constant="30" id="kFk-I1-NzM"/>
+                            <constraint firstAttribute="trailing" secondItem="dab-YC-hNb" secondAttribute="trailing" constant="30" id="loZ-bn-gFe"/>
+                            <constraint firstItem="OP4-hx-XZc" firstAttribute="centerY" secondItem="VSD-Mg-Zrf" secondAttribute="centerY" constant="-60" id="vZC-eX-yiO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="请选择账号身份" id="E5a-Uh-j3J"/>
+                    <connections>
+                        <outlet property="descrLabel" destination="IkM-VO-0g0" id="IlL-Fh-7S1"/>
+                        <outlet property="scrollview" destination="OP4-hx-XZc" id="auS-k9-jd4"/>
+                        <outlet property="titleLabel" destination="XKN-KG-HjJ" id="R8k-vW-yqD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCk-7V-d1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5333.6000000000004" y="181.25937031484258"/>
         </scene>
         <!--找回密码-->
         <scene sceneID="dzl-4Z-fnU">
@@ -729,4 +829,7 @@
     <resources>
         <image name="login_lock" width="17" height="21"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nlg-Y0-x4E"/>
+    </inferredMetricsTieBreakers>
 </document>

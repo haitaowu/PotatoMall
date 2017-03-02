@@ -13,4 +13,5 @@
 - (BOOL)validateIDCard;
 - (BOOL)isBeforeThisYear;
 - (BOOL)rightPhoneNumFormat;
+- (NSString*)strWithoutSpace;
 @end

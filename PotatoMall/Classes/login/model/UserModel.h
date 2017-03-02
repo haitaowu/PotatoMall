@@ -41,4 +41,7 @@
 /**用户*/
 @property (nonatomic,copy) NSString *userType;
 
+/**性别*/
+@property (nonatomic,copy) NSString *sex;
+
 @end
