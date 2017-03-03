@@ -15,4 +15,13 @@
     return [NSDictionary dictionaryWithObjectsAndKeys:@"description",@"descrpt", nil];
 }
 
+
++ (NSMutableArray*)articlesWithData:(id)data
+{
+    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+    NSArray *list = [dict objectForKey:@"list"];
+    NSArray *articles = [ArticleModel mj_objectArrayWithKeyValuesArray:list];
+    return [NSMutableArray arrayWithArray:articles];
+}
+
 @end

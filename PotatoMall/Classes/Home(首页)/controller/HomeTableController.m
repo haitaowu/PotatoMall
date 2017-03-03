@@ -120,13 +120,13 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 }
 
 #pragma mark - private methods
-- (NSMutableArray*)articlesWithData:(id)data
-{
-    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
-    NSArray *list = [dict objectForKey:@"list"];
-    NSArray *articles = [ArticleModel mj_objectArrayWithKeyValuesArray:list];
-    return [NSMutableArray arrayWithArray:articles];
-}
+//- (NSMutableArray*)articlesWithData:(id)data
+//{
+//    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+//    NSArray *list = [dict objectForKey:@"list"];
+//    NSArray *articles = [ArticleModel mj_objectArrayWithKeyValuesArray:list];
+//    return [NSMutableArray arrayWithArray:articles];
+//}
 
 #pragma mark - requset server
 - (void)requestMoreArticlesWith:(NSDictionary*)params
@@ -140,7 +140,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [self.tableView.mj_footer endRefreshing];
             if (status == StatusTypSuccess) {
-                NSMutableArray *moreData = [self articlesWithData:data];
+                NSMutableArray *moreData = [ArticleModel articlesWithData:data];
                 if ([moreData count] > 0) {
                     [self.articlesArray addObject:moreData];
                 }
@@ -165,7 +165,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
             [SVProgressHUD showInfoWithStatus:msg];
             [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
-                self.articlesArray = [self articlesWithData:data];
+                self.articlesArray = [ArticleModel articlesWithData:data];
                 [self.tableView.mj_footer setHidden:NO];
             }
             [self.tableView reloadData];
@@ -188,7 +188,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [SVProgressHUD showInfoWithStatus:msg];
             if (status == StatusTypSuccess) {
-                NSArray *array = [self articlesWithData:data];
+                NSArray *array = [ArticleModel articlesWithData:data];
                 [self.headerView loadAdsWithImages:array];
             }
             [self.tableView reloadData];

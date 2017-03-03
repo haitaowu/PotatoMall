@@ -21,4 +21,6 @@
 /**标题*/
 @property (nonatomic,copy) NSString *title;
 
+
++ (NSMutableArray*)articlesWithData:(id)data;
 @end

@@ -28,16 +28,32 @@
  */
 
 @implementation MeUserIDController
-
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setScrollUI];
+    [self setupSalerView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self showRoleViewByCurrentUser];
 }
 
 #pragma mark - setup UI 
+- (void)showRoleViewByCurrentUser
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    if ([model.userType isEqualToString:@"1"]){
+        CGFloat x =  kScreenWidth * 0.5;
+        CGFloat y =  0;
+        [self.scrollview setContentOffset:CGPointMake(x, y) animated:YES];
+    }
+}
+
 - (void)setScrollUI
 {
-//    self.view. =
     //scrollview content size
     CGFloat width = kScreenWidth + kScreenWidth * 0.5;
     self.scrollview.contentSize = CGSizeMake(width, 0);
@@ -76,8 +92,6 @@
     CGRect farmerF = {{farmerX,farmerY},{imgWH,imgWH}};
     farmerBtn.frame = farmerF;
     
-    //设置为采购商
-    [self setupSalerView];
 }
 
 - (void)setupSalerView
@@ -119,9 +133,7 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-}
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+    HTLog(@"scrollView did Scroll...");
     CGFloat scrollWidth = scrollView.bounds.size.width;
     CGFloat contentX = scrollView.contentOffset.x;
     CGFloat boundarX = scrollWidth * 0.5;
@@ -131,6 +143,19 @@
         [self setupSalerView];
     }
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+//    CGFloat scrollWidth = scrollView.bounds.size.width;
+//    CGFloat contentX = scrollView.contentOffset.x;
+//    CGFloat boundarX = scrollWidth * 0.5;
+//    if (contentX >= boundarX) {
+//        [self setupFarmerView];
+//    }else{
+//        [self setupSalerView];
+//    }
+}
+
 
 
 
