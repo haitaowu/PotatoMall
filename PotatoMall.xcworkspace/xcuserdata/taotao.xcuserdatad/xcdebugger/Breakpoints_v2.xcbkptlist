@@ -26,44 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Login/controller/LoginViewController.m"
-            timestampString = "510155889.793798"
+            timestampString = "510213628.593997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-tapLoginBtn:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/controller/HomeTableController.m"
-            timestampString = "509982406.967818"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-requestMoreArticlesWith:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/controller/HomeTableController.m"
-            timestampString = "509982406.967818"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "-requestAritclesWith:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +90,12 @@
                   moduleName = "PotatoMall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Base/net/RequestUtil.m"
-                  timestampString = "510212710.4897"
+                  timestampString = "510213804.227521"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
                   endingLineNumber = "62"
-                  offsetFromSymbolStart = "510">
+                  offsetFromSymbolStart = "512">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,12 +105,12 @@
                   moduleName = "PotatoMall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Base/net/RequestUtil.m"
-                  timestampString = "510212710.49131"
+                  timestampString = "510213804.22892"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
                   endingLineNumber = "62"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -240,70 +208,6 @@
             startingLineNumber = "148"
             endingLineNumber = "148"
             landmarkName = "-submitToModiftyUserPwdWithPwd:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/net/RequestUtil.m"
-            timestampString = "510211969.743454"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "+POSTWithURL:params:reqSuccess:reqFail:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[RequestUtil POSTWithURL:params:reqSuccess:reqFail:]"
-                  moduleName = "PotatoMall"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Base/net/RequestUtil.m"
-                  timestampString = "510212710.524357"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "324">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__53+[RequestUtil POSTWithURL:params:reqSuccess:reqFail:]_block_invoke"
-                  moduleName = "PotatoMall"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/taotao/Documents/workspace/iOS/surprise/tudou/code/ios/PotatoMall/PotatoMall/Classes/Base/net/RequestUtil.m"
-                  timestampString = "510212710.52679"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/net/RequestUtil.m"
-            timestampString = "510212092.967254"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "+POSTWithURL:params:reqSuccess:reqFail:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

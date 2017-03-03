@@ -153,8 +153,11 @@
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [SVProgressHUD showWithStatus:msg];
             if (status == StatusTypSuccess) {
-                NSString *dataStr = [DataUtil decryptStringWith:data];
+                NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
+                NSDictionary *modelDict = dataDict[@"obj"];
 //                id user
+                UserModel *model = [UserModel mj_objectWithKeyValues:modelDict];
+                [[UserModelUtil sharedInstance] archiveUserModel:model];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
             }
         } reqFail:^(int type, NSString *msg) {

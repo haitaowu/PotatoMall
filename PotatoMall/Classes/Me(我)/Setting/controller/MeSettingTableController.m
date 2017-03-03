@@ -43,6 +43,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
         [self userTapLogout];
+        [[UserModelUtil sharedInstance] archiveUserModel:nil];
         HTLog(@"user tap logout button ");
     }
 }
