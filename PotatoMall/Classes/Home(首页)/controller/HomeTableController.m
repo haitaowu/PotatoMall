@@ -102,7 +102,8 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 {
     //tableView tableHeaderView
     HomwTableHeader *headerView = [[HomwTableHeader alloc] init];
-    headerView.frame = CGRectMake(0, 0, kScreenWidth, 100);
+    CGFloat height = kScreenWidth * 2.0 / 3.0;
+    headerView.frame = CGRectMake(0, 0, kScreenWidth, height);
     self.tableView.tableHeaderView = headerView;
     headerView.adBlock = ^(id adInfo){
         HTLog(@"click ad info ");
