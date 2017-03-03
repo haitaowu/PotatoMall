@@ -66,9 +66,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        fail(StatusTypNetWorkError,@"网络连接问题");
     }];
-    
 }
-
 
 + (void)getWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
