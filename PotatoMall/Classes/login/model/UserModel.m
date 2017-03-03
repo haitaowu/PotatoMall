@@ -23,6 +23,7 @@
 #define kArcUserNameKey             @"userName"
 #define kArcUserTypeKey             @"userType"
 #define kArcSexKey                  @"sex"
+#define kArcAvatarDataKey           @"avatarData"
 
 @implementation UserModel
 - (void)encodeWithCoder:(NSCoder *)aCoder{
@@ -41,6 +42,7 @@
     [aCoder encodeObject:self.userName forKey:kArcUserNameKey];
     [aCoder encodeObject:self.userType forKey:kArcUserTypeKey];
     [aCoder encodeObject:self.sex forKey:kArcSexKey];
+    [aCoder encodeObject:self.avatarData forKey:kArcAvatarDataKey];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -59,7 +61,30 @@
     self.userName = [aDecoder decodeObjectForKey:kArcUserNameKey];
     self.userType = [aDecoder decodeObjectForKey:kArcUserTypeKey];
     self.sex = [aDecoder decodeObjectForKey:kArcSexKey];
+    self.avatarData = [aDecoder decodeObjectForKey:kArcAvatarDataKey];
     return self;
+}
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    UserModel *model = [[UserModel allocWithZone:zone] init];
+    model.address = [self.address copy];
+    model.cityId = [self.cityId copy];
+    model.cityName = [self.cityName copy];
+    model.customerImg = [self.customerImg copy];
+    model.districtId = [self.districtId copy];
+    model.districtName = [self.districtName copy];
+    model.nickName = [self.nickName copy];
+    model.phone = [self.phone copy];
+    model.proviceId = [self.proviceId copy];
+    model.proviceName = [self.proviceName copy];
+    model.realName = [self.realName copy];
+    model.userId = [self.userId copy];
+    model.userName = [self.userName copy];
+    model.userType = [self.userType copy];
+    model.userType = [self.userType copy];
+    model.avatarData = [self.avatarData copy];
+    return model;
 }
 
 @end

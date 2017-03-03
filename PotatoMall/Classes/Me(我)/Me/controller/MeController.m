@@ -20,6 +20,10 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 @interface MeController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *menusData;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarView;
+@property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 
 @end
 
@@ -27,10 +31,32 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTableview];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateUserInfoUI];
+}
+
+#pragma mark - setup UI 
+- (void)setupTableview
+{
     UINib *menuCellNib = [UINib nibWithNibName:@"MeMenuCell" bundle:nil];
     [self.tableView registerNib:menuCellNib forCellReuseIdentifier:MeMenuCellID];
     self.menusData = [AppInfoHelper arrayWithPlistFile:@"MeMenus"];
     [self.tableView reloadData];
+}
+
+- (void)updateUserInfoUI
+{
+    [[UserModelUtil sharedInstance] avatarImageWithBlock:^(UIImage *img) {
+        self.avatarView.image = img;
+    }];
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
+    self.nickNameLabel.text = [NSString stringWithFormat:@"%@",model.nickName];
 }
 
 
@@ -47,7 +73,7 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MeMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:MeMenuCellID];
     NSDictionary *menuData = self.menusData[indexPath.section];
-    cell.menuData = menuData;
+    [cell setMenuData:menuData indexPath:indexPath];
     return cell;
 }
 
@@ -56,11 +82,11 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == kSaleSectionIndex) {
-        return 15;
+        return 16;
     }else if (section == kChargeSectionIndex) {
-        return 15;
+        return 16;
     }else if (section == kSettingSectionIndex) {
-        return 15;
+        return 16;
     }else{
         return 0.001;
     }

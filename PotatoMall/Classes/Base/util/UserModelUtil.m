@@ -47,6 +47,22 @@ static UserModelUtil *instance = nil;
 }
 
 #pragma mark - public methods
+/**类型 1:个体种植户 2：种植企业 3：批发商/采购商 4：种薯种植企业 5：农资电商卖家*/
++ (NSString*)userRoleWithType:(NSString*)type
+{
+    if ([type isEqualToString:@"1"]) {
+        return @"个体种植户";
+    }else if ([type isEqualToString:@"2"]) {
+        return @"种植企业 ";
+    }else if ([type isEqualToString:@"3"]) {
+        return @"批发商/采购商";
+    }else if ([type isEqualToString:@"4"]) {
+        return @"种薯种植企业";
+    }else{
+        return @"农资电商卖家";
+    }
+}
+
 - (UserModel*)unArchiveUserModel
 {
     _userModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kAccountInfoPath];

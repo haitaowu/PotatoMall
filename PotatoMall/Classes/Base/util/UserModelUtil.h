@@ -16,7 +16,7 @@ typedef enum{
     Completed,
 } UserState;
 
-typedef void(^FetchAvatarBlock)(UIImage*);
+typedef void(^FetchAvatarBlock)(UIImage*img);
 
 
 @interface UserModelUtil : NSObject
@@ -30,6 +30,9 @@ typedef void(^FetchAvatarBlock)(UIImage*);
 - (UserModel*)unArchiveUserModel;
 - (void)archiveUserModel:(UserModel*)accounModel;
 - (UserState)userState;
+
+/**类型 1:个体种植户 2：种植企业 3：批发商/采购商 4：种薯种植企业 5：农资电商卖家*/
++ (NSString*)userRoleWithType:(NSString*)type;
 
 /**取用户存储在本地的头像数据*/
 - (void)avatarImageWithBlock:(FetchAvatarBlock) result;

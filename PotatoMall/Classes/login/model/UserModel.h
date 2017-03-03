@@ -11,7 +11,7 @@
 //{"user":{"phone":"18061955875","userId":2313,"userName":"18061955875","userType":"1"}}
 
 
-@interface UserModel : NSObject
+@interface UserModel : NSObject<NSMutableCopying>
 /**详情地址*/
 @property (nonatomic,copy) NSString *address;
 /**市ID*/

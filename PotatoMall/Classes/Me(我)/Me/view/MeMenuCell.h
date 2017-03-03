@@ -17,4 +17,5 @@
 
 @interface MeMenuCell : UITableViewCell
 @property (nonatomic,strong)NSDictionary *menuData;
+- (void)setMenuData:(NSDictionary *)menuData indexPath:(NSIndexPath*)indexPath;
 @end
