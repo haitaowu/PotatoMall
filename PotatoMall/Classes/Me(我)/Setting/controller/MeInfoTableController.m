@@ -31,8 +31,14 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedAddress:) name:kSelectedCityNotification object:nil];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateUserInfoUI];
 }
 
 - (void)dealloc
@@ -47,7 +53,7 @@
 }
 
 #pragma mark - setup UI
-- (void)setupUI
+- (void)updateUserInfoUI
 {
     [[UserModelUtil sharedInstance] avatarImageWithBlock:^(UIImage *img) {
         self.avatarView.image = img;
@@ -243,7 +249,6 @@
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
-
 
 
 #pragma mark - UIScorllView delegate

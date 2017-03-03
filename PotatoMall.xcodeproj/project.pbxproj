@@ -40,6 +40,7 @@
 		BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7F21E62B90900C4B1D0 /* RegisterController.m */; };
 		BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7F51E62B90900C4B1D0 /* UserModel.m */; };
 		BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5ED7F71E62B90900C4B1D0 /* Login.storyboard */; };
+		BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */; };
 		BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E11E645E6B00F92C46 /* DataUtil.m */; };
 		BE8FA4E51E6460F500F92C46 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E41E6460F500F92C46 /* User.m */; };
 		BE8FA4E81E646C2D00F92C46 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E71E646C2D00F92C46 /* ArticleModel.m */; };
@@ -139,6 +140,8 @@
 		BE5ED7F41E62B90900C4B1D0 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		BE5ED7F51E62B90900C4B1D0 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		BE5ED7F71E62B90900C4B1D0 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		BE652F6D1E696A4E003ABEC3 /* MeUserIDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeUserIDController.h; sourceTree = "<group>"; };
+		BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeUserIDController.m; sourceTree = "<group>"; };
 		BE8FA4E01E645E6B00F92C46 /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
 		BE8FA4E11E645E6B00F92C46 /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
 		BE8FA4E31E6460F500F92C46 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 		BE59A4731E63D8050077D9AD /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				BE652F6D1E696A4E003ABEC3 /* MeUserIDController.h */,
+				BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				BE5ED7F91E62B90900C4B1D0 /* PasswordBackController.m in Sources */,
 				BE93AF281E65B7BF001F99BC /* SeachSectionHeader.m in Sources */,
 				BE93C2EC1E67C5E300CC0B96 /* UserIDController.m in Sources */,
+				BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */,
 				BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 			);

@@ -434,6 +434,9 @@
                                                 <constraint firstItem="2ap-ac-YXZ" firstAttribute="centerY" secondItem="gfF-LR-OkO" secondAttribute="centerY" id="kws-S0-AeQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6Qx-Zd-Tmf" kind="show" id="hfm-5D-Q3f"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="IV8-5H-ez1">
                                         <rect key="frame" x="0.0" y="235" width="375" height="44"/>
@@ -651,6 +654,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtZ-67-OcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3201" y="1980"/>
+        </scene>
+        <!--请选择账号身份-->
+        <scene sceneID="tT5-8c-PTK">
+            <objects>
+                <viewController id="6Qx-Zd-Tmf" customClass="MeUserIDController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lMX-IX-j4J"/>
+                        <viewControllerLayoutGuide type="bottom" id="EvZ-bL-8Az"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PpG-pB-dKY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*账号身份选择后无法随意更改，需想再次变更必须提交审核申请，请按实情谨慎选择。" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUC-XO-2TX">
+                                <rect key="frame" x="20" y="64" width="335" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LH2-4z-UOU">
+                                <rect key="frame" x="0.0" y="199" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Gf0-cY-QzI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="6Qx-Zd-Tmf" id="4NO-Ij-Hmc"/>
+                                </connections>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="从事马铃薯批发/采购的个人或者企业" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sI-pY-XVZ">
+                                <rect key="frame" x="94" y="365" width="188" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB5-Ml-eLx" customClass="RadiusButton">
+                                <rect key="frame" x="30" y="414.5" width="315" height="40"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3lj-H7-n8m"/>
+                                    <constraint firstAttribute="height" constant="40" id="tg8-cz-6gv"/>
+                                </constraints>
+                                <state key="normal" title="选择">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3lj-H7-n8m"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="tapNextStepBtn:" destination="6Qx-Zd-Tmf" eventType="touchUpInside" id="Gdm-4g-9sc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="马铃薯采购商" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgq-Tm-gwO">
+                                <rect key="frame" x="132" y="147" width="111" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LH2-4z-UOU" secondAttribute="trailing" id="8AT-RW-PL3"/>
+                            <constraint firstItem="0sI-pY-XVZ" firstAttribute="top" secondItem="LH2-4z-UOU" secondAttribute="bottom" constant="16" id="9Dq-wY-WCQ"/>
+                            <constraint firstItem="0sI-pY-XVZ" firstAttribute="centerX" secondItem="PpG-pB-dKY" secondAttribute="centerX" id="9S0-CS-RKK"/>
+                            <constraint firstItem="AB5-Ml-eLx" firstAttribute="leading" secondItem="PpG-pB-dKY" secondAttribute="leading" constant="30" id="I6E-sI-v3r"/>
+                            <constraint firstItem="AB5-Ml-eLx" firstAttribute="top" secondItem="0sI-pY-XVZ" secondAttribute="bottom" constant="16" id="MRy-yN-kXp"/>
+                            <constraint firstItem="LH2-4z-UOU" firstAttribute="leading" secondItem="PpG-pB-dKY" secondAttribute="leading" id="O6H-OS-fKn"/>
+                            <constraint firstItem="LH2-4z-UOU" firstAttribute="centerY" secondItem="PpG-pB-dKY" secondAttribute="centerY" constant="-60" id="Qh0-Pr-BJA"/>
+                            <constraint firstItem="cUC-XO-2TX" firstAttribute="top" secondItem="lMX-IX-j4J" secondAttribute="bottom" id="RRL-4h-Tqp"/>
+                            <constraint firstItem="cUC-XO-2TX" firstAttribute="leading" secondItem="PpG-pB-dKY" secondAttribute="leading" constant="20" id="WHh-CP-Ue8"/>
+                            <constraint firstItem="LH2-4z-UOU" firstAttribute="top" secondItem="Zgq-Tm-gwO" secondAttribute="bottom" constant="30" id="ZNa-so-hIH"/>
+                            <constraint firstItem="AB5-Ml-eLx" firstAttribute="centerX" secondItem="PpG-pB-dKY" secondAttribute="centerX" id="cZk-98-oTe"/>
+                            <constraint firstAttribute="trailing" secondItem="cUC-XO-2TX" secondAttribute="trailing" constant="20" id="fDM-OQ-hxz"/>
+                            <constraint firstItem="0sI-pY-XVZ" firstAttribute="width" secondItem="PpG-pB-dKY" secondAttribute="width" multiplier="0.5" id="hTr-PN-SfN"/>
+                            <constraint firstAttribute="trailing" secondItem="AB5-Ml-eLx" secondAttribute="trailing" constant="30" id="svn-zX-Lum"/>
+                            <constraint firstItem="Zgq-Tm-gwO" firstAttribute="centerX" secondItem="PpG-pB-dKY" secondAttribute="centerX" id="vrq-It-5oB"/>
+                            <constraint firstItem="LH2-4z-UOU" firstAttribute="centerX" secondItem="PpG-pB-dKY" secondAttribute="centerX" id="ytH-eh-c5Q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="请选择账号身份" id="2m7-1u-vUM"/>
+                    <connections>
+                        <outlet property="descrLabel" destination="0sI-pY-XVZ" id="E4F-bS-Lyy"/>
+                        <outlet property="scrollview" destination="LH2-4z-UOU" id="KRW-sP-iE0"/>
+                        <outlet property="titleLabel" destination="Zgq-Tm-gwO" id="jSM-QU-RM5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mjK-Ex-pJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4295" y="1979"/>
         </scene>
     </scenes>
     <resources>
