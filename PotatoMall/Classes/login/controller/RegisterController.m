@@ -140,7 +140,6 @@
     }else{
         self.registerBtn.enabled = NO;
     }
-    
 }
 
 - (void)cuntingDown

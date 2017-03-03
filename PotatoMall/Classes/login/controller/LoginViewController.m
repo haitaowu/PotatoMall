@@ -93,7 +93,7 @@
 }
 
 #pragma mark - selectors
-- (void)textStrDidChange:(UITextField*)sender
+- (void)textDidChange:(UITextField*)sender
 {
     [self updateRegistBtnEnableStatus];
 }

@@ -9,6 +9,8 @@
 
 #import "PwdBackController.h"
 #import "SVProgressHUD.h"
+#import "NSString+Extentsion.h"
+
 
 
 #define kSectionCount                           1
@@ -20,21 +22,16 @@
 @interface PwdBackController ()
 @property (weak, nonatomic) IBOutlet UITextField *pwdNewTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdAginTextField;
+@property (weak, nonatomic) IBOutlet UIButton *finishedBtn;
 @end
 
 @implementation PwdBackController
 
 - (void)viewDidLoad {
-    //left navigationBar item
-//    UIImage *leftImage =[UIImage imageNamed:@"arrow-left.png"];
-//    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [leftBtn setImage:leftImage forState:UIControlStateNormal];
-//    leftBtn.frame = CGRectMake(0, 0, 30, 30);
-//    [leftBtn addTarget:self action:@selector(tapBackBtn:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-//    self.navigationItem.leftBarButtonItem = leftBarItem;
+    [super viewDidLoad];
     
-    
+   [_pwdNewTextField addTarget:self action:@selector(txtDidChange:) forControlEvents:UIControlEventEditingChanged];
+   [_pwdAginTextField addTarget:self action:@selector(txtDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,14 +45,30 @@
     [SVProgressHUD dismiss];
 }
 
+#pragma mark - private methods
+- (void)updateRegistBtnEnableStatus
+{
+    NSString *pwdStr = [self.pwdNewTextField.text strWithoutSpace];
+    NSString *pwdAgainStr = [self.pwdAginTextField.text strWithoutSpace];;
+    if ((pwdAgainStr.length > 0)&&(pwdStr.length > 0)) {
+        self.finishedBtn.enabled = YES;
+    }else{
+        self.finishedBtn.enabled = NO;
+    }
+}
 
 
-
+#pragma mark - selectors
+- (void)txtDidChange:(UITextField*)sender
+{
+    [self updateRegistBtnEnableStatus];
+}
 
 #pragma mark - UITableView ---  Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return kRowsCountSectionFirst;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return kSectionCount;
@@ -72,21 +85,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
 #pragma mark - UIScorllView delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:NO];
 }
 
-
 #pragma mark -  IBaction methods
-- (void)tapBackBtn:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)tapPwdBackrBtn:(id)sender {
-    
+- (IBAction)tapModifyPwdBtn:(id)sender {
 //    NSString *pwdTxt = self.pwdNewTextField.text;
 //    NSString *pwdAginTxt = self.pwdAginTextField.text;
 //        if (pwdTxt.length <= 0) {

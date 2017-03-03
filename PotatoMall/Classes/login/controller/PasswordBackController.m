@@ -17,7 +17,7 @@
 #define kSectionFirstIdx                        0
 #define kRowsCountSectionFirst                  3
 
-#define kTableviewCellHeight                    44
+#define kTableviewCellHeight                    50
 
 
 
@@ -25,14 +25,14 @@
 @property (nonatomic,strong)NSNumber *verifyCode;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
-@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
-@property (nonatomic,weak)  IBOutlet UIButton *codeBtn;
+@property (nonatomic,weak)   UIButton *codeBtn;
 @property (nonatomic,strong)NSTimer *countTimer;
 @property (nonatomic,assign) int  countNum;
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 @end
 
-@implementation PasswordBackController
 
+@implementation PasswordBackController
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,44 +62,50 @@
 #pragma mark - upate ui
 - (void)setupUI
 {
-    //password textfield rightview
-//    RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
-//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-//    self.codeBtn = rightBtn;
-//    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
-//    [self updateCodeBtnUIWith:YES];
-//    CGFloat rightViewHeight = 25;
-//    CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
-//    CGRect rightFrame = CGRectMake(0, rightViewY, 80, rightViewHeight);
-//    rightBtn.frame = rightFrame;
-//    //    [self.view addSubview:rightBtn];
-//    _codeTextField.rightView = rightBtn;
-//    _codeTextField.rightViewMode = UITextFieldViewModeAlways;
+    //code  textfield rightview
+    RadiusButton *rightBtn = [RadiusButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.codeBtn = rightBtn;
+    [rightBtn addTarget:self action:@selector(requestRegisterCode) forControlEvents:UIControlEventTouchUpInside];
+    [self updateCodeBtnUIWith:YES];
+    CGFloat heightPercent = 0.7;
+    CGFloat rightViewHeight = heightPercent * kTableviewCellHeight;
+    CGFloat rightViewY = (kTableviewCellHeight - rightViewHeight) * 0.5;
+    CGRect rightFrame = CGRectMake(0, rightViewY, 80, rightViewHeight);
+    rightBtn.frame = rightFrame;
+    _codeTextField.rightView = rightBtn;
+    _codeTextField.rightViewMode = UITextFieldViewModeAlways;
+     [_codeTextField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
     
-    
-    UIImage *rightImgOpen  =[UIImage imageNamed:@"uneye"];
-    UIButton *rightBtnNew = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtnNew addTarget:self action:@selector(closeEye:) forControlEvents:UIControlEventTouchUpInside];
-    [rightBtnNew setImage:rightImgOpen forState:UIControlStateNormal];
-    CGRect rightNewF = CGRectMake(0, 0, 20, 20);
-    rightBtnNew.frame = rightNewF;
-    _pwdTextField.rightView = rightBtnNew;
-    _pwdTextField.rightViewMode = UITextFieldViewModeAlways;
+     [_phoneTextField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)updateCodeBtnUIWith:(BOOL)enable
 {
     self.codeBtn.enabled = enable;
     if (enable) {
-        [self.codeBtn setBackgroundColor:kMainNavigationBarColor];
+        [self.codeBtn setBackgroundColor:kCodeBtnEnableStateColor];
         [self.codeBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
         self.codeBtn.titleLabel.textColor = [UIColor whiteColor];
     }else{
-        [self.codeBtn setBackgroundColor:[UIColor grayColor]];
+        [self.codeBtn setBackgroundColor:kBtnDisableStateColor];
         [self.codeBtn setTitle:@"60S" forState:UIControlStateNormal];
         self.codeBtn.titleLabel.textColor = [UIColor lightGrayColor];
     }
 }
+
+#pragma mark - private methods
+- (void)updateRegistBtnEnableStatus
+{
+    NSString *accountStr = [self.phoneTextField.text strWithoutSpace];;
+    NSString *codeStr = [self.codeTextField.text strWithoutSpace];
+    if ((accountStr.length > 0)&&(codeStr.length > 0)) {
+        self.nextBtn.enabled = YES;
+    }else{
+        self.nextBtn.enabled = NO;
+    }
+}
+
 #pragma mark - UITableView ---  Table view data source
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -140,42 +146,43 @@
     }];
 }
 
+#pragma mark - selectors
+- (void)textDidChange:(UITextField*)sender
+{
+    [self updateRegistBtnEnableStatus];
+}
+
 
 
 - (void)closeEye:(id)sender
 {
-    UIButton *button = (UIButton *)sender;
-    button.selected = !button.selected;
-    
-    if (button.selected) {
-        self.pwdTextField.secureTextEntry = NO;
-        UIImage *imgOpen = [UIImage imageNamed:@"password-eye-r"];
-        [button setImage:imgOpen forState:UIControlStateSelected];
-        
-    } else {
-        self.pwdTextField.secureTextEntry = YES;
-        UIImage *imgClose = [UIImage imageNamed:@"uneye"];
-        [button setImage:imgClose forState:UIControlStateNormal];
-    }
+//    UIButton *button = (UIButton *)sender;
+//    button.selected = !button.selected;
+//    
+//    if (button.selected) {
+//        self.pwdTextField.secureTextEntry = NO;
+//        UIImage *imgOpen = [UIImage imageNamed:@"password-eye-r"];
+//        [button setImage:imgOpen forState:UIControlStateSelected];
+//        
+//    } else {
+//        self.pwdTextField.secureTextEntry = YES;
+//        UIImage *imgClose = [UIImage imageNamed:@"uneye"];
+//        [button setImage:imgClose forState:UIControlStateNormal];
+//    }
 }
 
 - (IBAction)tapNextBtn:(id)sender {
     
+    [self performSegueWithIdentifier:@"pwdbackSegue" sender:nil];
     NSString *phoneTxt = self.phoneTextField.text;
     NSString *codeTxt = self.codeTextField.text;
-    NSString *pwdTxt = self.pwdTextField.text;
+//    NSString *pwdTxt = self.pwdTextField.text;
     [self.view endEditing:YES];
     if (![phoneTxt rightPhoneNumFormat]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
         return;
     }else if(codeTxt.length <= 0){
         [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
-        return;
-    }else if(pwdTxt.length <= 0){
-        [SVProgressHUD showErrorWithStatus:@"密码必须6-15位哦"];
-        return;
-    }else if ((pwdTxt.length < 6) || (pwdTxt.length > 15)){
-        [SVProgressHUD showErrorWithStatus:@"密码必须6-15位哦"];
         return;
     }else{
     }

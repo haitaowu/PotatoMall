@@ -19,6 +19,8 @@
 //button color
 #define kBtnDisableStateColor                   RGBA(162, 162, 162, 1)
 
+#define kCodeBtnEnableStateColor                RGBA(75, 225, 147, 1)
+
 //tabbar color 
 #define kMainTabBarSelectedTitleColor           kMainNavigationBarColor
 #define kMainTabBarNormalTitleColor             RGBA(184, 184, 194, 1)

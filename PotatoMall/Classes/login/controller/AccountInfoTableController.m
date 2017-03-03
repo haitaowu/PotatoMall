@@ -81,7 +81,6 @@
 - (void)selectedAddress:(NSNotification*)sender
 {
     NSString *adr = sender.object;
-    HTLog(@"address = %@",adr);
     self.adrLabel.text = adr;
     [UserModelUtil sharedInstance].userModel.address = adr;
     [self.navigationController popToViewController:self animated:YES];
