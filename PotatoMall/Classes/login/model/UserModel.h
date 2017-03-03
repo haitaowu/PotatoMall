@@ -20,6 +20,8 @@
 @property (nonatomic,copy) NSString *cityName;
 /**头像路径*/
 @property (nonatomic,copy) NSString *customerImg;
+/**头像本地数据*/
+@property (nonatomic,copy) NSData *avatarData;
 /**区县ID*/
 @property (nonatomic,strong) NSNumber *districtId;
 /**区县名称*/

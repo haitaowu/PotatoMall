@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -466,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*账号身份选择后无法随意更改，需想再次变更必须提交审核申请，请按实情谨慎选择。" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlG-i4-DWz">
-                                <rect key="frame" x="20" y="84" width="335" height="34"/>
+                                <rect key="frame" x="20" y="84" width="335" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -481,13 +482,13 @@
                                 </connections>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="从事马铃薯批发/采购的个人或者企业" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkM-VO-0g0">
-                                <rect key="frame" x="94" y="365" width="188" height="34"/>
+                                <rect key="frame" x="94" y="365" width="188" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dab-YC-hNb" customClass="RadiusButton">
-                                <rect key="frame" x="30" y="415" width="315" height="40"/>
+                                <rect key="frame" x="30" y="414.5" width="315" height="40"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Ep9-lP-HZo"/>
@@ -1190,13 +1191,14 @@
                         <outlet property="nickNameField" destination="dht-UZ-oF0" id="u9f-2G-GJA"/>
                         <outlet property="realNameField" destination="bKW-sV-eXN" id="7mq-JI-wlv"/>
                         <outlet property="roleLabel" destination="Iym-l6-4Un" id="Z3g-WQ-MVU"/>
+                        <segue destination="VPE-JD-E8V" kind="show" identifier="successSegue" id="UXv-ic-xVV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aW-Fc-lsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6413.6000000000004" y="180.35982008995504"/>
         </scene>
-        <!--地区-->
+        <!--省-->
         <scene sceneID="4X8-Xo-tHo">
             <objects>
                 <tableViewController id="Du9-f0-ll1" customClass="ProviceTableController" sceneMemberID="viewController">
@@ -1219,7 +1221,7 @@
                             <outlet property="delegate" destination="Du9-f0-ll1" id="KNU-fl-amo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="地区" id="bDs-aV-8nk"/>
+                    <navigationItem key="navigationItem" title="省" id="bDs-aV-8nk"/>
                     <connections>
                         <segue destination="NHS-Bl-9RY" kind="show" identifier="citySegue" id="Dyo-Co-Uhi"/>
                     </connections>
@@ -1228,7 +1230,7 @@
             </objects>
             <point key="canvasLocation" x="7418" y="182"/>
         </scene>
-        <!--地区-->
+        <!--市-->
         <scene sceneID="egP-At-uJF">
             <objects>
                 <tableViewController id="NHS-Bl-9RY" customClass="CityTableController" sceneMemberID="viewController">
@@ -1251,7 +1253,7 @@
                             <outlet property="delegate" destination="NHS-Bl-9RY" id="i1Y-hp-PXt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="地区" id="wuq-Vg-wdv"/>
+                    <navigationItem key="navigationItem" title="市" id="wuq-Vg-wdv"/>
                     <connections>
                         <segue destination="j4u-w1-8Kv" kind="show" identifier="distriSegue" id="G48-cu-DME"/>
                     </connections>
@@ -1289,10 +1291,50 @@
             </objects>
             <point key="canvasLocation" x="9094" y="186"/>
         </scene>
+        <!--Register Success Controller-->
+        <scene sceneID="uOM-5K-IBN">
+            <objects>
+                <viewController id="VPE-JD-E8V" customClass="RegisterSuccessController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y29-9n-yr6"/>
+                        <viewControllerLayoutGuide type="bottom" id="KwK-wq-99Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A48-lJ-14b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_success" translatesAutoresizingMaskIntoConstraints="NO" id="aJ7-q6-5oD">
+                                <rect key="frame" x="139" y="124" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="dyZ-k9-gzJ"/>
+                                    <constraint firstAttribute="width" secondItem="aJ7-q6-5oD" secondAttribute="height" multiplier="1:1" id="maC-6L-WR6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜，你已成功注册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePG-iM-rp5">
+                                <rect key="frame" x="122.5" y="242" width="129" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ePG-iM-rp5" firstAttribute="top" secondItem="aJ7-q6-5oD" secondAttribute="bottom" constant="21" id="6Fg-ha-9hc"/>
+                            <constraint firstItem="aJ7-q6-5oD" firstAttribute="centerX" secondItem="A48-lJ-14b" secondAttribute="centerX" id="E87-Ri-loA"/>
+                            <constraint firstItem="ePG-iM-rp5" firstAttribute="centerX" secondItem="A48-lJ-14b" secondAttribute="centerX" id="ZNx-6S-qAw"/>
+                            <constraint firstItem="aJ7-q6-5oD" firstAttribute="top" secondItem="y29-9n-yr6" secondAttribute="bottom" constant="60" id="vBk-sb-GLy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IeE-xW-mDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6966" y="999"/>
+        </scene>
     </scenes>
     <resources>
         <image name="farmer" width="150" height="150"/>
         <image name="login_lock" width="17" height="21"/>
+        <image name="login_success" width="97" height="97"/>
         <image name="me_private" width="15" height="12"/>
         <image name="next" width="8" height="12"/>
     </resources>

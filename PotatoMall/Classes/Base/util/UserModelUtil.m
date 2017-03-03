@@ -62,6 +62,34 @@ static UserModelUtil *instance = nil;
     });
 }
 
+
+- (void)avatarImageWithBlock:(FetchAvatarBlock) result
+{
+    UserModel *model = self.userModel;
+    if (model.avatarData == nil) {
+        //                NSString *rurl = [GCQiniuUploadManager downloadPathForKey:model.avatar];
+        NSURL *url=[NSURL URLWithString:model.customerImg];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:url options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        }completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (image) {
+                NSData *data = UIImagePNGRepresentation(image);
+                model.avatarData = data;
+                [self archiveUserModel:model];
+                result(image);
+            }
+        }];
+    }else{
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            UIImage *imgAvatar = [UIImage imageWithData:model.avatarData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(imgAvatar);
+            });
+        });
+    }
+}
+
 /**是否登录*/
 - (UserState)userState
 {

@@ -134,6 +134,9 @@
     NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
     NSDictionary *userDict = [dict objectForKey:@"obj"];
     UserModel *model = [UserModel mj_objectWithKeyValues:userDict];
+    model.avatarData = UIImagePNGRepresentation(self.avatarImg);
+    [[UserModelUtil sharedInstance] archiveUserModel:model];
+    [self performSegueWithIdentifier:@"successSegue" sender:nil];
     return model;
 }
 
