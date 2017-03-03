@@ -7,31 +7,55 @@
 //
 
 #import "AritcleDetailController.h"
+#import "ArticleDetailModel.h"
 
 @interface AritcleDetailController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UIWebView *webview;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (nonatomic,strong)ArticleDetailModel *articleModel;
 @end
 
 @implementation AritcleDetailController
 
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kInfoId] = self.paramModel.infoId;
+    [self requestAritcleDetailWith:params];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - setup UI 
+- (void)setupUIWithDetail:(ArticleDetailModel*)detail
+{
+    self.titleLabel.text = detail.title;
+    self.authorLabel.text = detail.author;
+    self.dateLabel.text = detail.createDate;
+    [self.webview loadHTMLString:detail.content baseURL:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - requset server
+- (void)requestAritcleDetailWith:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        NSString *subUrl = @"article/detail";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD showInfoWithStatus:msg];
+            if (status == StatusTypSuccess) {
+                self.articleModel = [ArticleDetailModel articleDetailWithData:data];
+                [self setupUIWithDetail:self.articleModel];
+                HTLog(@"hello ");
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
 }
-*/
+
+
 
 @end

@@ -10,6 +10,7 @@
 #import "HTSearchHistoryController.h"
 #import "HTCustomeSearchBar.h"
 #import "HotArticleCell.h"
+#import "AritcleDetailController.h"
 
 
 static NSString *HotArticleCellID = @"HotArticleCellID";
@@ -27,6 +28,15 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     [self setupUI];
     [self searchArticlsWithKeyWord:self.searchWord];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        AritcleDetailController *destinationControl = (AritcleDetailController*)[segue destinationViewController];
+        destinationControl.paramModel = sender;
+    }
+}
+
 
 #pragma mark - setup UI
 - (void)setupUI
@@ -113,11 +123,11 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     return 0.001;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"detailSegue" sender:nil];
+    ArticleModel *model = self.articlesArray[indexPath.row];
+    [self performSegueWithIdentifier:@"detailSegue" sender:model];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

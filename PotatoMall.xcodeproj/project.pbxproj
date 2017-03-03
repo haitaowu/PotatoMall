@@ -62,6 +62,7 @@
 		BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD61E5C796D00667D73 /* Purchase.storyboard */; };
 		BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */; };
 		BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE30997B1E5C71AE0062EBA9 /* Main.storyboard */; };
+		BEC7F99C1E69A44E0029E6D6 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7F99B1E69A44E0029E6D6 /* ArticleDetailModel.m */; };
 		BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */; };
 		BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */; };
 		BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */; };
@@ -182,6 +183,8 @@
 		BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTabbarController.m; sourceTree = "<group>"; };
 		BEC06DDE1E5C7A6D00667D73 /* TudouColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TudouColor.h; sourceTree = "<group>"; };
 		BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TuDouPrefixHeader.pch; sourceTree = "<group>"; };
+		BEC7F99A1E69A44E0029E6D6 /* ArticleDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailModel.h; sourceTree = "<group>"; };
+		BEC7F99B1E69A44E0029E6D6 /* ArticleDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailModel.m; sourceTree = "<group>"; };
 		BED016A71E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		BED016A81E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		BED36E9B1E68FD1900DDF82F /* RegisterSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSuccessController.h; sourceTree = "<group>"; };
@@ -630,6 +633,8 @@
 		BEC06DCE1E5C792600667D73 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				BEC7F99A1E69A44E0029E6D6 /* ArticleDetailModel.h */,
+				BEC7F99B1E69A44E0029E6D6 /* ArticleDetailModel.m */,
 				BE8FA4E61E646C2D00F92C46 /* ArticleModel.h */,
 				BE8FA4E71E646C2D00F92C46 /* ArticleModel.m */,
 			);
@@ -841,6 +846,7 @@
 				BE5ED7F81E62B90900C4B1D0 /* LoginViewController.m in Sources */,
 				BE5ED7C01E6256C300C4B1D0 /* RadiusButton.m in Sources */,
 				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
+				BEC7F99C1E69A44E0029E6D6 /* ArticleDetailModel.m in Sources */,
 				BE5ED7E61E62B29000C4B1D0 /* README.md in Sources */,
 				BE652F721E696D6F003ABEC3 /* MeInfoTableController.m in Sources */,
 				BE5ED7E71E62B29000C4B1D0 /* NSData+AES.m in Sources */,

@@ -14,6 +14,7 @@
 #define     kPassword                       @"password"
 #define     kVerfiyCode                     @"verfiyCode"
 #define     kReqType                        @"type"
+#define     kInfoId                         @"infoId"
 #define     kSeachKey                       @"seachKey"
 #define     kData                           @"data"
 #define     kPageNo                         @"pageNo"

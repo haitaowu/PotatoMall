@@ -13,6 +13,7 @@
 #import "HotArticleCell.h"
 #import "SectionHeaderTitle.h"
 #import "HomwTableHeader.h"
+#import "AritcleDetailController.h"
 
 
 static NSString *HotArticleCellID = @"HotArticleCellID";
@@ -43,6 +44,8 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         SearchTableController *destinationControl = (SearchTableController*)[segue destinationViewController];
         destinationControl.searchWord = sender;
     }else if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        AritcleDetailController *destinationControl = (AritcleDetailController*)[segue destinationViewController];
+        destinationControl.paramModel = sender;
     }
 }
 
@@ -230,7 +233,8 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"detailSegue" sender:nil];
+    ArticleModel *model = self.articlesArray[indexPath.row];
+    [self performSegueWithIdentifier:@"detailSegue" sender:model];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
