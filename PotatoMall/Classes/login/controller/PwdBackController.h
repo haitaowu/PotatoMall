@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
+#import "UserModel.h"
 
 @interface PwdBackController : BaseTableViewController
-@property (nonatomic,strong)NSDictionary *params;
-
+@property (nonatomic,strong)UserModel *model;
 @end

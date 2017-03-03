@@ -10,6 +10,7 @@
 #import "PwdBackController.h"
 #import "SVProgressHUD.h"
 #import "NSString+Extentsion.h"
+#import "RegisterSuccessController.h"
 
 
 
@@ -29,9 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-   [_pwdNewTextField addTarget:self action:@selector(txtDidChange:) forControlEvents:UIControlEventEditingChanged];
-   [_pwdAginTextField addTarget:self action:@selector(txtDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -45,6 +44,22 @@
     [SVProgressHUD dismiss];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"successSegue"]) {
+        RegisterSuccessController *destinationControl = (RegisterSuccessController*)segue.destinationViewController;
+        destinationControl.desTitle = @"修改登录密码成功！";
+        destinationControl.title = @"修改登录密码";
+    }
+}
+
+#pragma mark - setup UI 
+- (void)setupUI
+{
+    [_pwdNewTextField addTarget:self action:@selector(txtDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [_pwdAginTextField addTarget:self action:@selector(txtDidChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
 #pragma mark - private methods
 - (void)updateRegistBtnEnableStatus
 {
@@ -56,7 +71,6 @@
         self.finishedBtn.enabled = NO;
     }
 }
-
 
 #pragma mark - selectors
 - (void)txtDidChange:(UITextField*)sender
@@ -91,36 +105,49 @@
     [self.view endEditing:NO];
 }
 
+
 #pragma mark -  IBaction methods
 - (IBAction)tapModifyPwdBtn:(id)sender {
-//    NSString *pwdTxt = self.pwdNewTextField.text;
-//    NSString *pwdAginTxt = self.pwdAginTextField.text;
-//        if (pwdTxt.length <= 0) {
-//            [SVProgressHUD showErrorWithStatus:@"请输入新密码"];
-//            return;
-//        }else if(pwdAginTxt.length <= 0){
-//            [SVProgressHUD showErrorWithStatus:@"请再次输入密码"];
-//            return;
-//        }else if(![pwdAginTxt isEqualToString:pwdTxt]){
-//            [SVProgressHUD showErrorWithStatus:@"两次输入密码不一致"];
-//            return;
-//        }else{
-//            
-//            NSString *subUrl = @"api/ur/resetPassword";
-//            NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASE_URL2,subUrl];
-//            NSString *encryPwdTxt = [UserUtil encryPwdWithPassword:pwdTxt];
-//            NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:self.params];
-//            params[@"password"] = encryPwdTxt;
-//            [HttpTools POSTWithURL:reqUrl params:params reqSuccess:^(int status,NSString *msg, id entity, id list) {
-//                [SVProgressHUD showSuccessWithStatus:msg];
-//                [self.navigationController popToRootViewControllerAnimated:YES];
-//            } reqFail:^(StatusType type,NSString* msg) {
-//                [SVProgressHUD showErrorWithStatus:msg];
-//            }];
-//        }
+    NSString *pwdTxt = self.pwdNewTextField.text;
+    NSString *pwdAginTxt = self.pwdAginTextField.text;
+    if (pwdTxt.length <= 0) {
+        [SVProgressHUD showErrorWithStatus:@"请输入新密码"];
+        return;
+    }else if(pwdAginTxt.length <= 0){
+        [SVProgressHUD showErrorWithStatus:@"请再次输入密码"];
+        return;
+    }else if(![pwdAginTxt isEqualToString:pwdTxt]){
+        [SVProgressHUD showErrorWithStatus:@"两次输入密码不一致"];
+        return;
+    }else{
+        [self submitToModiftyUserPwdWithPwd:pwdTxt];
+    }
 }
 
-
+#pragma mark - requset server
+- (void)submitToModiftyUserPwdWithPwd:(NSString*)pwdTxt
+{
+    NSString *subUrl = @"user/updatePassword";
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kPassword] = pwdTxt;
+    params[kUserIdKey] = self.model.userId;
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        if (status == StatusTypSuccess) {
+            [SVProgressHUD showSuccessWithStatus:msg];
+            id obj = [DataUtil dictionaryWithJsonStr:data];
+            id result = [obj objectForKey:@"obj"];
+            if ([result isEqualToString:@"true"]) {
+                [self performSegueWithIdentifier:@"successSegue" sender:nil];
+            }
+            
+        }else{
+            [SVProgressHUD showErrorWithStatus:msg];
+        }
+    } reqFail:^(int type, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+    }];
+}
 
 
 @end

@@ -9,13 +9,16 @@
 #import "RegisterSuccessController.h"
 
 @interface RegisterSuccessController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
 @implementation RegisterSuccessController
+
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.titleLabel.text = self.navTitle;
 }
 
 - (void)tapBackBtn

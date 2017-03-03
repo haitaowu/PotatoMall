@@ -846,6 +846,7 @@
                         <outlet property="finishedBtn" destination="a8w-i1-myP" id="sls-Mw-zww"/>
                         <outlet property="pwdAginTextField" destination="XYx-Di-0wb" id="tFJ-5b-qFi"/>
                         <outlet property="pwdNewTextField" destination="PQw-dQ-N9b" id="2yi-lR-hcj"/>
+                        <segue destination="VPE-JD-E8V" kind="show" identifier="successSegue" id="x7d-px-XmK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRM-MS-6dM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1349,6 +1350,9 @@
                             <constraint firstItem="aJ7-q6-5oD" firstAttribute="top" secondItem="y29-9n-yr6" secondAttribute="bottom" constant="60" id="vBk-sb-GLy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="ePG-iM-rp5" id="Ix6-RD-upv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeE-xW-mDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1363,6 +1367,7 @@
         <image name="next" width="8" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="x7d-px-XmK"/>
         <segue reference="Vxg-v2-nDL"/>
     </inferredMetricsTieBreakers>
 </document>

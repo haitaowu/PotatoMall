@@ -11,6 +11,7 @@
 #import<AVFoundation/AVMediaFormat.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "NSString+Extentsion.h"
+#import "RegisterSuccessController.h"
 
 
 @interface AccountInfoTableController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -43,6 +44,17 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedAddress:) name:kSelectedCityNotification object:nil];
 }
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"successSegue"]) {
+        RegisterSuccessController *destinationControl = (RegisterSuccessController*)segue.destinationViewController;
+        destinationControl.title = @"完成注册！";
+        destinationControl.desTitle = @"恭喜，你已成功注册！";
+    }
+}
+
 
 - (void)dealloc
 {

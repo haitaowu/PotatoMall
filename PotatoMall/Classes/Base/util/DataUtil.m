@@ -120,7 +120,7 @@ static DataUtil *instance = nil;
     return decryptStr;
 }
 
-+ (NSDictionary*)dictionaryWithJsonStr:(id)jsonStr
++ (id)dictionaryWithJsonStr:(id)jsonStr
 {
     NSString *decryptStr = [self decryptStringWith:jsonStr];
     NSError *error = nil;

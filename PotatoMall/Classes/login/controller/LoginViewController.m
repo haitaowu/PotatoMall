@@ -60,7 +60,7 @@
     leftBtn.frame = rightFrame;
     _accountTextField.leftView = leftBtn;
     _accountTextField.leftViewMode = UITextFieldViewModeAlways;
-    [_accountTextField addTarget:self action:@selector(textStrDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [_accountTextField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     UIImage *pwdImage =[UIImage imageNamed:@"login_lock"];
     UIButton *pwdLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -76,7 +76,7 @@
     UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:view];
     self.navigationItem.leftBarButtonItems = @[leftBarItem];
     
-    [_pwdTextField addTarget:self action:@selector(textStrDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [_pwdTextField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 #pragma mark - private methods

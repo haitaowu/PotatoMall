@@ -16,7 +16,7 @@
 @interface DataUtil : NSObject
 +(instancetype)shareInstance;
 + (NSString*)decryptStringWith:(NSString*)crptStr;
-+ (NSDictionary*)dictionaryWithJsonStr:(id)jsonStr;
++ (id)dictionaryWithJsonStr:(id)jsonStr;
 
 - (void)saveHomeSerachRecordWithTitle:(NSString*)title;
 - (NSArray*)queryHomeSerachRecord;

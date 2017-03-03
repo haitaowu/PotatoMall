@@ -29,6 +29,7 @@
 @property (nonatomic,strong)NSTimer *countTimer;
 @property (nonatomic,assign) int  countNum;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+@property (nonatomic,strong)UserModel *model;
 @end
 
 
@@ -54,8 +55,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"pwdbackSegue"]) {
-        PwdBackController *registerController = (PwdBackController*)segue.destinationViewController;
-        registerController.params = sender;
+        PwdBackController *destinationControl = (PwdBackController*)segue.destinationViewController;
+        destinationControl.model = self.model;
     }
 }
 
@@ -125,6 +126,7 @@
 
 
 #pragma mark -  IBaction methods
+/** 1：注册 2忘记密码 */
 - (IBAction)requestRegisterCode
 {
     NSString *phoneTxt = self.phoneTextField.text;
@@ -133,16 +135,42 @@
         return;
     }
     
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD showWithStatus:@"请求验证码"];
     NSString *subUrl = @"user/getCheckCode";
-    NSString *reqUrl = [NSString stringWithFormat:@"%@%@%@",BASEURL,subUrl,phoneTxt];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqType,nil];
-    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
-       [self cuntingDown];
-        [SVProgressHUD showErrorWithStatus:msg];
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"2",kReqType,nil];
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        [self cuntingDown];
+        if (status == StatusTypSuccess) {
+            [self userIdByEnterPhone:phoneTxt];
+        }else{
+            [SVProgressHUD showWithStatus:msg];
+        }
     } reqFail:^(int type, NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];
-       [self cuntingDown];
+        [self cuntingDown];
+    }];
+}
+
+/**获取用户的id*/
+- (void)userIdByEnterPhone:(NSString*)phoneTxt
+{
+    NSString *subUrl = @"user/findByPhone";
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,nil];
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        [SVProgressHUD showSuccessWithStatus:msg];
+        if (status == StatusTypSuccess) {
+            id obj = [DataUtil dictionaryWithJsonStr:data];
+            UserModel *model = [[UserModel alloc] init];
+            model.userId = [obj objectForKey:@"obj"];
+            model.phone = phoneTxt;
+            self.model = model;
+        }else{
+            [SVProgressHUD showWithStatus:msg];
+        }
+    } reqFail:^(int type, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
     }];
 }
 
@@ -152,31 +180,9 @@
     [self updateRegistBtnEnableStatus];
 }
 
-
-
-- (void)closeEye:(id)sender
-{
-//    UIButton *button = (UIButton *)sender;
-//    button.selected = !button.selected;
-//    
-//    if (button.selected) {
-//        self.pwdTextField.secureTextEntry = NO;
-//        UIImage *imgOpen = [UIImage imageNamed:@"password-eye-r"];
-//        [button setImage:imgOpen forState:UIControlStateSelected];
-//        
-//    } else {
-//        self.pwdTextField.secureTextEntry = YES;
-//        UIImage *imgClose = [UIImage imageNamed:@"uneye"];
-//        [button setImage:imgClose forState:UIControlStateNormal];
-//    }
-}
-
 - (IBAction)tapNextBtn:(id)sender {
-    
-    [self performSegueWithIdentifier:@"pwdbackSegue" sender:nil];
     NSString *phoneTxt = self.phoneTextField.text;
     NSString *codeTxt = self.codeTextField.text;
-//    NSString *pwdTxt = self.pwdTextField.text;
     [self.view endEditing:YES];
     if (![phoneTxt rightPhoneNumFormat]) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
@@ -185,9 +191,13 @@
         [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
         return;
     }else{
+        if (self.model == nil) {
+            [SVProgressHUD showInfoWithStatus:@"请输入验证码"];
+        }else{
+            [self performSegueWithIdentifier:@"pwdbackSegue" sender:nil];
+        }
     }
 }
-
 
 #pragma mark - requset server
 - (void)requestServerModifyPwdWithParams:(NSDictionary*)params

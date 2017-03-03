@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface RegisterSuccessController : BaseViewController
+@property (nonatomic,copy) NSString *desTitle;
+@property (nonatomic,copy) NSString *navTitle;
 
 @end
