@@ -22,6 +22,9 @@
 /**商品名称*/
 @property (nonatomic,copy) NSString *goodsInfoName;
 
+/**商品unit*/
+@property (nonatomic,copy) NSString *unit;
+
 /**是否已经选择*/
 @property (nonatomic,assign) Boolean isSelected;
 

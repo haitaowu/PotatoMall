@@ -21,6 +21,13 @@
 #define     kPageSize                       @"pageSize"
 #define     kSeachKey                       @"seachKey"
 
+#define     kKeyWordsKey                    @"keyWords"
+//价格 1表示升序、0表示降序
+#define     kPriceOrderKey                  @"priceOrder"
+#define     kSalesSortKey                   @"salesSort"
+#define     kCatalogIdKey                   @"catalogId"
+
+
 #define     kAvatarKey                       @"avatar"
 #define     kUserIdKey                       @"userId"
 #define     kNickNameKey                     @"nickName"

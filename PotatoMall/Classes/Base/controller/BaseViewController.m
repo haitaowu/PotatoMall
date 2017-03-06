@@ -17,7 +17,7 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupUI];
+    [self setupBaseUI];
 }
 
 - (BOOL)hidesBottomBarWhenPushed
@@ -25,7 +25,7 @@
     return YES;
 }
 
-- (void)setupUI
+- (void)setupBaseUI
 {
     //left navigationBar item
     UIImage *leftImage =[UIImage imageNamed:@"nav_back"];

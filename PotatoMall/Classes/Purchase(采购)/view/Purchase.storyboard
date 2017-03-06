@@ -39,10 +39,113 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="RL1-mJ-cHh" kind="show" identifier="searchGoodsSegue" id="qXA-kU-a6n"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wZ-Xi-o5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1095.2" y="386.35682158920542"/>
+        </scene>
+        <!--Purchase Search Controller-->
+        <scene sceneID="hD8-v9-2c7">
+            <objects>
+                <viewController id="RL1-mJ-cHh" customClass="PurchaseSearchController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oOF-M8-lNY"/>
+                        <viewControllerLayoutGuide type="bottom" id="JMa-tV-XG7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ldM-yK-dFv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFt-mr-Sk1">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRX-fv-5FF">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="44"/>
+                                        <state key="normal" title="综合">
+                                            <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected" title="综合">
+                                            <color key="titleColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapComprehenBtn:" destination="RL1-mJ-cHh" eventType="touchUpInside" id="uIn-Dw-adt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZQ-qB-2Id">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="44"/>
+                                        <state key="normal" title="销量">
+                                            <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected" title="销量">
+                                            <color key="titleColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapSalesBtn:" destination="RL1-mJ-cHh" eventType="touchUpInside" id="Kbr-bq-mDx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKL-Kv-0H4">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="44"/>
+                                        <state key="normal" title="价格">
+                                            <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected" title="价格">
+                                            <color key="titleColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapPriceBtn:" destination="RL1-mJ-cHh" eventType="touchUpInside" id="8kT-aM-am3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="lKL-Kv-0H4" firstAttribute="leading" secondItem="VZQ-qB-2Id" secondAttribute="trailing" id="4Un-la-faT"/>
+                                    <constraint firstAttribute="bottom" secondItem="tRX-fv-5FF" secondAttribute="bottom" id="JEy-Ez-mBa"/>
+                                    <constraint firstItem="tRX-fv-5FF" firstAttribute="top" secondItem="XFt-mr-Sk1" secondAttribute="top" id="MZs-sh-LZs"/>
+                                    <constraint firstItem="VZQ-qB-2Id" firstAttribute="leading" secondItem="tRX-fv-5FF" secondAttribute="trailing" id="Rt7-DW-xC7"/>
+                                    <constraint firstItem="lKL-Kv-0H4" firstAttribute="top" secondItem="XFt-mr-Sk1" secondAttribute="top" id="V2A-cT-hp2"/>
+                                    <constraint firstItem="tRX-fv-5FF" firstAttribute="leading" secondItem="XFt-mr-Sk1" secondAttribute="leading" id="Wje-ym-EcK"/>
+                                    <constraint firstItem="VZQ-qB-2Id" firstAttribute="top" secondItem="XFt-mr-Sk1" secondAttribute="top" id="YCM-6b-LHh"/>
+                                    <constraint firstAttribute="bottom" secondItem="lKL-Kv-0H4" secondAttribute="bottom" id="bSo-eK-i8r"/>
+                                    <constraint firstAttribute="trailing" secondItem="lKL-Kv-0H4" secondAttribute="trailing" id="c0Y-uZ-TMC"/>
+                                    <constraint firstItem="VZQ-qB-2Id" firstAttribute="width" secondItem="tRX-fv-5FF" secondAttribute="width" id="fgI-UZ-0N5"/>
+                                    <constraint firstAttribute="bottom" secondItem="VZQ-qB-2Id" secondAttribute="bottom" id="qYd-Ol-0s8"/>
+                                    <constraint firstItem="lKL-Kv-0H4" firstAttribute="width" secondItem="tRX-fv-5FF" secondAttribute="width" id="snv-nc-jic"/>
+                                    <constraint firstAttribute="height" constant="44" id="xnT-r7-syD"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="BUr-4f-LN1">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RL1-mJ-cHh" id="RLH-Zy-qdR"/>
+                                    <outlet property="delegate" destination="RL1-mJ-cHh" id="w9P-Wu-hpe"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BUr-4f-LN1" secondAttribute="trailing" id="IfI-FC-ewz"/>
+                            <constraint firstItem="JMa-tV-XG7" firstAttribute="top" secondItem="BUr-4f-LN1" secondAttribute="bottom" id="Z59-37-JbC"/>
+                            <constraint firstAttribute="trailing" secondItem="XFt-mr-Sk1" secondAttribute="trailing" id="a22-zf-On2"/>
+                            <constraint firstItem="BUr-4f-LN1" firstAttribute="top" secondItem="XFt-mr-Sk1" secondAttribute="bottom" id="gBU-WZ-iNg"/>
+                            <constraint firstItem="BUr-4f-LN1" firstAttribute="leading" secondItem="ldM-yK-dFv" secondAttribute="leading" id="j8f-Ez-Mz2"/>
+                            <constraint firstItem="XFt-mr-Sk1" firstAttribute="leading" secondItem="ldM-yK-dFv" secondAttribute="leading" id="oXN-qM-dM2"/>
+                            <constraint firstItem="XFt-mr-Sk1" firstAttribute="top" secondItem="oOF-M8-lNY" secondAttribute="bottom" id="ytI-eI-0aT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="compreBtn" destination="tRX-fv-5FF" id="GOR-XA-mVN"/>
+                        <outlet property="priceBtn" destination="lKL-Kv-0H4" id="WLx-Jr-fNX"/>
+                        <outlet property="salesBtn" destination="VZQ-qB-2Id" id="rIu-ry-7ph"/>
+                        <outlet property="tableView" destination="BUr-4f-LN1" id="AbH-m6-dhI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scs-XJ-dLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2000.8" y="319.79010494752629"/>
         </scene>
         <!--购物车-->
         <scene sceneID="Tpt-Jc-IVX">
@@ -72,7 +175,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-CG-g8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="386"/>
+            <point key="canvasLocation" x="2001" y="1198"/>
         </scene>
         <!--Navgation Controller-->
         <scene sceneID="maT-us-C34">

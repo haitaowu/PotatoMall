@@ -19,6 +19,9 @@
 		BE0DDB431E6D0B4300F15168 /* HTCalculatorToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0DDB3E1E6D0B4300F15168 /* HTCalculatorToolBar.xib */; };
 		BE0DDB441E6D0B4300F15168 /* HTSubmitBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0DDB401E6D0B4300F15168 /* HTSubmitBar.m */; };
 		BE0DDB451E6D0B4300F15168 /* HTSubmitBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0DDB411E6D0B4300F15168 /* HTSubmitBar.xib */; };
+		BE0DDB481E6D447E00F15168 /* PurchaseSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0DDB471E6D447E00F15168 /* PurchaseSearchController.m */; };
+		BE0DDB4D1E6D46FA00F15168 /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0DDB4B1E6D46FA00F15168 /* GoodsCell.m */; };
+		BE0DDB4E1E6D46FA00F15168 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0DDB4C1E6D46FA00F15168 /* GoodsCell.xib */; };
 		BE1076CB1E67AAAF00304436 /* HTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1076CA1E67AAAF00304436 /* HTTextField.m */; };
 		BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2FDFCB1E61219B00A96E17 /* HomwTableHeader.m */; };
 		BE3052CA1E66C94000C74300 /* StateRadiusBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3052C91E66C94000C74300 /* StateRadiusBtn.m */; };
@@ -107,6 +110,11 @@
 		BE0DDB3F1E6D0B4300F15168 /* HTSubmitBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSubmitBar.h; sourceTree = "<group>"; };
 		BE0DDB401E6D0B4300F15168 /* HTSubmitBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSubmitBar.m; sourceTree = "<group>"; };
 		BE0DDB411E6D0B4300F15168 /* HTSubmitBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTSubmitBar.xib; sourceTree = "<group>"; };
+		BE0DDB461E6D447E00F15168 /* PurchaseSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseSearchController.h; sourceTree = "<group>"; };
+		BE0DDB471E6D447E00F15168 /* PurchaseSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseSearchController.m; sourceTree = "<group>"; };
+		BE0DDB4A1E6D46FA00F15168 /* GoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
+		BE0DDB4B1E6D46FA00F15168 /* GoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCell.m; sourceTree = "<group>"; };
+		BE0DDB4C1E6D46FA00F15168 /* GoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCell.xib; sourceTree = "<group>"; };
 		BE1076C91E67AAAF00304436 /* HTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTextField.h; sourceTree = "<group>"; };
 		BE1076CA1E67AAAF00304436 /* HTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTextField.m; sourceTree = "<group>"; };
 		BE2FDFCA1E61219B00A96E17 /* HomwTableHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomwTableHeader.h; sourceTree = "<group>"; };
@@ -318,6 +326,16 @@
 				BE0DDB411E6D0B4300F15168 /* HTSubmitBar.xib */,
 			);
 			path = toolbar;
+			sourceTree = "<group>";
+		};
+		BE0DDB491E6D46FA00F15168 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE0DDB4A1E6D46FA00F15168 /* GoodsCell.h */,
+				BE0DDB4B1E6D46FA00F15168 /* GoodsCell.m */,
+				BE0DDB4C1E6D46FA00F15168 /* GoodsCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		BE1076C81E67AA8100304436 /* textField */ = {
@@ -678,6 +696,8 @@
 		BEC06DC91E5C78F600667D73 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				BE0DDB461E6D447E00F15168 /* PurchaseSearchController.h */,
+				BE0DDB471E6D447E00F15168 /* PurchaseSearchController.m */,
 				BE077A591E6A967C006F0EFB /* PurchaseTableController.h */,
 				BE077A5A1E6A967C006F0EFB /* PurchaseTableController.m */,
 			);
@@ -694,6 +714,7 @@
 		BEC06DCB1E5C78F600667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BE0DDB491E6D46FA00F15168 /* cell */,
 				BEC06DD61E5C796D00667D73 /* Purchase.storyboard */,
 			);
 			path = view;
@@ -876,6 +897,7 @@
 				BE5B803F1E5F1F12005FDE1A /* HotArticleCell.xib in Resources */,
 				BE0DDB431E6D0B4300F15168 /* HTCalculatorToolBar.xib in Resources */,
 				BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */,
+				BE0DDB4E1E6D46FA00F15168 /* GoodsCell.xib in Resources */,
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
 				BE59A4711E63CEE00077D9AD /* MeMenus.plist in Resources */,
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
@@ -978,12 +1000,14 @@
 				BE93C2F21E680D6200CC0B96 /* ProviceTableController.m in Sources */,
 				BE077A5B1E6A967C006F0EFB /* PurchaseTableController.m in Sources */,
 				BE5ED79D1E619E6A00C4B1D0 /* BaseTableViewController.m in Sources */,
+				BE0DDB481E6D447E00F15168 /* PurchaseSearchController.m in Sources */,
 				BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */,
 				BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */,
 				BE5B803E1E5F1F12005FDE1A /* HotArticleCell.m in Sources */,
 				BE59A47C1E63D8520077D9AD /* MeSettingTableController.m in Sources */,
 				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
+				BE0DDB4D1E6D46FA00F15168 /* GoodsCell.m in Sources */,
 				BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */,
 				BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */,
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
