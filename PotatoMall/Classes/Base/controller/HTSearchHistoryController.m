@@ -28,14 +28,19 @@ static NSString *SearchCellID = @"SearchCellID";
     UINib *SearchCellNib = [UINib nibWithNibName:@"SearchCell" bundle:nil];
     [self.tableView registerNib:SearchCellNib forCellReuseIdentifier:SearchCellID];
     [self setupSearchBarAppearUI];
-    NSArray *array = [[DataUtil shareInstance] queryHomeSerachRecord];
-    self.dataArray = [NSMutableArray arrayWithArray:array];
-    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if ([self.location isEqualToString:@"home"]) {
+        NSArray *array = [[DataUtil shareInstance] queryHomeSerachRecord];
+        self.dataArray = [NSMutableArray arrayWithArray:array];
+    }else{
+        NSArray *array = [[DataUtil shareInstance] queryPurchaseSerachRecord];
+        self.dataArray = [NSMutableArray arrayWithArray:array];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -83,7 +88,11 @@ static NSString *SearchCellID = @"SearchCellID";
         }
     }
     if (isContained == NO) {
-        [[DataUtil shareInstance] saveHomeSerachRecordWithTitle:title];
+         if ([self.location isEqualToString:@"home"]) {
+             [[DataUtil shareInstance] saveHomeSerachRecordWithTitle:title];
+         }else{
+             [[DataUtil shareInstance] savePurchaseSerachRecordWithTitle:title];
+         }
     }
 }
 
@@ -121,7 +130,11 @@ static NSString *SearchCellID = @"SearchCellID";
     SearchCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchCellID];
     __block typeof(self) blockSelf = self;
     cell.deleteBlock = ^(NSDictionary *record){
-        [[DataUtil shareInstance] deleteHomeSerachRecord:record];
+        if ([self.location isEqualToString:@"home"]) {
+            [[DataUtil shareInstance] deleteHomeSerachRecord:record];
+        }else{
+            [[DataUtil shareInstance] deletePurchaseSerachRecord:record];
+        }
         [blockSelf.dataArray removeObject:record];
         [blockSelf.tableView reloadData];
     };
@@ -168,7 +181,11 @@ static NSString *SearchCellID = @"SearchCellID";
     SeachSectionHeader *header = [[SeachSectionHeader alloc] init];
     __block typeof(self) blockSelf = self;
     header.deleteAllBlock = ^(){
-        [[DataUtil shareInstance] deleteHomeSerachAllRecord];
+        if ([self.location isEqualToString:@"home"]) {
+            [[DataUtil shareInstance] deleteHomeSerachAllRecord];
+        }else{
+            [[DataUtil shareInstance] deletePurchaseSerachAllRecord];
+        }
         blockSelf.dataArray = nil;
         [blockSelf.tableView reloadData];
     };

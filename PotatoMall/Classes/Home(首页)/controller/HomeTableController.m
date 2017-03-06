@@ -115,6 +115,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 {
     //不使用变量持有它，否则naivationBar的背景色没有办法改变回去。
     HTSearchHistoryController *searchHistoryControl = [[HTSearchHistoryController alloc] init];
+    searchHistoryControl.location = @"home";
     __block typeof(self) blockSelf = self;
     searchHistoryControl.searchBlock = ^(NSString *word){
         [blockSelf performSegueWithIdentifier:@"searchSegue" sender:word];

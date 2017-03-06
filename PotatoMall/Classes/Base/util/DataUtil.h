@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define kTableName                      @"HomeSearch"
+#define kPurchaseTableName              @"PurchaseHomeSearch"
 #define kColID                          @"ID"
 #define kColTitle                       @"title"
 
@@ -22,5 +23,10 @@
 - (NSArray*)queryHomeSerachRecord;
 - (BOOL)deleteHomeSerachRecord:(NSDictionary*)record;
 - (BOOL)deleteHomeSerachAllRecord;
+//
+- (void)savePurchaseSerachRecordWithTitle:(NSString*)title;
+- (NSArray*)queryPurchaseSerachRecord;
+- (BOOL)deletePurchaseSerachRecord:(NSDictionary*)record;
+- (BOOL)deletePurchaseSerachAllRecord;
 
 @end

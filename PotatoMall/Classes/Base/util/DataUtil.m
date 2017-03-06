@@ -54,13 +54,14 @@ static DataUtil *instance = nil;
 {
     self.dataBase = [FMDatabase databaseWithPath:kDataBasePath];
     if ([_dataBase open]) {
-        [self setupHealthSearchHistoryTable];
+        [self setupPurchaseSearchHistoryTable];
+        [self setupHomeSearchHistoryTable];
     }else{
         HTLog(@"open Sqlite File");
     }
 }
 
-- (void)setupHealthSearchHistoryTable
+- (void)setupHomeSearchHistoryTable
 {
     HTLog(@"打开数据库成功");
     //我们打开数据库之后 需要创建表格
@@ -75,6 +76,23 @@ static DataUtil *instance = nil;
         HTLog(@"create Tabel Fail:%@",_dataBase.lastErrorMessage);
     }
 }
+
+- (void)setupPurchaseSearchHistoryTable
+{
+    HTLog(@"打开数据库成功");
+    //我们打开数据库之后 需要创建表格
+    /*
+     create table if not exists app(id varchar(32),name varchar(128),pic varchar(1024))
+     */
+    NSString *sql =[NSString stringWithFormat: @"create table if not exists %@ ( %@ INTEGER PRIMARY KEY AUTOINCREMENT, %@ TEXT)",kPurchaseTableName,kColID,kColTitle];
+    BOOL isSuccess = [_dataBase executeUpdate:sql];
+    if (isSuccess) {
+        HTLog(@"create  %@ Tabel Success",kPurchaseTableName);
+    }else{
+        HTLog(@"create Tabel Fail:%@",_dataBase.lastErrorMessage);
+    }
+}
+
 
 #pragma mark - public methods
 - (void)saveHomeSerachRecordWithTitle:(NSString*)title
@@ -112,6 +130,40 @@ static DataUtil *instance = nil;
     return [self.dataBase executeUpdate:sql];
 }
 
+//采购界面数据存储
+- (void)savePurchaseSerachRecordWithTitle:(NSString*)title
+{
+    NSString *sql =[NSString stringWithFormat: @"INSERT INTO %@ (%@) VALUES (?)",kPurchaseTableName,kColTitle];
+    [self.dataBase executeUpdate:sql,title];
+}
+
+- (NSArray*)queryPurchaseSerachRecord
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by ID desc",kPurchaseTableName];
+    FMResultSet *s = [_dataBase executeQuery:sql];
+    NSMutableArray *records = [NSMutableArray array];
+    while ([s next]) {
+        //retrieve values for each record
+        NSInteger identifier = [s intForColumn:kColID];
+        NSString *title = [s objectForColumnName:kColTitle];
+        NSDictionary *record = [NSDictionary dictionaryWithObjectsAndKeys:title,kColTitle,@(identifier),kColID, nil];
+        [records addObject:record];
+    }
+    return records;
+}
+
+- (BOOL)deletePurchaseSerachRecord:(NSDictionary*)record
+{
+    NSNumber *identifier = [record objectForKey:kColID];
+    NSString *sql =[NSString stringWithFormat: @"DELETE FROM %@ WHERE ID = ?",kPurchaseTableName];
+    return [self.dataBase executeUpdate:sql,identifier];
+}
+
+- (BOOL)deletePurchaseSerachAllRecord
+{
+    NSString *sql =[NSString stringWithFormat: @"DELETE FROM %@",kPurchaseTableName];
+    return [self.dataBase executeUpdate:sql];
+}
 
 #pragma mark - public methods
 + (NSString*)decryptStringWith:(NSString*)crptStr

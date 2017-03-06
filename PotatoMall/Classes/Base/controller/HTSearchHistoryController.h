@@ -12,4 +12,5 @@ typedef void(^ClickSearchBlock)(NSString *word);
 
 @interface HTSearchHistoryController : UIViewController<UISearchBarDelegate>
 @property (nonatomic,copy) ClickSearchBlock searchBlock;
+@property (nonatomic,copy) NSString *location;
 @end

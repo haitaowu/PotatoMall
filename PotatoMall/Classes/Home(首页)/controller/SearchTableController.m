@@ -66,6 +66,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 - (void)showSearchHistoryView
 {
     HTSearchHistoryController *searchHistoryControl = [[HTSearchHistoryController alloc] init];
+    searchHistoryControl.location = @"home";
     __block typeof(self) blockSelf = self;
     searchHistoryControl.searchBlock = ^(NSString *word){
         [blockSelf.searchField updatePlaceholder:word];

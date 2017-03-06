@@ -61,7 +61,6 @@
 - (void)removeAllRecord
 {
     if (self.deleteAllBlock != nil) {
-        [[DataUtil shareInstance] deleteHomeSerachAllRecord];
         self.deleteAllBlock();
     }
 }
