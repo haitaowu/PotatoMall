@@ -131,11 +131,7 @@ static UserModelUtil *instance = nil;
 /**存储用户名与密码*/
 + (void)saveUser:(NSString*)account password:(NSString*)password
 {
-    NSString *encryPwd = nil;
-    if (password != nil) {
-        encryPwd = [self encryPwdWithPassword:password];
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:encryPwd forKey:kEncryPwdKey];
+    [[NSUserDefaults standardUserDefaults] setObject:password forKey:kLoginPwdKey];
     [[NSUserDefaults standardUserDefaults] setObject:account forKey:kLoginAccountKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -150,7 +146,7 @@ static UserModelUtil *instance = nil;
 /**登录的用户密码*/
 + (NSString*)userPassword
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kEncryPwdKey];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kLoginPwdKey];
 }
 
 @end

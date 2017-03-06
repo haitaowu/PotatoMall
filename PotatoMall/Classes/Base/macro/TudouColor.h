@@ -18,6 +18,7 @@
 
 //button color
 #define kBtnDisableStateColor                   RGBA(162, 162, 162, 1)
+#define kChartHeaderBgColor                     RGBA(247, 247, 247, 1)
 
 #define kCodeBtnEnableStateColor                RGBA(75, 225, 147, 1)
 

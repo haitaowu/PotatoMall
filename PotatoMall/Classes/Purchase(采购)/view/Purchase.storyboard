@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +12,7 @@
         <!--采购-->
         <scene sceneID="phH-As-bX5">
             <objects>
-                <tableViewController id="eep-s6-wDy" sceneMemberID="viewController">
+                <tableViewController id="eep-s6-wDy" customClass="PurchaseTableController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="umX-2K-yHU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,11 +32,47 @@
                             <outlet property="delegate" destination="eep-s6-wDy" id="LIE-ra-PLV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="采购" id="jG4-oC-plp"/>
+                    <navigationItem key="navigationItem" title="采购" id="jG4-oC-plp">
+                        <barButtonItem key="rightBarButtonItem" image="purchase_chart" id="C1f-wa-ODh">
+                            <connections>
+                                <segue destination="0WF-gB-wgd" kind="show" id="5aV-gd-OH4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wZ-Xi-o5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1095.2" y="386.35682158920542"/>
+        </scene>
+        <!--购物车-->
+        <scene sceneID="Tpt-Jc-IVX">
+            <objects>
+                <tableViewController id="0WF-gB-wgd" customClass="ChartTableController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="j7A-iY-6bV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SMT-Wg-G8V">
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SMT-Wg-G8V" id="4RI-3I-hep">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0WF-gB-wgd" id="IZ0-IO-f6K"/>
+                            <outlet property="delegate" destination="0WF-gB-wgd" id="dmY-Wb-rVo"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="购物车" id="Kmr-hQ-PyX"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-CG-g8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1908" y="386"/>
         </scene>
         <!--Navgation Controller-->
         <scene sceneID="maT-us-C34">
@@ -56,4 +93,7 @@
             <point key="canvasLocation" x="156" y="386.35682158920542"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="purchase_chart" width="24" height="20"/>
+    </resources>
 </document>

@@ -175,6 +175,11 @@ static NSString *SearchCellID = @"SearchCellID";
     return header;
 }
 
+#pragma mark - UIScorllView delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchBar endEditing:NO];
+}
 
 
 @end

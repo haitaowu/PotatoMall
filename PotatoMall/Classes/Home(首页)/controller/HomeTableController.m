@@ -123,15 +123,6 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     [self presentViewController:navController animated:NO completion:nil];
 }
 
-#pragma mark - private methods
-//- (NSMutableArray*)articlesWithData:(id)data
-//{
-//    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
-//    NSArray *list = [dict objectForKey:@"list"];
-//    NSArray *articles = [ArticleModel mj_objectArrayWithKeyValuesArray:list];
-//    return [NSMutableArray arrayWithArray:articles];
-//}
-
 #pragma mark - requset server
 - (void)requestMoreArticlesWith:(NSDictionary*)params
 {

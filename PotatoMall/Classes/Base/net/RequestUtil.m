@@ -13,6 +13,8 @@
 #import "AppInfoHelper.h"
 
 
+#define kRequestTimerout            15
+
 @implementation RequestUtil
 
 #pragma mark - public methods
@@ -21,13 +23,15 @@
 {
     NSMutableDictionary *finalParams = [self globalParamsWith:params];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 18;
+    manager.requestSerializer.timeoutInterval = kRequestTimerout;
     [manager POST:url parameters:finalParams progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSNumber *codeNum = responseObject[@"code"];
         NSString *msg = responseObject[@"msg"];
         id data = responseObject[@"data"];
         if ([codeNum intValue] == StatusTypSuccess) {
             success(StatusTypSuccess,msg,data);
+        }else if ([codeNum intValue] == StatusTypLoginTimeout) {
+            [self reLoginWith:url params:finalParams reqSuccess:success reqFail:fail];
         }else{
             fail([codeNum intValue],msg);
         }
@@ -45,7 +49,7 @@
     NSMutableDictionary *finalParams = [self globalParamsWith:params];
     NSData *imgData = UIImagePNGRepresentation(img);
     finalParams[@"avatar"] = [[NSString alloc] initWithData:imgData encoding:NSUTF8StringEncoding];
-    manager.requestSerializer.timeoutInterval = 18;
+    manager.requestSerializer.timeoutInterval = kRequestTimerout;
     [manager POST:url parameters:finalParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSData *imgData = UIImagePNGRepresentation(img);
         if (img != nil) {
@@ -64,8 +68,62 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-       fail(StatusTypNetWorkError,@"网络连接问题");
+        fail(StatusTypNetWorkError,@"网络连接问题");
     }];
+}
+
+
+
+//ht重新登录获取
++ (void)reLoginWith:(NSString *)url params:(id)params reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail
+{
+    NSString *accountTxt = [UserModelUtil userAccount];
+    NSString *pwdTxt = [UserModelUtil userPassword];
+    NSString *subUrl = @"user/login";
+    NSString *loginUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+     NSDictionary *loginParams = [NSDictionary dictionaryWithObjectsAndKeys:accountTxt,kAccount,pwdTxt,kPassword, nil];
+    
+   NSMutableDictionary *finalParams = [self globalParamsWith:loginParams];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:loginUrl parameters:finalParams progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSNumber *codeNum = responseObject[@"code"];
+        NSString *msg = responseObject[@"msg"];
+        if ([codeNum intValue] == StatusTypSuccess) {
+            [self requestDataWithLastUrl:url parameter:params reqSuccess:success reqFail:fail];
+        }else{
+            fail([codeNum intValue],msg);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        fail(StatusTypNetWorkError,@"网络连接问题");
+    }];
+}
+
+
+//ht重新取得token后重新请求数据
++ (void)requestDataWithLastUrl:(NSString*)url parameter:(id)params reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail{
+    // 1.创建请求管理对象
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = kRequestTimerout;
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self processResonse:responseObject url:url reqSuccess:success reqFail:fail];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        fail(StatusTypNetWorkError,@"网络不给力哦");
+    }];
+}
+
+
+//ht 处理请求结果
++ (void)processResonse:(id)responseObject url:(NSString*)url reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail
+{
+    NSNumber *codeNum = responseObject[@"code"];
+    NSString *msg = responseObject[@"msg"];
+    id data = responseObject[@"data"];
+    if ([codeNum intValue] == StatusTypSuccess) {
+        success(StatusTypSuccess,msg,data);
+    }else{
+        fail([codeNum intValue],msg);
+    }
 }
 
 + (void)getWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure

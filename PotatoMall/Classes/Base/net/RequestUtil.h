@@ -15,6 +15,7 @@ typedef enum{
     StatusTypFail = 1000,               //操作失败
     StatusTypSuccess = 1001,            //操作成功
     StatusTypNetWorkError = 1,          //1网络联接问题
+    StatusTypLoginTimeout = 2001,       //登录超时
 }StatusType;
 
 

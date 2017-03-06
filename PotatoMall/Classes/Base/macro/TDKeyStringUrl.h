@@ -37,7 +37,7 @@
 
 //user account password
 #define     kLoginAccountKey                @"loginAccountKey"
-#define     kEncryPwdKey                    @"EncryPwdKey"
+#define     kLoginPwdKey                    @"loginPwdKey"
 //define notification
 #define     kLoginSuccessNotification                       @"LoginSuccessNotification"
 #define     kUserLogoutSuccessNotification                  @"UserLogoutSuccessNotification"

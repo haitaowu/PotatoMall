@@ -158,6 +158,7 @@
 //                id user
                 UserModel *model = [UserModel mj_objectWithKeyValues:modelDict];
                 [[UserModelUtil sharedInstance] archiveUserModel:model];
+                [UserModelUtil saveUser:accountTxt password:pwdTxt];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
             }
         } reqFail:^(int type, NSString *msg) {
