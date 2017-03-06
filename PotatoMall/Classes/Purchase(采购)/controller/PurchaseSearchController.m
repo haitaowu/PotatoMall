@@ -9,6 +9,7 @@
 #import "PurchaseSearchController.h"
 #import "HTSearchHistoryController.h"
 #import "HTCustomeSearchBar.h"
+#import "ProductDetailTableController.h"
 #import "GoodsModel.h"
 #import "GoodsCell.h"
 
@@ -39,9 +40,9 @@ static NSString *GoodsCellID = @"GoodsCellID";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"detailSegue"]) {
-//        AritcleDetailController *destinationControl = (AritcleDetailController*)[segue destinationViewController];
-//        destinationControl.paramModel = sender;
+    if ([segue.identifier isEqualToString:@"productDetailSegue"]) {
+        ProductDetailTableController *destinationControl = (ProductDetailTableController*)[segue destinationViewController];
+        destinationControl.goodModel = sender;
     }
 }
 
@@ -175,7 +176,6 @@ static NSString *GoodsCellID = @"GoodsCellID";
     return cell;
 }
 
-
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -190,8 +190,8 @@ static NSString *GoodsCellID = @"GoodsCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    GoodsModel *model = self.articlesArray[indexPath.row];
-//    [self performSegueWithIdentifier:@"detailSegue" sender:model];
+    GoodsModel *model = self.goodsArray[indexPath.row];
+    [self performSegueWithIdentifier:@"productDetailSegue" sender:model];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

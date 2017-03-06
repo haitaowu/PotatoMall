@@ -8,6 +8,6 @@
 
 #import "BaseTableViewController.h"
 
-@interface ChartTableController : BaseTableViewController
 
+@interface ChartTableController : BaseTableViewController
 @end

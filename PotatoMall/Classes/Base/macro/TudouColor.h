@@ -16,6 +16,8 @@
 
 #define kMainNavigationBarColor                 RGBA(253, 187, 63, 1)
 
+#define kMainTitleBlackColor                    RGBA(62, 62, 62, 1)
+
 //button color
 #define kBtnDisableStateColor                   RGBA(162, 162, 162, 1)
 #define kChartHeaderBgColor                     RGBA(247, 247, 247, 1)

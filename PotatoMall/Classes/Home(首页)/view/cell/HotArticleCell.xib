@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -20,25 +21,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tudou" translatesAutoresizingMaskIntoConstraints="NO" id="OIj-X6-l5E">
-                        <rect key="frame" x="8" y="39" width="174" height="117.5"/>
+                        <rect key="frame" x="8" y="39" width="174" height="118"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="OIj-X6-l5E" secondAttribute="height" multiplier="234:158" id="hgG-4u-dyJ"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crB-TO-fLG">
-                        <rect key="frame" x="190" y="49" width="224" height="33.5"/>
+                        <rect key="frame" x="190" y="49" width="224" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-2-14 18:32:33" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bR-ws-uZ4">
-                        <rect key="frame" x="219" y="129.5" width="195" height="17"/>
+                        <rect key="frame" x="219" y="130" width="195" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.63529411764705879" green="0.63529411764705879" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabchart_selt" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-3S-hDf">
-                        <rect key="frame" x="196" y="130.5" width="15" height="15"/>
+                        <rect key="frame" x="196" y="131" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="G7z-3S-hDf" secondAttribute="height" multiplier="1:1" id="5JW-bP-Xsu"/>
                             <constraint firstAttribute="width" constant="15" id="o5g-wL-FUy"/>

@@ -26,6 +26,7 @@
 #define     kPriceOrderKey                  @"priceOrder"
 #define     kSalesSortKey                   @"salesSort"
 #define     kCatalogIdKey                   @"catalogId"
+#define     kGoodsInfoIdKey                 @"goodsInfoId"
 
 
 #define     kAvatarKey                       @"avatar"
