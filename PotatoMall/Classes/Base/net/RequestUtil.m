@@ -149,10 +149,11 @@
     NSMutableDictionary *globalParms = [NSMutableDictionary dictionary];
     globalParms[kDeviceTokenKey] = [AppInfoHelper currentDeviceIdentifier];
     globalParms[kVersionKey] = [AppInfoHelper shortVersionString];
-    NSString *encytData = [self encrytWithData:params];
-    globalParms[kData] = encytData;
+    if (params != nil) {
+        NSString *encytData = [self encrytWithData:params];
+        globalParms[kData] = encytData;
+    }
     return globalParms;
-    
 }
 
 + (NSString*)encrytWithData:(id) data

@@ -20,6 +20,7 @@
     }
     return self;
 }
+
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event
 {
     self.selected = YES;
@@ -29,9 +30,10 @@
 #pragma mark - set up 
 - (void)setupUI
 {
-    self.layer.borderColor = [UIColor redColor].CGColor;
+    self.layer.borderColor = kMainNavigationBarColor.CGColor;
     self.layer.borderWidth = 1.0;
-    self.layer.cornerRadius = 5;
+    self.layer.cornerRadius = 3;
+    self.layer.masksToBounds = YES;
 }
 
 #pragma mark -  setter and getter methods 
