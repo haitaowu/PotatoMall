@@ -232,7 +232,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 120;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

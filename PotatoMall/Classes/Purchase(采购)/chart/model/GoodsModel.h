@@ -25,9 +25,17 @@
 /**商品unit*/
 @property (nonatomic,copy) NSString *unit;
 
+/**请求地址（暂无数据后期完善）*/
+@property (nonatomic,copy) NSString *url;
+/**类型（暂无数据后期完善）*/
+@property (nonatomic,copy) NSString *type;
+
+
 /**是否已经选择*/
 @property (nonatomic,assign) Boolean isSelected;
 
 + (NSMutableArray*)goodsWithData:(id)data;
+
++ (NSMutableArray*)goodsWithArray:(id)data;
 
 @end

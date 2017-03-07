@@ -36,8 +36,13 @@
     self.topScrollView.selectedTextColor = kMainNavigationBarColor;
     self.topScrollView.sliderColor = kMainNavigationBarColor;
     self.topScrollView.sliderWidthPercent = 0.8;
+    __block typeof(self) blockSelf = self;
     self.topScrollView.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
         HTLog(@"top at scrollview at index title %@",title);
+        ProdCateModel *model = [blockSelf.categoryArray objectAtIndex:idx];
+        if (blockSelf.cateBlock != nil) {
+            blockSelf.cateBlock(model);
+        }
     };
 }
 

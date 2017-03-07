@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TopScrollView.h"
 
+@class ProdCateModel;
+
+typedef void(^CategoryBlock)(ProdCateModel *obj);
 @interface CategoryCell : UITableViewCell
 @property (nonatomic,strong)NSMutableArray *categoryArray;
+@property (nonatomic,copy) CategoryBlock cateBlock;
 
 @end

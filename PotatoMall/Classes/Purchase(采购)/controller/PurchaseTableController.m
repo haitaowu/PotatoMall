@@ -11,7 +11,11 @@
 #import "HTSearchHistoryController.h"
 #import "PurchaseSearchController.h"
 #import "CategoryCell.h"
+#import "PurchaseAdsCell.h"
+#import "PurSectionHeader.h"
 #import "ProdCateModel.h"
+#import "GoodsModel.h"
+#import "GoodsCell.h"
 
 
 #define kCategorySectionIdx             0
@@ -22,6 +26,9 @@
 
 
 static NSString *CategoryCellID = @"CategoryCellID";
+static NSString *PurchaseAdsCellID = @"PurchaseAdsCellID";
+static NSString *GoodsCellID = @"GoodsCellID";
+
 
 @interface PurchaseTableController ()
 @property (nonatomic,strong)NSMutableArray *categoryArray;
@@ -39,8 +46,9 @@ static NSString *CategoryCellID = @"CategoryCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    [self requestCategoryData];
     [self registerTableNibCell];
+    [self requestCategoryData];
+    [self requestProductsData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,6 +70,12 @@ static NSString *CategoryCellID = @"CategoryCellID";
 {
     UINib *cateNib = [UINib nibWithNibName:@"CategoryCell" bundle:nil];
     [self.tableView registerNib:cateNib forCellReuseIdentifier:CategoryCellID];
+    //2 ad cell
+    UINib *adsNib = [UINib nibWithNibName:@"PurchaseAdsCell" bundle:nil];
+    [self.tableView registerNib:adsNib forCellReuseIdentifier:PurchaseAdsCellID];
+    //
+    UINib *goodsCellNib = [UINib nibWithNibName:@"GoodsCell" bundle:nil];
+    [self.tableView registerNib:goodsCellNib forCellReuseIdentifier:GoodsCellID];
 }
 
 - (void)setupUI
@@ -88,6 +102,22 @@ static NSString *CategoryCellID = @"CategoryCellID";
 }
 
 
+#pragma mark - private methods
+- (void)processProductsData:(id)data
+{
+    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+    NSDictionary *obj = dict[@"obj"];
+    NSArray *carousel = obj[@"carousel"];
+    self.adsArray = [PurAdModel adsWithData:carousel];
+    //春节新上
+    NSString *sprGoods = obj[@"springGoods"];
+    self.springGoods = [GoodsModel goodsWithArray:sprGoods];
+    
+    //春节新上
+    NSString *hotGoods = obj[@"springHotGoods"];
+    self.springHotGoods = [GoodsModel goodsWithArray:hotGoods];
+    HTLog(@"hello");
+}
 
 #pragma mark - requset server
 - (void)requestCategoryData
@@ -110,6 +140,29 @@ static NSString *CategoryCellID = @"CategoryCellID";
         }];
     }
 }
+
+
+- (void)requestProductsData
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
+    }else{
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"success", nil];
+        NSString *subUrl = @"goods/index";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [self.tableView.mj_footer endRefreshing];
+            if (status == StatusTypSuccess) {
+               [self processProductsData:data];
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            [self.tableView.mj_footer endRefreshing];
+        }];
+    }
+}
+
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -150,15 +203,54 @@ static NSString *CategoryCellID = @"CategoryCellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
-    [cell setCategoryArray:self.categoryArray];
-    return cell;
+     if (indexPath.section == kCategorySectionIdx) {
+         CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
+         [cell setCategoryArray:self.categoryArray];
+         cell.cateBlock = ^(ProdCateModel *model){
+             HTLog(@"tap cate block ");
+         };
+         return cell;
+     }else if(indexPath.section == kAdvertiseSectionIdx){
+         PurchaseAdsCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchaseAdsCellID];
+         [cell loadAdsWithModels:self.adsArray];
+         cell.adBlock = ^(id sender){
+             HTLog(@"tap ads block ");
+         };
+         return cell;
+     }else if(indexPath.section == kProductsSectionIdx){
+         GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCellID];
+         GoodsModel *model = self.springGoods[indexPath.row];
+         [cell setModel:model];
+         return cell;
+     }else{
+         static NSString *CellIdentifier = @"Cell";
+         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+         if(cell == nil)
+         {
+             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+         }
+         return cell;
+     }
 }
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.001;
+    if (section ==  kHotProductsSectionIdx) {
+        if ([self.springHotGoods count] > 0) {
+            return 50;
+        }else{
+            return 0.001;
+        }
+    }else if (section == kProductsSectionIdx){
+        if ([self.springGoods count] > 0) {
+            return 50;
+        }else{
+            return 0.001;
+        }
+    }else{
+        return 0.001;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -173,17 +265,39 @@ static NSString *CategoryCellID = @"CategoryCellID";
 //    [self performSegueWithIdentifier:@"detailSegue" sender:model];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section ==  kHotProductsSectionIdx) {
+        if ([self.springHotGoods count] > 0) {
+            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季热卖" moreTitle:@"查看更多"];
+            return titleHeader;
+        }else{
+            return nil;
+        }
+    }else if (section == kProductsSectionIdx){
+        if ([self.springGoods count] > 0) {
+            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季上新" moreTitle:@"查看更多"];
+            return titleHeader;
+        }else{
+            return nil;
+        }
+    }else{
+        return  nil;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == kCategorySectionIdx) {
         CGFloat height = kScrollViewHeight;
         return height;
     }else if (indexPath.section == kAdvertiseSectionIdx) {
-        return 180;
+        CGFloat height = kScreenWidth * 2.0 / 3.0;
+        return height;
     }else if (indexPath.section == kHotProductsSectionIdx) {
-        return 180;
+        return 120;
     }else{
-        return 180;
+        return 150;
     }
    
 }

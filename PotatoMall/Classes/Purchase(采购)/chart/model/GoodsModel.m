@@ -14,7 +14,12 @@
 {
     NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
     NSArray *list = [dict objectForKey:@"obj"];
-    NSArray *goods = [GoodsModel mj_objectArrayWithKeyValuesArray:list];
+    return [self goodsWithArray:list];
+}
+
++ (NSMutableArray*)goodsWithArray:(id)data
+{
+    NSArray *goods = [GoodsModel mj_objectArrayWithKeyValuesArray:data];
     return [NSMutableArray arrayWithArray:goods];
 }
 
