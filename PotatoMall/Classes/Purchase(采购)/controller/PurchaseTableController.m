@@ -16,7 +16,7 @@
 #import "ProdCateModel.h"
 #import "GoodsModel.h"
 #import "GoodsCell.h"
-
+#import "PurchHotCell.h"
 
 #define kCategorySectionIdx             0
 
@@ -28,6 +28,7 @@
 static NSString *CategoryCellID = @"CategoryCellID";
 static NSString *PurchaseAdsCellID = @"PurchaseAdsCellID";
 static NSString *GoodsCellID = @"GoodsCellID";
+static NSString *PurchHotCellID = @"PurchHotCellID";
 
 
 @interface PurchaseTableController ()
@@ -76,6 +77,9 @@ static NSString *GoodsCellID = @"GoodsCellID";
     //
     UINib *goodsCellNib = [UINib nibWithNibName:@"GoodsCell" bundle:nil];
     [self.tableView registerNib:goodsCellNib forCellReuseIdentifier:GoodsCellID];
+    //
+    UINib *hotNib = [UINib nibWithNibName:@"PurchHotCell" bundle:nil];
+    [self.tableView registerNib:hotNib forCellReuseIdentifier:PurchHotCellID];
 }
 
 - (void)setupUI
@@ -223,12 +227,11 @@ static NSString *GoodsCellID = @"GoodsCellID";
          [cell setModel:model];
          return cell;
      }else{
-         static NSString *CellIdentifier = @"Cell";
-         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-         if(cell == nil)
-         {
-             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-         }
+         PurchHotCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchHotCellID];
+         [cell setSpringHotGoods:self.springHotGoods];
+         cell.itemBlock = ^(GoodsModel *model){
+             HTLog(@"didSelectItemAtIndexPath");
+         };
          return cell;
      }
 }
@@ -255,7 +258,11 @@ static NSString *GoodsCellID = @"GoodsCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0.001;
+    if (section ==  kHotProductsSectionIdx) {
+            return 15;
+    }else{
+        return 0.001;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -270,6 +277,9 @@ static NSString *GoodsCellID = @"GoodsCellID";
     if (section ==  kHotProductsSectionIdx) {
         if ([self.springHotGoods count] > 0) {
             PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季热卖" moreTitle:@"查看更多"];
+            titleHeader.moreBlock = ^(){
+                HTLog(@"tap more btn ");
+            };
             return titleHeader;
         }else{
             return nil;
@@ -277,6 +287,9 @@ static NSString *GoodsCellID = @"GoodsCellID";
     }else if (section == kProductsSectionIdx){
         if ([self.springGoods count] > 0) {
             PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季上新" moreTitle:@"查看更多"];
+            titleHeader.moreBlock = ^(){
+                HTLog(@"tap more btn ");
+            };
             return titleHeader;
         }else{
             return nil;

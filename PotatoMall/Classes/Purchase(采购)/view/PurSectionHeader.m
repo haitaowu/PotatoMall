@@ -103,12 +103,21 @@
         [self addSubview:moreBtn];
         [moreBtn setImage:img forState:UIControlStateNormal];
         [moreBtn setTitle:moreTitle forState:UIControlStateNormal];
+        [moreBtn addTarget:self action:@selector(tapMoreBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     
     //separator line 
 //    UIView *separtorLine = [[UIView alloc] init];
 //    self.separtorLine = separtorLine;
 //    [self addSubview:separtorLine];
+}
+
+#pragma mark - selectors
+- (void)tapMoreBtn
+{
+    if (self.moreBlock != nil) {
+        self.moreBlock();
+    }
 }
 
 #pragma mark - private methods

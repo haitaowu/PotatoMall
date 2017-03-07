@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^MoreBlock)();
 
 @interface PurSectionHeader :UIView
 - (instancetype)initWithTitle:(NSString*)title moreTitle:(NSString*)morTitle;
+@property (nonatomic,copy) MoreBlock moreBlock;
 @end

@@ -93,6 +93,10 @@
 		BECC9FA41E6EE5F9001DE8F1 /* HorizonAlignBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9FA31E6EE5F9001DE8F1 /* HorizonAlignBtn.m */; };
 		BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */; };
 		BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */; };
+		BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFA1E6EF79100054F45 /* PurchHotCell.m */; };
+		BED95DFD1E6EF79100054F45 /* PurchHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */; };
+		BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */; };
+		BED95E021E6EF82100054F45 /* HotCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95E001E6EF82100054F45 /* HotCollectionCell.xib */; };
 		BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */; };
 		BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */; };
 		BEE4215C1E6BF3DC00655C22 /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE4215B1E6BF3DC00655C22 /* GoodsModel.m */; };
@@ -270,6 +274,12 @@
 		BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSuccessController.m; sourceTree = "<group>"; };
 		BED604BD1E5DF7E6002BB119 /* HTCustomeSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCustomeSearchBar.h; sourceTree = "<group>"; };
 		BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCustomeSearchBar.m; sourceTree = "<group>"; };
+		BED95DF91E6EF79100054F45 /* PurchHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchHotCell.h; sourceTree = "<group>"; };
+		BED95DFA1E6EF79100054F45 /* PurchHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchHotCell.m; sourceTree = "<group>"; };
+		BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchHotCell.xib; sourceTree = "<group>"; };
+		BED95DFE1E6EF82100054F45 /* HotCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCollectionCell.h; sourceTree = "<group>"; };
+		BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCollectionCell.m; sourceTree = "<group>"; };
+		BED95E001E6EF82100054F45 /* HotCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotCollectionCell.xib; sourceTree = "<group>"; };
 		BEE29C5A1E5E814800DF3782 /* HTSearchHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSearchHistoryController.h; sourceTree = "<group>"; };
 		BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSearchHistoryController.m; sourceTree = "<group>"; };
 		BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTSearchHistoryController.xib; sourceTree = "<group>"; };
@@ -780,6 +790,12 @@
 		BEC06DCB1E5C78F600667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BED95DFE1E6EF82100054F45 /* HotCollectionCell.h */,
+				BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */,
+				BED95E001E6EF82100054F45 /* HotCollectionCell.xib */,
+				BED95DF91E6EF79100054F45 /* PurchHotCell.h */,
+				BED95DFA1E6EF79100054F45 /* PurchHotCell.m */,
+				BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */,
 				BECC9F9F1E6EE459001DE8F1 /* PurSectionHeader.h */,
 				BECC9FA01E6EE459001DE8F1 /* PurSectionHeader.m */,
 				BE0DDB491E6D46FA00F15168 /* cell */,
@@ -965,8 +981,10 @@
 				BE077A7A1E6AC606006F0EFB /* ChartSectionHeader.xib in Resources */,
 				BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */,
 				BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */,
+				BED95E021E6EF82100054F45 /* HotCollectionCell.xib in Resources */,
 				BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */,
 				BECC9F9B1E6EDCC2001DE8F1 /* PurchaseAdsCell.xib in Resources */,
+				BED95DFD1E6EF79100054F45 /* PurchHotCell.xib in Resources */,
 				BE0DDB5B1E6D63A100F15168 /* HTPurchaseBar.xib in Resources */,
 				BE0DDB451E6D0B4300F15168 /* HTSubmitBar.xib in Resources */,
 				BECC9F961E6ED2B8001DE8F1 /* CategoryCell.xib in Resources */,
@@ -1084,6 +1102,7 @@
 				BE5ED7E81E62B29000C4B1D0 /* SecurityUtil.m in Sources */,
 				BE0DDB421E6D0B4300F15168 /* HTCalculatorToolBar.m in Sources */,
 				BE93C2F21E680D6200CC0B96 /* ProviceTableController.m in Sources */,
+				BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */,
 				BE077A5B1E6A967C006F0EFB /* PurchaseTableController.m in Sources */,
 				BE5ED79D1E619E6A00C4B1D0 /* BaseTableViewController.m in Sources */,
 				BE0DDB481E6D447E00F15168 /* PurchaseSearchController.m in Sources */,
@@ -1111,6 +1130,7 @@
 				BE93C2EC1E67C5E300CC0B96 /* UserIDController.m in Sources */,
 				BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */,
 				BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */,
+				BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 				BE7F9A2F1E6D80FD00DD21CF /* GoodsDetailModel.m in Sources */,
 			);

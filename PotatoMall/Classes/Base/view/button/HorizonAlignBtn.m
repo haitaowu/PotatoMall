@@ -21,7 +21,7 @@
     self = [super initWithFrame:frame];
     if (self != nil) {
         self.titleLabel.textAlignment = NSTextAlignmentRight;
-        [self setTitleColor:kMainTitleBlackColor forState:UIControlStateNormal];
+        [self setTitleColor:kBtnDisableStateColor forState:UIControlStateNormal];
         [self.titleLabel setFont:[UIFont systemFontOfSize:14]];
     }
     return self;
