@@ -84,6 +84,8 @@
 		BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */; };
 		BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE30997B1E5C71AE0062EBA9 /* Main.storyboard */; };
 		BEC7F99C1E69A44E0029E6D6 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7F99B1E69A44E0029E6D6 /* ArticleDetailModel.m */; };
+		BECC9F951E6ED2B8001DE8F1 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9F931E6ED2B8001DE8F1 /* CategoryCell.m */; };
+		BECC9F961E6ED2B8001DE8F1 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BECC9F941E6ED2B8001DE8F1 /* CategoryCell.xib */; };
 		BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */; };
 		BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */; };
 		BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */; };
@@ -245,6 +247,9 @@
 		BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TuDouPrefixHeader.pch; sourceTree = "<group>"; };
 		BEC7F99A1E69A44E0029E6D6 /* ArticleDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailModel.h; sourceTree = "<group>"; };
 		BEC7F99B1E69A44E0029E6D6 /* ArticleDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailModel.m; sourceTree = "<group>"; };
+		BECC9F921E6ED2B8001DE8F1 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		BECC9F931E6ED2B8001DE8F1 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		BECC9F941E6ED2B8001DE8F1 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		BED016A71E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		BED016A81E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		BED36E9B1E68FD1900DDF82F /* RegisterSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSuccessController.h; sourceTree = "<group>"; };
@@ -759,6 +764,9 @@
 			children = (
 				BE0DDB491E6D46FA00F15168 /* cell */,
 				BEC06DD61E5C796D00667D73 /* Purchase.storyboard */,
+				BECC9F921E6ED2B8001DE8F1 /* CategoryCell.h */,
+				BECC9F931E6ED2B8001DE8F1 /* CategoryCell.m */,
+				BECC9F941E6ED2B8001DE8F1 /* CategoryCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -937,6 +945,7 @@
 				BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */,
 				BE0DDB5B1E6D63A100F15168 /* HTPurchaseBar.xib in Resources */,
 				BE0DDB451E6D0B4300F15168 /* HTSubmitBar.xib in Resources */,
+				BECC9F961E6ED2B8001DE8F1 /* CategoryCell.xib in Resources */,
 				BE077A6F1E6A9998006F0EFB /* ChartCell.xib in Resources */,
 				BE5B803F1E5F1F12005FDE1A /* HotArticleCell.xib in Resources */,
 				BE0DDB431E6D0B4300F15168 /* HTCalculatorToolBar.xib in Resources */,
@@ -1033,6 +1042,7 @@
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */,
 				BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */,
+				BECC9F951E6ED2B8001DE8F1 /* CategoryCell.m in Sources */,
 				BE93C3001E681C2800CC0B96 /* CityTableController.m in Sources */,
 				BE8FA4E81E646C2D00F92C46 /* ArticleModel.m in Sources */,
 				BE077A781E6AC581006F0EFB /* ChartSectionHeader.m in Sources */,

@@ -10,14 +10,24 @@
 #import "HTCustomeSearchBar.h"
 #import "HTSearchHistoryController.h"
 #import "PurchaseSearchController.h"
-#import "TopScrollView.h"
+#import "CategoryCell.h"
 #import "ProdCateModel.h"
 
 
+#define kCategorySectionIdx             0
+
+#define kAdvertiseSectionIdx            1
+#define kHotProductsSectionIdx          2
+#define kProductsSectionIdx             3
+
+
+static NSString *CategoryCellID = @"CategoryCellID";
 
 @interface PurchaseTableController ()
-@property (weak, nonatomic) TopScrollView *topScrollView;
 @property (nonatomic,strong)NSMutableArray *categoryArray;
+@property (nonatomic,strong)NSMutableArray *adsArray;
+@property (nonatomic,strong)NSMutableArray *springHotGoods;
+@property (nonatomic,strong)NSMutableArray *springGoods;
 
 @end
 
@@ -29,8 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    [self setupTableheaderView];
     [self requestCategoryData];
+    [self registerTableNibCell];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,6 +58,12 @@
 }
 
 #pragma mark - setup UI
+- (void)registerTableNibCell
+{
+    UINib *cateNib = [UINib nibWithNibName:@"CategoryCell" bundle:nil];
+    [self.tableView registerNib:cateNib forCellReuseIdentifier:CategoryCellID];
+}
+
 - (void)setupUI
 {
     __block typeof(self) blockSelf = self;
@@ -57,31 +73,8 @@
     self.navigationItem.titleView = searchField;
 }
 
-- (void)setupTableheaderView
-{
-    //tableView tableHeaderView
-    CGFloat height = kScrollViewHeight;
-    CGRect frame = CGRectMake(0, 0, kScreenWidth, height);
-    TopScrollView *topheader = [[TopScrollView alloc] initWithFrame:frame];
-    self.tableView.tableHeaderView = topheader;
-    self.topScrollView = topheader;
-    self.topScrollView.normalTextColor = kMainTitleBlackColor;
-    self.topScrollView.selectedTextColor = kMainNavigationBarColor;
-    self.topScrollView.sliderColor = kMainNavigationBarColor;
-    self.topScrollView.sliderWidthPercent = 0.8;
-    self.topScrollView.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
-        HTLog(@"top at scrollview at index title %@",title);
-    };
-}
 
 #pragma mark - update ui
-- (void)updateTopScrollViewWithDatas:(NSMutableArray*)datas
-{
-    NSArray *subItemTitles = [self subItemTitlesWithSubItems:datas];
-    self.topScrollView.titles = [NSMutableArray arrayWithArray:subItemTitles];
-    [self.topScrollView scrollVisibleTo:0];
-}
-
 - (void)showSearchHistoryView
 {
     //不使用变量持有它，否则naivationBar的背景色没有办法改变回去。
@@ -94,16 +87,7 @@
     [self presentViewController:navController animated:NO completion:nil];
 }
 
-#pragma mark - private methods
-- (NSArray*)subItemTitlesWithSubItems:(NSArray*)subItems
-{
-    NSMutableArray *titles = [NSMutableArray array];
-    for (ProdCateModel *obj in subItems) {
-        NSString *title = obj.name;
-        [titles addObject:title];
-    }
-    return titles;
-}
+
 
 #pragma mark - requset server
 - (void)requestCategoryData
@@ -119,13 +103,89 @@
             [self.tableView.mj_footer endRefreshing];
             if (status == StatusTypSuccess) {
                 self.categoryArray = [ProdCateModel productCategoryesWithData:data];
-                [self updateTopScrollViewWithDatas:self.categoryArray];
-            }
+                            }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_footer endRefreshing];
         }];
     }
+}
+
+#pragma mark - Table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if ([RequestUtil networkAvaliable] == NO) {
+        return 0;
+    }else{
+        if (section == kCategorySectionIdx) {
+            if ([self.categoryArray count] > 0) {
+                return 1;
+            }else{
+                return 0;
+            }
+        }else if (section == kAdvertiseSectionIdx) {
+            if ([self.adsArray count] > 0) {
+                return 1;
+            }else{
+                return 0;
+            }
+        }else if (section == kHotProductsSectionIdx) {
+            if ([self.springHotGoods count] > 0) {
+                return 1;
+            }else{
+                return 0;
+            }
+        }else{
+            return [self.springGoods count] ;
+        }
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        return 0;
+    }else{
+        return 4;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
+    [cell setCategoryArray:self.categoryArray];
+    return cell;
+}
+
+#pragma mark - UITableView --- Table view  delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.001;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.001;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    ArticleModel *model = self.articlesArray[indexPath.row];
+//    [self performSegueWithIdentifier:@"detailSegue" sender:model];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == kCategorySectionIdx) {
+        CGFloat height = kScrollViewHeight;
+        return height;
+    }else if (indexPath.section == kAdvertiseSectionIdx) {
+        return 180;
+    }else if (indexPath.section == kHotProductsSectionIdx) {
+        return 180;
+    }else{
+        return 180;
+    }
+   
 }
 
 
