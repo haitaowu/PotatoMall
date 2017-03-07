@@ -36,6 +36,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 @property (nonatomic,strong)NSMutableArray *adsArray;
 @property (nonatomic,strong)NSMutableArray *springHotGoods;
 @property (nonatomic,strong)NSMutableArray *springGoods;
+@property (nonatomic,assign) int pageNo;
+@property (nonatomic,assign) int pageSize;
 
 @end
 
@@ -47,7 +49,10 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    self.pageNo = 0;
+    self.pageSize = 10;
     [self registerTableNibCell];
+    [self setupTableViewFooter];
     [self requestCategoryData];
     [self requestProductsData];
 }
@@ -91,6 +96,18 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     self.navigationItem.titleView = searchField;
 }
 
+- (void)setupTableViewFooter
+{
+    MJRefreshAutoNormalFooter  *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.pageNo ++;
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[kPageNo] = @(self.pageNo);
+        params[kPageSize] = @(self.pageSize);
+        [self requestMoreProductsWith:params];
+    }];
+    self.tableView.mj_footer = footer;
+    [self.tableView.mj_footer setHidden:YES];
+}
 
 #pragma mark - update ui
 - (void)showSearchHistoryView
@@ -159,6 +176,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
             [self.tableView.mj_footer endRefreshing];
             if (status == StatusTypSuccess) {
                [self processProductsData:data];
+                [self.tableView.mj_footer setHidden:NO];
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
@@ -167,6 +185,28 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     }
 }
 
+
+- (void)requestMoreProductsWith:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
+    }else{
+        NSString *subUrl = @"goods/indexList";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [self.tableView.mj_footer endRefreshing];
+            if (status == StatusTypSuccess) {
+                NSMutableArray *moreData = [GoodsModel goodsWithData:data];
+                [self.springGoods addObjectsFromArray:moreData];
+            }
+            
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            [self.tableView.mj_footer endRefreshing];
+        }];
+    }
+}
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
