@@ -17,6 +17,7 @@
 		BE077A7A1E6AC606006F0EFB /* ChartSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE077A791E6AC606006F0EFB /* ChartSectionHeader.xib */; };
 		BE0CFD421E6DA0F200003FE1 /* ParamsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0CFD411E6DA0F200003FE1 /* ParamsCell.m */; };
 		BE0CFD451E6DA13B00003FE1 /* ProductSpecificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0CFD441E6DA13B00003FE1 /* ProductSpecificationCell.m */; };
+		BE0CFD481E6DB85B00003FE1 /* SpecButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0CFD471E6DB85B00003FE1 /* SpecButton.m */; };
 		BE0DDB421E6D0B4300F15168 /* HTCalculatorToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0DDB3D1E6D0B4300F15168 /* HTCalculatorToolBar.m */; };
 		BE0DDB431E6D0B4300F15168 /* HTCalculatorToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0DDB3E1E6D0B4300F15168 /* HTCalculatorToolBar.xib */; };
 		BE0DDB441E6D0B4300F15168 /* HTSubmitBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0DDB401E6D0B4300F15168 /* HTSubmitBar.m */; };
@@ -114,6 +115,8 @@
 		BE0CFD411E6DA0F200003FE1 /* ParamsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParamsCell.m; sourceTree = "<group>"; };
 		BE0CFD431E6DA13B00003FE1 /* ProductSpecificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSpecificationCell.h; sourceTree = "<group>"; };
 		BE0CFD441E6DA13B00003FE1 /* ProductSpecificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSpecificationCell.m; sourceTree = "<group>"; };
+		BE0CFD461E6DB85B00003FE1 /* SpecButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecButton.h; sourceTree = "<group>"; };
+		BE0CFD471E6DB85B00003FE1 /* SpecButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecButton.m; sourceTree = "<group>"; };
 		BE0DDB3C1E6D0B4300F15168 /* HTCalculatorToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCalculatorToolBar.h; sourceTree = "<group>"; };
 		BE0DDB3D1E6D0B4300F15168 /* HTCalculatorToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCalculatorToolBar.m; sourceTree = "<group>"; };
 		BE0DDB3E1E6D0B4300F15168 /* HTCalculatorToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTCalculatorToolBar.xib; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 				BE0CFD411E6DA0F200003FE1 /* ParamsCell.m */,
 				BE0CFD431E6DA13B00003FE1 /* ProductSpecificationCell.h */,
 				BE0CFD441E6DA13B00003FE1 /* ProductSpecificationCell.m */,
+				BE0CFD461E6DB85B00003FE1 /* SpecButton.h */,
+				BE0CFD471E6DB85B00003FE1 /* SpecButton.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1052,6 +1057,7 @@
 				BE7F9A2C1E6D7BE300DD21CF /* ProductDetailTableController.m in Sources */,
 				BE93AF281E65B7BF001F99BC /* SeachSectionHeader.m in Sources */,
 				BE077A721E6A9ADA006F0EFB /* PlustField.m in Sources */,
+				BE0CFD481E6DB85B00003FE1 /* SpecButton.m in Sources */,
 				BE93C2EC1E67C5E300CC0B96 /* UserIDController.m in Sources */,
 				BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */,
 				BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */,

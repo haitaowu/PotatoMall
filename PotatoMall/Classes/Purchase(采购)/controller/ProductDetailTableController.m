@@ -12,6 +12,17 @@
 #import "ParamsCell.h"
 #import "ProductSpecificationCell.h"
 
+#define kDescriptionSectionIdx              0
+#define kDescriptionFirstRowIdx             0
+#define kDescriptionSecondRowIdx            1
+
+#define kSpecifSectionIdx                   1
+#define kSpecifRowIdx                       1
+
+#define kStoreSectionIdx                    2
+
+#define kImageParamsSectionIdx              3
+
 @interface ProductDetailTableController ()
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *statusView;
@@ -101,4 +112,28 @@
     return 0.001;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == kDescriptionSectionIdx){
+        if (indexPath.row == kDescriptionFirstRowIdx) {
+            return 120;
+        }else{
+            return 44;
+        }
+    }else if(indexPath.section == kSpecifSectionIdx){
+        if (indexPath.row == kSpecifRowIdx) {
+            NSInteger count = [self.goodsDetailModel.goodsSpecs count];
+            return [ProductSpecificationCell cellHieghtWithCount:count];
+        }else{
+            return 44;
+        }
+    }else if(indexPath.section == kStoreSectionIdx){
+        return 60;
+    }else if(indexPath.section == kImageParamsSectionIdx){
+        return 250;
+    }else{
+        return 44;
+    }
+}
 @end

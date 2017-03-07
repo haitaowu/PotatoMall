@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpecButton.h"
 #import "GoodsDetailModel.h"
+
+typedef void(^SelectSpecifBlock)(id specInfo);
 
 @interface ProductSpecificationCell : UITableViewCell
 @property (nonatomic,strong)GoodsDetailModel *detailModel;
+@property (nonatomic,copy)SelectSpecifBlock  specBlock;
++ (CGFloat)cellHieghtWithCount:(NSInteger)count;
 @end

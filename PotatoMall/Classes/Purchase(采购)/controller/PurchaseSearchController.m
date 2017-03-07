@@ -38,6 +38,12 @@ static NSString *GoodsCellID = @"GoodsCellID";
     [self tapComprehenBtn:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"productDetailSegue"]) {
