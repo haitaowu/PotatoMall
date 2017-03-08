@@ -93,6 +93,7 @@
 		BECC9FA41E6EE5F9001DE8F1 /* HorizonAlignBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9FA31E6EE5F9001DE8F1 /* HorizonAlignBtn.m */; };
 		BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */; };
 		BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */; };
+		BED84A011E6FCCDF001E7A27 /* PurchaseMoresController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED84A001E6FCCDF001E7A27 /* PurchaseMoresController.m */; };
 		BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFA1E6EF79100054F45 /* PurchHotCell.m */; };
 		BED95DFD1E6EF79100054F45 /* PurchHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */; };
 		BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */; };
@@ -274,6 +275,8 @@
 		BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSuccessController.m; sourceTree = "<group>"; };
 		BED604BD1E5DF7E6002BB119 /* HTCustomeSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCustomeSearchBar.h; sourceTree = "<group>"; };
 		BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCustomeSearchBar.m; sourceTree = "<group>"; };
+		BED849FF1E6FCCDF001E7A27 /* PurchaseMoresController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseMoresController.h; sourceTree = "<group>"; };
+		BED84A001E6FCCDF001E7A27 /* PurchaseMoresController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseMoresController.m; sourceTree = "<group>"; };
 		BED95DF91E6EF79100054F45 /* PurchHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchHotCell.h; sourceTree = "<group>"; };
 		BED95DFA1E6EF79100054F45 /* PurchHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchHotCell.m; sourceTree = "<group>"; };
 		BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchHotCell.xib; sourceTree = "<group>"; };
@@ -770,6 +773,8 @@
 				BE0DDB471E6D447E00F15168 /* PurchaseSearchController.m */,
 				BE7F9A2A1E6D7BE300DD21CF /* ProductDetailTableController.h */,
 				BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */,
+				BED849FF1E6FCCDF001E7A27 /* PurchaseMoresController.h */,
+				BED84A001E6FCCDF001E7A27 /* PurchaseMoresController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1085,6 +1090,7 @@
 				BEE8EEDC1E63CAD6008FD2D4 /* MeMenuCell.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */,
+				BED84A011E6FCCDF001E7A27 /* PurchaseMoresController.m in Sources */,
 				BECC9FA41E6EE5F9001DE8F1 /* HorizonAlignBtn.m in Sources */,
 				BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */,
 				BECC9F951E6ED2B8001DE8F1 /* CategoryCell.m in Sources */,

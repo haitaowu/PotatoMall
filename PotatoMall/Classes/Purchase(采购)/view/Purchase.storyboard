@@ -14,7 +14,7 @@
         <scene sceneID="phH-As-bX5">
             <objects>
                 <tableViewController id="eep-s6-wDy" customClass="PurchaseTableController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="umX-2K-yHU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="umX-2K-yHU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSD-1h-JOo" id="6Lv-rq-Gl6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -42,6 +42,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="RL1-mJ-cHh" kind="show" identifier="searchGoodsSegue" id="qXA-kU-a6n"/>
+                        <segue destination="6Th-fW-xoR" kind="show" identifier="cateListSegue" id="CR5-oz-7wd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wZ-Xi-o5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,9 +497,113 @@
             </objects>
             <point key="canvasLocation" x="156" y="386.35682158920542"/>
         </scene>
+        <!--Purchase Mores Controller-->
+        <scene sceneID="as9-7r-GOF">
+            <objects>
+                <viewController id="6Th-fW-xoR" customClass="PurchaseMoresController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZJZ-OD-g9G"/>
+                        <viewControllerLayoutGuide type="bottom" id="WbM-rC-uXc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3r5-oD-4ih">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdU-BR-vCK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ss-uh-ikt">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="44"/>
+                                        <state key="normal" title="综合">
+                                            <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected" title="综合">
+                                            <color key="titleColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapComprehenBtn:" destination="6Th-fW-xoR" eventType="touchUpInside" id="VQ4-Fc-F2Z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAh-K1-54p">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="44"/>
+                                        <state key="normal" title="销量">
+                                            <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected" title="销量">
+                                            <color key="titleColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapSalesBtn:" destination="6Th-fW-xoR" eventType="touchUpInside" id="N4v-63-LLq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pef-Kq-gdY">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="44"/>
+                                        <state key="normal" title="价格">
+                                            <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected" title="价格">
+                                            <color key="titleColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapPriceBtn:" destination="6Th-fW-xoR" eventType="touchUpInside" id="FFD-RY-zLt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4ss-uh-ikt" secondAttribute="bottom" id="285-XN-IHA"/>
+                                    <constraint firstItem="pef-Kq-gdY" firstAttribute="width" secondItem="4ss-uh-ikt" secondAttribute="width" id="5kH-LJ-GeB"/>
+                                    <constraint firstItem="VAh-K1-54p" firstAttribute="top" secondItem="hdU-BR-vCK" secondAttribute="top" id="7tf-Zw-UvQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="pef-Kq-gdY" secondAttribute="bottom" id="BV1-9B-UZr"/>
+                                    <constraint firstAttribute="bottom" secondItem="VAh-K1-54p" secondAttribute="bottom" id="ELl-dN-3w2"/>
+                                    <constraint firstItem="pef-Kq-gdY" firstAttribute="leading" secondItem="VAh-K1-54p" secondAttribute="trailing" id="FKX-zV-gMV"/>
+                                    <constraint firstItem="4ss-uh-ikt" firstAttribute="top" secondItem="hdU-BR-vCK" secondAttribute="top" id="FnM-gw-pMy"/>
+                                    <constraint firstAttribute="trailing" secondItem="pef-Kq-gdY" secondAttribute="trailing" id="Hww-oD-wdV"/>
+                                    <constraint firstItem="pef-Kq-gdY" firstAttribute="top" secondItem="hdU-BR-vCK" secondAttribute="top" id="USr-sS-O66"/>
+                                    <constraint firstItem="VAh-K1-54p" firstAttribute="width" secondItem="4ss-uh-ikt" secondAttribute="width" id="anZ-T5-qwl"/>
+                                    <constraint firstItem="VAh-K1-54p" firstAttribute="leading" secondItem="4ss-uh-ikt" secondAttribute="trailing" id="gsX-rr-Nh8"/>
+                                    <constraint firstAttribute="height" constant="44" id="h15-YP-haP"/>
+                                    <constraint firstItem="4ss-uh-ikt" firstAttribute="leading" secondItem="hdU-BR-vCK" secondAttribute="leading" id="unE-Sl-QSY"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="V18-nd-bML">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Th-fW-xoR" id="cWb-4a-kVM"/>
+                                    <outlet property="delegate" destination="6Th-fW-xoR" id="Zuj-jn-Fhc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hdU-BR-vCK" firstAttribute="leading" secondItem="3r5-oD-4ih" secondAttribute="leading" id="7Zf-ci-g4s"/>
+                            <constraint firstItem="WbM-rC-uXc" firstAttribute="top" secondItem="V18-nd-bML" secondAttribute="bottom" id="8UD-X3-kky"/>
+                            <constraint firstItem="hdU-BR-vCK" firstAttribute="top" secondItem="ZJZ-OD-g9G" secondAttribute="bottom" id="OKI-H3-Rdh"/>
+                            <constraint firstItem="V18-nd-bML" firstAttribute="top" secondItem="hdU-BR-vCK" secondAttribute="bottom" id="h8v-Pt-yTB"/>
+                            <constraint firstAttribute="trailing" secondItem="V18-nd-bML" secondAttribute="trailing" id="p2I-lC-e0e"/>
+                            <constraint firstAttribute="trailing" secondItem="hdU-BR-vCK" secondAttribute="trailing" id="sAy-OR-1ze"/>
+                            <constraint firstItem="V18-nd-bML" firstAttribute="leading" secondItem="3r5-oD-4ih" secondAttribute="leading" id="yqA-dh-t24"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="compreBtn" destination="4ss-uh-ikt" id="TAj-wU-Ha3"/>
+                        <outlet property="priceBtn" destination="pef-Kq-gdY" id="Ugs-GP-NZa"/>
+                        <outlet property="salesBtn" destination="VAh-K1-54p" id="Nq9-S1-gB6"/>
+                        <outlet property="tableView" destination="V18-nd-bML" id="YXg-pY-rwc"/>
+                        <segue destination="iJc-fz-zfI" kind="show" identifier="productDetailSegue" id="5jQ-GC-0ec"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLI-MW-SDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2001" y="-370"/>
+        </scene>
     </scenes>
     <resources>
         <image name="farmer" width="150" height="150"/>
         <image name="purchase_chart" width="24" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5jQ-GC-0ec"/>
+    </inferredMetricsTieBreakers>
 </document>

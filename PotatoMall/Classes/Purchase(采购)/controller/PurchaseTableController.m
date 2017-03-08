@@ -17,6 +17,7 @@
 #import "GoodsModel.h"
 #import "GoodsCell.h"
 #import "PurchHotCell.h"
+#import "PurchaseMoresController.h"
 
 #define kCategorySectionIdx             0
 
@@ -61,6 +62,9 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 {
     [super viewWillAppear:animated];
     [self.navigationController  setToolbarHidden:YES animated:YES];
+    if (self.springGoods == nil) {
+        [self requestProductsData];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -68,6 +72,9 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     if ([segue.identifier isEqualToString:@"searchGoodsSegue"]) {
         PurchaseSearchController *destinationControl = (PurchaseSearchController*)[segue destinationViewController];
         destinationControl.searchWord = sender;
+    }else if ([segue.identifier isEqualToString:@"cateListSegue"]) {
+        PurchaseMoresController *destinationControl = (PurchaseMoresController*)[segue destinationViewController];
+        destinationControl.cateModel = sender;
     }
 }
 
@@ -173,14 +180,14 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         NSString *subUrl = @"goods/index";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [self.tableView.mj_footer endRefreshing];
+            [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
                [self processProductsData:data];
                 [self.tableView.mj_footer setHidden:NO];
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
-            [self.tableView.mj_footer endRefreshing];
+            [self.tableView.mj_header endRefreshing];
         }];
     }
 }
@@ -250,8 +257,10 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
      if (indexPath.section == kCategorySectionIdx) {
          CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
          [cell setCategoryArray:self.categoryArray];
+         __block typeof(self) blockSelf = self;
          cell.cateBlock = ^(ProdCateModel *model){
              HTLog(@"tap cate block ");
+             [blockSelf performSegueWithIdentifier:@"cateListSegue" sender:model];
          };
          return cell;
      }else if(indexPath.section == kAdvertiseSectionIdx){
@@ -309,7 +318,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    ArticleModel *model = self.articlesArray[indexPath.row];
-//    [self performSegueWithIdentifier:@"detailSegue" sender:model];
+//    [self performSegueWithIdentifier:@"cateListSegue" sender:model];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
