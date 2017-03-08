@@ -11,6 +11,7 @@
 #import "GoodsDetailModel.h"
 #import "ParamsCell.h"
 #import "ProductSpecificationCell.h"
+#import "PreOrderTableController.h"
 
 #define kDescriptionSectionIdx              0
 #define kDescriptionFirstRowIdx             0
@@ -41,12 +42,28 @@
     [self reqGoodsInfo];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"preOrderSegue"]) {
+        PreOrderTableController *destinationControl = (PreOrderTableController*)[segue destinationViewController];
+        destinationControl.goodsArray = sender;
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO];
+}
+
 #pragma mark - setup UI 
 - (void)setupToolbar
 {
-    [self.navigationController setToolbarHidden:NO];
+    
+    __block typeof(self) blockSelf = self;
     HTPurchaseBar *bar = [HTPurchaseBar customBarWithPurchaseBlock:^{
         NSLog(@"purchase  order...");
+        [blockSelf performSegueWithIdentifier:@"preOrderSegue" sender:@[self.goodModel]];
     } chartBlock:^{
         NSLog(@"chart  order...");
     }];

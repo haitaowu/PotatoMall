@@ -14,4 +14,5 @@ typedef void(^DeleteBlock)(GoodsModel *model);
 @interface ChartCell : UITableViewCell
 @property (nonatomic,copy) GoodsModel *model;
 @property (nonatomic,copy) DeleteBlock deleteBlock;
+- (void)updateNODeleteWithModel:(GoodsModel*)model;
 @end

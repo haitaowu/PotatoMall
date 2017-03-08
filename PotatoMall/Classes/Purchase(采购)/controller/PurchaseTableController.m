@@ -18,6 +18,7 @@
 #import "GoodsCell.h"
 #import "PurchHotCell.h"
 #import "PurchaseMoresController.h"
+#import "ProductDetailTableController.h"
 
 #define kCategorySectionIdx             0
 
@@ -75,8 +76,12 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     }else if ([segue.identifier isEqualToString:@"cateListSegue"]) {
         PurchaseMoresController *destinationControl = (PurchaseMoresController*)[segue destinationViewController];
         destinationControl.cateModel = sender;
+    }else if ([segue.identifier isEqualToString:@"productDetailSegue"]) {
+        ProductDetailTableController *destinationControl = (ProductDetailTableController*)[segue destinationViewController];
+        destinationControl.goodModel = sender;
     }
 }
+
 
 #pragma mark - setup UI
 - (void)registerTableNibCell
@@ -317,8 +322,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    ArticleModel *model = self.articlesArray[indexPath.row];
-//    [self performSegueWithIdentifier:@"cateListSegue" sender:model];
+    GoodsModel *model = self.springGoods[indexPath.row];
+    [self performSegueWithIdentifier:@"productDetailSegue" sender:model];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

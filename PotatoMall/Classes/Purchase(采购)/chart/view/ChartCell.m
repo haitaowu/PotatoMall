@@ -11,12 +11,15 @@
 #import "PlustField.h"
 
 @interface ChartCell ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deleteBtnWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *checkBoxLeading;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *picView;
 @property (weak, nonatomic) IBOutlet PlustField *countField;
 @property (weak, nonatomic) IBOutlet UIButton *deletBtn;
 @property (weak, nonatomic) IBOutlet UILabel *adrLabel;
 @property (weak, nonatomic) IBOutlet UIButton *selectView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *checkBoxWidth;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @end
 
@@ -45,6 +48,15 @@
     self.model.num = countStr;
 }
 
+- (void)updateNODeleteWithModel:(GoodsModel*)model
+{
+    self.model = model;
+    self.deleteBtnWidth.constant = 0.001;
+    self.checkBoxWidth.constant = 0.001;
+    self.checkBoxLeading.constant = 0.001;
+}
+
+
 #pragma mark -  setter and getter methods 
 - (void)setModel:(GoodsModel *)model
 {
@@ -57,7 +69,11 @@
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
     
-    self.countField.text = model.num;
+    if (model.num.length > 0) {
+        self.countField.text = model.num;
+    }else{
+        self.countField.text = @"1";
+    }
     self.selectView.selected = self.model.isSelected;
 }
 

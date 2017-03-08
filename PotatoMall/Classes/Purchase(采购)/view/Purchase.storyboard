@@ -43,6 +43,7 @@
                     <connections>
                         <segue destination="RL1-mJ-cHh" kind="show" identifier="searchGoodsSegue" id="qXA-kU-a6n"/>
                         <segue destination="6Th-fW-xoR" kind="show" identifier="cateListSegue" id="CR5-oz-7wd"/>
+                        <segue destination="iJc-fz-zfI" kind="show" identifier="productDetailSegue" id="MWY-Nr-EDA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wZ-Xi-o5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scs-XJ-dLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000.8" y="319.79010494752629"/>
+            <point key="canvasLocation" x="2001" y="782"/>
         </scene>
         <!--商品详情-->
         <scene sceneID="DiK-hO-oGh">
@@ -443,11 +444,40 @@
                         <outlet property="priceLabel" destination="bL6-Wp-5Rv" id="Hsv-Ql-IhG"/>
                         <outlet property="speciCell" destination="w4E-3H-nO9" id="cQP-EA-bDr"/>
                         <outlet property="statusView" destination="giR-Lh-wUS" id="lTm-FP-3re"/>
+                        <segue destination="mSA-0c-k4F" kind="show" identifier="preOrderSegue" id="xOU-b6-sZd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tl-Yi-gzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2896.8000000000002" y="321.58920539730138"/>
+        </scene>
+        <!--Pre Order Table Controller-->
+        <scene sceneID="Gud-lh-S4M">
+            <objects>
+                <tableViewController id="mSA-0c-k4F" customClass="PreOrderTableController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="MHv-CB-TJZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zYw-oV-FcI">
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zYw-oV-FcI" id="Tdf-0F-Azy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mSA-0c-k4F" id="Eub-qX-q7G"/>
+                            <outlet property="delegate" destination="mSA-0c-k4F" id="mQI-vR-msR"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nvt-gN-4uM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3782" y="332"/>
         </scene>
         <!--购物车-->
         <scene sceneID="Tpt-Jc-IVX">
@@ -477,7 +507,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-CG-g8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2001" y="1198"/>
+            <point key="canvasLocation" x="2001" y="1538"/>
         </scene>
         <!--Navgation Controller-->
         <scene sceneID="maT-us-C34">
@@ -604,6 +634,6 @@
         <image name="purchase_chart" width="24" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5jQ-GC-0ec"/>
+        <segue reference="MWY-Nr-EDA"/>
     </inferredMetricsTieBreakers>
 </document>
