@@ -27,6 +27,16 @@
 #define     kSalesSortKey                   @"salesSort"
 #define     kCatalogIdKey                   @"catalogId"
 #define     kGoodsInfoIdKey                 @"goodsInfoId"
+#define     kGoodsInfosKey                  @"goodsInfos"
+#define     kRemarkKey                      @"remark"
+#define     kNumKey                         @"num"
+
+#define     kShippingMobileKey               @"shippingMobile"
+#define     kShippingPersonKey               @"shippingPerson"
+#define     kDeliveryTypeey                  @"deliveryType"
+
+
+
 
 
 #define     kAvatarKey                       @"avatar"

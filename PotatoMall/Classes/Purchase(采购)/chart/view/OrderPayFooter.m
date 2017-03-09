@@ -14,7 +14,10 @@
 
 @implementation OrderPayFooter
 
-
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+}
 
 
 @end

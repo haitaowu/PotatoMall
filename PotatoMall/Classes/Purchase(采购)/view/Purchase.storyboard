@@ -474,10 +474,83 @@
                             <outlet property="delegate" destination="mSA-0c-k4F" id="mQI-vR-msR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="weT-ND-Wmv" kind="show" identifier="transportSegue" id="MRa-hw-QO1"/>
+                        <segue destination="VJd-q2-XFN" kind="show" identifier="submitSuccSugue" id="Z9X-Wi-1Q3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvt-gN-4uM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3782" y="332"/>
+        </scene>
+        <!--Transport Table Controller-->
+        <scene sceneID="6e7-K0-faR">
+            <objects>
+                <tableViewController id="weT-ND-Wmv" customClass="TransportTableController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="nm3-Yt-F3o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="XcA-IM-yez">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xo4-M3-ZDc">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xo4-M3-ZDc" id="rgy-q4-6Io">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRB-8G-zdx">
+                                                    <rect key="frame" x="8" y="13" width="129" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="自有车队现场提货" image="chart_transUnSel">
+                                                        <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="selected" title="自有车队现场提货" image="chart_transSel"/>
+                                                    <connections>
+                                                        <action selector="tapOwnTransportBtn:" destination="weT-ND-Wmv" eventType="touchUpInside" id="xVq-vL-UlL"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNC-mq-JaE">
+                                                    <rect key="frame" x="219" y="13" width="129" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="自有车队现场提货" image="chart_transUnSel">
+                                                        <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="selected" title="自有车队现场提货" image="chart_transSel"/>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="kgT-CJ-CZq">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kgT-CJ-CZq" id="RBV-pk-vsf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noti" translatesAutoresizingMaskIntoConstraints="NO" id="Mdz-8S-hkp">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="119"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="weT-ND-Wmv" id="idR-Kg-4gG"/>
+                            <outlet property="delegate" destination="weT-ND-Wmv" id="LZ6-oC-Rfl"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cwk-s2-YHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4632.8000000000002" y="321.58920539730138"/>
         </scene>
         <!--购物车-->
         <scene sceneID="Tpt-Jc-IVX">
@@ -628,9 +701,55 @@
             </objects>
             <point key="canvasLocation" x="2001" y="-370"/>
         </scene>
+        <!--Order Success Controller-->
+        <scene sceneID="qNi-U5-GA6">
+            <objects>
+                <viewController id="VJd-q2-XFN" customClass="OrderSuccessController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vLA-ZB-rph"/>
+                        <viewControllerLayoutGuide type="bottom" id="b6l-km-O30"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8DP-so-ObT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart_success" translatesAutoresizingMaskIntoConstraints="NO" id="DGZ-Qc-hUt">
+                                <rect key="frame" x="139" y="124" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="pMl-zW-Pl1"/>
+                                    <constraint firstAttribute="width" secondItem="DGZ-Qc-hUt" secondAttribute="height" multiplier="1:1" id="zTh-qq-gAU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜，你已成功注册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nm-vp-rNQ">
+                                <rect key="frame" x="123" y="242" width="129" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0nm-vp-rNQ" firstAttribute="centerX" secondItem="8DP-so-ObT" secondAttribute="centerX" id="UTF-iI-yHz"/>
+                            <constraint firstItem="DGZ-Qc-hUt" firstAttribute="top" secondItem="vLA-ZB-rph" secondAttribute="bottom" constant="60" id="djE-Vi-CTq"/>
+                            <constraint firstItem="0nm-vp-rNQ" firstAttribute="top" secondItem="DGZ-Qc-hUt" secondAttribute="bottom" constant="21" id="f8s-km-nTw"/>
+                            <constraint firstItem="DGZ-Qc-hUt" firstAttribute="centerX" secondItem="8DP-so-ObT" secondAttribute="centerX" id="mVm-g8-ayK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="0nm-vp-rNQ" id="MAq-yk-8uD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j3d-TJ-Y44" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4532" y="1200"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="chart_success" width="97" height="97"/>
+        <image name="chart_transSel" width="14" height="14"/>
+        <image name="chart_transUnSel" width="14" height="14"/>
         <image name="farmer" width="150" height="150"/>
+        <image name="noti" width="694" height="172"/>
         <image name="purchase_chart" width="24" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>

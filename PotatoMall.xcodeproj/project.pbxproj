@@ -91,6 +91,7 @@
 		BECC9F9E1E6EDE80001DE8F1 /* PurAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9F9D1E6EDE80001DE8F1 /* PurAdModel.m */; };
 		BECC9FA11E6EE459001DE8F1 /* PurSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9FA01E6EE459001DE8F1 /* PurSectionHeader.m */; };
 		BECC9FA41E6EE5F9001DE8F1 /* HorizonAlignBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9FA31E6EE5F9001DE8F1 /* HorizonAlignBtn.m */; };
+		BED202821E7062BB00437133 /* OrderSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED202811E7062BB00437133 /* OrderSuccessController.m */; };
 		BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */; };
 		BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BED604BE1E5DF7E6002BB119 /* HTCustomeSearchBar.m */; };
 		BED84A011E6FCCDF001E7A27 /* PurchaseMoresController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED84A001E6FCCDF001E7A27 /* PurchaseMoresController.m */; };
@@ -102,6 +103,7 @@
 		BED84A121E6FEF91001E7A27 /* OrderFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED84A101E6FEF91001E7A27 /* OrderFeedCell.m */; };
 		BED84A131E6FEF91001E7A27 /* OrderFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED84A111E6FEF91001E7A27 /* OrderFeedCell.xib */; };
 		BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BED84A151E6FEFE5001E7A27 /* CustomTextView.m */; };
+		BED84A191E7004B7001E7A27 /* TransportTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED84A181E7004B7001E7A27 /* TransportTableController.m */; };
 		BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFA1E6EF79100054F45 /* PurchHotCell.m */; };
 		BED95DFD1E6EF79100054F45 /* PurchHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */; };
 		BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */; };
@@ -279,6 +281,8 @@
 		BECC9FA31E6EE5F9001DE8F1 /* HorizonAlignBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizonAlignBtn.m; sourceTree = "<group>"; };
 		BED016A71E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		BED016A81E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		BED202801E7062BB00437133 /* OrderSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSuccessController.h; sourceTree = "<group>"; };
+		BED202811E7062BB00437133 /* OrderSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSuccessController.m; sourceTree = "<group>"; };
 		BED36E9B1E68FD1900DDF82F /* RegisterSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSuccessController.h; sourceTree = "<group>"; };
 		BED36E9C1E68FD1900DDF82F /* RegisterSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSuccessController.m; sourceTree = "<group>"; };
 		BED604BD1E5DF7E6002BB119 /* HTCustomeSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCustomeSearchBar.h; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 		BED84A111E6FEF91001E7A27 /* OrderFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderFeedCell.xib; sourceTree = "<group>"; };
 		BED84A141E6FEFE5001E7A27 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		BED84A151E6FEFE5001E7A27 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		BED84A171E7004B7001E7A27 /* TransportTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportTableController.h; sourceTree = "<group>"; };
+		BED84A181E7004B7001E7A27 /* TransportTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportTableController.m; sourceTree = "<group>"; };
 		BED95DF91E6EF79100054F45 /* PurchHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchHotCell.h; sourceTree = "<group>"; };
 		BED95DFA1E6EF79100054F45 /* PurchHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchHotCell.m; sourceTree = "<group>"; };
 		BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchHotCell.xib; sourceTree = "<group>"; };
@@ -363,10 +369,14 @@
 		BE077A601E6A975F006F0EFB /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				BED202801E7062BB00437133 /* OrderSuccessController.h */,
+				BED202811E7062BB00437133 /* OrderSuccessController.m */,
 				BE077A611E6A975F006F0EFB /* ChartTableController.h */,
 				BE077A621E6A975F006F0EFB /* ChartTableController.m */,
 				BED84A021E6FD905001E7A27 /* PreOrderTableController.h */,
 				BED84A031E6FD905001E7A27 /* PreOrderTableController.m */,
+				BED84A171E7004B7001E7A27 /* TransportTableController.h */,
+				BED84A181E7004B7001E7A27 /* TransportTableController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1144,6 +1154,7 @@
 				BE5B80421E5F2783005FDE1A /* SectionHeaderTitle.m in Sources */,
 				BE0DDB5A1E6D63A100F15168 /* HTPurchaseBar.m in Sources */,
 				BE5ED7E81E62B29000C4B1D0 /* SecurityUtil.m in Sources */,
+				BED84A191E7004B7001E7A27 /* TransportTableController.m in Sources */,
 				BE0DDB421E6D0B4300F15168 /* HTCalculatorToolBar.m in Sources */,
 				BE93C2F21E680D6200CC0B96 /* ProviceTableController.m in Sources */,
 				BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */,
@@ -1159,6 +1170,7 @@
 				BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */,
 				BE0DDB4D1E6D46FA00F15168 /* GoodsCell.m in Sources */,
 				BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */,
+				BED202821E7062BB00437133 /* OrderSuccessController.m in Sources */,
 				BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */,
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */,

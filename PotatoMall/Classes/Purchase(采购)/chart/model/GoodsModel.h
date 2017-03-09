@@ -30,6 +30,8 @@
 /**类型（暂无数据后期完善）*/
 @property (nonatomic,copy) NSString *type;
 
+/**已经选择数量*/
+@property (nonatomic,copy) NSString *selectedCount;
 
 /**是否已经选择*/
 @property (nonatomic,assign) Boolean isSelected;

@@ -150,8 +150,8 @@
     globalParms[kDeviceTokenKey] = [AppInfoHelper currentDeviceIdentifier];
     globalParms[kVersionKey] = [AppInfoHelper shortVersionString];
     if (params != nil) {
-        NSString *encytData = [self encrytWithData:params];
-        globalParms[kData] = encytData;
+        NSString *encytDataStr = [self encrytWithData:params];
+        globalParms[kData] = encytDataStr;
     }
     return globalParms;
 }
@@ -161,6 +161,8 @@
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&error];
     NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *encrytStr = [SecurityUtil encryptAESData:jsonStr];
     return encrytStr;
 }

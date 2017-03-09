@@ -26,6 +26,12 @@
     return customView;
 }
 
+#pragma mark - public methods
+- (void)updateTotalPriceTitle:(NSString*)priceStr
+{
+    self.totalLabel.text = priceStr;
+}
+
 #pragma mark - selectors
 - (IBAction)tapToCalculator:(id)sender {
     if (self.submitBlock != nil) {

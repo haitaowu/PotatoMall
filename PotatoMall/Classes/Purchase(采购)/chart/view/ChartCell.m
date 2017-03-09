@@ -10,7 +10,7 @@
 #import "NSString+Extentsion.h"
 #import "PlustField.h"
 
-@interface ChartCell ()
+@interface ChartCell ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *deleteBtnWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *checkBoxLeading;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -32,13 +32,23 @@
 
 - (void)setup
 {
+    __block typeof(self) blockSelf = self;
     self.countField.minusBlock = ^(NSString *countStr){
+        self.model.selectedCount = countStr;
         [self updateCountLabelWithCount:countStr];
+        if (blockSelf.countBlock != nil) {
+            blockSelf.countBlock(_model);
+        }
     };
     
     self.countField.plusBlock = ^(NSString *countStr){
+        self.model.selectedCount = countStr;
         [self updateCountLabelWithCount:countStr];
+        if (blockSelf.countBlock != nil) {
+            blockSelf.countBlock(_model);
+        }
     };
+    [self.countField setDelegate:self];
 }
 
 #pragma mark - update ui
@@ -69,12 +79,13 @@
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
     
-    if (model.num.length > 0) {
-        self.countField.text = model.num;
-    }else{
-        self.countField.text = @"1";
-    }
-    self.selectView.selected = self.model.isSelected;
+//    model.selectedCount = @"1";
+//    if (model.num.length > 0) {
+//        self.countField.text = model.num;
+//    }else{
+//        self.countField.text = @"1";
+//    }
+    self.selectView.selected = self.model.selectedCount;
 }
 
 #pragma mark - selectors
@@ -87,6 +98,17 @@
 - (IBAction)tapSelectBtn:(UIButton*)sender {
     sender.selected = !sender.selected;
     self.model.isSelected = sender.selected;
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSString *countStr = textField.text;
+    self.model.selectedCount = countStr;
+    [self updateCountLabelWithCount:countStr];
+    if (self.countBlock != nil) {
+        self.countBlock(_model);
+    }
 }
 
 @end

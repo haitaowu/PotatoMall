@@ -7,11 +7,9 @@
 //
 
 #import "OrderFeedCell.h"
-#import "CustomTextView.h"
 
 
 @interface OrderFeedCell()
-@property (weak, nonatomic) IBOutlet CustomTextView *textView;
 @end
 
 

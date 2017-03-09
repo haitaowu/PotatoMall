@@ -13,4 +13,5 @@ typedef void(^SubmitBlock)();
 @interface HTSubmitBar : UIView
 
 + (HTSubmitBar*)customBarWithAllBlock:(SubmitBlock)submitBlock;
+- (void)updateTotalPriceTitle:(NSString*)priceStr;
 @end

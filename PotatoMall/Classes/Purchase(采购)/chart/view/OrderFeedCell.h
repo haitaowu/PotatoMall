@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomTextView.h"
 
 @interface OrderFeedCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet CustomTextView *textView;
 @end
