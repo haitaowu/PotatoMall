@@ -22,6 +22,7 @@
     NSArray *goods = [GoodsModel mj_objectArrayWithKeyValuesArray:data];
     return [NSMutableArray arrayWithArray:goods];
 }
+
 -(NSString*)selectedCount
 {
     if (_selectedCount == nil) {

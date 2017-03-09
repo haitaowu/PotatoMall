@@ -1,17 +1,17 @@
 //
-//  OrderPayFooter.m
+//  OrderDetailStateFooter.m
 //  PotatoMall
 //
 //  Created by taotao on 04/03/2017.
 //  Copyright © 2017 taotao. All rights reserved.
 //
 
-#import "OrderPayFooter.h"
+#import "OrderDetailStateFooter.h"
 
-@interface OrderPayFooter()
+@interface OrderDetailStateFooter()
 @end
 
-@implementation OrderPayFooter
+@implementation OrderDetailStateFooter
 
 - (void)awakeFromNib
 {

@@ -154,33 +154,15 @@
                         <outlet property="roleLabel" destination="GiT-5S-UUL" id="pLb-FB-Bd3"/>
                         <outlet property="tableView" destination="dd0-y8-MG7" id="gk3-HX-u2w"/>
                         <segue destination="CSh-mK-ncI" kind="show" identifier="settingSegue" id="UC8-Pj-V69"/>
-                        <segue destination="MA7-cp-4vk" kind="show" identifier="orderesSegue" id="C7R-Cm-iec"/>
                         <segue destination="P1o-dH-RAW" kind="show" identifier="chargeSegue" id="9x4-23-HGy"/>
                         <segue destination="wMD-pi-27o" kind="show" identifier="productSegue" id="w2B-Nl-lNU"/>
                         <segue destination="kQ8-uf-s8g" kind="show" identifier="salesSegue" id="32r-Rs-fEL"/>
+                        <segue destination="zUt-qa-BKh" kind="show" identifier="orderesSegue" id="cxN-V4-LNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYt-I9-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1080.8" y="385.45727136431788"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="eEX-GG-KiU">
-            <objects>
-                <viewController id="MA7-cp-4vk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kX4-mC-DfD"/>
-                        <viewControllerLayoutGuide type="bottom" id="UkU-LY-QJj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PAj-zD-Hgj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W1F-dw-pIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2374" y="158"/>
         </scene>
         <!--Me Setting Table Controller-->
         <scene sceneID="56E-ez-eIU">
@@ -359,6 +341,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38c-8A-zZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2375" y="-548"/>
+        </scene>
+        <!--我的采购-->
+        <scene sceneID="wR4-x9-ucb">
+            <objects>
+                <tableViewController id="zUt-qa-BKh" customClass="OrdersTableController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="LJk-tT-FEx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JhP-zm-ViJ">
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JhP-zm-ViJ" id="Xx8-EK-wmd">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zUt-qa-BKh" id="gHQ-lS-D7m"/>
+                            <outlet property="delegate" destination="zUt-qa-BKh" id="5N2-CI-SlD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="我的采购" id="UY1-1u-a5y"/>
+                    <connections>
+                        <segue destination="U5X-Vm-aJ1" kind="show" identifier="detailSegue" id="wYr-1B-mic"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCR-Ci-DFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="205"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Zj8-BY-SjK">
@@ -734,7 +748,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtZ-67-OcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279" y="655"/>
+            <point key="canvasLocation" x="3378" y="891"/>
         </scene>
         <!--关于我们-->
         <scene sceneID="bZr-kT-Dnf">
@@ -956,6 +970,35 @@
             </objects>
             <point key="canvasLocation" x="2217" y="2160"/>
         </scene>
+        <!--订单详情-->
+        <scene sceneID="91P-fd-aQF">
+            <objects>
+                <tableViewController id="U5X-Vm-aJ1" customClass="OrderDetailTableController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tbN-lQ-wCh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vfA-vi-Uft">
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vfA-vi-Uft" id="xoq-2W-Vup">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="U5X-Vm-aJ1" id="hU3-az-496"/>
+                            <outlet property="delegate" destination="U5X-Vm-aJ1" id="sIQ-TS-d27"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="订单详情" id="ajF-YC-TrH"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSU-U4-t4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3378" y="205"/>
+        </scene>
     </scenes>
     <resources>
         <image name="aboutus" width="750" height="1334"/>
@@ -968,6 +1011,6 @@
         <image name="next" width="8" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AC8-gt-bZh"/>
+        <segue reference="VRM-UJ-wnr"/>
     </inferredMetricsTieBreakers>
 </document>
