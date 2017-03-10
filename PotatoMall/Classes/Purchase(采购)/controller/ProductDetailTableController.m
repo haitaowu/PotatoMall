@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet ParamsCell *paramsCell;
 @property (weak, nonatomic) IBOutlet ProductSpecificationCell *speciCell;
 @property (nonatomic,strong)GoodsDetailModel *goodsDetailModel;
+@property (nonatomic,strong)UIImageView *tableheader;
 
 @end
 
@@ -39,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupToolbar];
+    [self setupTableviewTableHeader];
     [self reqGoodsInfo];
 }
 
@@ -57,6 +59,16 @@
 }
 
 #pragma mark - setup UI 
+- (void)setupTableviewTableHeader
+{
+    CGFloat height = kScreenWidth * 2.0 / 3.0;
+    CGFloat width = kScreenWidth;
+    CGRect tableHeaderF = {{0,0},{width,height}};
+    UIImageView *tableheader = [[UIImageView alloc] initWithFrame:tableHeaderF];
+    self.tableView.tableHeaderView = tableheader;
+    self.tableheader = tableheader;
+}
+
 - (void)setupToolbar
 {
     __block typeof(self) blockSelf = self;
@@ -76,12 +88,16 @@
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:bar];
     self.toolbarItems = @[barItem];
 }
+
 #pragma mark - update UI
 - (void)updateUIWithDetialModel:(GoodsDetailModel*)detailModel
 {
     self.moblieDescLabel.text = detailModel.moblieDesc;
     self.priceLabel.text = detailModel.price;
     [self.statusView setTitle:detailModel.status forState:UIControlStateNormal];
+    UIImage *placeholder = [UIImage imageNamed:@"hello"];
+    NSURL *imgUrl = [NSURL URLWithString:detailModel.imageSrc];
+    [self.tableheader sd_setImageWithURL:imgUrl placeholderImage:placeholder];
 }
 
 #pragma mark - private methods

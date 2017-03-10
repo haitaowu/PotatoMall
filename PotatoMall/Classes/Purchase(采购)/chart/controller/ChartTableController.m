@@ -192,9 +192,6 @@ static NSString *HeaderID = @"HeaderID";
     [cell setModel:model];
     __block typeof(self) blockSelf = self;
     cell.deleteBlock = ^(GoodsModel *model){
-//        [blockSelf.goodsArray removeObject:model];
-//        [blockSelf.selectedGoods removeObject:model];
-//        [blockSelf updateTotalPriceLabel];
         [blockSelf deleteWithGoodsModel:model];
     };
     
@@ -220,7 +217,8 @@ static NSString *HeaderID = @"HeaderID";
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+//    return 50;
+    return 0.001;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -238,11 +236,11 @@ static NSString *HeaderID = @"HeaderID";
     return 180;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    ChartSectionHeader *titleHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderID];
-    return titleHeader;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    ChartSectionHeader *titleHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderID];
+//    return titleHeader;
+//}
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {

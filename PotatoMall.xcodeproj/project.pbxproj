@@ -881,8 +881,8 @@
 		BEC06DCB1E5C78F600667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				BE0DDB491E6D46FA00F15168 /* cell */,
 				BEC06DD61E5C796D00667D73 /* Purchase.storyboard */,
+				BE0DDB491E6D46FA00F15168 /* cell */,
 				BED95DFE1E6EF82100054F45 /* HotCollectionCell.h */,
 				BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */,
 				BED95E001E6EF82100054F45 /* HotCollectionCell.xib */,

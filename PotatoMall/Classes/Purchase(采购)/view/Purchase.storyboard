@@ -436,7 +436,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="商品详情" id="FZj-9X-Uim">
-                        <barButtonItem key="rightBarButtonItem" image="purchase_chart" id="AEg-GJ-LVi"/>
+                        <barButtonItem key="rightBarButtonItem" image="purchase_chart" id="AEg-GJ-LVi">
+                            <connections>
+                                <segue destination="0WF-gB-wgd" kind="show" id="ZZV-lS-I89"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="moblieDescLabel" destination="gQy-nZ-GVc" id="Ego-wl-1db"/>
@@ -449,7 +453,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tl-Yi-gzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896.8000000000002" y="321.58920539730138"/>
+            <point key="canvasLocation" x="2986" y="324"/>
         </scene>
         <!--Pre Order Table Controller-->
         <scene sceneID="Gud-lh-S4M">
@@ -550,7 +554,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cwk-s2-YHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4632.8000000000002" y="321.58920539730138"/>
+            <point key="canvasLocation" x="5094" y="386"/>
         </scene>
         <!--购物车-->
         <scene sceneID="Tpt-Jc-IVX">
@@ -583,7 +587,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-CG-g8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2001" y="1538"/>
+            <point key="canvasLocation" x="2985" y="1672"/>
         </scene>
         <!--Navgation Controller-->
         <scene sceneID="maT-us-C34">
@@ -756,7 +760,8 @@
         <image name="purchase_chart" width="24" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MWY-Nr-EDA"/>
+        <segue reference="deb-yH-d2m"/>
+        <segue reference="ZZV-lS-I89"/>
         <segue reference="3Ay-7W-4Ic"/>
     </inferredMetricsTieBreakers>
 </document>
