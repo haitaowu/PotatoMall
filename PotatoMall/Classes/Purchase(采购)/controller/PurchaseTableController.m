@@ -364,7 +364,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     }else if (indexPath.section == kHotProductsSectionIdx) {
         return 120;
     }else{
-        return 150;
+        return 100;
     }
    
 }

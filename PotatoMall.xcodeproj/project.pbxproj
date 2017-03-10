@@ -430,12 +430,12 @@
 		BE077A641E6A975F006F0EFB /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BE0DDB3B1E6D0B4300F15168 /* toolbar */,
 				BED84A0A1E6FDB9E001E7A27 /* OrderPayFooter.h */,
 				BED84A0B1E6FDB9E001E7A27 /* OrderPayFooter.m */,
 				BED84A0C1E6FDB9E001E7A27 /* OrderPayFooter.xib */,
 				BEFFAB941E6E8DA4006D1FDE /* TopScrollView.h */,
 				BEFFAB951E6E8DA4006D1FDE /* TopScrollView.m */,
-				BE0DDB3B1E6D0B4300F15168 /* toolbar */,
 				BE077A6B1E6A9998006F0EFB /* ChartCell.h */,
 				BE077A6C1E6A9998006F0EFB /* ChartCell.m */,
 				BE077A6D1E6A9998006F0EFB /* ChartCell.xib */,
@@ -876,6 +876,7 @@
 		BEC06DCB1E5C78F600667D73 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BE0DDB491E6D46FA00F15168 /* cell */,
 				BED95DFE1E6EF82100054F45 /* HotCollectionCell.h */,
 				BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */,
 				BED95E001E6EF82100054F45 /* HotCollectionCell.xib */,
@@ -884,7 +885,6 @@
 				BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */,
 				BECC9F9F1E6EE459001DE8F1 /* PurSectionHeader.h */,
 				BECC9FA01E6EE459001DE8F1 /* PurSectionHeader.m */,
-				BE0DDB491E6D46FA00F15168 /* cell */,
 				BEC06DD61E5C796D00667D73 /* Purchase.storyboard */,
 				BECC9F921E6ED2B8001DE8F1 /* CategoryCell.h */,
 				BECC9F931E6ED2B8001DE8F1 /* CategoryCell.m */,
