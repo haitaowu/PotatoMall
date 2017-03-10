@@ -11,13 +11,16 @@
 #import "ChartSectionHeader.h"
 #import "GoodsModel.h"
 #import "HTCalculatorToolBar.h"
+#import "PreOrderTableController.h"
 
 
 static NSString *ChartCellID = @"ChartCell";
 static NSString *HeaderID = @"HeaderID";
 
 @interface ChartTableController ()
+@property (nonatomic,strong)HTCalculatorToolBar *toolBar;
 @property (nonatomic,strong)NSMutableArray *goodsArray;
+@property (nonatomic,strong)NSMutableArray *selectedGoods;
 @end
 
 @implementation ChartTableController
@@ -31,21 +34,50 @@ static NSString *HeaderID = @"HeaderID";
     [self.navigationController  setToolbarHidden:NO animated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"preOrderSegue"]) {
+        PreOrderTableController *destinationControl = (PreOrderTableController*)[segue destinationViewController];
+        destinationControl.goodsArray = sender;
+    }
+}
+
+#pragma mark - lazy methods
+-(NSMutableArray *)selectedGoods
+{
+    if(_selectedGoods== nil)
+    {
+        _selectedGoods = [[NSMutableArray alloc] init];
+    }
+    return _selectedGoods;
+}
+
+
 #pragma mark - setup UI 
 - (void)setupNavToolbar
 {
     [self.navigationController  setToolbarHidden:NO animated:YES];
-    UIView *toolbar = [HTCalculatorToolBar customToolBarWithAllBlock:^{
+    HTCalculatorToolBar *toolbar = [HTCalculatorToolBar customToolBarWithAllBlock:^{
         NSLog(@"selected all products ");
+        self.selectedGoods = [NSMutableArray arrayWithArray:self.goodsArray];
+        [self selectedAllGoods];
+        [self updateTotalPriceLabel];
     } unSelectBlock:^{
+        [self.selectedGoods removeAllObjects];
+        [self unSelectedAllGoods];
+        [self updateTotalPriceLabel];
         NSLog(@"unselected all products ");
     } calculatorBlock:^{
         NSLog(@"calculator products price ");
+        if ([self.selectedGoods count] > 0) {
+            [self performSegueWithIdentifier:@"preOrderSegue" sender:self.selectedGoods];
+        }
     }];
     
     CGRect frame = self.navigationController.toolbar.frame;
     NSLog(@"frame from %@",NSStringFromCGRect(frame));
     toolbar.frame = frame;
+    self.toolBar = toolbar;
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
     self.toolbarItems = @[barItem];
 }
@@ -57,6 +89,47 @@ static NSString *HeaderID = @"HeaderID";
     
     UINib *headerNib = [UINib nibWithNibName:@"ChartSectionHeader" bundle:nil];
     [self.tableView registerNib:headerNib forHeaderFooterViewReuseIdentifier:HeaderID];
+}
+#pragma mark -  private methods 
+- (void)unSelectedAllGoods
+{
+    for (GoodsModel *obj in self.goodsArray) {
+        obj.isSelected = NO;
+    }
+    [self.tableView reloadData];
+}
+
+- (void)selectedAllGoods
+{
+    for (GoodsModel *obj in self.goodsArray) {
+        obj.isSelected = YES;
+    }
+    [self.tableView reloadData];
+}
+
+#pragma mark - update UI 
+- (void)updateTotalPriceLabel
+{
+    CGFloat totalPrice = 0;
+    for (GoodsModel *obj in self.selectedGoods) {
+        totalPrice += [self calculatorPriceWithModel:obj];
+    }
+    NSString *priceStr = [NSString stringWithFormat:@"%.2f",totalPrice];
+    if ([self.selectedGoods count] == 0) {
+        [self.toolBar updateTotalPriceTitle:priceStr selectState:SelectStateTypeNone];
+    }else if ([self.selectedGoods count] == [self.goodsArray count]) {
+        [self.toolBar updateTotalPriceTitle:priceStr selectState:SelectStateTypeAll];
+    }else{
+        [self.toolBar updateTotalPriceTitle:priceStr selectState:SelectStateSelected];
+    }
+}
+
+- (CGFloat)calculatorPriceWithModel:(GoodsModel*)model
+{
+    NSInteger count = [model.selectedCount integerValue];
+    CGFloat price = [model.price floatValue];
+    CGFloat totalPrice = price * count;
+    return totalPrice;
 }
 
 #pragma mark - requset server
@@ -82,6 +155,7 @@ static NSString *HeaderID = @"HeaderID";
     }
 }
 
+
 #pragma mark - UITableView --- Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -95,9 +169,29 @@ static NSString *HeaderID = @"HeaderID";
     ChartCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartCellID];
     GoodsModel *model = self.goodsArray[indexPath.row];
     [cell setModel:model];
+    __block typeof(self) blockSelf = self;
     cell.deleteBlock = ^(GoodsModel *model){
-        [self.goodsArray removeObject:model];
+        [blockSelf.goodsArray removeObject:model];
+        [blockSelf.selectedGoods removeObject:model];
+        [blockSelf updateTotalPriceLabel];
         [self.tableView reloadData];
+    };
+    
+    cell.selectBlock = ^(GoodsModel *model){
+        [blockSelf.selectedGoods addObject:model];
+        [blockSelf updateTotalPriceLabel];
+        HTLog(@"selected a goods");
+    };
+    
+    cell.unSelectBlock = ^(GoodsModel *model){
+        [blockSelf.selectedGoods removeObject:model];
+        [blockSelf updateTotalPriceLabel];
+        HTLog(@"unselected a goods");
+    };
+    
+    cell.countBlock= ^(GoodsModel *model){
+        HTLog(@"selected a goods");
+        [blockSelf updateTotalPriceLabel];
     };
     return cell;
 }

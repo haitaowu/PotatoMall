@@ -58,6 +58,7 @@
     self.model.num = countStr;
 }
 
+//复用时候用到
 - (void)updateNODeleteWithModel:(GoodsModel*)model
 {
     self.model = model;
@@ -85,7 +86,7 @@
 //    }else{
 //        self.countField.text = @"1";
 //    }
-    self.selectView.selected = self.model.selectedCount;
+    self.selectView.selected = self.model.isSelected;
 }
 
 #pragma mark - selectors
@@ -98,6 +99,15 @@
 - (IBAction)tapSelectBtn:(UIButton*)sender {
     sender.selected = !sender.selected;
     self.model.isSelected = sender.selected;
+    if (self.model.isSelected == YES) {
+        if (self.selectBlock != nil) {
+            self.selectBlock(_model);
+        }
+    }else{
+        if (self.unSelectBlock != nil) {
+            self.unSelectBlock(_model);
+        }
+    }
 }
 
 #pragma mark - UITextFieldDelegate

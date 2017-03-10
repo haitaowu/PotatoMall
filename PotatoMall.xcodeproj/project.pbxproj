@@ -877,6 +877,7 @@
 			isa = PBXGroup;
 			children = (
 				BE0DDB491E6D46FA00F15168 /* cell */,
+				BEC06DD61E5C796D00667D73 /* Purchase.storyboard */,
 				BED95DFE1E6EF82100054F45 /* HotCollectionCell.h */,
 				BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */,
 				BED95E001E6EF82100054F45 /* HotCollectionCell.xib */,
@@ -885,7 +886,6 @@
 				BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */,
 				BECC9F9F1E6EE459001DE8F1 /* PurSectionHeader.h */,
 				BECC9FA01E6EE459001DE8F1 /* PurSectionHeader.m */,
-				BEC06DD61E5C796D00667D73 /* Purchase.storyboard */,
 				BECC9F921E6ED2B8001DE8F1 /* CategoryCell.h */,
 				BECC9F931E6ED2B8001DE8F1 /* CategoryCell.m */,
 				BECC9F941E6ED2B8001DE8F1 /* CategoryCell.xib */,

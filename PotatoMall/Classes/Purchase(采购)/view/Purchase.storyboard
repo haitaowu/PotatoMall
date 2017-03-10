@@ -481,7 +481,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvt-gN-4uM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3782" y="332"/>
+            <point key="canvasLocation" x="3970" y="781"/>
         </scene>
         <!--Transport Table Controller-->
         <scene sceneID="6e7-K0-faR">
@@ -577,6 +577,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="购物车" id="Kmr-hQ-PyX"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="mSA-0c-k4F" kind="show" identifier="preOrderSegue" id="3Ay-7W-4Ic"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-CG-g8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -754,5 +757,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MWY-Nr-EDA"/>
+        <segue reference="3Ay-7W-4Ic"/>
     </inferredMetricsTieBreakers>
 </document>

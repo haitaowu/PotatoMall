@@ -30,6 +30,17 @@
     return customView;
 }
 
+#pragma mark - public methods
+- (void)updateTotalPriceTitle:(NSString*)priceStr selectState:(SelectedStateType) state 
+{
+    self.totalLabel.text = priceStr;
+    if(state == SelectStateTypeNone){
+        self.statueBtn.selected = NO;
+    }else if(state == SelectStateTypeAll){
+        self.statueBtn.selected = YES;
+    }
+}
+
 #pragma mark - selectors
 - (IBAction)tapToCalculator:(id)sender {
     if (self.calculatorBlock != nil) {
