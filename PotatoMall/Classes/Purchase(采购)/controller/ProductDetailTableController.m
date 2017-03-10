@@ -59,13 +59,13 @@
 #pragma mark - setup UI 
 - (void)setupToolbar
 {
-    
     __block typeof(self) blockSelf = self;
     HTPurchaseBar *bar = [HTPurchaseBar customBarWithPurchaseBlock:^{
         NSLog(@"purchase  order...");
         [blockSelf performSegueWithIdentifier:@"preOrderSegue" sender:@[self.goodModel]];
     } chartBlock:^{
         NSLog(@"chart  order...");
+        [self addGoodsCurrentToChart];
     }];
     
     bar.shareBlock = ^(){
@@ -94,7 +94,39 @@
     }
 }
 
+//添加到购物车的请求参数
+- (NSDictionary*)chartParams
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kGoodsInfoIdKey] = self.goodModel.goodsInfoId;
+    params[kUserIdKey] = [UserModelUtil sharedInstance].userModel.userId;
+    params[kNumKey] = @"1";
+    return params;
+}
+
+
 #pragma mark - requset server
+- (void)addGoodsCurrentToChart
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+    }else{
+        NSDictionary *params = [self chartParams];
+        NSString *subUrl = @"cart/addSingleShopCart";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD showInfoWithStatus:msg];
+            if (status == StatusTypSuccess) {
+                HTLog(@"add to chart success baby .....");
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
 - (void)reqGoodsDetailWith:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {

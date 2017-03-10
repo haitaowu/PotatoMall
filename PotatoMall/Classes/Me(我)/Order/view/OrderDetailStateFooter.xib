@@ -56,6 +56,10 @@
                 <constraint firstAttribute="trailing" secondItem="Yn4-UW-FwV" secondAttribute="trailing" constant="16" id="wGl-SR-pFa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="remarksLabel" destination="Yn4-UW-FwV" id="M7Q-JA-2gU"/>
+                <outlet property="transportModeLabel" destination="pUh-Fw-y5f" id="1ff-pd-Tvt"/>
+            </connections>
             <point key="canvasLocation" x="122" y="-300"/>
         </view>
     </objects>

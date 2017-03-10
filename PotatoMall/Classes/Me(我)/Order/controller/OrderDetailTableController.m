@@ -100,8 +100,8 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     OrderStateHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderStateHeaderID];
-    OrderModel *orderModel = self.ordersArray[section];
-    [header setOrderModel:orderModel];
+//    OrderModel *orderModel = self.ordersArray[section];
+    [header setOrderModel:self.orderModel];
     return header;
 }
 

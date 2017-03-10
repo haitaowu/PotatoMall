@@ -44,7 +44,7 @@
                         <color key="textColor" red="0.63529411764705879" green="0.63529411764705879" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabchart_selt" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-3S-hDf">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_clock" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-3S-hDf">
                         <rect key="frame" x="122" y="108" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="G7z-3S-hDf" secondAttribute="height" multiplier="1:1" id="5JW-bP-Xsu"/>
@@ -74,7 +74,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="tabchart_selt" width="25" height="22"/>
+        <image name="home_clock" width="12" height="12"/>
         <image name="tudou" width="234" height="158"/>
     </resources>
 </document>

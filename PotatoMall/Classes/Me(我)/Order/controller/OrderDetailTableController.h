@@ -8,6 +8,8 @@
 
 #import "BaseTableViewController.h"
 
+@class OrderModel;
 
 @interface OrderDetailTableController : BaseTableViewController
+@property (nonatomic,strong)OrderModel *orderModel;
 @end

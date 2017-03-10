@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderModel.h"
 
 @interface OrderDetailStateFooter : UITableViewHeaderFooterView
+@property (nonatomic,strong)OrderModel *orderModel;
 @end

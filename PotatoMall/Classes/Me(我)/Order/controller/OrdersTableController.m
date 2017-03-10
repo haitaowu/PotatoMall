@@ -13,6 +13,7 @@
 #import "OrderStateHeader.h"
 #import "OrderStateFooter.h"
 #import "TopScrollView.h"
+#import "OrderDetailTableController.h"
 
 
 
@@ -36,6 +37,14 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     [self setupTableView];
     [self reqOrdersData];
     [self setupTableviewTableheader];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        OrderDetailTableController *destinationControl = (OrderDetailTableController*)[segue destinationViewController];
+        destinationControl.orderModel = sender;
+    }
 }
 
 #pragma mark - setup UI 
@@ -160,9 +169,10 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     if ([view isMemberOfClass:[OrderStateFooter class]]) {
         OrderStateFooter *footer =  (OrderStateFooter *)view;
         footer.contentView.backgroundColor = [UIColor whiteColor];
+        OrderModel *orderModel = self.ordersArray[section];
         __block typeof(self) blockSelf = self;
         footer.detailBlock = ^(){
-            [blockSelf performSegueWithIdentifier:@"detailSegue" sender:nil];
+            [blockSelf performSegueWithIdentifier:@"detailSegue" sender:orderModel];
         };
     }
 }
