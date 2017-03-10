@@ -33,7 +33,8 @@
 
 #define     kShippingMobileKey               @"shippingMobile"
 #define     kShippingPersonKey               @"shippingPerson"
-#define     kDeliveryTypeey                  @"deliveryType"
+#define     kDeliveryTypKey                  @"deliveryType"
+#define     kOrderIdKey                      @"orderId"
 
 
 
@@ -60,6 +61,8 @@
 #define     kLoginSuccessNotification                       @"LoginSuccessNotification"
 #define     kUserLogoutSuccessNotification                  @"UserLogoutSuccessNotification"
 #define     kSelectedCityNotification                       @"kSelectedCityNotification"
+
+#define     kCancelOrderSuccessNotification                       @"kCancelOrderSuccessNotification"
 
 //alert info msessage
 #define     kAlertEnterAccountMsg            @"请输入账号"

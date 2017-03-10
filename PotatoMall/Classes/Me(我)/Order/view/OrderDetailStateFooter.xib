@@ -15,6 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="512" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0N-mV-zye">
+                    <rect key="frame" x="0.0" y="0.0" width="512" height="160"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提货方式：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx">
                     <rect key="frame" x="16" y="16" width="72" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -37,7 +41,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-UW-FwV">
-                    <rect key="frame" x="87.5" y="50" width="408.5" height="67"/>
+                    <rect key="frame" x="88" y="50" width="408" height="67"/>
                     <string key="text">订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,7 +52,11 @@
                 <constraint firstItem="008-wW-0RU" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="leading" id="01u-Dn-ASs"/>
                 <constraint firstItem="Yn4-UW-FwV" firstAttribute="leading" secondItem="008-wW-0RU" secondAttribute="trailing" id="23z-mY-KnI"/>
                 <constraint firstItem="008-wW-0RU" firstAttribute="top" secondItem="ora-5t-ZKx" secondAttribute="bottom" constant="16" id="BH7-vG-fWK"/>
+                <constraint firstAttribute="bottom" secondItem="o0N-mV-zye" secondAttribute="bottom" id="LHA-vb-q3Q"/>
+                <constraint firstAttribute="trailing" secondItem="o0N-mV-zye" secondAttribute="trailing" id="Og9-wK-9nM"/>
                 <constraint firstItem="Yn4-UW-FwV" firstAttribute="top" secondItem="pUh-Fw-y5f" secondAttribute="bottom" constant="17" id="WDs-iJ-aqd"/>
+                <constraint firstItem="o0N-mV-zye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XTF-fp-ChO"/>
+                <constraint firstItem="o0N-mV-zye" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YJS-xF-Kn6"/>
                 <constraint firstItem="pUh-Fw-y5f" firstAttribute="centerY" secondItem="ora-5t-ZKx" secondAttribute="centerY" id="lhD-1i-Jqe"/>
                 <constraint firstItem="ora-5t-ZKx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ogg-gw-z9q"/>
                 <constraint firstItem="ora-5t-ZKx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="pe7-gw-oKG"/>

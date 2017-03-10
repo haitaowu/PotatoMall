@@ -37,6 +37,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     [self setupTableView];
     [self reqOrdersData];
     [self setupTableviewTableheader];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelOrderSuccess:) name:kCancelOrderSuccessNotification object:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -45,6 +46,11 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         OrderDetailTableController *destinationControl = (OrderDetailTableController*)[segue destinationViewController];
         destinationControl.orderModel = sender;
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - setup UI 
@@ -77,6 +83,14 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     //footer register nib
     UINib *footerNib = [UINib nibWithNibName:@"OrderStateFooter" bundle:nil];
     [self.tableView registerNib:footerNib forHeaderFooterViewReuseIdentifier:OrderStateFooterID];
+}
+
+#pragma mark - selectors
+- (void)cancelOrderSuccess:(NSNotification*)sender
+{
+    OrderModel *model = sender.object;
+    [self.ordersArray removeObject:model];
+    [self.tableView reloadData];
 }
 
 #pragma mark - requset server

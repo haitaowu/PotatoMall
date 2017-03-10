@@ -98,7 +98,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     params[kGoodsInfosKey] = goodsArr;
     params[kShippingMobileKey] = @"18061955875";
     params[kShippingPersonKey] = @"18061955875";
-    params[kDeliveryTypeey] = @"1";
+    params[kDeliveryTypKey] = @"1";
     
     params[kUserIdKey] = [UserModelUtil sharedInstance].userModel.userId;
     NSString *feedStr = self.orderCell.textView.text;

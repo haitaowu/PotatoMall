@@ -109,6 +109,8 @@
 		BED95DFD1E6EF79100054F45 /* PurchHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */; };
 		BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */; };
 		BED95E021E6EF82100054F45 /* HotCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95E001E6EF82100054F45 /* HotCollectionCell.xib */; };
+		BEDECE331E72967200EEA29B /* CancelOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDECE311E72967200EEA29B /* CancelOrderCell.m */; };
+		BEDECE341E72967200EEA29B /* CancelOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEDECE321E72967200EEA29B /* CancelOrderCell.xib */; };
 		BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */; };
 		BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */; };
 		BEE4215C1E6BF3DC00655C22 /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE4215B1E6BF3DC00655C22 /* GoodsModel.m */; };
@@ -326,6 +328,9 @@
 		BED95DFE1E6EF82100054F45 /* HotCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCollectionCell.h; sourceTree = "<group>"; };
 		BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCollectionCell.m; sourceTree = "<group>"; };
 		BED95E001E6EF82100054F45 /* HotCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotCollectionCell.xib; sourceTree = "<group>"; };
+		BEDECE301E72967200EEA29B /* CancelOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelOrderCell.h; sourceTree = "<group>"; };
+		BEDECE311E72967200EEA29B /* CancelOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelOrderCell.m; sourceTree = "<group>"; };
+		BEDECE321E72967200EEA29B /* CancelOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelOrderCell.xib; sourceTree = "<group>"; };
 		BEE29C5A1E5E814800DF3782 /* HTSearchHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSearchHistoryController.h; sourceTree = "<group>"; };
 		BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSearchHistoryController.m; sourceTree = "<group>"; };
 		BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTSearchHistoryController.xib; sourceTree = "<group>"; };
@@ -1054,6 +1059,9 @@
 		BEF0EE181E711E41003E06DB /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				BEDECE301E72967200EEA29B /* CancelOrderCell.h */,
+				BEDECE311E72967200EEA29B /* CancelOrderCell.m */,
+				BEDECE321E72967200EEA29B /* CancelOrderCell.xib */,
 				BEF0EE391E714B7E003E06DB /* OrderCell.h */,
 				BEF0EE3A1E714B7E003E06DB /* OrderCell.m */,
 				BEF0EE3B1E714B7E003E06DB /* OrderCell.xib */,
@@ -1152,6 +1160,7 @@
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
 				BE59A4711E63CEE00077D9AD /* MeMenus.plist in Resources */,
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
+				BEDECE341E72967200EEA29B /* CancelOrderCell.xib in Resources */,
 				BEF0EE2B1E7136FB003E06DB /* OrderStateHeader.xib in Resources */,
 				BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */,
 				BE93AF2D1E65B88E001F99BC /* SearchCell.xib in Resources */,
@@ -1287,6 +1296,7 @@
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */,
 				BE5ED7FA1E62B90900C4B1D0 /* PwdBackController.m in Sources */,
+				BEDECE331E72967200EEA29B /* CancelOrderCell.m in Sources */,
 				BEE4215C1E6BF3DC00655C22 /* GoodsModel.m in Sources */,
 				BEF0EE2F1E7137CF003E06DB /* OrderDetailStateFooter.m in Sources */,
 				BE93AF2C1E65B88E001F99BC /* SearchCell.m in Sources */,
