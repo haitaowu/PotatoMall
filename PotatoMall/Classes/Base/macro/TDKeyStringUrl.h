@@ -27,6 +27,7 @@
 #define     kSalesSortKey                   @"salesSort"
 #define     kCatalogIdKey                   @"catalogId"
 #define     kGoodsInfoIdKey                 @"goodsInfoId"
+#define     kGoodsInfoIdsKey                @"goodsInfoIds"
 #define     kGoodsInfosKey                  @"goodsInfos"
 #define     kRemarkKey                      @"remark"
 #define     kNumKey                         @"num"

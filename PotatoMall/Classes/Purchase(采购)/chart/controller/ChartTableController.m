@@ -58,7 +58,6 @@ static NSString *HeaderID = @"HeaderID";
 {
     [self.navigationController  setToolbarHidden:NO animated:YES];
     HTCalculatorToolBar *toolbar = [HTCalculatorToolBar customToolBarWithAllBlock:^{
-        NSLog(@"selected all products ");
         self.selectedGoods = [NSMutableArray arrayWithArray:self.goodsArray];
         [self selectedAllGoods];
         [self updateTotalPriceLabel];
@@ -66,16 +65,13 @@ static NSString *HeaderID = @"HeaderID";
         [self.selectedGoods removeAllObjects];
         [self unSelectedAllGoods];
         [self updateTotalPriceLabel];
-        NSLog(@"unselected all products ");
     } calculatorBlock:^{
-        NSLog(@"calculator products price ");
         if ([self.selectedGoods count] > 0) {
             [self performSegueWithIdentifier:@"preOrderSegue" sender:self.selectedGoods];
         }
     }];
     
     CGRect frame = self.navigationController.toolbar.frame;
-    NSLog(@"frame from %@",NSStringFromCGRect(frame));
     toolbar.frame = frame;
     self.toolBar = toolbar;
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
@@ -155,6 +151,31 @@ static NSString *HeaderID = @"HeaderID";
     }
 }
 
+- (void)deleteWithGoodsModel:(GoodsModel*)goodsModel
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView reloadData];
+    }else{
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        id userId = [UserModelUtil sharedInstance].userModel.userId;
+        params[kUserIdKey] = userId;
+        params[kGoodsInfoIdsKey] = goodsModel.goodsInfoId;
+        NSString *subUrl = @"cart/deleteCartProduct";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD showInfoWithStatus:msg];
+            if (status == StatusTypSuccess) {
+                [self.goodsArray removeObject:goodsModel];
+                [self.selectedGoods removeObject:goodsModel];
+                [self updateTotalPriceLabel];
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
 
 #pragma mark - UITableView --- Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -171,10 +192,10 @@ static NSString *HeaderID = @"HeaderID";
     [cell setModel:model];
     __block typeof(self) blockSelf = self;
     cell.deleteBlock = ^(GoodsModel *model){
-        [blockSelf.goodsArray removeObject:model];
-        [blockSelf.selectedGoods removeObject:model];
-        [blockSelf updateTotalPriceLabel];
-        [self.tableView reloadData];
+//        [blockSelf.goodsArray removeObject:model];
+//        [blockSelf.selectedGoods removeObject:model];
+//        [blockSelf updateTotalPriceLabel];
+        [blockSelf deleteWithGoodsModel:model];
     };
     
     cell.selectBlock = ^(GoodsModel *model){
