@@ -12,7 +12,8 @@
 
 + (NSMutableArray*)adsWithData:(id)data
 {
-    NSArray *ads = [PurAdModel mj_objectArrayWithKeyValuesArray:data];
+    NSArray *list = data[@"list"];
+    NSArray *ads = [PurAdModel mj_objectArrayWithKeyValuesArray:list];
     return [NSMutableArray arrayWithArray:ads];
 }
 

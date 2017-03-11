@@ -61,6 +61,7 @@
 		BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5ED7F71E62B90900C4B1D0 /* Login.storyboard */; };
 		BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */; };
 		BE652F721E696D6F003ABEC3 /* MeInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */; };
+		BE6DAEE41E73971500E82C47 /* SpringGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */; };
 		BE7F9A2C1E6D7BE300DD21CF /* ProductDetailTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */; };
 		BE7F9A2F1E6D80FD00DD21CF /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9A2E1E6D80FD00DD21CF /* GoodsDetailModel.m */; };
 		BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E11E645E6B00F92C46 /* DataUtil.m */; };
@@ -239,6 +240,8 @@
 		BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeUserIDController.m; sourceTree = "<group>"; };
 		BE652F701E696D6F003ABEC3 /* MeInfoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeInfoTableController.h; sourceTree = "<group>"; };
 		BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeInfoTableController.m; sourceTree = "<group>"; };
+		BE6DAEE21E73971500E82C47 /* SpringGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringGoodsModel.h; sourceTree = "<group>"; };
+		BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringGoodsModel.m; sourceTree = "<group>"; };
 		BE7F9A2A1E6D7BE300DD21CF /* ProductDetailTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTableController.h; sourceTree = "<group>"; };
 		BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTableController.m; sourceTree = "<group>"; };
 		BE7F9A2D1E6D80FD00DD21CF /* GoodsDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 			children = (
 				BEE4215A1E6BF3DC00655C22 /* GoodsModel.h */,
 				BEE4215B1E6BF3DC00655C22 /* GoodsModel.m */,
+				BE6DAEE21E73971500E82C47 /* SpringGoodsModel.h */,
+				BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1235,6 +1240,7 @@
 				BE077A6E1E6A9998006F0EFB /* ChartCell.m in Sources */,
 				BEFFAB991E6E8F43006D1FDE /* ProdCateModel.m in Sources */,
 				BECC9FA11E6EE459001DE8F1 /* PurSectionHeader.m in Sources */,
+				BE6DAEE41E73971500E82C47 /* SpringGoodsModel.m in Sources */,
 				BE5ED7A01E619FAC00C4B1D0 /* AritcleDetailController.m in Sources */,
 				BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */,
 				BECC9F9E1E6EDE80001DE8F1 /* PurAdModel.m in Sources */,

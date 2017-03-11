@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *picView;
 @property (weak, nonatomic) IBOutlet PlustField *countField;
 @property (weak, nonatomic) IBOutlet UIButton *deletBtn;
-@property (weak, nonatomic) IBOutlet UILabel *adrLabel;
 @property (weak, nonatomic) IBOutlet UIButton *selectView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *checkBoxWidth;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;

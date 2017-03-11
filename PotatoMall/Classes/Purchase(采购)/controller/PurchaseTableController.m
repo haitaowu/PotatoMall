@@ -19,6 +19,7 @@
 #import "PurchHotCell.h"
 #import "PurchaseMoresController.h"
 #import "ProductDetailTableController.h"
+#import "SpringGoodsModel.h"
 
 #define kCategorySectionIdx             0
 
@@ -36,8 +37,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 @interface PurchaseTableController ()
 @property (nonatomic,strong)NSMutableArray *categoryArray;
 @property (nonatomic,strong)NSMutableArray *adsArray;
-@property (nonatomic,strong)NSMutableArray *springHotGoods;
-@property (nonatomic,strong)NSMutableArray *springGoods;
+@property (nonatomic,strong)SpringGoodsModel *springGoodsNew;
+@property (nonatomic,strong)SpringGoodsModel *springRecomGoods;
 @property (nonatomic,assign) int pageNo;
 @property (nonatomic,assign) int pageSize;
 
@@ -63,7 +64,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 {
     [super viewWillAppear:animated];
     [self.navigationController  setToolbarHidden:YES animated:YES];
-    if (self.springGoods == nil) {
+    if (self.springRecomGoods.list == nil) {
         [self requestProductsData];
     }
 }
@@ -139,17 +140,31 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)processProductsData:(id)data
 {
     NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
-    NSDictionary *obj = dict[@"obj"];
-    NSArray *carousel = obj[@"carousel"];
-    self.adsArray = [PurAdModel adsWithData:carousel];
-    //春节新上
-    NSString *sprGoods = obj[@"springGoods"];
-    self.springGoods = [GoodsModel goodsWithArray:sprGoods];
+    NSArray *list = dict[@"obj"];
+    //采购导航 CGDH
     
-    //春节新上
-    NSString *hotGoods = obj[@"springHotGoods"];
-    self.springHotGoods = [GoodsModel goodsWithArray:hotGoods];
-    HTLog(@"hello");
+    //采购轮播 CGLB
+    NSDictionary *adDict = [self dataWithCode:@"CGLB" list:list];
+    self.adsArray = [PurAdModel adsWithData:adDict];
+    
+    //更多推荐 GDTJ
+    NSDictionary *recommandDict = [self dataWithCode:@"CGLB" list:list];
+    self.springRecomGoods = [SpringGoodsModel goodsWithData:recommandDict];
+    
+    //春节新上 CJXS
+    NSDictionary *springNewDict = [self dataWithCode:@"CJXS" list:list];
+    self.springGoodsNew = [SpringGoodsModel goodsWithData:springNewDict];
+}
+
+- (id)dataWithCode:(NSString*)codeStr list:(NSArray*)list
+{
+    for (NSDictionary *obj in list) {
+        NSString *code = obj[@"code"];
+        if ([code isEqualToString:codeStr]) {
+            return obj;
+        }
+    }
+    return [NSDictionary dictionary];
 }
 
 #pragma mark - requset server
@@ -210,7 +225,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
             [self.tableView.mj_footer endRefreshing];
             if (status == StatusTypSuccess) {
                 NSMutableArray *moreData = [GoodsModel goodsWithData:data];
-                [self.springGoods addObjectsFromArray:moreData];
+                [self.springRecomGoods.list addObjectsFromArray:moreData];
             }
             
             [self.tableView reloadData];
@@ -238,13 +253,13 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
                 return 0;
             }
         }else if (section == kHotProductsSectionIdx) {
-            if ([self.springHotGoods count] > 0) {
+            if ([self.springGoodsNew.list count] > 0) {
                 return 1;
             }else{
                 return 0;
             }
         }else{
-            return [self.springGoods count] ;
+            return [self.springRecomGoods.list count] ;
         }
     }
 }
@@ -277,12 +292,12 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
          return cell;
      }else if(indexPath.section == kProductsSectionIdx){
          GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCellID];
-         GoodsModel *model = self.springGoods[indexPath.row];
+         GoodsModel *model = self.springRecomGoods.list[indexPath.row];
          [cell setModel:model];
          return cell;
      }else{
          PurchHotCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchHotCellID];
-         [cell setSpringHotGoods:self.springHotGoods];
+         [cell setSpringHotGoods:self.springRecomGoods.list];
          cell.itemBlock = ^(GoodsModel *model){
              HTLog(@"didSelectItemAtIndexPath");
          };
@@ -294,13 +309,13 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section ==  kHotProductsSectionIdx) {
-        if ([self.springHotGoods count] > 0) {
+        if ([self.springGoodsNew.list count] > 0) {
             return 50;
         }else{
             return 0.001;
         }
     }else if (section == kProductsSectionIdx){
-        if ([self.springGoods count] > 0) {
+        if ([self.springRecomGoods.list count] > 0) {
             return 50;
         }else{
             return 0.001;
@@ -322,14 +337,14 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GoodsModel *model = self.springGoods[indexPath.row];
+    GoodsModel *model = self.springRecomGoods.list[indexPath.row];
     [self performSegueWithIdentifier:@"productDetailSegue" sender:model];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section ==  kHotProductsSectionIdx) {
-        if ([self.springHotGoods count] > 0) {
+        if ([self.springGoodsNew.list count] > 0) {
             PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季热卖" moreTitle:@"查看更多"];
             titleHeader.moreBlock = ^(){
                 HTLog(@"tap more btn ");
@@ -339,7 +354,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
             return nil;
         }
     }else if (section == kProductsSectionIdx){
-        if ([self.springGoods count] > 0) {
+        if ([self.springRecomGoods.list count] > 0) {
             PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季上新" moreTitle:@"查看更多"];
             titleHeader.moreBlock = ^(){
                 HTLog(@"tap more btn ");
