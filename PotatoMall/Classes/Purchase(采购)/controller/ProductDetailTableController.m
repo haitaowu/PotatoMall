@@ -184,7 +184,7 @@
         if (indexPath.row == kDescriptionFirstRowIdx) {
             return 120;
         }else{
-            return 44;
+            return 0.001;
         }
     }else if(indexPath.section == kSpecifSectionIdx){
         if (indexPath.row == kSpecifRowIdx) {
@@ -194,7 +194,7 @@
             return 44;
         }
     }else if(indexPath.section == kStoreSectionIdx){
-        return 60;
+        return 0.001;
     }else if(indexPath.section == kImageParamsSectionIdx){
         return 250;
     }else{

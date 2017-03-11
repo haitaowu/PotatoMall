@@ -62,6 +62,7 @@
 		BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */; };
 		BE652F721E696D6F003ABEC3 /* MeInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */; };
 		BE6DAEE41E73971500E82C47 /* SpringGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */; };
+		BE6DAEE61E73CE9700E82C47 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */; };
 		BE7F9A2C1E6D7BE300DD21CF /* ProductDetailTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */; };
 		BE7F9A2F1E6D80FD00DD21CF /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9A2E1E6D80FD00DD21CF /* GoodsDetailModel.m */; };
 		BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E11E645E6B00F92C46 /* DataUtil.m */; };
@@ -183,7 +184,6 @@
 		BE30996F1E5C71AD0062EBA9 /* PotatoMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotatoMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE30997C1E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BE3099811E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE5496A81E60321C00A19940 /* RequestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestUtil.h; sourceTree = "<group>"; };
 		BE5496A91E60321C00A19940 /* RequestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUtil.m; sourceTree = "<group>"; };
 		BE5535491E5EA17A0021E2C6 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -242,6 +242,7 @@
 		BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeInfoTableController.m; sourceTree = "<group>"; };
 		BE6DAEE21E73971500E82C47 /* SpringGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringGoodsModel.h; sourceTree = "<group>"; };
 		BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringGoodsModel.m; sourceTree = "<group>"; };
+		BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BE7F9A2A1E6D7BE300DD21CF /* ProductDetailTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTableController.h; sourceTree = "<group>"; };
 		BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTableController.m; sourceTree = "<group>"; };
 		BE7F9A2D1E6D80FD00DD21CF /* GoodsDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
@@ -300,7 +301,6 @@
 		BECC9FA01E6EE459001DE8F1 /* PurSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurSectionHeader.m; sourceTree = "<group>"; };
 		BECC9FA21E6EE5F9001DE8F1 /* HorizonAlignBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizonAlignBtn.h; sourceTree = "<group>"; };
 		BECC9FA31E6EE5F9001DE8F1 /* HorizonAlignBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizonAlignBtn.m; sourceTree = "<group>"; };
-		BED016A71E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		BED016A81E5EFD120033154D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		BED202801E7062BB00437133 /* OrderSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSuccessController.h; sourceTree = "<group>"; };
 		BED202811E7062BB00437133 /* OrderSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSuccessController.m; sourceTree = "<group>"; };
@@ -527,11 +527,11 @@
 			isa = PBXGroup;
 			children = (
 				BEC06DAC1E5C76D300667D73 /* Classes */,
-				BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */,
 				BE30997B1E5C71AE0062EBA9 /* Main.storyboard */,
 				BEC06DBA1E5C771F00667D73 /* Info.plist */,
 				BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */,
 				BE3099721E5C71AE0062EBA9 /* Supporting Files */,
+				BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */,
 			);
 			path = PotatoMall;
 			sourceTree = "<group>";
@@ -1162,6 +1162,7 @@
 				BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */,
 				BE0DDB4E1E6D46FA00F15168 /* GoodsCell.xib in Resources */,
 				BED84A131E6FEF91001E7A27 /* OrderFeedCell.xib in Resources */,
+				BE6DAEE61E73CE9700E82C47 /* Launch Screen.storyboard in Resources */,
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
 				BE59A4711E63CEE00077D9AD /* MeMenus.plist in Resources */,
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
@@ -1336,15 +1337,6 @@
 				BED016A81E5EFD120033154D /* zh-Hans */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BE3099801E5C71AE0062EBA9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE3099811E5C71AE0062EBA9 /* Base */,
-				BED016A71E5EFD120033154D /* zh-Hans */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

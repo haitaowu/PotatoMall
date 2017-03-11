@@ -280,6 +280,7 @@
         if (status == StatusTypSuccess) {
             UserModel *userModel = [self userModelWithData:data];
             [[UserModelUtil sharedInstance] archiveUserModel:userModel];
+            [self performSegueWithIdentifier:@"selectIDSegue" sender:nil];
         }
     } reqFail:^(int type, NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];

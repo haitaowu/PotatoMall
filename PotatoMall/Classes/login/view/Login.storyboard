@@ -438,19 +438,14 @@
                             <outlet property="delegate" destination="Gcg-Qd-vdM" id="WTF-ID-FPz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="注册" id="ebb-wr-ryh">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Cqb-mz-Mpk">
-                            <connections>
-                                <segue destination="5uI-IN-mqc" kind="show" id="Vxg-v2-nDL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="注册" id="ebb-wr-ryh"/>
                     <connections>
                         <outlet property="codeBtn" destination="E0U-Xy-WSD" id="aS1-tQ-8HT"/>
                         <outlet property="codeTextField" destination="dqf-cd-8cB" id="2xq-Ul-xDl"/>
                         <outlet property="phoneTextField" destination="A1a-Dx-S4H" id="MvY-EF-s5x"/>
                         <outlet property="pwdTextField" destination="cy8-Vv-D2t" id="ms6-nr-d52"/>
                         <outlet property="registerBtn" destination="kyi-zN-N2w" id="dmj-Jl-Rea"/>
+                        <segue destination="5uI-IN-mqc" kind="show" identifier="selectIDSegue" id="pNt-mn-OPG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTc-ai-yCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -470,7 +465,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*账号身份选择后无法随意更改，需想再次变更必须提交审核申请，请按实情谨慎选择。" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlG-i4-DWz">
-                                <rect key="frame" x="20" y="84" width="335" height="34"/>
+                                <rect key="frame" x="20" y="84" width="335" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -485,13 +480,13 @@
                                 </connections>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="从事马铃薯批发/采购的个人或者企业" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkM-VO-0g0">
-                                <rect key="frame" x="94" y="365" width="188" height="34"/>
+                                <rect key="frame" x="94" y="365" width="188" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dab-YC-hNb" customClass="RadiusButton">
-                                <rect key="frame" x="30" y="415" width="315" height="40"/>
+                                <rect key="frame" x="30" y="414.5" width="315" height="40"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Ep9-lP-HZo"/>
@@ -1367,7 +1362,7 @@
         <image name="next" width="8" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vxg-v2-nDL"/>
+        <segue reference="pNt-mn-OPG"/>
         <segue reference="UXv-ic-xVV"/>
     </inferredMetricsTieBreakers>
 </document>
