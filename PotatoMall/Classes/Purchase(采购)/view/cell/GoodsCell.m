@@ -9,10 +9,12 @@
 #import "GoodsCell.h"
 #import "NSString+Extentsion.h"
 
-#define kImgTopMargin          10
-#define kImgLeftMarin          16
-#define kViewsMarin            16
-#define kLabelTopMarin         18
+#define kSiderMargin                    16
+#define kViewsVeritcalMarin             16
+#define kImageHeightPercent             0.8
+
+#define kImageWidthHPercent             3/2.5
+
 
 
 
@@ -27,24 +29,46 @@
 #pragma mark - override methods
 - (void)awakeFromNib {
     [super awakeFromNib];
-     HTLog(@"awakeFromNib awakeFromNib");
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    HTLog(@"layout subviews");
-    HTLog(@"titleLabel frame = %@",NSStringFromCGRect(self.titleLabel.frame));
-    CGFloat titleLabelMaxY = CGRectGetMaxY(self.titleLabel.frame);
-    CGFloat priceLabelMinY = CGRectGetMinY(self.priceLabel.frame);
-    CGFloat gap = priceLabelMinY - titleLabelMaxY;
+    CGFloat imgH = self.height * kImageHeightPercent;
+    CGFloat imgW = imgH * kImageWidthHPercent;
+    CGFloat imgX = kSiderMargin;
+    CGFloat imgY = (self.height - imgH) * 0.5;
+    CGRect imgF = {{imgX,imgY},{imgW,imgH}};
+    self.picView.frame = imgF;
+    
+    [self.titleLabel sizeToFit];
     [self.adrLabel sizeToFit];
-    CGSize adrSize = self.adrLabel.size;
-    CGFloat delta = (gap - adrSize.height) / 2;
-    CGFloat adrX = self.titleLabel.x;
-    CGFloat adrY = titleLabelMaxY + delta;
-    CGRect adrF = {{adrX,adrY},adrSize};
+    [self.priceLabel sizeToFit];
+    
+    //title label
+    CGFloat delta = 8;
+    CGFloat labelsHeight = self.titleLabel.height + self.priceLabel.height + self.adrLabel.height;
+    CGFloat labelsMargin = (self.height - labelsHeight - imgY * 2) * 0.5;
+    CGFloat titleY = imgY;
+    CGFloat titleX = CGRectGetMaxX(self.picView.frame) + kViewsVeritcalMarin;
+    CGFloat titleW = self.width - titleX -  kSiderMargin;
+    CGFloat titleHeight = [GoodsCell stringHeightWithStr:self.titleLabel.text font:self.titleLabel.font width:titleW];
+    CGRect titleF = {{titleX,titleY},{titleW,titleHeight}};
+    self.titleLabel.frame = titleF;
+    
+    //adr label frame
+    CGFloat adrX = titleX;
+    CGFloat adrY = CGRectGetMaxY(self.titleLabel.frame) + labelsMargin;
+    CGRect adrF = {{adrX,adrY},self.adrLabel.size};
     self.adrLabel.frame = adrF;
+    
+    //price label frame
+    CGFloat priceX = titleX;
+    CGFloat priceY = CGRectGetMaxY(self.adrLabel.frame) + labelsMargin;
+    CGRect priceF = {{priceX,priceY},self.priceLabel.size};
+    self.priceLabel.frame = priceF;
+ 
+    
 }
 
 #pragma mark -  setter and getter methods 
@@ -60,6 +84,15 @@
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
 }
+
++ (CGFloat)stringHeightWithStr:(NSString*) str font:(UIFont*)font width:(CGFloat) width
+{
+    CGSize size = CGSizeMake(width, MAXFLOAT);
+    NSDictionary *attris = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
+    CGSize textSize = [str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attris context:nil].size;
+    return  textSize.height ;
+}
+
 
 #pragma mark - selectors
 

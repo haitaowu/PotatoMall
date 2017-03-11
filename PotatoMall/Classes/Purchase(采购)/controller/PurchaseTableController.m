@@ -148,7 +148,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     self.adsArray = [PurAdModel adsWithData:adDict];
     
     //更多推荐 GDTJ
-    NSDictionary *recommandDict = [self dataWithCode:@"CGLB" list:list];
+    NSDictionary *recommandDict = [self dataWithCode:@"GDTJ" list:list];
     self.springRecomGoods = [SpringGoodsModel goodsWithData:recommandDict];
     
     //春节新上 CJXS
@@ -345,7 +345,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 {
     if (section ==  kHotProductsSectionIdx) {
         if ([self.springGoodsNew.list count] > 0) {
-            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季热卖" moreTitle:@"查看更多"];
+            NSString *title = self.springGoodsNew.name;
+            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
             titleHeader.moreBlock = ^(){
                 HTLog(@"tap more btn ");
             };
@@ -355,7 +356,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         }
     }else if (section == kProductsSectionIdx){
         if ([self.springRecomGoods.list count] > 0) {
-            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:@"春季上新" moreTitle:@"查看更多"];
+            NSString *title = self.springRecomGoods.name;
+            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
             titleHeader.moreBlock = ^(){
                 HTLog(@"tap more btn ");
             };
@@ -379,7 +381,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     }else if (indexPath.section == kHotProductsSectionIdx) {
         return 120;
     }else{
-        return 100;
+        return 120;
     }
    
 }
