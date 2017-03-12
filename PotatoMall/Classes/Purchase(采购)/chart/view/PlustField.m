@@ -52,7 +52,7 @@
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:leftImage forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(tapMinusBtn) forControlEvents:UIControlEventTouchUpInside];
-    CGRect leftF = CGRectMake(0, 0, 30, 30);
+    CGRect leftF = CGRectMake(0, 0, 25, 25);
     leftBtn.frame = leftF;
     self.leftView = leftBtn;
     self.leftViewMode = UITextFieldViewModeAlways;
@@ -62,7 +62,7 @@
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBtn setImage:rightImage forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(tapPlusBtn) forControlEvents:UIControlEventTouchUpInside];
-    CGRect rightF = CGRectMake(0, 0, 30, 30);
+    CGRect rightF = CGRectMake(0, 0, 25, 25);
     rightBtn.frame = rightF;
     self.rightView = rightBtn;
     self.rightViewMode = UITextFieldViewModeAlways;

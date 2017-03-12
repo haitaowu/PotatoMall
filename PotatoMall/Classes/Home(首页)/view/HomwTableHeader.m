@@ -36,7 +36,7 @@
 #pragma mark - setup 
 - (void)setupUI
 {
-    UIImage *placeholderImage = [UIImage imageNamed:@"tudou"];
+    UIImage *placeholderImage = [UIImage imageNamed:@"top_placeholder"];
     self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.bounds delegate:self placeholderImage:placeholderImage];
     [self addSubview:self.cycleScrollView];
 }

@@ -19,8 +19,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q90-iB-KRi" customClass="CustomTextView">
-                        <rect key="frame" x="16" y="33" width="310" height="117"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="16" y="33" width="310" height="101.5"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -37,7 +37,7 @@
                     <constraint firstItem="sZP-iZ-7s7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="OmN-gb-9CY"/>
                     <constraint firstItem="q90-iB-KRi" firstAttribute="top" secondItem="sZP-iZ-7s7" secondAttribute="bottom" constant="8" id="Xyt-eg-mm5"/>
                     <constraint firstAttribute="trailing" secondItem="q90-iB-KRi" secondAttribute="trailing" constant="16" id="dqz-P0-sYg"/>
-                    <constraint firstAttribute="bottom" secondItem="q90-iB-KRi" secondAttribute="bottom" id="lHd-6t-G1B"/>
+                    <constraint firstAttribute="bottom" secondItem="q90-iB-KRi" secondAttribute="bottom" constant="16" id="lHd-6t-G1B"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

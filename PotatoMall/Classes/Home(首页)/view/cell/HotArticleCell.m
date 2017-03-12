@@ -26,7 +26,7 @@
     self.dateLabel.text = model.createDate;
     if (model.imgSrc != nil) {
         NSURL *picUrl = [NSURL URLWithString:model.imgSrc];
-        UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
+        UIImage *holderImg = [UIImage imageNamed:@"goods_placehodler"];
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
 }

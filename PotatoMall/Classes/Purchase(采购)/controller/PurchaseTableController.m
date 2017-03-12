@@ -191,7 +191,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     
     //采购轮播 CGLB
     NSDictionary *adDict = [self dataWithCode:@"CGLB" list:list];
-    NSArray *adsList = [adDict objectForKey:@"goodsWithArray"];
+    NSArray *adsList = [adDict objectForKey:@"list"];
     self.adsArray = [GoodsModel goodsWithArray:adsList];
     
     //更多推荐 GDTJ

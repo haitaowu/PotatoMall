@@ -226,7 +226,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     if (indexPath.section == 0) {
         return 50;
     }else if(indexPath.section == 1){
-        return 150;
+        return 120;
     }else{
         return 150;
     }

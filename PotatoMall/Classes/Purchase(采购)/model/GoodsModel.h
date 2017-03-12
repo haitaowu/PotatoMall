@@ -25,8 +25,13 @@
 /**商品unit*/
 @property (nonatomic,copy) NSString *unit;
 
+/**商品地址*/
+@property (nonatomic,copy) NSString *goodsPlace;
+
 /**请求地址（暂无数据后期完善）*/
 @property (nonatomic,copy) NSString *url;
+
+
 /**类型（暂无数据后期完善）*/
 @property (nonatomic,copy) NSString *type;
 

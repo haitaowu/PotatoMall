@@ -24,7 +24,7 @@
     _model = model;
     if (model.imageSrc != nil) {
         NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
-        UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
+        UIImage *holderImg = [UIImage imageNamed:@"goods_placehodler"];
         [self.imageView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
     self.titleLabel.text = model.goodsInfoName;
