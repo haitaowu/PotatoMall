@@ -174,8 +174,9 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         [header setOrderModel:self.orderModel];
         return header;
     }else if(section == 1){
-        OrderDetailTransHeader *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailTransHeaderID];
-        return footer;
+        OrderDetailTransHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailTransHeaderID];
+        header.orderModel = self.orderModel;
+        return header;
     }else{
         return nil;
     }

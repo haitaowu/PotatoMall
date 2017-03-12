@@ -15,9 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="512" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0N-mV-zye">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uht-5o-HnZ" userLabel="bagView">
                     <rect key="frame" x="0.0" y="0.0" width="512" height="160"/>
-                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZh-Oh-beb" userLabel="topBgView">
+                    <rect key="frame" x="0.0" y="0.0" width="512" height="41"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提货方式：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx">
                     <rect key="frame" x="16" y="16" width="72" height="17"/>
@@ -40,8 +44,13 @@
                     <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0N-mV-zye">
+                    <rect key="frame" x="88" y="50" width="416" height="102"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-UW-FwV">
                     <rect key="frame" x="88" y="50" width="408" height="67"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     <string key="text">订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,13 +60,21 @@
             <constraints>
                 <constraint firstItem="008-wW-0RU" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="leading" id="01u-Dn-ASs"/>
                 <constraint firstItem="Yn4-UW-FwV" firstAttribute="leading" secondItem="008-wW-0RU" secondAttribute="trailing" id="23z-mY-KnI"/>
+                <constraint firstItem="RZh-Oh-beb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="93z-yE-7DE"/>
                 <constraint firstItem="008-wW-0RU" firstAttribute="top" secondItem="ora-5t-ZKx" secondAttribute="bottom" constant="16" id="BH7-vG-fWK"/>
-                <constraint firstAttribute="bottom" secondItem="o0N-mV-zye" secondAttribute="bottom" id="LHA-vb-q3Q"/>
-                <constraint firstAttribute="trailing" secondItem="o0N-mV-zye" secondAttribute="trailing" id="Og9-wK-9nM"/>
+                <constraint firstItem="uht-5o-HnZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="C5p-Ii-EdU"/>
+                <constraint firstAttribute="bottom" secondItem="uht-5o-HnZ" secondAttribute="bottom" id="CKb-eX-c2H"/>
+                <constraint firstAttribute="trailing" secondItem="RZh-Oh-beb" secondAttribute="trailing" id="DDX-oH-CEn"/>
+                <constraint firstItem="RZh-Oh-beb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QBO-0g-QQG"/>
+                <constraint firstAttribute="trailing" secondItem="uht-5o-HnZ" secondAttribute="trailing" id="Qtk-5K-PpB"/>
                 <constraint firstItem="Yn4-UW-FwV" firstAttribute="top" secondItem="pUh-Fw-y5f" secondAttribute="bottom" constant="17" id="WDs-iJ-aqd"/>
-                <constraint firstItem="o0N-mV-zye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XTF-fp-ChO"/>
-                <constraint firstItem="o0N-mV-zye" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YJS-xF-Kn6"/>
+                <constraint firstItem="Yn4-UW-FwV" firstAttribute="top" secondItem="o0N-mV-zye" secondAttribute="top" id="ZXB-id-RVI"/>
+                <constraint firstItem="uht-5o-HnZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aJU-sG-qzv"/>
+                <constraint firstAttribute="bottom" secondItem="o0N-mV-zye" secondAttribute="bottom" constant="8" id="hn3-4t-u3M"/>
+                <constraint firstItem="Yn4-UW-FwV" firstAttribute="leading" secondItem="o0N-mV-zye" secondAttribute="leading" id="jtz-O1-d1h"/>
                 <constraint firstItem="pUh-Fw-y5f" firstAttribute="centerY" secondItem="ora-5t-ZKx" secondAttribute="centerY" id="lhD-1i-Jqe"/>
+                <constraint firstAttribute="trailing" secondItem="o0N-mV-zye" secondAttribute="trailing" constant="8" id="mmc-qU-reD"/>
+                <constraint firstItem="ora-5t-ZKx" firstAttribute="bottom" secondItem="RZh-Oh-beb" secondAttribute="bottom" constant="-8" id="n9W-D9-FAz"/>
                 <constraint firstItem="ora-5t-ZKx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ogg-gw-z9q"/>
                 <constraint firstItem="ora-5t-ZKx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="pe7-gw-oKG"/>
                 <constraint firstItem="pUh-Fw-y5f" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="trailing" id="sT1-MT-8oB"/>

@@ -25,6 +25,8 @@
 - (void)setOrderModel:(OrderModel *)orderModel
 {
     _orderModel = orderModel;
+    self.remarksLabel.text = orderModel.remark;
+    
 }
 
 @end
