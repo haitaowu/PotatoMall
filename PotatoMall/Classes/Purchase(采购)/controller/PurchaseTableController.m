@@ -36,6 +36,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 
 @interface PurchaseTableController ()
 @property (nonatomic,strong)NSMutableArray *categoryArray;
+@property (nonatomic,strong)NSMutableArray *goodsArray;
 @property (nonatomic,strong)NSMutableArray *adsArray;
 @property (nonatomic,strong)SpringGoodsModel *springGoodsNew;
 @property (nonatomic,strong)SpringGoodsModel *springRecomGoods;
@@ -148,6 +149,12 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     self.topScrollView.sliderWidthPercent = 0.8;
     __block typeof(self) blockSelf = self;
     self.topScrollView.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
+        if (idx == 0) {
+            self.selectedCateModel = nil;
+        }else{
+            self.selectedCateModel = self.categoryArray[idx];
+        }
+        [self reqGoodsWithCategoryModel:self.selectedCateModel];
         HTLog(@"top at scrollview at index title %@",title);
     };
 
@@ -268,32 +275,68 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     }
 }
 
+//按照分类请求的参数
+- (NSMutableDictionary*)paramsWithCateModel:(CateGoryNModel*)cateModel
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kCatalogIdKey] = cateModel.url;
+    return params;
+}
+
+- (void)reqGoodsWithCategoryModel:(CateGoryNModel*)cateModel
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+    }else{
+        NSDictionary *params = [self paramsWithCateModel:cateModel];
+        NSString *subUrl = @"goods/list";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD showInfoWithStatus:msg];
+            [self.tableView.mj_header endRefreshing];
+            if (status == StatusTypSuccess) {
+                self.goodsArray =  [GoodsModel goodsWithData:data];
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            [self.tableView.mj_header endRefreshing];
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([RequestUtil networkAvaliable] == NO) {
         return 0;
     }else{
-//        if (section == kCategorySectionIdx) {
-//            if ([self.categoryArray count] > 0) {
-//                return 1;
-//            }else{
-//                return 0;
-//            }
-//        }else
-            if (section == kAdvertiseSectionIdx) {
-            if ([self.adsArray count] > 0) {
-                return 1;
-            }else{
-                return 0;
-            }
-        }else if (section == kHotProductsSectionIdx) {
-            if ([self.springGoodsNew.list count] > 0) {
-                return 1;
-            }else{
-                return 0;
-            }
+        if (self.selectedCateModel != nil) {
+            return [self.goodsArray count];
         }else{
-            return [self.springRecomGoods.list count] ;
+            //        if (section == kCategorySectionIdx) {
+            //            if ([self.categoryArray count] > 0) {
+            //                return 1;
+            //            }else{
+            //                return 0;
+            //            }
+            //        }else
+            if (section == kAdvertiseSectionIdx) {
+                if ([self.adsArray count] > 0) {
+                    return 1;
+                }else{
+                    return 0;
+                }
+            }else if (section == kHotProductsSectionIdx) {
+                if ([self.springGoodsNew.list count] > 0) {
+                    return 1;
+                }else{
+                    return 0;
+                }
+            }else{
+                return [self.springRecomGoods.list count] ;
+            }
+            
         }
     }
 }
@@ -303,43 +346,55 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     if ([RequestUtil networkAvaliable] == NO) {
         return 0;
     }else{
-        return 3;
+         if (self.selectedCateModel != nil) {
+             return 0;
+         }else{
+             return 3;
+         }
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//     if (indexPath.section == kCategorySectionIdx) {
-//         CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
-//         [cell setCategoryArray:self.categoryArray];
-//         __block typeof(self) blockSelf = self;
-//         cell.cateBlock = ^(ProdCateModel *model){
-//             HTLog(@"tap cate block ");
-//             [blockSelf performSegueWithIdentifier:@"cateListSegue" sender:model];
-//         };
-//         return cell;
-//     }else
-         if(indexPath.section == kAdvertiseSectionIdx){
-         PurchaseAdsCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchaseAdsCellID];
-         [cell loadAdsWithModels:self.adsArray];
-         cell.adBlock = ^(id sender){
-             HTLog(@"tap ads block ");
-         };
-         return cell;
-     }else if(indexPath.section == kProductsSectionIdx){
-         GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCellID];
-         GoodsModel *model = self.springRecomGoods.list[indexPath.row];
-         [cell setModel:model];
-         return cell;
-     }else{
-         PurchHotCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchHotCellID];
-         [cell setSpringHotGoods:self.springRecomGoods.list];
-         __block typeof(self) blockSelf = self;
-         cell.itemBlock = ^(GoodsModel *model){
-             [blockSelf performSegueWithIdentifier:@"productDetailSegue" sender:model];
-             HTLog(@"didSelectItemAtIndexPath");
-         };
-         return cell;
-     }
+    if (self.selectedCateModel != nil) {
+        GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCellID];
+        GoodsModel *model = self.goodsArray[indexPath.row];
+        [cell setModel:model];
+        return cell;
+    }else{
+        //     if (indexPath.section == kCategorySectionIdx) {
+        //         CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
+        //         [cell setCategoryArray:self.categoryArray];
+        //         __block typeof(self) blockSelf = self;
+        //         cell.cateBlock = ^(ProdCateModel *model){
+        //             HTLog(@"tap cate block ");
+        //             [blockSelf performSegueWithIdentifier:@"cateListSegue" sender:model];
+        //         };
+        //         return cell;
+        //     }else
+        if(indexPath.section == kAdvertiseSectionIdx){
+            PurchaseAdsCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchaseAdsCellID];
+            [cell loadAdsWithModels:self.adsArray];
+            cell.adBlock = ^(id sender){
+                HTLog(@"tap ads block ");
+            };
+            return cell;
+        }else if(indexPath.section == kProductsSectionIdx){
+            GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCellID];
+            GoodsModel *model = self.springRecomGoods.list[indexPath.row];
+            [cell setModel:model];
+            return cell;
+        }else{
+            PurchHotCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchHotCellID];
+            [cell setSpringHotGoods:self.springRecomGoods.list];
+            __block typeof(self) blockSelf = self;
+            cell.itemBlock = ^(GoodsModel *model){
+                [blockSelf performSegueWithIdentifier:@"productDetailSegue" sender:model];
+                HTLog(@"didSelectItemAtIndexPath");
+            };
+            return cell;
+        }
+        
+    }
 }
 
 #pragma mark - UITableView --- Table view  delegate
@@ -364,10 +419,14 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section ==  kHotProductsSectionIdx) {
-            return 15;
-    }else{
+    if (self.selectedCateModel != nil) {
         return 0.001;
+    }else{
+        if (section ==  kHotProductsSectionIdx) {
+            return 15;
+        }else{
+            return 0.001;
+        }
     }
 }
 
