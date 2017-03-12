@@ -262,7 +262,7 @@
 {
     ALAuthorizationStatus authorStatus = [ALAssetsLibrary authorizationStatus];
     if (authorStatus == ALAuthorizationStatusDenied ||UIImagePickerControllerSourceTypeCamera == ALAuthorizationStatusNotDetermined) {
-        NSString *message = @"宝贝快打开相册让我们选择照片吧";
+        NSString *message = @"未获取授权使用照片";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"未获取授权使用照片" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         
@@ -287,7 +287,7 @@
 {
     AVAuthorizationStatus authorStatus = [AVCaptureDevice authorizationStatusForMediaType: AVMediaTypeVideo];
     if (authorStatus == AVAuthorizationStatusDenied ||UIImagePickerControllerSourceTypeCamera == AVAuthorizationStatusNotDetermined) {
-        NSString *message = @"宝贝快打开摄像头让我们拍照吧";
+        NSString *message = @"未获取授权使用相机";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"未获取授权使用相机" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         

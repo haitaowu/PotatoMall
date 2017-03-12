@@ -414,21 +414,21 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-//    if (section ==  kHotProductsSectionIdx) {
-//        if ([self.springGoodsNew.list count] > 0) {
-//            return 50;
-//        }else{
-//            return 0.001;
-//        }
-//    }else if (section == kProductsSectionIdx){
-//        if ([self.springRecomGoods.list count] > 0) {
-//            return 50;
-//        }else{
-//            return 0.001;
-//        }
-//    }else{
+    if (section ==  kHotProductsSectionIdx) {
+        if ([self.springGoodsNew.list count] > 0) {
+            return 50;
+        }else{
+            return 0.001;
+        }
+    }else if (section == kProductsSectionIdx){
+        if ([self.springRecomGoods.list count] > 0) {
+            return 50;
+        }else{
+            return 0.001;
+        }
+    }else{
         return 0.001;
-//    }
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -451,34 +451,34 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     [self performSegueWithIdentifier:@"productDetailSegue" sender:model];
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    if (section ==  kHotProductsSectionIdx) {
-//        if ([self.springGoodsNew.list count] > 0) {
-//            NSString *title = self.springGoodsNew.name;
-//            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
-//            titleHeader.moreBlock = ^(){
-//                HTLog(@"tap more btn ");
-//            };
-//            return titleHeader;
-//        }else{
-//            return nil;
-//        }
-//    }else if (section == kProductsSectionIdx){
-//        if ([self.springRecomGoods.list count] > 0) {
-//            NSString *title = self.springRecomGoods.name;
-//            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
-//            titleHeader.moreBlock = ^(){
-//                HTLog(@"tap more btn ");
-//            };
-//            return titleHeader;
-//        }else{
-//            return nil;
-//        }
-//    }else{
-//        return  nil;
-//    }
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section ==  kHotProductsSectionIdx) {
+        if ([self.springGoodsNew.list count] > 0) {
+            NSString *title = self.springGoodsNew.name;
+            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:nil];
+            titleHeader.moreBlock = ^(){
+                HTLog(@"tap more btn ");
+            };
+            return titleHeader;
+        }else{
+            return nil;
+        }
+    }else if (section == kProductsSectionIdx){
+        if ([self.springRecomGoods.list count] > 0) {
+            NSString *title = self.springRecomGoods.name;
+            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:nil];
+            titleHeader.moreBlock = ^(){
+                HTLog(@"tap more btn ");
+            };
+            return titleHeader;
+        }else{
+            return nil;
+        }
+    }else{
+        return  nil;
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

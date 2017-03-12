@@ -9,6 +9,9 @@
 #import "MeController.h"
 #import "MeMenuCell.h"
 #import "AppInfoHelper.h"
+#import<AVFoundation/AVCaptureDevice.h>
+#import<AVFoundation/AVMediaFormat.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #define kSaleSectionIndex               0
 #define kChargeSectionIndex             3
@@ -17,13 +20,14 @@
 static NSString *MeMenuCellID = @"MeMenuCellID";
 
 
-@interface MeController ()
+@interface MeController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *menusData;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (nonatomic,strong)UIImage *avatarImg;
 
 @end
 
@@ -59,6 +63,42 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     self.nickNameLabel.text = [NSString stringWithFormat:@"%@",model.nickName];
 }
 
+#pragma mark - requset server
+- (void)submitUserAvtarImage:(UIImage *)avatarImg
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView reloadData];
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        UserModel *model = [UserModelUtil sharedInstance].userModel;
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[kUserIdKey] = model.userId;
+        NSString *subUrl = @"user/updateUser";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTUserWithURL:reqUrl params:params image:avatarImg reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD showSuccessWithStatus:msg];
+            if (status == StatusTypSuccess) {
+                UserModel *model = [UserModelUtil sharedInstance].userModel;
+                self.avatarView.image = avatarImg;
+                model.avatarData = UIImagePNGRepresentation(avatarImg);
+                [[UserModelUtil sharedInstance] archiveUserModel:model];
+            }else{
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
+#pragma mark - selectors
+- (IBAction)tapEditAvatarBtn:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"相机",@"相册",nil];
+    [actionSheet showInView:self.view];
+}
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -81,15 +121,15 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == kSaleSectionIndex) {
-        return 16;
-    }else if (section == kChargeSectionIndex) {
-        return 16;
-    }else if (section == kSettingSectionIndex) {
-        return 16;
-    }else{
-        return 0.001;
-    }
+//    if (section == kSaleSectionIndex) {
+//        return 16;
+//    }else if (section == kChargeSectionIndex) {
+//        return 16;
+//    }else if (section == kSettingSectionIndex) {
+    return 16;
+//    }else{
+//        return 0.001;
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -108,6 +148,86 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
+}
+
+
+#pragma mark - UIAction sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            HTLog(@"相机");
+            [self pickImageByCamera];
+            break;
+        case 1:
+            HTLog(@"相册");
+            [self pickImageByLibrary];
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo
+{
+    HTLog(@"didFinishPickingImage");
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.avatarImg = image;
+        [self submitUserAvtarImage:image];
+    }];
+}
+
+
+#pragma mark - private pick image methods
+- (void)pickImageByLibrary
+{
+    ALAuthorizationStatus authorStatus = [ALAssetsLibrary authorizationStatus];
+    if (authorStatus == ALAuthorizationStatusDenied ||UIImagePickerControllerSourceTypeCamera == ALAuthorizationStatusNotDetermined) {
+        NSString *message = @"未获取授权使用照片";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"未获取授权使用照片" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
+    if ([UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        imagePicker.allowsEditing = YES;
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self.tabBarController presentViewController:imagePicker animated:YES completion:^{
+            
+        }];
+    }else{
+        HTLog(@"相册 是 不可用的");
+    }
+}
+
+- (void)pickImageByCamera
+{
+    AVAuthorizationStatus authorStatus = [AVCaptureDevice authorizationStatusForMediaType: AVMediaTypeVideo];
+    if (authorStatus == AVAuthorizationStatusDenied ||UIImagePickerControllerSourceTypeCamera == AVAuthorizationStatusNotDetermined) {
+        NSString *message = @"未获取授权使用相机";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"未获取授权使用相机" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }else{
+        HTLog(@"camera   available ...");
+    }
+    if ([UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.allowsEditing = YES;
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self.tabBarController presentViewController:imagePicker animated:YES completion:^{
+            
+        }];
+    }else{
+        HTLog(@"相机 是 不可用的");
+    }
 }
 
 

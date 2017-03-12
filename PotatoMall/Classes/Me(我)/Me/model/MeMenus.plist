@@ -4,35 +4,11 @@
 <array>
 	<dict>
 		<key>img</key>
-		<string>me_orders</string>
-		<key>title</key>
-		<string>销售订单</string>
-		<key>segue</key>
-		<string>salesSegue</string>
-	</dict>
-	<dict>
-		<key>img</key>
-		<string>me_products</string>
-		<key>title</key>
-		<string>我的商品</string>
-		<key>segue</key>
-		<string>productSegue</string>
-	</dict>
-	<dict>
-		<key>img</key>
 		<string>me_chart</string>
 		<key>title</key>
 		<string>我的采购</string>
 		<key>segue</key>
 		<string>orderesSegue</string>
-	</dict>
-	<dict>
-		<key>img</key>
-		<string>me_charge</string>
-		<key>title</key>
-		<string>充值</string>
-		<key>segue</key>
-		<string>chargeSegue</string>
 	</dict>
 	<dict>
 		<key>img</key>

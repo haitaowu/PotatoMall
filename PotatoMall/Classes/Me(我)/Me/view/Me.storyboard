@@ -60,6 +60,12 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9e-Tv-YlF" userLabel="coverView">
+                                        <rect key="frame" x="8" y="0.0" width="68" height="68"/>
+                                        <connections>
+                                            <action selector="tapEditAvatarBtn:" destination="S8y-hi-qQu" eventType="touchUpInside" id="4ok-Zd-jYh"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字叫土豆" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWM-hY-rb9">
                                         <rect key="frame" x="84" y="0.0" width="72" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -112,13 +118,17 @@
                                     <constraint firstItem="gWM-hY-rb9" firstAttribute="top" secondItem="Uby-mF-I9g" secondAttribute="top" id="8ay-0u-w2G"/>
                                     <constraint firstItem="eG4-AA-xgB" firstAttribute="top" secondItem="Lmi-vM-3XB" secondAttribute="top" id="B72-8f-YxK"/>
                                     <constraint firstItem="Uby-mF-I9g" firstAttribute="top" secondItem="Lmi-vM-3XB" secondAttribute="top" id="BR2-6L-LdV"/>
+                                    <constraint firstItem="q9e-Tv-YlF" firstAttribute="top" secondItem="Uby-mF-I9g" secondAttribute="top" id="L9T-xT-lJK"/>
                                     <constraint firstItem="GiT-5S-UUL" firstAttribute="leading" secondItem="gWM-hY-rb9" secondAttribute="leading" id="NSv-Zx-0bH"/>
                                     <constraint firstAttribute="height" constant="100" id="OSw-PK-KyC"/>
+                                    <constraint firstItem="q9e-Tv-YlF" firstAttribute="leading" secondItem="Uby-mF-I9g" secondAttribute="leading" id="Q85-Sv-FWK"/>
                                     <constraint firstAttribute="trailing" secondItem="eG4-AA-xgB" secondAttribute="trailing" id="VvE-7W-E0X"/>
                                     <constraint firstItem="wkn-sw-V5E" firstAttribute="top" secondItem="gUj-Q1-fH8" secondAttribute="bottom" constant="11.5" id="ZEJ-m0-nO5"/>
                                     <constraint firstItem="gUj-Q1-fH8" firstAttribute="top" secondItem="GiT-5S-UUL" secondAttribute="bottom" constant="8" id="a73-Cy-LPe"/>
+                                    <constraint firstItem="q9e-Tv-YlF" firstAttribute="trailing" secondItem="Uby-mF-I9g" secondAttribute="trailing" id="bMF-hH-daK"/>
                                     <constraint firstItem="gWM-hY-rb9" firstAttribute="leading" secondItem="Uby-mF-I9g" secondAttribute="trailing" constant="8" id="dgk-V1-7wl"/>
                                     <constraint firstItem="9ok-qn-Nww" firstAttribute="centerY" secondItem="GiT-5S-UUL" secondAttribute="centerY" id="nQW-pI-PHm"/>
+                                    <constraint firstItem="q9e-Tv-YlF" firstAttribute="bottom" secondItem="Uby-mF-I9g" secondAttribute="bottom" id="sO4-Pw-6dS"/>
                                     <constraint firstItem="XvN-gG-OUj" firstAttribute="centerY" secondItem="GiT-5S-UUL" secondAttribute="centerY" id="swO-Ei-Yoe"/>
                                     <constraint firstAttribute="trailing" secondItem="XvN-gG-OUj" secondAttribute="trailing" constant="8" id="ueb-lp-qhh"/>
                                     <constraint firstItem="wkn-sw-V5E" firstAttribute="leading" secondItem="gWM-hY-rb9" secondAttribute="leading" id="vWh-KF-TRg"/>
