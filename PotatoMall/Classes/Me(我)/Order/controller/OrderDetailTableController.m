@@ -7,26 +7,30 @@
 //
 
 #import "OrderDetailTableController.h"
-#import "OrderDetailCell.h"
+#import "OrderCell.h"
 #import "OrderModel.h"
 #import "HTCalculatorToolBar.h"
 #import "OrderStateHeader.h"
-#import "OrderDetailStateFooter.h"
+//#import "OrderDetailStateFooter.h"
+#import "OrderDetailTransHeader.h"
 #import "TopScrollView.h"
 #import "CancelOrderCell.h"
+#import "OrderDetailFooter.h"
 
 
-static NSString *OrderDetailCellID = @"OrderDetailCell";
+static NSString *OrderCellID = @"OrderCell";
 
 static NSString *CancelOrderCellID = @"CancelOrderCell";
 
 static NSString *OrderStateHeaderID = @"OrderStateHeaderID";
 
-static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
+static NSString *OrderDetailTransHeaderID = @"OrderDetailTransHeaderID";
+static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
+
 
 
 @interface OrderDetailTableController ()
-@property (nonatomic,strong)NSMutableArray *ordersArray;
+//@property (nonatomic,strong)NSMutableArray *ordersArray;
 @property (strong, nonatomic) TopScrollView *tableviewHeaderView;
 @property (nonatomic,strong)NSArray *subItemTitles;
 @end
@@ -42,8 +46,8 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
 #pragma mark - setup UI 
 - (void)setupTableView
 {
-    UINib *cellNib = [UINib nibWithNibName:@"OrderDetailCell" bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:OrderDetailCellID];
+    UINib *cellNib = [UINib nibWithNibName:@"OrderCell" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:OrderCellID];
     
     UINib *cancelCellNib = [UINib nibWithNibName:@"CancelOrderCell" bundle:nil];
     [self.tableView registerNib:cancelCellNib forCellReuseIdentifier:CancelOrderCellID];
@@ -52,8 +56,12 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
     [self.tableView registerNib:headerNib forHeaderFooterViewReuseIdentifier:OrderStateHeaderID];
     
     //footer register nib
-    UINib *footerNib = [UINib nibWithNibName:@"OrderDetailStateFooter" bundle:nil];
-    [self.tableView registerNib:footerNib forHeaderFooterViewReuseIdentifier:OrderDetailStateFooterID];
+    UINib *transheaderNib = [UINib nibWithNibName:@"OrderDetailTransHeader" bundle:nil];
+    [self.tableView registerNib:transheaderNib forHeaderFooterViewReuseIdentifier:OrderDetailTransHeaderID];
+    
+    //footer register nib
+    UINib *counterNib = [UINib nibWithNibName:@"OrderDetailFooter" bundle:nil];
+    [self.tableView registerNib:counterNib forHeaderFooterViewReuseIdentifier:OrderDetailFooterID];
 }
 
 
@@ -83,16 +91,12 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
 
 #pragma mark - UITableView --- Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return [self.ordersArray count];
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-//        OrderModel *orderModel = self.ordersArray[section];
-//        NSArray *goods = orderModel.list;
-        //    return [goods count];
-        return 1;
+        return [self.orderModel.list count];
     }else{
         return 1;
     }
@@ -100,7 +104,9 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ((indexPath.section == 0)) {
-        OrderDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderDetailCellID];
+        OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderCellID];
+        OrderGoodsModel *goodsModel = self.orderModel.list[indexPath.row];
+        cell.model = goodsModel;
         return cell;
     }else{
         CancelOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CancelOrderCellID];
@@ -119,14 +125,14 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
     if (section == 0) {
         return 56;
     }else{
-        return 0.001;
+        return 150;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 150;
+        return 56;
     }else{
         return 50;
     }
@@ -149,8 +155,10 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     if (section == 0) {
+        OrderDetailFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailFooterID];
+        [footer setOrderModel:self.orderModel];
 //        OrderModel *orderModel = self.ordersArray[section];
-        OrderDetailStateFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailStateFooterID];
+//        OrderDetailStateFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailStateFooterID];
         return footer;
     }else{
         return nil;
@@ -165,6 +173,9 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
         //    OrderModel *orderModel = self.ordersArray[section];
         [header setOrderModel:self.orderModel];
         return header;
+    }else if(section == 1){
+        OrderDetailTransHeader *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailTransHeaderID];
+        return footer;
     }else{
         return nil;
     }
@@ -178,8 +189,8 @@ static NSString *OrderDetailStateFooterID = @"OrderDetailStateFooterID";
 
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
 {
-    if ([view isMemberOfClass:[OrderDetailStateFooter class]]) {
-        OrderDetailStateFooter *footer =  (OrderDetailStateFooter *)view;
+    if ([view isMemberOfClass:[OrderDetailTransHeader class]]) {
+        OrderDetailTransHeader *footer =  (OrderDetailTransHeader *)view;
         footer.contentView.backgroundColor = [UIColor whiteColor];
     }
 }

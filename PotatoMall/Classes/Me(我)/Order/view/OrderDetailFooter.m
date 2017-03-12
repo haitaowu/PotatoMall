@@ -1,21 +1,21 @@
 //
-//  OrderStateFooter.m
+//  OrderDetailFooter.m
 //  PotatoMall
 //
 //  Created by taotao on 04/03/2017.
 //  Copyright © 2017 taotao. All rights reserved.
 //
 
-#import "OrderStateFooter.h"
+#import "OrderDetailFooter.h"
 #import "OrderGoodsModel.h"
 
-@interface OrderStateFooter()
+@interface OrderDetailFooter()
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @end
 
-@implementation OrderStateFooter
+@implementation OrderDetailFooter
 
 - (void)awakeFromNib
 {
@@ -32,8 +32,7 @@
     return countStr;
 }
 
-
-#pragma mark -  setter and getter methods 
+#pragma mark -  setter and getter methods
 - (void)setOrderModel:(OrderModel *)orderModel
 {
     _orderModel = orderModel;
@@ -45,11 +44,5 @@
 }
 
 
-#pragma mark - selectors
-- (IBAction)tapMoreBtn:(id)sender {
-    if (self.detailBlock != nil) {
-        self.detailBlock();
-    }
-}
 
 @end

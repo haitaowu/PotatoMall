@@ -100,8 +100,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="countLabel" destination="o4Y-6c-shn" id="mDP-Kq-6Sq"/>
                 <outlet property="dateLabel" destination="pUh-Fw-y5f" id="UlN-go-2Wr"/>
-                <outlet property="priceLabel" destination="DHh-ZI-wOC" id="DKW-XU-hEz"/>
+                <outlet property="priceLabel" destination="DHh-ZI-wOC" id="kEz-64-P2x"/>
             </connections>
             <point key="canvasLocation" x="126" y="-313.5"/>
         </view>

@@ -24,7 +24,7 @@
 
 
 #pragma mark -  setter and getter methods 
-- (void)setModel:(GoodsModel *)model
+- (void)setModel:(OrderGoodsModel *)model
 {
     _model = model;
     self.titleLabel.text = model.goodsInfoName;
@@ -34,6 +34,7 @@
         UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
+    
 }
 
 #pragma mark - selectors

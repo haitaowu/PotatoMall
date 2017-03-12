@@ -1,19 +1,19 @@
 //
-//  OrderDetailStateFooter.m
+//  OrderDetailTransHeader.m
 //  PotatoMall
 //
 //  Created by taotao on 04/03/2017.
 //  Copyright © 2017 taotao. All rights reserved.
 //
 
-#import "OrderDetailStateFooter.h"
+#import "OrderDetailTransHeader.h"
 
-@interface OrderDetailStateFooter()
+@interface OrderDetailTransHeader()
 @property (weak, nonatomic) IBOutlet UILabel *remarksLabel;
 @property (weak, nonatomic) IBOutlet UILabel *transportModeLabel;
 @end
 
-@implementation OrderDetailStateFooter
+@implementation OrderDetailTransHeader
 #pragma mark - override methods
 - (void)awakeFromNib
 {

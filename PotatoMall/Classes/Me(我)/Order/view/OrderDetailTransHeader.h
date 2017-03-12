@@ -1,5 +1,5 @@
 //
-//  OrderDetailStateFooter.h
+//  OrderDetailTransHeader.h
 //  PotatoMall
 //
 //  Created by taotao on 04/03/2017.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "OrderModel.h"
 
-@interface OrderDetailStateFooter : UITableViewHeaderFooterView
+@interface OrderDetailTransHeader : UITableViewHeaderFooterView
 @property (nonatomic,strong)OrderModel *orderModel;
 @end

@@ -14,6 +14,7 @@
 #import "OrderStateFooter.h"
 #import "TopScrollView.h"
 #import "OrderDetailTableController.h"
+#import "OrderGoodsModel.h"
 
 
 
@@ -124,12 +125,15 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     OrderModel *orderModel = self.ordersArray[section];
     NSArray *goods = orderModel.list;
-//    return [goods count];
+    return [goods count];
     return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderCellID];
+    OrderModel *orderModel = self.ordersArray[indexPath.section];
+    OrderGoodsModel *goodsModel = orderModel.list[indexPath.row];
+    cell.model = goodsModel;
     return cell;
 }
 

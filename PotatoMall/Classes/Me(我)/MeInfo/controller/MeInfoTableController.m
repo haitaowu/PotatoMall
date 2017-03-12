@@ -98,7 +98,6 @@
     }
 }
 
-#pragma mark - selectors
 - (void)selectedAddress:(NSNotification*)sender
 {
     NSString *adr = sender.object;
@@ -213,7 +212,6 @@
         [self submitUserInfo:nil];
     }
 }
-
 
 
 #pragma mark - UIAction sheet delegate

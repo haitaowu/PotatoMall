@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,14 +17,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="196"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="195.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tudou" translatesAutoresizingMaskIntoConstraints="NO" id="OIj-X6-l5E">
-                        <rect key="frame" x="8" y="64.5" width="100" height="66.5"/>
+                        <rect key="frame" x="8" y="19.5" width="187" height="156.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="J9W-Fz-DIU"/>
-                            <constraint firstAttribute="width" secondItem="OIj-X6-l5E" secondAttribute="height" multiplier="240:160" id="hgG-4u-dyJ"/>
+                            <constraint firstAttribute="width" secondItem="OIj-X6-l5E" secondAttribute="height" multiplier="3:2.5" id="hgG-4u-dyJ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -33,19 +33,19 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crB-TO-fLG">
-                        <rect key="frame" x="116" y="72.5" width="298" height="33.5"/>
+                        <rect key="frame" x="203" y="27.5" width="211" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-2-14 18:32:33" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bR-ws-uZ4">
-                        <rect key="frame" x="145" y="107" width="269" height="17"/>
+                        <rect key="frame" x="232" y="152" width="182" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.63529411764705879" green="0.63529411764705879" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_clock" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-3S-hDf">
-                        <rect key="frame" x="122" y="108" width="15" height="15"/>
+                        <rect key="frame" x="209" y="153" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="G7z-3S-hDf" secondAttribute="height" multiplier="1:1" id="5JW-bP-Xsu"/>
                             <constraint firstAttribute="width" constant="15" id="o5g-wL-FUy"/>
@@ -61,6 +61,7 @@
                     <constraint firstItem="6bR-ws-uZ4" firstAttribute="leading" secondItem="G7z-3S-hDf" secondAttribute="trailing" constant="8" id="WA4-HE-6l0"/>
                     <constraint firstItem="OIj-X6-l5E" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aEz-zk-dTu"/>
                     <constraint firstItem="6bR-ws-uZ4" firstAttribute="centerY" secondItem="G7z-3S-hDf" secondAttribute="centerY" id="eme-Ch-hB1"/>
+                    <constraint firstItem="OIj-X6-l5E" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.8" id="ucO-bp-qhL"/>
                     <constraint firstItem="G7z-3S-hDf" firstAttribute="leading" secondItem="OIj-X6-l5E" secondAttribute="trailing" constant="14" id="y9S-HI-1UF"/>
                     <constraint firstItem="G7z-3S-hDf" firstAttribute="bottom" secondItem="OIj-X6-l5E" secondAttribute="bottom" constant="-8" id="yF1-oi-S41"/>
                 </constraints>

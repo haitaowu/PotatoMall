@@ -11,6 +11,7 @@
 
 @interface OrderCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *picView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @end
@@ -28,11 +29,19 @@
 
 
 #pragma mark -  setter and getter methods 
-- (void)setModel:(GoodsModel *)model
+- (void)setModel:(OrderGoodsModel *)model
 {
     _model = model;
     self.titleLabel.text = model.goodsInfoName;
-    self.priceLabel.text = model.price;
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@/公斤",model.price];
+    UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
+    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.price hlFont:hlFont];
+    self.priceLabel.attributedText = attriPriceStr;
+    
+    //number label
+    self.numLabel.text = model.num;
+    
+//    self.priceLabel.text = model.price;
     if (model.imageSrc != nil) {
         NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
         UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];

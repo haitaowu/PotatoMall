@@ -127,8 +127,8 @@
 		BEF0EE261E71365D003E06DB /* OrdersTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE251E71365D003E06DB /* OrdersTableController.m */; };
 		BEF0EE2A1E7136FB003E06DB /* OrderStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE281E7136FB003E06DB /* OrderStateHeader.m */; };
 		BEF0EE2B1E7136FB003E06DB /* OrderStateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE291E7136FB003E06DB /* OrderStateHeader.xib */; };
-		BEF0EE2F1E7137CF003E06DB /* OrderDetailStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE2D1E7137CF003E06DB /* OrderDetailStateFooter.m */; };
-		BEF0EE301E7137CF003E06DB /* OrderDetailStateFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE2E1E7137CF003E06DB /* OrderDetailStateFooter.xib */; };
+		BEF0EE2F1E7137CF003E06DB /* OrderDetailTransHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE2D1E7137CF003E06DB /* OrderDetailTransHeader.m */; };
+		BEF0EE301E7137CF003E06DB /* OrderDetailTransHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE2E1E7137CF003E06DB /* OrderDetailTransHeader.xib */; };
 		BEF0EE371E71484F003E06DB /* OrderStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE351E71484F003E06DB /* OrderStateFooter.m */; };
 		BEF0EE381E71484F003E06DB /* OrderStateFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE361E71484F003E06DB /* OrderStateFooter.xib */; };
 		BEF0EE3C1E714B7E003E06DB /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE3A1E714B7E003E06DB /* OrderCell.m */; };
@@ -138,6 +138,8 @@
 		BEFFEE1E1E7536B4003E6240 /* CommHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE1D1E7536B4003E6240 /* CommHelper.m */; };
 		BEFFEE211E753D1A003E6240 /* GoodsDetailTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE201E753D1A003E6240 /* GoodsDetailTableHeader.m */; };
 		BEFFEE241E754039003E6240 /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE231E754039003E6240 /* GoodsModel.m */; };
+		BEFFEE281E7591FA003E6240 /* OrderDetailFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE261E7591FA003E6240 /* OrderDetailFooter.m */; };
+		BEFFEE291E7591FA003E6240 /* OrderDetailFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFFEE271E7591FA003E6240 /* OrderDetailFooter.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -360,9 +362,9 @@
 		BEF0EE271E7136FB003E06DB /* OrderStateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStateHeader.h; sourceTree = "<group>"; };
 		BEF0EE281E7136FB003E06DB /* OrderStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStateHeader.m; sourceTree = "<group>"; };
 		BEF0EE291E7136FB003E06DB /* OrderStateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStateHeader.xib; sourceTree = "<group>"; };
-		BEF0EE2C1E7137CF003E06DB /* OrderDetailStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailStateFooter.h; sourceTree = "<group>"; };
-		BEF0EE2D1E7137CF003E06DB /* OrderDetailStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailStateFooter.m; sourceTree = "<group>"; };
-		BEF0EE2E1E7137CF003E06DB /* OrderDetailStateFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailStateFooter.xib; sourceTree = "<group>"; };
+		BEF0EE2C1E7137CF003E06DB /* OrderDetailTransHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTransHeader.h; sourceTree = "<group>"; };
+		BEF0EE2D1E7137CF003E06DB /* OrderDetailTransHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTransHeader.m; sourceTree = "<group>"; };
+		BEF0EE2E1E7137CF003E06DB /* OrderDetailTransHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailTransHeader.xib; sourceTree = "<group>"; };
 		BEF0EE341E71484F003E06DB /* OrderStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStateFooter.h; sourceTree = "<group>"; };
 		BEF0EE351E71484F003E06DB /* OrderStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStateFooter.m; sourceTree = "<group>"; };
 		BEF0EE361E71484F003E06DB /* OrderStateFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStateFooter.xib; sourceTree = "<group>"; };
@@ -379,6 +381,9 @@
 		BEFFEE201E753D1A003E6240 /* GoodsDetailTableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailTableHeader.m; sourceTree = "<group>"; };
 		BEFFEE221E754039003E6240 /* GoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsModel.h; sourceTree = "<group>"; };
 		BEFFEE231E754039003E6240 /* GoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsModel.m; sourceTree = "<group>"; };
+		BEFFEE251E7591FA003E6240 /* OrderDetailFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailFooter.h; sourceTree = "<group>"; };
+		BEFFEE261E7591FA003E6240 /* OrderDetailFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailFooter.m; sourceTree = "<group>"; };
+		BEFFEE271E7591FA003E6240 /* OrderDetailFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailFooter.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1065,9 +1070,12 @@
 				BEF0EE341E71484F003E06DB /* OrderStateFooter.h */,
 				BEF0EE351E71484F003E06DB /* OrderStateFooter.m */,
 				BEF0EE361E71484F003E06DB /* OrderStateFooter.xib */,
-				BEF0EE2C1E7137CF003E06DB /* OrderDetailStateFooter.h */,
-				BEF0EE2D1E7137CF003E06DB /* OrderDetailStateFooter.m */,
-				BEF0EE2E1E7137CF003E06DB /* OrderDetailStateFooter.xib */,
+				BEF0EE2C1E7137CF003E06DB /* OrderDetailTransHeader.h */,
+				BEF0EE2D1E7137CF003E06DB /* OrderDetailTransHeader.m */,
+				BEF0EE2E1E7137CF003E06DB /* OrderDetailTransHeader.xib */,
+				BEFFEE251E7591FA003E6240 /* OrderDetailFooter.h */,
+				BEFFEE261E7591FA003E6240 /* OrderDetailFooter.m */,
+				BEFFEE271E7591FA003E6240 /* OrderDetailFooter.xib */,
 				BEF0EE271E7136FB003E06DB /* OrderStateHeader.h */,
 				BEF0EE281E7136FB003E06DB /* OrderStateHeader.m */,
 				BEF0EE291E7136FB003E06DB /* OrderStateHeader.xib */,
@@ -1156,8 +1164,9 @@
 			files = (
 				BEE8EEDD1E63CAD6008FD2D4 /* MeMenuCell.xib in Resources */,
 				BE077A7A1E6AC606006F0EFB /* ChartSectionHeader.xib in Resources */,
-				BEF0EE301E7137CF003E06DB /* OrderDetailStateFooter.xib in Resources */,
+				BEF0EE301E7137CF003E06DB /* OrderDetailTransHeader.xib in Resources */,
 				BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */,
+				BEFFEE291E7591FA003E6240 /* OrderDetailFooter.xib in Resources */,
 				BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */,
 				BED95E021E6EF82100054F45 /* HotCollectionCell.xib in Resources */,
 				BEF0EE381E71484F003E06DB /* OrderStateFooter.xib in Resources */,
@@ -1251,6 +1260,7 @@
 				BEF0EE231E712AF8003E06DB /* OrderModel.m in Sources */,
 				BE5ED7E61E62B29000C4B1D0 /* README.md in Sources */,
 				BE0CFD451E6DA13B00003FE1 /* ProductSpecificationCell.m in Sources */,
+				BEFFEE281E7591FA003E6240 /* OrderDetailFooter.m in Sources */,
 				BE652F721E696D6F003ABEC3 /* MeInfoTableController.m in Sources */,
 				BEF0EE261E71365D003E06DB /* OrdersTableController.m in Sources */,
 				BE5ED7E71E62B29000C4B1D0 /* NSData+AES.m in Sources */,
@@ -1322,7 +1332,7 @@
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */,
 				BE5ED7FA1E62B90900C4B1D0 /* PwdBackController.m in Sources */,
 				BEDECE331E72967200EEA29B /* CancelOrderCell.m in Sources */,
-				BEF0EE2F1E7137CF003E06DB /* OrderDetailStateFooter.m in Sources */,
+				BEF0EE2F1E7137CF003E06DB /* OrderDetailTransHeader.m in Sources */,
 				BE93AF2C1E65B88E001F99BC /* SearchCell.m in Sources */,
 				BE8FA4E51E6460F500F92C46 /* User.m in Sources */,
 				BE5ED7F91E62B90900C4B1D0 /* PasswordBackController.m in Sources */,

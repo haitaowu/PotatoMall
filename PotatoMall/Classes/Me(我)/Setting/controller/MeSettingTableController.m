@@ -8,7 +8,7 @@
 
 #import "MeSettingTableController.h"
 
-@interface MeSettingTableController ()
+@interface MeSettingTableController ()<UIActionSheetDelegate>
 
 @end
 
@@ -24,6 +24,21 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kUserLogoutSuccessNotification object:nil];
 }
+
+#pragma mark - private methods
+- (void)pourTrash
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"确定要清除缓存" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+}
+
+//清除SDWebimage的图片缓存
+- (void)clearSdWebCache
+{
+    [[SDImageCache sharedImageCache] clearDisk];
+    [SVProgressHUD showSuccessWithStatus:@"清除成功！"];
+}
+
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -45,6 +60,8 @@
         [self userTapLogout];
         [[UserModelUtil sharedInstance] archiveUserModel:nil];
         HTLog(@"user tap logout button ");
+    }else if ((indexPath.section == 0) && (indexPath.row == 2)) {
+        [self pourTrash];
     }
 }
 
@@ -55,6 +72,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
+}
+
+#pragma mark - UIAction sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            HTLog(@"confirm....");
+            [self clearSdWebCache];
+            break;
+        case 1:
+            HTLog(@"cancel...");
+            break;
+        default:
+            break;
+    }
 }
 
 @end

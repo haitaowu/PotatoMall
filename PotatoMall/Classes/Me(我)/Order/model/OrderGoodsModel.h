@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface OrderGoodsModel : NSObject
+/** 货品名称*/
+@property (nonatomic,copy) NSString *goodsInfoName;
 /** 创建日期*/
 @property (nonatomic,copy) NSString *createDate;
 /** 货品ID*/
