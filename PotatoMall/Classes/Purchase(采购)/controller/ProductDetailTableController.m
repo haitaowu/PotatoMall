@@ -12,6 +12,8 @@
 #import "ParamsCell.h"
 #import "ProductSpecificationCell.h"
 #import "PreOrderTableController.h"
+#import "SDCycleScrollView.h"
+#import "GoodsDetailTableHeader.h"
 
 #define kDescriptionSectionIdx              0
 #define kDescriptionFirstRowIdx             0
@@ -31,7 +33,8 @@
 @property (weak, nonatomic) IBOutlet ParamsCell *paramsCell;
 @property (weak, nonatomic) IBOutlet ProductSpecificationCell *speciCell;
 @property (nonatomic,strong)GoodsDetailModel *goodsDetailModel;
-@property (nonatomic,strong)UIImageView *tableheader;
+//@property (nonatomic,strong)UIImageView *tableheader;
+@property (nonatomic,strong)GoodsDetailTableHeader *headerView;
 
 @end
 
@@ -40,7 +43,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupToolbar];
-    [self setupTableviewTableHeader];
+    [self setupTableHeaderView];
+    
+//    [self setupTableviewTableHeader];
     [self reqGoodsInfo];
 }
 
@@ -59,15 +64,27 @@
 }
 
 #pragma mark - setup UI 
-- (void)setupTableviewTableHeader
+- (void)setupTableHeaderView
 {
+    //tableView tableHeaderView
+    GoodsDetailTableHeader *headerView = [[GoodsDetailTableHeader alloc] init];
     CGFloat height = kScreenWidth * 2.0 / 3.0;
-    CGFloat width = kScreenWidth;
-    CGRect tableHeaderF = {{0,0},{width,height}};
-    UIImageView *tableheader = [[UIImageView alloc] initWithFrame:tableHeaderF];
-    self.tableView.tableHeaderView = tableheader;
-    self.tableheader = tableheader;
+    headerView.frame = CGRectMake(0, 0, kScreenWidth, height);
+    self.tableView.tableHeaderView = headerView;
+    headerView.adBlock = ^(id adInfo){
+    };
+    self.headerView = headerView;
 }
+
+//- (void)setupTableviewTableHeader
+//{
+//    CGFloat height = kScreenWidth * 2.0 / 3.0;
+//    CGFloat width = kScreenWidth;
+//    CGRect tableHeaderF = {{0,0},{width,height}};
+//    UIImageView *tableheader = [[UIImageView alloc] initWithFrame:tableHeaderF];
+//    self.tableView.tableHeaderView = tableheader;
+//    self.tableheader = tableheader;
+//}
 
 - (void)setupToolbar
 {
@@ -92,12 +109,17 @@
 #pragma mark - update UI
 - (void)updateUIWithDetialModel:(GoodsDetailModel*)detailModel
 {
+    //描述
     self.moblieDescLabel.text = detailModel.moblieDesc;
-    self.priceLabel.text = detailModel.price;
+    //价格
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@/公斤",detailModel.price];
+    UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
+    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:detailModel.price hlFont:hlFont];
+    self.priceLabel.attributedText = attriPriceStr;;
+    //当前状态
     [self.statusView setTitle:detailModel.status forState:UIControlStateNormal];
-    UIImage *placeholder = [UIImage imageNamed:@"hello"];
-    NSURL *imgUrl = [NSURL URLWithString:detailModel.imageSrc];
-    [self.tableheader sd_setImageWithURL:imgUrl placeholderImage:placeholder];
+   //轮播图片
+    [self.headerView loadAdsWithImages:detailModel.images];
 }
 
 #pragma mark - private methods
@@ -196,7 +218,7 @@
     }else if(indexPath.section == kStoreSectionIdx){
         return 0.001;
     }else if(indexPath.section == kImageParamsSectionIdx){
-        return 250;
+        return 280;
     }else{
         return 44;
     }

@@ -23,6 +23,8 @@
 @property (nonatomic,copy) NSString *price;
 /**图片地址*/
 @property (nonatomic,copy) NSString *imageSrc;
+/**介绍所有图片地址*/
+@property (nonatomic,copy) NSArray *images;
 /**描述*/
 @property (nonatomic,copy) NSString *moblieDesc;
 /**状态*/

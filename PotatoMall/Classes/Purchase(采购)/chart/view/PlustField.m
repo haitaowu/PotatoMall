@@ -48,7 +48,7 @@
 - (void)setupUI
 {
     //setup left view
-    UIImage *leftImage =[UIImage imageNamed:@"login_lock"];
+    UIImage *leftImage =[UIImage imageNamed:@"chart_minus"];
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:leftImage forState:UIControlStateNormal];
     [leftBtn addTarget:self action:@selector(tapMinusBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -58,7 +58,7 @@
     self.leftViewMode = UITextFieldViewModeAlways;
     
     // setup right view
-    UIImage *rightImage =[UIImage imageNamed:@"login_lock"];
+    UIImage *rightImage =[UIImage imageNamed:@"chart_plus"];
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBtn setImage:rightImage forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(tapPlusBtn) forControlEvents:UIControlEventTouchUpInside];

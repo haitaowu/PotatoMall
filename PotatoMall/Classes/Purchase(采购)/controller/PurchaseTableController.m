@@ -34,7 +34,7 @@ static NSString *GoodsCellID = @"GoodsCellID";
 static NSString *PurchHotCellID = @"PurchHotCellID";
 
 
-@interface PurchaseTableController ()
+@interface PurchaseTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong)NSMutableArray *categoryArray;
 @property (nonatomic,strong)NSMutableArray *goodsArray;
 @property (nonatomic,strong)NSMutableArray *adsArray;
@@ -45,6 +45,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 @property (nonatomic,assign) int pageSize;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet TopScrollView *topScrollView;
+@property (nonatomic,assign) BOOL firstReqFinished;
 
 @end
 
@@ -58,6 +59,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     [self setupUI];
     self.pageNo = 0;
     self.pageSize = 10;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     [self registerTableNibCell];
     [self setupTableViewFooter];
 //    [self requestCategoryData];
@@ -86,6 +89,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         destinationControl.goodModel = sender;
     }
 }
+
 
 
 #pragma mark - setup UI
@@ -150,11 +154,14 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     __block typeof(self) blockSelf = self;
     self.topScrollView.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
         if (idx == 0) {
-            self.selectedCateModel = nil;
+            blockSelf.selectedCateModel = nil;
+            [blockSelf.tableView.mj_footer setHidden:NO];
+            [blockSelf.tableView reloadData];
         }else{
-            self.selectedCateModel = self.categoryArray[idx];
+            blockSelf.selectedCateModel = self.categoryArray[idx];
+            blockSelf.tableView.contentOffset = CGPointMake(0, 0);
+            [blockSelf reqGoodsWithCategoryModel:self.selectedCateModel];
         }
-        [self reqGoodsWithCategoryModel:self.selectedCateModel];
         HTLog(@"top at scrollview at index title %@",title);
     };
 
@@ -184,7 +191,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     
     //采购轮播 CGLB
     NSDictionary *adDict = [self dataWithCode:@"CGLB" list:list];
-    self.adsArray = [PurAdModel adsWithData:adDict];
+    NSArray *adsList = [adDict objectForKey:@"goodsWithArray"];
+    self.adsArray = [GoodsModel goodsWithArray:adsList];
     
     //更多推荐 GDTJ
     NSDictionary *recommandDict = [self dataWithCode:@"GDTJ" list:list];
@@ -289,6 +297,9 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
     }else{
+        self.firstReqFinished = NO;
+        [self.tableView reloadData];
+        [self.tableView.mj_footer setHidden:YES];
         NSDictionary *params = [self paramsWithCateModel:cateModel];
         NSString *subUrl = @"goods/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
@@ -298,10 +309,12 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
             if (status == StatusTypSuccess) {
                 self.goodsArray =  [GoodsModel goodsWithData:data];
             }
+            self.firstReqFinished = YES;
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_header endRefreshing];
             [SVProgressHUD showErrorWithStatus:msg];
+            self.firstReqFinished = YES;
         }];
     }
 }
@@ -374,7 +387,9 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         if(indexPath.section == kAdvertiseSectionIdx){
             PurchaseAdsCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchaseAdsCellID];
             [cell loadAdsWithModels:self.adsArray];
+            __block typeof(self) blockSelf = self;
             cell.adBlock = ^(id sender){
+                [blockSelf performSegueWithIdentifier:@"productDetailSegue" sender:sender];
                 HTLog(@"tap ads block ");
             };
             return cell;
@@ -393,7 +408,6 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
             };
             return cell;
         }
-        
     }
 }
 
@@ -480,7 +494,29 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     }else{
         return 120;
     }
-   
+}
+
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else if ((self.firstReqFinished == YES) && (self.goodsArray.count <= 0)){
+        NSString *text = @"抱歉暂时还没有该商品类别";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
 }
 
 

@@ -46,15 +46,16 @@
     [self.priceLabel sizeToFit];
     
     //title label
-    CGFloat delta = 8;
-    CGFloat labelsHeight = self.titleLabel.height + self.priceLabel.height + self.adrLabel.height;
-    CGFloat labelsMargin = (self.height - labelsHeight - imgY * 2) * 0.5;
+//    CGFloat delta = 8;
     CGFloat titleY = imgY;
     CGFloat titleX = CGRectGetMaxX(self.picView.frame) + kViewsVeritcalMarin;
     CGFloat titleW = self.width - titleX -  kSiderMargin;
     CGFloat titleHeight = [GoodsCell stringHeightWithStr:self.titleLabel.text font:self.titleLabel.font width:titleW];
     CGRect titleF = {{titleX,titleY},{titleW,titleHeight}};
     self.titleLabel.frame = titleF;
+    
+    CGFloat labelsHeight = titleHeight + self.priceLabel.height + self.adrLabel.height;
+    CGFloat labelsMargin = (self.height - labelsHeight - imgY * 2) * 0.5;
     
     //adr label frame
     CGFloat adrX = titleX;
@@ -67,17 +68,18 @@
     CGFloat priceY = CGRectGetMaxY(self.adrLabel.frame) + labelsMargin;
     CGRect priceF = {{priceX,priceY},self.priceLabel.size};
     self.priceLabel.frame = priceF;
- 
-    
 }
+
 
 #pragma mark -  setter and getter methods 
 - (void)setModel:(GoodsModel *)model
 {
     _model = model;
-    HTLog(@"setModel methods ..... ");
     self.titleLabel.text = model.goodsInfoName;
-    self.priceLabel.text = model.price;
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@/公斤",model.price];
+    UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
+    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.price hlFont:hlFont];
+    self.priceLabel.attributedText = attriPriceStr;
     if (model.imageSrc != nil) {
         NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
         UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
@@ -85,6 +87,7 @@
     }
 }
 
+#pragma mark - private methods
 + (CGFloat)stringHeightWithStr:(NSString*) str font:(UIFont*)font width:(CGFloat) width
 {
     CGSize size = CGSizeMake(width, MAXFLOAT);
@@ -92,6 +95,9 @@
     CGSize textSize = [str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attris context:nil].size;
     return  textSize.height ;
 }
+
+
+
 
 
 #pragma mark - selectors

@@ -202,7 +202,7 @@ static NSString *GoodsCellID = @"GoodsCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 120;
 }
 
 @end

@@ -1,36 +1,38 @@
 //
-//  PurchaseAdsCell.m
+//  GoodsDetailTableHeader.m
 //  PotatoMall
 //
-//  Created by taotao on 07/03/2017.
+//  Created by taotao on 25/02/2017.
 //  Copyright © 2017 taotao. All rights reserved.
 //
 
-#import "PurchaseAdsCell.h"
+#import "GoodsDetailTableHeader.h"
 #import "SDCycleScrollView.h"
-#import "GoodsModel.h"
 
-@interface PurchaseAdsCell()<SDCycleScrollViewDelegate>
+@interface GoodsDetailTableHeader()<SDCycleScrollViewDelegate>
 @property (nonatomic,strong) SDCycleScrollView *cycleScrollView;
 @property (nonatomic,strong)NSArray *imgs;
-@property (nonatomic,strong)NSArray *goodsModels;
-
 @end
 
-@implementation PurchaseAdsCell
+@implementation GoodsDetailTableHeader
+
 #pragma mark - override methods
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    [self setupUI];
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if(self != nil){
+        [self setupUI];
+    }
+    return self;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.cycleScrollView.frame = self.contentView.bounds;
+    self.cycleScrollView.frame = self.bounds;
 }
 
-#pragma mark - setup
+#pragma mark - setup 
 - (void)setupUI
 {
     UIImage *placeholderImage = [UIImage imageNamed:@"tudou"];
@@ -39,25 +41,17 @@
 }
 
 #pragma mark - public methods
-- (void)loadAdsWithModels:(id)models
+- (void)loadAdsWithImages:(id)imgs
 {
-    _goodsModels = models;
-    NSMutableArray *imgArray = [NSMutableArray array];
-    for (GoodsModel *obj in models){
-        NSString *imgSrc = [obj.imageSrc copy];
-        if (imgSrc != nil) {
-            [imgArray addObject:imgSrc];
-        }
-    }
-    self.imgs = imgArray;
-    self.cycleScrollView.imageURLStringsGroup = imgArray;
+    self.imgs = imgs;
+    self.cycleScrollView.imageURLStringsGroup = imgs;
 }
 
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     if (self.adBlock != nil) {
-        id sender = self.goodsModels[index];
+        id sender = self.imgs[index];
         self.adBlock(sender);
     }
 }
