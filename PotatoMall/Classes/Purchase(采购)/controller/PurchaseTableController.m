@@ -13,19 +13,19 @@
 #import "CategoryCell.h"
 #import "PurchaseAdsCell.h"
 #import "PurSectionHeader.h"
-#import "ProdCateModel.h"
+//#import "ProdCateModel.h"
 #import "GoodsModel.h"
 #import "GoodsCell.h"
 #import "PurchHotCell.h"
 #import "PurchaseMoresController.h"
 #import "ProductDetailTableController.h"
 #import "SpringGoodsModel.h"
+#import "CateGoryNModel.h"
 
-#define kCategorySectionIdx             0
 
-#define kAdvertiseSectionIdx            1
-#define kHotProductsSectionIdx          2
-#define kProductsSectionIdx             3
+#define kAdvertiseSectionIdx            0
+#define kHotProductsSectionIdx          1
+#define kProductsSectionIdx             2
 
 
 static NSString *CategoryCellID = @"CategoryCellID";
@@ -39,8 +39,11 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 @property (nonatomic,strong)NSMutableArray *adsArray;
 @property (nonatomic,strong)SpringGoodsModel *springGoodsNew;
 @property (nonatomic,strong)SpringGoodsModel *springRecomGoods;
+@property (nonatomic,strong)CateGoryNModel *selectedCateModel;
 @property (nonatomic,assign) int pageNo;
 @property (nonatomic,assign) int pageSize;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet TopScrollView *topScrollView;
 
 @end
 
@@ -56,7 +59,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     self.pageSize = 10;
     [self registerTableNibCell];
     [self setupTableViewFooter];
-    [self requestCategoryData];
+//    [self requestCategoryData];
     [self requestProductsData];
 }
 
@@ -122,6 +125,33 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     [self.tableView.mj_footer setHidden:YES];
 }
 
+#pragma mark - private methods
+- (NSArray*)subItemTitlesWithSubItems:(NSArray*)subItems
+{
+    NSMutableArray *titles = [NSMutableArray array];
+    for (CateGoryNModel *obj in subItems) {
+        NSString *title = obj.goodsInfoName;
+        [titles addObject:title];
+    }
+    return titles;
+}
+
+- (void)setupCateGoryView
+{
+    NSArray *subItemTitles = [self subItemTitlesWithSubItems:self.categoryArray];
+    self.topScrollView.titles = [NSMutableArray arrayWithArray:subItemTitles];
+    [self.topScrollView showSeparatorLine];
+    [self.topScrollView scrollVisibleTo:0];
+    self.topScrollView.normalTextColor = kMainTitleBlackColor;
+    self.topScrollView.selectedTextColor = kMainNavigationBarColor;
+    self.topScrollView.sliderColor = kMainNavigationBarColor;
+    self.topScrollView.sliderWidthPercent = 0.8;
+    __block typeof(self) blockSelf = self;
+    self.topScrollView.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
+        HTLog(@"top at scrollview at index title %@",title);
+    };
+
+}
 #pragma mark - update ui
 - (void)showSearchHistoryView
 {
@@ -142,6 +172,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
     NSArray *list = dict[@"obj"];
     //采购导航 CGDH
+    NSDictionary *cateDict = [self dataWithCode:@"CGDH" list:list];
+    self.categoryArray = [CateGoryNModel catesWithData:cateDict];
     
     //采购轮播 CGLB
     NSDictionary *adDict = [self dataWithCode:@"CGLB" list:list];
@@ -168,26 +200,26 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 }
 
 #pragma mark - requset server
-- (void)requestCategoryData
-{
-    if ([RequestUtil networkAvaliable] == NO) {
-        [self.tableView.mj_footer endRefreshing];
-        [self.tableView reloadData];
-    }else{
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",kParentIdKey, nil];
-        NSString *subUrl = @"goods/findCatalogByParentId";
-        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [self.tableView.mj_footer endRefreshing];
-            if (status == StatusTypSuccess) {
-                self.categoryArray = [ProdCateModel productCategoryesWithData:data];
-                            }
-            [self.tableView reloadData];
-        } reqFail:^(int type, NSString *msg) {
-            [self.tableView.mj_footer endRefreshing];
-        }];
-    }
-}
+//- (void)requestCategoryData
+//{
+//    if ([RequestUtil networkAvaliable] == NO) {
+//        [self.tableView.mj_footer endRefreshing];
+//        [self.tableView reloadData];
+//    }else{
+//        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",kParentIdKey, nil];
+//        NSString *subUrl = @"goods/findCatalogByParentId";
+//        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+//        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+//            [self.tableView.mj_footer endRefreshing];
+//            if (status == StatusTypSuccess) {
+//                self.categoryArray = [ProdCateModel productCategoryesWithData:data];
+//                [self setupCateGoryView];
+//                            }
+//        } reqFail:^(int type, NSString *msg) {
+//            [self.tableView.mj_footer endRefreshing];
+//        }];
+//    }
+//}
 
 
 - (void)requestProductsData
@@ -202,7 +234,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
-               [self processProductsData:data];
+                [self processProductsData:data];
+                [self setupCateGoryView];
                 [self.tableView.mj_footer setHidden:NO];
             }
             [self.tableView reloadData];
@@ -240,13 +273,14 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     if ([RequestUtil networkAvaliable] == NO) {
         return 0;
     }else{
-        if (section == kCategorySectionIdx) {
-            if ([self.categoryArray count] > 0) {
-                return 1;
-            }else{
-                return 0;
-            }
-        }else if (section == kAdvertiseSectionIdx) {
+//        if (section == kCategorySectionIdx) {
+//            if ([self.categoryArray count] > 0) {
+//                return 1;
+//            }else{
+//                return 0;
+//            }
+//        }else
+            if (section == kAdvertiseSectionIdx) {
             if ([self.adsArray count] > 0) {
                 return 1;
             }else{
@@ -269,21 +303,22 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     if ([RequestUtil networkAvaliable] == NO) {
         return 0;
     }else{
-        return 4;
+        return 3;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-     if (indexPath.section == kCategorySectionIdx) {
-         CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
-         [cell setCategoryArray:self.categoryArray];
-         __block typeof(self) blockSelf = self;
-         cell.cateBlock = ^(ProdCateModel *model){
-             HTLog(@"tap cate block ");
-             [blockSelf performSegueWithIdentifier:@"cateListSegue" sender:model];
-         };
-         return cell;
-     }else if(indexPath.section == kAdvertiseSectionIdx){
+//     if (indexPath.section == kCategorySectionIdx) {
+//         CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CategoryCellID];
+//         [cell setCategoryArray:self.categoryArray];
+//         __block typeof(self) blockSelf = self;
+//         cell.cateBlock = ^(ProdCateModel *model){
+//             HTLog(@"tap cate block ");
+//             [blockSelf performSegueWithIdentifier:@"cateListSegue" sender:model];
+//         };
+//         return cell;
+//     }else
+         if(indexPath.section == kAdvertiseSectionIdx){
          PurchaseAdsCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchaseAdsCellID];
          [cell loadAdsWithModels:self.adsArray];
          cell.adBlock = ^(id sender){
@@ -298,7 +333,9 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
      }else{
          PurchHotCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchHotCellID];
          [cell setSpringHotGoods:self.springRecomGoods.list];
+         __block typeof(self) blockSelf = self;
          cell.itemBlock = ^(GoodsModel *model){
+             [blockSelf performSegueWithIdentifier:@"productDetailSegue" sender:model];
              HTLog(@"didSelectItemAtIndexPath");
          };
          return cell;
@@ -308,21 +345,21 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section ==  kHotProductsSectionIdx) {
-        if ([self.springGoodsNew.list count] > 0) {
-            return 50;
-        }else{
-            return 0.001;
-        }
-    }else if (section == kProductsSectionIdx){
-        if ([self.springRecomGoods.list count] > 0) {
-            return 50;
-        }else{
-            return 0.001;
-        }
-    }else{
+//    if (section ==  kHotProductsSectionIdx) {
+//        if ([self.springGoodsNew.list count] > 0) {
+//            return 50;
+//        }else{
+//            return 0.001;
+//        }
+//    }else if (section == kProductsSectionIdx){
+//        if ([self.springRecomGoods.list count] > 0) {
+//            return 50;
+//        }else{
+//            return 0.001;
+//        }
+//    }else{
         return 0.001;
-    }
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -341,45 +378,46 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     [self performSegueWithIdentifier:@"productDetailSegue" sender:model];
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (section ==  kHotProductsSectionIdx) {
-        if ([self.springGoodsNew.list count] > 0) {
-            NSString *title = self.springGoodsNew.name;
-            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
-            titleHeader.moreBlock = ^(){
-                HTLog(@"tap more btn ");
-            };
-            return titleHeader;
-        }else{
-            return nil;
-        }
-    }else if (section == kProductsSectionIdx){
-        if ([self.springRecomGoods.list count] > 0) {
-            NSString *title = self.springRecomGoods.name;
-            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
-            titleHeader.moreBlock = ^(){
-                HTLog(@"tap more btn ");
-            };
-            return titleHeader;
-        }else{
-            return nil;
-        }
-    }else{
-        return  nil;
-    }
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    if (section ==  kHotProductsSectionIdx) {
+//        if ([self.springGoodsNew.list count] > 0) {
+//            NSString *title = self.springGoodsNew.name;
+//            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
+//            titleHeader.moreBlock = ^(){
+//                HTLog(@"tap more btn ");
+//            };
+//            return titleHeader;
+//        }else{
+//            return nil;
+//        }
+//    }else if (section == kProductsSectionIdx){
+//        if ([self.springRecomGoods.list count] > 0) {
+//            NSString *title = self.springRecomGoods.name;
+//            PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:@"查看更多"];
+//            titleHeader.moreBlock = ^(){
+//                HTLog(@"tap more btn ");
+//            };
+//            return titleHeader;
+//        }else{
+//            return nil;
+//        }
+//    }else{
+//        return  nil;
+//    }
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == kCategorySectionIdx) {
-        CGFloat height = kScrollViewHeight;
-        return height;
-    }else if (indexPath.section == kAdvertiseSectionIdx) {
+//    if (indexPath.section == kCategorySectionIdx) {
+//        CGFloat height = kScrollViewHeight;
+//        return height;
+//    }else
+        if (indexPath.section == kAdvertiseSectionIdx) {
         CGFloat height = kScreenWidth * 2.0 / 3.0;
         return height;
     }else if (indexPath.section == kHotProductsSectionIdx) {
-        return 120;
+        return 150;
     }else{
         return 120;
     }

@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AD7-h4-eRz" userLabel="separatorLine">
-                        <rect key="frame" x="0.0" y="165" width="411" height="0.0"/>
+                        <rect key="frame" x="16" y="165" width="395" height="0.0"/>
                         <color key="backgroundColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="eQu-8C-vh3"/>
@@ -59,7 +59,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="AD7-h4-eRz" secondAttribute="trailing" id="44A-nb-BWx"/>
-                    <constraint firstItem="AD7-h4-eRz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aJP-zC-Gmf"/>
+                    <constraint firstItem="AD7-h4-eRz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="aJP-zC-Gmf"/>
                     <constraint firstAttribute="bottom" secondItem="AD7-h4-eRz" secondAttribute="bottom" id="zjh-W9-fxD"/>
                 </constraints>
             </tableViewCellContentView>

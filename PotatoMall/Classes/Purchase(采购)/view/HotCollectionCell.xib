@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sWP-iV-CKB">
-                        <rect key="frame" x="16" y="16" width="142" height="65"/>
+                        <rect key="frame" x="16" y="16" width="142" height="61"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="8"/>
@@ -27,8 +27,8 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyf-Kd-ZoJ">
-                        <rect key="frame" x="0.0" y="89" width="174" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="0.0" y="85" width="174" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -37,7 +37,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="uyf-Kd-ZoJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Amo-uU-Uwr"/>
-                <constraint firstAttribute="bottom" secondItem="uyf-Kd-ZoJ" secondAttribute="bottom" id="IM1-uC-ZnN"/>
+                <constraint firstAttribute="bottom" secondItem="uyf-Kd-ZoJ" secondAttribute="bottom" constant="8" id="IM1-uC-ZnN"/>
                 <constraint firstItem="sWP-iV-CKB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="MMU-l2-9b1"/>
                 <constraint firstAttribute="trailing" secondItem="uyf-Kd-ZoJ" secondAttribute="trailing" id="Qz2-zV-iJj"/>
                 <constraint firstItem="uyf-Kd-ZoJ" firstAttribute="top" secondItem="sWP-iV-CKB" secondAttribute="bottom" constant="8" id="Rqq-p1-bOd"/>
