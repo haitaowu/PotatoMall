@@ -154,7 +154,7 @@
         NSString *subUrl = @"cart/addSingleShopCart";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-//            [SVProgressHUD showInfoWithStatus:msg];
+            [SVProgressHUD showSuccessWithStatus:@"商品已添加到购物车"];
             if (status == StatusTypSuccess) {
                 HTLog(@"add to chart success baby .....");
             }

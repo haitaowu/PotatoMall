@@ -49,7 +49,9 @@
     self.containerView = [self viewWithTag:555];
     self.imgView = [self viewWithTag:444];
     self.imageBtn = [self viewWithTag:kImageBtnTag];
+    self.imageBtn.titleLabel.font = [TitleLabel titleHFont];
     self.paramsStateBtn = [self viewWithTag:kParamsBtnTag];
+    self.paramsStateBtn.titleLabel.font = [TitleLabel titleHFont];
     [self.imageBtn addTarget:self action:@selector(tapImageSpectBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.paramsStateBtn addTarget:self action:@selector(tapParamsSpecBtn) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -77,8 +79,7 @@
     NSString *name = param[kParamName];
     NSString *value = param[kParamValue];
     NSString *text = [NSString stringWithFormat:@"%@:%@",name,value];
-    UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont systemFontOfSize:14];
+    TitleLabel *label = [[TitleLabel alloc] init];
     label.textColor = kMainTitleBlackColor;
     label.text = text;
     [self.paramsLabels addObject:label];

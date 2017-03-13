@@ -34,10 +34,11 @@
     // set up title
     NSString *title = [menuData objectForKey:kTitleKey];
     self.titleLabel.text = title;
+    self.separatorLine.hidden = YES;
     if ((indexPath.section == 0) || (indexPath.section == 1)){
-        self.separatorLine.hidden = NO;
+//        self.separatorLine.hidden = NO;
     }else{
-        self.separatorLine.hidden = YES;
+//        self.separatorLine.hidden = YES;
     }
 }
 
