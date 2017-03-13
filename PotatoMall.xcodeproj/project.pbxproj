@@ -81,6 +81,9 @@
 		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
 		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
 		BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */; };
+		BEADCF731E7645AA00EFFA01 /* AccountTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF721E7645AA00EFFA01 /* AccountTableController.m */; };
+		BEADCF761E76477600EFFA01 /* ModifyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF751E76477600EFFA01 /* ModifyAccountController.m */; };
+		BEADCF791E76692700EFFA01 /* ModifyPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF781E76692700EFFA01 /* ModifyPwdController.m */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
 		BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD41E5C796300667D73 /* Home.storyboard */; };
@@ -284,6 +287,12 @@
 		BEAAA5F91E5D85E8008943EC /* UIView+PositionExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PositionExt.h"; sourceTree = "<group>"; };
 		BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PositionExt.m"; sourceTree = "<group>"; };
 		BEAAA5FC1E5D8948008943EC /* TudouUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TudouUtil.h; sourceTree = "<group>"; };
+		BEADCF711E7645AA00EFFA01 /* AccountTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableController.h; sourceTree = "<group>"; };
+		BEADCF721E7645AA00EFFA01 /* AccountTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableController.m; sourceTree = "<group>"; };
+		BEADCF741E76477600EFFA01 /* ModifyAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyAccountController.h; sourceTree = "<group>"; };
+		BEADCF751E76477600EFFA01 /* ModifyAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyAccountController.m; sourceTree = "<group>"; };
+		BEADCF771E76692700EFFA01 /* ModifyPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPwdController.h; sourceTree = "<group>"; };
+		BEADCF781E76692700EFFA01 /* ModifyPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdController.m; sourceTree = "<group>"; };
 		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
 		BEC06DAE1E5C76D300667D73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		BEC06DB81E5C76F500667D73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -578,6 +587,12 @@
 		BE59A4731E63D8050077D9AD /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				BEADCF771E76692700EFFA01 /* ModifyPwdController.h */,
+				BEADCF781E76692700EFFA01 /* ModifyPwdController.m */,
+				BEADCF741E76477600EFFA01 /* ModifyAccountController.h */,
+				BEADCF751E76477600EFFA01 /* ModifyAccountController.m */,
+				BEADCF711E7645AA00EFFA01 /* AccountTableController.h */,
+				BEADCF721E7645AA00EFFA01 /* AccountTableController.m */,
 				BE652F701E696D6F003ABEC3 /* MeInfoTableController.h */,
 				BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */,
 				BE652F6D1E696A4E003ABEC3 /* MeUserIDController.h */,
@@ -1285,6 +1300,7 @@
 				BE93C2F81E680E0000CC0B96 /* CityModel.m in Sources */,
 				BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */,
 				BEE8EEDC1E63CAD6008FD2D4 /* MeMenuCell.m in Sources */,
+				BEADCF731E7645AA00EFFA01 /* AccountTableController.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */,
 				BED84A011E6FCCDF001E7A27 /* PurchaseMoresController.m in Sources */,
@@ -1292,6 +1308,7 @@
 				BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */,
 				BECC9F951E6ED2B8001DE8F1 /* CategoryCell.m in Sources */,
 				BE93C3001E681C2800CC0B96 /* CityTableController.m in Sources */,
+				BEADCF761E76477600EFFA01 /* ModifyAccountController.m in Sources */,
 				BE5908111E74E66600D77152 /* CateGoryNModel.m in Sources */,
 				BEF0EE2A1E7136FB003E06DB /* OrderStateHeader.m in Sources */,
 				BEFFEE241E754039003E6240 /* GoodsModel.m in Sources */,
@@ -1313,6 +1330,7 @@
 				BE93C2F21E680D6200CC0B96 /* ProviceTableController.m in Sources */,
 				BEF0EE201E712AEE003E06DB /* OrderGoodsModel.m in Sources */,
 				BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */,
+				BEADCF791E76692700EFFA01 /* ModifyPwdController.m in Sources */,
 				BE077A5B1E6A967C006F0EFB /* PurchaseTableController.m in Sources */,
 				BE5ED79D1E619E6A00C4B1D0 /* BaseTableViewController.m in Sources */,
 				BE0DDB481E6D447E00F15168 /* PurchaseSearchController.m in Sources */,

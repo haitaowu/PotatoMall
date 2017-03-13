@@ -43,5 +43,7 @@ typedef void(^FetchAvatarBlock)(UIImage*img);
 + (NSString*)userAccount;
 + (NSString*)userPassword;
 + (NSString*)encryPwdWithPassword:(NSString*) password;
++ (void)saveUserpassword:(NSString*)password;
++ (void)saveUserAccount:(NSString*)account;
 
 @end

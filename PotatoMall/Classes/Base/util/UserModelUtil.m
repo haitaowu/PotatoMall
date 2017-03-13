@@ -129,6 +129,18 @@ static UserModelUtil *instance = nil;
 
 
 /**存储用户名与密码*/
++ (void)saveUserpassword:(NSString*)password
+{
+    [[NSUserDefaults standardUserDefaults] setObject:password forKey:kLoginPwdKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)saveUserAccount:(NSString*)account
+{
+    [[NSUserDefaults standardUserDefaults] setObject:account forKey:kLoginAccountKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 + (void)saveUser:(NSString*)account password:(NSString*)password
 {
     [[NSUserDefaults standardUserDefaults] setObject:password forKey:kLoginPwdKey];
