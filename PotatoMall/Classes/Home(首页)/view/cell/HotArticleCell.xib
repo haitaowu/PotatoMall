@@ -21,9 +21,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tudou" translatesAutoresizingMaskIntoConstraints="NO" id="OIj-X6-l5E">
-                        <rect key="frame" x="8" y="20" width="187" height="156"/>
+                        <rect key="frame" x="8" y="20" width="215" height="156"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="OIj-X6-l5E" secondAttribute="height" multiplier="3:2.5" id="hgG-4u-dyJ"/>
+                            <constraint firstAttribute="width" secondItem="OIj-X6-l5E" secondAttribute="height" multiplier="230:167" id="hgG-4u-dyJ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -33,19 +33,19 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆土豆" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crB-TO-fLG" customClass="TitleLabel">
-                        <rect key="frame" x="203" y="28" width="211" height="33.5"/>
+                        <rect key="frame" x="231" y="28" width="183" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-2-14 18:32:33" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bR-ws-uZ4" customClass="TitleLabel">
-                        <rect key="frame" x="232" y="152" width="182" height="17"/>
+                        <rect key="frame" x="260" y="152" width="154" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.63529411764705879" green="0.63529411764705879" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_clock" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-3S-hDf">
-                        <rect key="frame" x="209" y="153" width="15" height="15"/>
+                        <rect key="frame" x="237" y="153" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="G7z-3S-hDf" secondAttribute="height" multiplier="1:1" id="5JW-bP-Xsu"/>
                             <constraint firstAttribute="width" constant="15" id="o5g-wL-FUy"/>

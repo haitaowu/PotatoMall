@@ -106,7 +106,8 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     if ((indexPath.section == 0)) {
         OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderCellID];
         OrderGoodsModel *goodsModel = self.orderModel.list[indexPath.row];
-        cell.model = goodsModel;
+        [cell updateUIWithModel:goodsModel totalCount:self.orderModel.list.count row:indexPath.row];
+//        cell.model = goodsModel;
         return cell;
     }else{
         CancelOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CancelOrderCellID];

@@ -102,7 +102,8 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 {
     //tableView tableHeaderView
     HomwTableHeader *headerView = [[HomwTableHeader alloc] init];
-    CGFloat height = kScreenWidth * 2.0 / 3.0;
+//    CGFloat height = kScreenWidth * 236.0 / 315.0;
+    CGFloat height = 170.0 ;
     headerView.frame = CGRectMake(0, 0, kScreenWidth, height);
     self.tableView.tableHeaderView = headerView;
     headerView.adBlock = ^(id adInfo){

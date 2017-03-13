@@ -68,7 +68,7 @@
 {
     //tableView tableHeaderView
     GoodsDetailTableHeader *headerView = [[GoodsDetailTableHeader alloc] init];
-    CGFloat height = kScreenWidth * 2.0 / 3.0;
+    CGFloat height = 222.5;
     headerView.frame = CGRectMake(0, 0, kScreenWidth, height);
     self.tableView.tableHeaderView = headerView;
     headerView.adBlock = ^(id adInfo){
@@ -110,7 +110,8 @@
 - (void)updateUIWithDetialModel:(GoodsDetailModel*)detailModel
 {
     //描述
-    self.moblieDescLabel.text = detailModel.moblieDesc;
+//    self.moblieDescLabel.text = detailModel.moblieDesc;
+    self.moblieDescLabel.text = detailModel.goodsInfoName;
     //价格
     NSString *priceStr = [NSString stringWithFormat:@"￥%@/公斤",detailModel.price];
     UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];

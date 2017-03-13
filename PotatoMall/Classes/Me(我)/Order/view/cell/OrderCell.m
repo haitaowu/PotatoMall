@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *picView;
+@property (weak, nonatomic) IBOutlet UIView *separatorLine;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @end
 
@@ -27,6 +28,15 @@
 {
 }
 
+- (void)updateUIWithModel:(OrderGoodsModel*) model totalCount:(NSInteger)count row:(NSInteger)row
+{
+    [self setModel:model];
+    if(row == (count - 1)){
+        self.separatorLine.hidden = YES;
+    }else{
+        self.separatorLine.hidden = NO;
+    }
+}
 
 #pragma mark -  setter and getter methods 
 - (void)setModel:(OrderGoodsModel *)model

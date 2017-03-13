@@ -17,6 +17,8 @@
 @property (nonatomic,copy) NSArray *goodsSpecs;
 /**商品ID*/
 @property (nonatomic,copy) NSString *goodsId;
+/**商品名称*/
+@property (nonatomic,copy) NSString *goodsInfoName;
 /**货品ID*/
 @property (nonatomic,copy) NSString *goodsInfoId;
 /**价格*/

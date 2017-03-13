@@ -486,8 +486,9 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 //        CGFloat height = kScrollViewHeight;
 //        return height;
 //    }else
+    
     if (indexPath.section == kAdvertiseSectionIdx) {
-        CGFloat height = kScreenWidth * 2.0 / 3.0;
+        CGFloat height = 190;
         return height;
     }else if (indexPath.section == kHotProductsSectionIdx) {
         return 150;

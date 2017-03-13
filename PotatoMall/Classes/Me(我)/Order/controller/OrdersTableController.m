@@ -139,7 +139,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderCellID];
     OrderModel *orderModel = self.ordersArray[indexPath.section];
     OrderGoodsModel *goodsModel = orderModel.list[indexPath.row];
-    cell.model = goodsModel;
+    [cell updateUIWithModel:goodsModel totalCount:orderModel.list.count row:indexPath.row];
     return cell;
 }
 
@@ -151,7 +151,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 96;
+    return 88;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,7 +161,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 120;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section

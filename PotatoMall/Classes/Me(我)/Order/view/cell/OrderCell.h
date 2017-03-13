@@ -13,4 +13,5 @@
 
 @interface OrderCell : UITableViewCell
 @property (nonatomic,copy) OrderGoodsModel *model;
+- (void)updateUIWithModel:(OrderGoodsModel*) model totalCount:(NSInteger)count row:(NSInteger)row;
 @end

@@ -60,7 +60,11 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     }];
     UserModel *model = [UserModelUtil sharedInstance].userModel;
     self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
-    self.nickNameLabel.text = [NSString stringWithFormat:@"%@",model.nickName];
+    NSString *nickName = model.nickName;
+    if ((nickName.length <= 0) || (nickName == nil)) {
+        nickName = model.phone;
+    }
+    self.nickNameLabel.text = [NSString stringWithFormat:@"%@",nickName];
 }
 
 #pragma mark - requset server

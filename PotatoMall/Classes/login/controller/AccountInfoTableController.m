@@ -103,9 +103,9 @@
     if (self.avatarImg == nil) {
     [SVProgressHUD showInfoWithStatus:@"请选择头像"];
     return;
-    }else if ([self.nickNameField.text strWithoutSpace].length <= 0) {
-        [SVProgressHUD showInfoWithStatus:@"请输入昵称"];
-        return;
+//    }else if ([self.nickNameField.text strWithoutSpace].length <= 0) {
+//        [SVProgressHUD showInfoWithStatus:@"请输入昵称"];
+//        return;
     }else if ([self.realNameField.text strWithoutSpace].length <= 0) {
         [SVProgressHUD showInfoWithStatus:@"请输入真实姓名"];
         return;

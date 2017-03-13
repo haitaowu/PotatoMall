@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/controller/BaseTableViewController.m"
-            timestampString = "511076013.297366"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/model/GoodsDetailModel.m"
+            timestampString = "511103889.973562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "+goodsDetailWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

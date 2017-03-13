@@ -13,8 +13,7 @@
 #define kViewsVeritcalMarin             16
 #define kImageHeightPercent             0.8
 
-#define kImageWidthHPercent             3/2.5
-
+#define kImageWidthHPercent             230/167
 
 
 
