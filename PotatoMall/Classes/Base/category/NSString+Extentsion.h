@@ -14,4 +14,6 @@
 - (BOOL)isBeforeThisYear;
 - (BOOL)rightPhoneNumFormat;
 - (NSString*)strWithoutSpace;
+/**以138*****383格式显示手机号码*/
+- (NSString*)securityPhone;
 @end

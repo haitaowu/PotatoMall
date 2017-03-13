@@ -17,10 +17,11 @@
 static NSString *ChartCellID = @"ChartCell";
 static NSString *HeaderID = @"HeaderID";
 
-@interface ChartTableController ()
+@interface ChartTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong)HTCalculatorToolBar *toolBar;
 @property (nonatomic,strong)NSMutableArray *goodsArray;
 @property (nonatomic,strong)NSMutableArray *selectedGoods;
+@property (nonatomic,assign) BOOL firstReqFinished;
 @end
 
 @implementation ChartTableController
@@ -29,6 +30,7 @@ static NSString *HeaderID = @"HeaderID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
+    self.firstReqFinished = NO;
     [self reqGoodsData];
     [self setupNavToolbar];
     [self.navigationController  setToolbarHidden:NO animated:YES];
@@ -80,6 +82,9 @@ static NSString *HeaderID = @"HeaderID";
 
 - (void)setupTableView
 {
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
     UINib *cellNib = [UINib nibWithNibName:@"ChartCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:ChartCellID];
     
@@ -141,11 +146,13 @@ static NSString *HeaderID = @"HeaderID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [SVProgressHUD showInfoWithStatus:msg];
+            self.firstReqFinished = YES;
             if (status == StatusTypSuccess) {
                 self.goodsArray =  [GoodsModel goodsWithData:data];
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
+            self.firstReqFinished = YES;
             [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
@@ -255,5 +262,29 @@ static NSString *HeaderID = @"HeaderID";
     [self.view endEditing:NO];
 }
 
+
+
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else if ((self.firstReqFinished == YES) && (self.goodsArray.count <= 0)){
+        NSString *text = @"你的购物车现在空空如也";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
+}
 
 @end

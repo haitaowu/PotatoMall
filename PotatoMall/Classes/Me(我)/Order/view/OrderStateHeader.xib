@@ -19,20 +19,20 @@
                     <rect key="frame" x="0.0" y="16" width="512" height="144"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx">
-                            <rect key="frame" x="16" y="64" width="58" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <rect key="frame" x="8" y="65.5" width="49.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JE22308394388" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Fw-y5f">
-                            <rect key="frame" x="73" y="64" width="111" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <rect key="frame" x="56.5" y="65.5" width="97" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待确认" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZV-vo-zyG">
-                            <rect key="frame" x="438" y="64" width="58" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <rect key="frame" x="454.5" y="65.5" width="49.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -41,9 +41,9 @@
                     <constraints>
                         <constraint firstItem="pUh-Fw-y5f" firstAttribute="centerY" secondItem="ora-5t-ZKx" secondAttribute="centerY" id="Gng-2c-Tld"/>
                         <constraint firstItem="ora-5t-ZKx" firstAttribute="centerY" secondItem="dlb-4y-ciX" secondAttribute="centerY" id="LLv-Jw-dtg"/>
-                        <constraint firstItem="ora-5t-ZKx" firstAttribute="leading" secondItem="dlb-4y-ciX" secondAttribute="leading" constant="16" id="OsT-7r-jEp"/>
+                        <constraint firstItem="ora-5t-ZKx" firstAttribute="leading" secondItem="dlb-4y-ciX" secondAttribute="leading" constant="8" id="OsT-7r-jEp"/>
                         <constraint firstItem="pUh-Fw-y5f" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="trailing" constant="-1" id="YF6-El-q3Z"/>
-                        <constraint firstAttribute="trailing" secondItem="YZV-vo-zyG" secondAttribute="trailing" constant="16" id="knq-dr-ac5"/>
+                        <constraint firstAttribute="trailing" secondItem="YZV-vo-zyG" secondAttribute="trailing" constant="8" id="knq-dr-ac5"/>
                         <constraint firstItem="YZV-vo-zyG" firstAttribute="centerY" secondItem="pUh-Fw-y5f" secondAttribute="centerY" id="rU2-yc-XH4"/>
                     </constraints>
                 </view>

@@ -11,7 +11,7 @@
 
 @interface OrderDetailFooter()
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @end
 
@@ -36,7 +36,7 @@
 - (void)setOrderModel:(OrderModel *)orderModel
 {
     _orderModel = orderModel;
-    self.dateLabel.text = orderModel.createTime;
+//    self.dateLabel.text = orderModel.createTime;
     self.priceLabel.text = orderModel.orderPrice;
     
     NSString *countStr = [self orderGoodsCount];

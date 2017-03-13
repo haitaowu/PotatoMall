@@ -73,6 +73,17 @@
     return [phonePredicate evaluateWithObject:self];
 }
 
+/**以138*****383格式显示手机号码*/
+- (NSString*)securityPhone
+{
+    NSString *phoneTxt = [self strWithoutSpace];
+    phoneTxt = [phoneTxt stringByReplacingOccurrencesOfString:@"+" withString:@""];
+    phoneTxt = [phoneTxt stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    NSRange securiRange = NSMakeRange(3, 4);
+    phoneTxt = [phoneTxt stringByReplacingCharactersInRange:securiRange withString:@"****"];
+    return phoneTxt;
+}
+
 
 
 @end

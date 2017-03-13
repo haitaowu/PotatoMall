@@ -26,6 +26,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 
 @interface OrdersTableController ()
 @property (nonatomic,strong)NSMutableArray *ordersArray;
+@property (nonatomic,strong)NSMutableArray *originOrders;
 @property (strong, nonatomic) TopScrollView *tableviewHeaderView;
 @property (nonatomic,strong)NSArray *subItemTitles;
 @end
@@ -70,6 +71,10 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     __block typeof(self) blockSelf = self;
     self.tableviewHeaderView.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
         HTLog(@"top at scrollview at index title %@",title);
+        if (idx == 0) {
+            blockSelf.ordersArray = blockSelf.originOrders;
+        }
+        [blockSelf.tableView reloadData];
     };
     self.tableView.tableHeaderView = self.tableviewHeaderView;
 }

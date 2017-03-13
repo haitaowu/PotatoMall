@@ -67,6 +67,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cancelBtn" destination="KMs-vB-Agm" id="0Bu-mq-6BQ"/>
+                <outlet property="dateLabel" destination="Vfd-SN-SSh" id="Yv4-vM-Xs6"/>
             </connections>
             <point key="canvasLocation" x="81" y="130"/>
         </tableViewCell>

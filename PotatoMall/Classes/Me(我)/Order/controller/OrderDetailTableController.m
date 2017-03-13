@@ -110,11 +110,13 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         return cell;
     }else{
         CancelOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CancelOrderCellID];
+        cell.model = self.orderModel;
         __block typeof(self) blockSelf = self;
         cell.cancelBlock = ^(){
             HTLog(@"tap cancel button ");
             [blockSelf cancelCurrentOrder];
         };
+        
         return cell;
     }
 }

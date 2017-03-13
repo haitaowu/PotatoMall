@@ -22,9 +22,10 @@
 
 
 #pragma mark -  setter and getter methods 
-- (void)setModel:(GoodsModel *)model
+- (void)setModel:(OrderModel *)model
 {
     _model = model;
+    self.dateLabel.text = model.createTime;
 }
 
 #pragma mark - selectors

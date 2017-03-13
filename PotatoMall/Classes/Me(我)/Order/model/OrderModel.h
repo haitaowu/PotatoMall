@@ -29,6 +29,9 @@
 /** 订单状态*/
 @property (nonatomic,copy) NSString *orderStatus;
 
+/**ht 订单中文状态*/
+@property (nonatomic,copy) NSString *orderStatusZH;
+
 /** 订单备注*/
 @property (nonatomic,copy) NSString *remark;
 
@@ -46,6 +49,7 @@
 
 /** 货品对象集合*/
 @property (nonatomic,strong) NSArray *list;
+
 
 
 

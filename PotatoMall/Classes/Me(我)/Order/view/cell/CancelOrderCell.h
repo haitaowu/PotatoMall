@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GoodsModel.h"
+#import "OrderModel.h"
 
 typedef void(^CancelBlock)();
 
 @interface CancelOrderCell : UITableViewCell
-@property (nonatomic,copy) GoodsModel *model;
+@property (nonatomic,copy) OrderModel *model;
 @property (nonatomic,copy)CancelBlock  cancelBlock;
 @end

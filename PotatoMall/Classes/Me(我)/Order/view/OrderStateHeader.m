@@ -26,7 +26,7 @@
 {
     _orderModel = orderModel;
     self.orderNumLabel.text = orderModel.orderCode;
-    self.stateLabel.text = orderModel.orderStatus;
+    self.stateLabel.text = [orderModel orderStatusZH];
 }
 
 
