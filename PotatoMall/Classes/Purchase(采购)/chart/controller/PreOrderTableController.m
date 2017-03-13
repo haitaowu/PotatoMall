@@ -96,8 +96,9 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
         [goodsArr addObject:goods];
     }
     params[kGoodsInfosKey] = goodsArr;
-    params[kShippingMobileKey] = @"18061955875";
-    params[kShippingPersonKey] = @"18061955875";
+    NSString *phone = [UserModelUtil sharedInstance].userModel.phone;
+    params[kShippingMobileKey] = phone ;
+    params[kShippingPersonKey] = phone;
     params[kDeliveryTypKey] = @"1";
     
     params[kUserIdKey] = [UserModelUtil sharedInstance].userModel.userId;
