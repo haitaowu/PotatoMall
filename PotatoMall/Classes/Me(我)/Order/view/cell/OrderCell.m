@@ -44,7 +44,7 @@
 //    self.priceLabel.text = model.price;
     if (model.imageSrc != nil) {
         NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
-        UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
+        UIImage *holderImg = [UIImage imageNamed:@"goods_placehodler"];
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
 

@@ -113,7 +113,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
 //            [SVProgressHUD showInfoWithStatus:msg];
             if (status == StatusTypSuccess) {
-                self.ordersArray =  [OrderModel ordersWithData:data];
+                self.originOrders = [OrderModel ordersWithData:data];
+                self.ordersArray =  self.originOrders;
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
