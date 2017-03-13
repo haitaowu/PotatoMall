@@ -158,7 +158,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         NSString *subUrl = @"article/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
                 self.articlesArray = [ArticleModel articlesWithData:data];
@@ -167,7 +167,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_header endRefreshing];
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
@@ -182,14 +182,14 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         NSString *subUrl = @"article/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             if (status == StatusTypSuccess) {
                 NSArray *array = [ArticleModel articlesWithData:data];
                 [self.headerView loadAdsWithImages:array];
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }

@@ -304,7 +304,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         NSString *subUrl = @"goods/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
                 self.goodsArray =  [GoodsModel goodsWithData:data];
@@ -313,7 +313,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_header endRefreshing];
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
             self.firstReqFinished = YES;
         }];
     }

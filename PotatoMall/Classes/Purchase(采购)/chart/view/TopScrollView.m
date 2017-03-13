@@ -147,6 +147,7 @@
     for (int idx = 0 ; idx < titles.count; idx++) {
         
         UIButton * btn = [[UIButton alloc] init];
+        btn.titleLabel.font = [TitleLabel titleHFont];
         if (idx == 0) {
             btn.selected = YES;
             self.selectedItem = btn;

@@ -21,3 +21,4 @@
 #import "UIImage+Color.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "CommHelper.h"
+#import "TitleLabel.h"

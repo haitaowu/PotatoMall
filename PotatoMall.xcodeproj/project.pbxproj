@@ -84,6 +84,7 @@
 		BEADCF731E7645AA00EFFA01 /* AccountTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF721E7645AA00EFFA01 /* AccountTableController.m */; };
 		BEADCF761E76477600EFFA01 /* ModifyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF751E76477600EFFA01 /* ModifyAccountController.m */; };
 		BEADCF791E76692700EFFA01 /* ModifyPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF781E76692700EFFA01 /* ModifyPwdController.m */; };
+		BEADCF7C1E767AB600EFFA01 /* TitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF7B1E767AB600EFFA01 /* TitleLabel.m */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
 		BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD41E5C796300667D73 /* Home.storyboard */; };
@@ -293,6 +294,8 @@
 		BEADCF751E76477600EFFA01 /* ModifyAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyAccountController.m; sourceTree = "<group>"; };
 		BEADCF771E76692700EFFA01 /* ModifyPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPwdController.h; sourceTree = "<group>"; };
 		BEADCF781E76692700EFFA01 /* ModifyPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdController.m; sourceTree = "<group>"; };
+		BEADCF7A1E767AB600EFFA01 /* TitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleLabel.h; sourceTree = "<group>"; };
+		BEADCF7B1E767AB600EFFA01 /* TitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleLabel.m; sourceTree = "<group>"; };
 		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
 		BEC06DAE1E5C76D300667D73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		BEC06DB81E5C76F500667D73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -851,6 +854,8 @@
 				BE93AF291E65B88E001F99BC /* SearchCell.h */,
 				BE93AF2A1E65B88E001F99BC /* SearchCell.m */,
 				BE93AF2B1E65B88E001F99BC /* SearchCell.xib */,
+				BEADCF7A1E767AB600EFFA01 /* TitleLabel.h */,
+				BEADCF7B1E767AB600EFFA01 /* TitleLabel.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1332,6 +1337,7 @@
 				BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */,
 				BEADCF791E76692700EFFA01 /* ModifyPwdController.m in Sources */,
 				BE077A5B1E6A967C006F0EFB /* PurchaseTableController.m in Sources */,
+				BEADCF7C1E767AB600EFFA01 /* TitleLabel.m in Sources */,
 				BE5ED79D1E619E6A00C4B1D0 /* BaseTableViewController.m in Sources */,
 				BE0DDB481E6D447E00F15168 /* PurchaseSearchController.m in Sources */,
 				BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */,

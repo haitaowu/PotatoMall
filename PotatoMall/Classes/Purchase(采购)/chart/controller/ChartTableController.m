@@ -145,7 +145,7 @@ static NSString *HeaderID = @"HeaderID";
         NSString *subUrl = @"cart/goCart";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             self.firstReqFinished = YES;
             if (status == StatusTypSuccess) {
                 self.goodsArray =  [GoodsModel goodsWithData:data];
@@ -153,7 +153,7 @@ static NSString *HeaderID = @"HeaderID";
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             self.firstReqFinished = YES;
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
@@ -170,7 +170,7 @@ static NSString *HeaderID = @"HeaderID";
         NSString *subUrl = @"cart/deleteCartProduct";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             if (status == StatusTypSuccess) {
                 [self.goodsArray removeObject:goodsModel];
                 [self.selectedGoods removeObject:goodsModel];
@@ -178,7 +178,7 @@ static NSString *HeaderID = @"HeaderID";
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }

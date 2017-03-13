@@ -154,13 +154,13 @@
         NSString *subUrl = @"cart/addSingleShopCart";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             if (status == StatusTypSuccess) {
                 HTLog(@"add to chart success baby .....");
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
@@ -174,7 +174,7 @@
         NSString *subUrl = @"goods/detail";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             if (status == StatusTypSuccess) {
                 self.goodsDetailModel =  [GoodsDetailModel goodsDetailWithData:data];
                 [self.paramsCell setDetailModel:self.goodsDetailModel];
@@ -183,7 +183,7 @@
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }

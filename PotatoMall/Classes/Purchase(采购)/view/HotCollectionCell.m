@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
 
+
 @implementation HotCollectionCell
 
 #pragma mark -  setter and getter methods

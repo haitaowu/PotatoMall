@@ -44,14 +44,14 @@
         NSString *subUrl = @"article/detail";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
             if (status == StatusTypSuccess) {
                 self.articleModel = [ArticleDetailModel articleDetailWithData:data];
                 [self setupUIWithDetail:self.articleModel];
                 HTLog(@"hello ");
             }
         } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
