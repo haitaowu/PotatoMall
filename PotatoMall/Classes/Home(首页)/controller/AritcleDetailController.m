@@ -8,8 +8,9 @@
 
 #import "AritcleDetailController.h"
 #import "ArticleDetailModel.h"
+#import "WXApi.h"
 
-@interface AritcleDetailController ()
+@interface AritcleDetailController ()<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
@@ -36,6 +37,18 @@
     [self.webview loadHTMLString:detail.content baseURL:nil];
 }
 
+
+#pragma mark - selectors
+- (IBAction)tapShareItem:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"分享到朋友圈",@"分享到朋友",nil];
+    [actionSheet showInView:self.view];
+}
+
+
 #pragma mark - requset server
 - (void)requestAritcleDetailWith:(NSDictionary*)params
 {
@@ -48,13 +61,35 @@
             if (status == StatusTypSuccess) {
                 self.articleModel = [ArticleDetailModel articleDetailWithData:data];
                 [self setupUIWithDetail:self.articleModel];
-                HTLog(@"hello ");
             }
         } reqFail:^(int type, NSString *msg) {
 //            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
+
+
+#pragma mark - UIAction sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    int scene = -1;
+    switch (buttonIndex) {
+        case 0:
+            scene = WXSceneTimeline;
+            break;
+        case 1:
+            scene = WXSceneSession;
+            break;
+        default:
+            break;
+    }
+    
+    if (scene != -1) {
+        [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt image:[UIImage imageNamed:@"goods_placehodler"] url:@"www.baidu.com"];
+    }
+}
+
+
 
 
 

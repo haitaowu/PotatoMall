@@ -112,6 +112,14 @@
 		BED84A131E6FEF91001E7A27 /* OrderFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED84A111E6FEF91001E7A27 /* OrderFeedCell.xib */; };
 		BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BED84A151E6FEFE5001E7A27 /* CustomTextView.m */; };
 		BED84A191E7004B7001E7A27 /* TransportTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED84A181E7004B7001E7A27 /* TransportTableController.m */; };
+		BED8FA5C1E77922000795F7E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA581E77922000795F7E /* libWeChatSDK.a */; };
+		BED8FA5E1E77923C00795F7E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA5D1E77923C00795F7E /* SystemConfiguration.framework */; };
+		BED8FA601E77924400795F7E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA5F1E77924400795F7E /* libz.tbd */; };
+		BED8FA621E77927100795F7E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA611E77927100795F7E /* libsqlite3.0.tbd */; };
+		BED8FA641E77927E00795F7E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA631E77927E00795F7E /* libc++.tbd */; };
+		BED8FA661E77928700795F7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA651E77928700795F7E /* Security.framework */; };
+		BED8FA681E77928E00795F7E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA671E77928E00795F7E /* CoreTelephony.framework */; };
+		BED8FA6A1E77929600795F7E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED8FA691E77929600795F7E /* CFNetwork.framework */; };
 		BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFA1E6EF79100054F45 /* PurchHotCell.m */; };
 		BED95DFD1E6EF79100054F45 /* PurchHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */; };
 		BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */; };
@@ -344,6 +352,17 @@
 		BED84A151E6FEFE5001E7A27 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		BED84A171E7004B7001E7A27 /* TransportTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportTableController.h; sourceTree = "<group>"; };
 		BED84A181E7004B7001E7A27 /* TransportTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportTableController.m; sourceTree = "<group>"; };
+		BED8FA581E77922000795F7E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		BED8FA591E77922000795F7E /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		BED8FA5A1E77922000795F7E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		BED8FA5B1E77922000795F7E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		BED8FA5D1E77923C00795F7E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BED8FA5F1E77924400795F7E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		BED8FA611E77927100795F7E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		BED8FA631E77927E00795F7E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		BED8FA651E77928700795F7E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BED8FA671E77928E00795F7E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		BED8FA691E77929600795F7E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BED95DF91E6EF79100054F45 /* PurchHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchHotCell.h; sourceTree = "<group>"; };
 		BED95DFA1E6EF79100054F45 /* PurchHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchHotCell.m; sourceTree = "<group>"; };
 		BED95DFB1E6EF79100054F45 /* PurchHotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchHotCell.xib; sourceTree = "<group>"; };
@@ -403,6 +422,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BED8FA6A1E77929600795F7E /* CFNetwork.framework in Frameworks */,
+				BED8FA681E77928E00795F7E /* CoreTelephony.framework in Frameworks */,
+				BED8FA661E77928700795F7E /* Security.framework in Frameworks */,
+				BED8FA641E77927E00795F7E /* libc++.tbd in Frameworks */,
+				BED8FA621E77927100795F7E /* libsqlite3.0.tbd in Frameworks */,
+				BED8FA601E77924400795F7E /* libz.tbd in Frameworks */,
+				BED8FA5E1E77923C00795F7E /* SystemConfiguration.framework in Frameworks */,
+				BED8FA5C1E77922000795F7E /* libWeChatSDK.a in Frameworks */,
 				4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +440,13 @@
 		94F3168BB54E218012B16116 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BED8FA691E77929600795F7E /* CFNetwork.framework */,
+				BED8FA671E77928E00795F7E /* CoreTelephony.framework */,
+				BED8FA651E77928700795F7E /* Security.framework */,
+				BED8FA631E77927E00795F7E /* libc++.tbd */,
+				BED8FA611E77927100795F7E /* libsqlite3.0.tbd */,
+				BED8FA5F1E77924400795F7E /* libz.tbd */,
+				BED8FA5D1E77923C00795F7E /* SystemConfiguration.framework */,
 				786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */,
 			);
 			name = Frameworks;
@@ -666,6 +700,7 @@
 			children = (
 				BE5ED7DB1E62B29000C4B1D0 /* AES */,
 				BE5ED7A71E61B3F700C4B1D0 /* Reachability */,
+				BED8FA571E77922000795F7E /* WeChatShare */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -1012,6 +1047,17 @@
 				BE5ED7D71E62A3DC00C4B1D0 /* TDKeyStringUrl.h */,
 			);
 			path = macro;
+			sourceTree = "<group>";
+		};
+		BED8FA571E77922000795F7E /* WeChatShare */ = {
+			isa = PBXGroup;
+			children = (
+				BED8FA581E77922000795F7E /* libWeChatSDK.a */,
+				BED8FA591E77922000795F7E /* WechatAuthSDK.h */,
+				BED8FA5A1E77922000795F7E /* WXApi.h */,
+				BED8FA5B1E77922000795F7E /* WXApiObject.h */,
+			);
+			path = WeChatShare;
 			sourceTree = "<group>";
 		};
 		BEE8EED01E63CAB0008FD2D4 /* Me */ = {
@@ -1419,6 +1465,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1467,6 +1514,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1491,11 +1539,45 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = TCQ9E2BH2Y;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PotatoMall/Classes/Base/other/TuDouPrefixHeader.pch";
 				INFOPLIST_FILE = PotatoMall/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PotatoMall/Classes/lib/WeChatShare",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"DZNEmptyDataSet\"",
+					"-l\"FMDB\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-l\"sqlite3\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tudouji.PotatoMall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1510,11 +1592,45 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = TCQ9E2BH2Y;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PotatoMall/Classes/Base/other/TuDouPrefixHeader.pch";
 				INFOPLIST_FILE = PotatoMall/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PotatoMall/Classes/lib/WeChatShare",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"DZNEmptyDataSet\"",
+					"-l\"FMDB\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-l\"sqlite3\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tudouji.PotatoMall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

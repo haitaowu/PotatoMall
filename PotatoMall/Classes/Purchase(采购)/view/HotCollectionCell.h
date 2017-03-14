@@ -13,5 +13,6 @@
 @interface HotCollectionCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic,copy) GoodsModel *model;
+- (void)updateUIWithModel:(GoodsModel*)model itemIdx:(NSInteger)index;
 
 @end

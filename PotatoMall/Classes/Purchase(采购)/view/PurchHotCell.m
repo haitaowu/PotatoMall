@@ -59,9 +59,11 @@ static NSString * HotCollectionCellID = @"HotCollectionCellID";
 {
     HotCollectionCell *collectCell = [collectionView dequeueReusableCellWithReuseIdentifier:HotCollectionCellID forIndexPath:indexPath];
     GoodsModel *model = self.springHotGoods[indexPath.item];
-    [collectCell setModel:model];
+    [collectCell updateUIWithModel:model itemIdx:indexPath.item];
+//    [collectCell setModel:model];
     return collectCell;
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

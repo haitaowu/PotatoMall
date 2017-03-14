@@ -85,6 +85,20 @@
     self.radiusView.image = [UIImage imageWithColor:[UIColor redColor]];
 }
 
+- (void)updateUIWithModel:(GoodsModel*)model itemIdx:(NSInteger)index
+{
+    [self setModel:model];
+    UIColor *radiusColor = [UIColor redColor];
+    int idx = index % 3;
+    if (idx == 0) {
+        radiusColor = RGBA(95, 218, 162, 1);
+    }else if (idx == 1) {
+        radiusColor = RGBA(253, 94, 99, 1);
+    }else{
+        radiusColor = RGBA(91, 63, 215, 1);
+    }
+    self.radiusView.image = [UIImage imageWithColor:radiusColor];
+}
 #pragma mark -  setter and getter methods
 - (void)setModel:(GoodsModel *)model
 {

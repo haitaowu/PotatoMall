@@ -14,6 +14,8 @@
 #import "PreOrderTableController.h"
 #import "SDCycleScrollView.h"
 #import "GoodsDetailTableHeader.h"
+#import "WXApi.h"
+
 
 #define kDescriptionSectionIdx              0
 #define kDescriptionFirstRowIdx             0
@@ -26,7 +28,7 @@
 
 #define kImageParamsSectionIdx              3
 
-@interface ProductDetailTableController ()
+@interface ProductDetailTableController ()<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *statusView;
 @property (weak, nonatomic) IBOutlet UILabel *moblieDescLabel;
@@ -94,11 +96,12 @@
         [blockSelf performSegueWithIdentifier:@"preOrderSegue" sender:@[self.goodModel]];
     } chartBlock:^{
         NSLog(@"chart  order...");
-        [self addGoodsCurrentToChart];
+        [blockSelf addGoodsCurrentToChart];
     }];
     
     bar.shareBlock = ^(){
         NSLog(@"tap share block ");
+        [blockSelf tapShareProduct];
     };
     CGRect frame = self.navigationController.toolbar.frame;
     bar.frame = frame;
@@ -143,6 +146,14 @@
     return params;
 }
 
+- (void)tapShareProduct{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"分享到朋友圈",@"分享到朋友",nil];
+    [actionSheet showInView:self.view];
+}
 
 #pragma mark - requset server
 - (void)addGoodsCurrentToChart
@@ -200,7 +211,6 @@
     return 0.001;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == kDescriptionSectionIdx){
@@ -222,6 +232,27 @@
         return 280;
     }else{
         return 44;
+    }
+}
+
+
+#pragma mark - UIAction sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    int scene = -1;
+    switch (buttonIndex) {
+        case 0:
+            scene = WXSceneTimeline;
+            break;
+        case 1:
+            scene = WXSceneSession;
+            break;
+        default:
+            break;
+    }
+    
+    if (scene != -1) {
+        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName image:[UIImage imageNamed:@"goods_placehodler"] url:@"www.baidu.com"];
     }
 }
 @end

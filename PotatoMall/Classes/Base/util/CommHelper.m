@@ -7,6 +7,7 @@
 //
 
 #import "CommHelper.h"
+#import "WXApi.h"
 
 @implementation CommHelper
 
@@ -40,5 +41,23 @@
     return [str rangeOfString:keyword];
 }
 
+
++ (void)shareUrlWithScene:(int) scene title:(NSString*)title description:(NSString*)description image:(UIImage*)img url:(NSString*)url
+{
+    WXMediaMessage *mediaMsg = [WXMediaMessage message];
+    mediaMsg.title = title;
+    mediaMsg.description = description;
+    [mediaMsg setThumbImage:img];
+    
+    WXWebpageObject *webPageObj = [WXWebpageObject object];
+    webPageObj.webpageUrl = url;
+    mediaMsg.mediaObject = webPageObj;
+    
+    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+    msgReq.bText = NO;
+    msgReq.message = mediaMsg;
+    msgReq.scene = scene;
+    [WXApi sendReq:msgReq];
+}
 
 @end

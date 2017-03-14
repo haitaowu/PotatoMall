@@ -116,7 +116,7 @@
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zue-pB-8em">
-                                <rect key="frame" x="0.0" y="174" width="375" height="493"/>
+                                <rect key="frame" x="0.0" y="174" width="375" height="449"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -131,6 +131,15 @@
                             <constraint firstAttribute="trailing" secondItem="vI6-H6-P6i" secondAttribute="trailing" id="x2f-Dp-hOD"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="oiq-Ub-y6I">
+                        <barButtonItem key="rightBarButtonItem" image="nav_share" id="ip6-Dd-s8a">
+                            <connections>
+                                <action selector="tapShareItem:" destination="aAu-8i-cYl" id="bFe-Dk-y2g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="authorLabel" destination="XpF-EO-D6v" id="Gc2-o0-sXa"/>
                         <outlet property="dateLabel" destination="Mn1-SF-drf" id="M75-ti-0tC"/>
@@ -164,6 +173,7 @@
     <resources>
         <image name="home_clock" width="12" height="12"/>
         <image name="nav_scan" width="21" height="21"/>
+        <image name="nav_share" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1eD-UM-v8a"/>
