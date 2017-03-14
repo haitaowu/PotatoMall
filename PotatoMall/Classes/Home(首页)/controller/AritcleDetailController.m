@@ -40,12 +40,16 @@
 
 #pragma mark - selectors
 - (IBAction)tapShareItem:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"取消"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"分享到朋友圈",@"分享到朋友",nil];
-    [actionSheet showInView:self.view];
+    if([WXApi isWXAppInstalled]){
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"取消"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"分享到朋友圈",@"分享到朋友",nil];
+        [actionSheet showInView:self.view];
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"请安装微信再使用该功能"];
+    }
 }
 
 
