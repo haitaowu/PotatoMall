@@ -360,7 +360,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         return 0;
     }else{
          if (self.selectedCateModel != nil) {
-             return 0;
+             return 1;
          }else{
              return 3;
          }

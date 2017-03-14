@@ -62,7 +62,7 @@
     _detailModel = detailModel;
     if (detailModel.imageSrc != nil) {
         NSURL *picUrl = [NSURL URLWithString:detailModel.imageSrc];
-        UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
+        UIImage *holderImg = [UIImage imageNamed:@"top_placeholder"];
         [self.imgView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }
     

@@ -24,6 +24,16 @@
     }
 }
 
+//字符宽
++ (CGFloat)strWidthWithStr:(NSString*)str font:(UIFont*)font height:(CGFloat) height
+{
+    CGSize size = CGSizeMake(MAXFLOAT,height);
+    NSDictionary *attris = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
+    CGSize textSize = [str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attris context:nil].size;
+    return  textSize.width ;
+}
+
+
 #pragma mark - private methods
 + (NSRange)stringRangeWithStr:(NSString*)str keyword:(NSString*)keyword
 {

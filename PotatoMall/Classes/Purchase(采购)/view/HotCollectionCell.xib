@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,19 +18,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="296" height="236"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sWP-iV-CKB">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWP-iV-CKB">
                         <rect key="frame" x="16" y="8" width="264" height="193"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="sWP-iV-CKB" secondAttribute="height" multiplier="240:175" id="C8J-Ej-33n"/>
-                        </constraints>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="8"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="产地" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyf-Kd-ZoJ" customClass="TitleLabel">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="产地" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyf-Kd-ZoJ" customClass="TitleLabel">
                         <rect key="frame" x="0.0" y="209" width="296" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -39,15 +37,6 @@
                 </subviews>
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="uyf-Kd-ZoJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Amo-uU-Uwr"/>
-                <constraint firstItem="sWP-iV-CKB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="MMU-l2-9b1"/>
-                <constraint firstAttribute="trailing" secondItem="uyf-Kd-ZoJ" secondAttribute="trailing" id="Qz2-zV-iJj"/>
-                <constraint firstItem="uyf-Kd-ZoJ" firstAttribute="top" secondItem="sWP-iV-CKB" secondAttribute="bottom" constant="8" id="Rqq-p1-bOd"/>
-                <constraint firstAttribute="trailing" secondItem="sWP-iV-CKB" secondAttribute="trailing" constant="16" id="XPx-Rw-iQd"/>
-                <constraint firstAttribute="bottom" secondItem="uyf-Kd-ZoJ" secondAttribute="bottom" constant="8" id="rza-Mp-bn5"/>
-                <constraint firstItem="sWP-iV-CKB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="s5a-rb-DIu"/>
-            </constraints>
             <size key="customSize" width="296" height="236"/>
             <connections>
                 <outlet property="imageView" destination="sWP-iV-CKB" id="1TT-uh-h2Q"/>

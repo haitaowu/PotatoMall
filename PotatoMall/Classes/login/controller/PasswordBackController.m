@@ -192,7 +192,7 @@
         return;
     }else{
         if (self.model == nil) {
-            [SVProgressHUD showInfoWithStatus:@"请输入验证码"];
+            [SVProgressHUD showInfoWithStatus:@"验证码有误"];
         }else{
             [self performSegueWithIdentifier:@"pwdbackSegue" sender:nil];
         }

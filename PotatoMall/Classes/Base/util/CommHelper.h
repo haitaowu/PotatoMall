@@ -10,5 +10,8 @@
 
 @interface CommHelper : NSObject
 
+/**根据给定的关键字显示红色*/
 + (NSAttributedString*)attriWithStr:(NSString*)str keyword:(NSString*)keyword hlFont:(UIFont*)font;
+/**根据高度、字体来计算字符的宽度*/
++ (CGFloat)strWidthWithStr:(NSString*)str font:(UIFont*)font height:(CGFloat) height;
 @end

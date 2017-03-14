@@ -24,6 +24,7 @@
 
 
 @interface RegisterController ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 @property (weak, nonatomic) IBOutlet HTTextField *phoneTextField;
 //@property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
@@ -220,6 +221,12 @@
 - (void)tapBackBtn:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (IBAction)tapReaderSpecBtn:(id)sender {
+}
+
+- (IBAction)tapAgreeSpecBtn:(UIButton*)sender {
+    sender.selected = !sender.selected;
+}
 
 //请求验证码
 - (IBAction)requestRegisterCode
@@ -262,6 +269,9 @@
         return;
     }else if(pwdTxt.length > 15){
         [SVProgressHUD showErrorWithStatus:@"密码必须8-15位数字或英文"];
+        return;
+    }else if(self.agreeBtn.selected == NO){
+        [SVProgressHUD showErrorWithStatus:@"同意本公司的协议才可以下一步哦"];
         return;
     }else{
         [self requestRegisterNewUser];
