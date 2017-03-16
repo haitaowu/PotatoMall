@@ -16,4 +16,5 @@
 
 @interface SpecButton : UIButton
 @property (nonatomic,strong)NSDictionary *specDict;
++ (UIFont*)titleHFont;
 @end

@@ -8,8 +8,8 @@
 
 #import "ProductSpecificationCell.h"
 
-#define kHorizontalMargin       20
-#define kVerticalMargin         20
+#define kHorizontalMargin       8
+#define kVerticalMargin         8
 #define kBorderMargin           16
 
 #define kColumnsCount           2
@@ -25,6 +25,34 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+}
+
+- (void)layoutBtnWithBtn:(SpecButton*)btn index:(NSInteger)idx
+{
+    CGFloat maxXLimit = kScreenWidth - kBorderMargin;
+    CGFloat x,y;
+    if(idx == 0){
+        x = kBorderMargin;
+        y = kBorderMargin;
+    }else{
+        SpecButton *beforeBtn = self.specifBtns[idx - 1];
+        CGFloat leftSider = CGRectGetMaxX(beforeBtn.frame) + kVerticalMargin + btn.width;
+        if (leftSider > maxXLimit) {
+            x = kBorderMargin;
+            y = CGRectGetMaxY(beforeBtn.frame) + kVerticalMargin;
+        }else{
+            x = CGRectGetMaxX(beforeBtn.frame) + kHorizontalMargin;
+            y = beforeBtn.y;
+        }
+    }
+    CGRect frame = {{x,y},btn.size};
+    btn.frame = frame;
 }
 
 #pragma mark - lazy methods
@@ -45,6 +73,16 @@
     [detailModel.goodsSpecs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self addParamsLabelWithDict:obj index:idx count:[_detailModel.goodsSpecs count]];
     }];
+    
+    //layoutsubview frame
+    [self.specifBtns enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self layoutBtnWithBtn:obj index:idx];
+    }];
+    if (self.cellBlock != nil) {
+        SpecButton *btn = [self.specifBtns lastObject];
+        CGFloat height = CGRectGetMaxY(btn.frame);
+        self.cellBlock(height);
+    }
 }
 
 #pragma mark - selectors 
@@ -71,17 +109,22 @@
 {
     SpecButton *btn = [[SpecButton alloc] init];
     [btn setSpecDict:param];
+    if (idx == 0) {
+        btn.selected = YES;
+    }
     [self.specifBtns addObject:btn];
     [self.contentView addSubview:btn];
     
-    CGFloat height = [ProductSpecificationCell itemHeightWithCount:count];
-    NSInteger yIdx = [ProductSpecificationCell verticalIdxWithIdx:idx];
-    CGFloat y = yIdx * (kVerticalMargin + height) + kVerticalMargin;
-    NSInteger xIdx = [ProductSpecificationCell horizontalIdxWithIdx:idx];
+//    CGFloat height = [ProductSpecificationCell itemHeightWithCount:count];
+//    NSInteger yIdx = [ProductSpecificationCell verticalIdxWithIdx:idx];
+//    CGFloat y = yIdx * (kVerticalMargin + height) + kVerticalMargin;
+//    NSInteger xIdx = [ProductSpecificationCell horizontalIdxWithIdx:idx];
     
-    CGFloat itemWidth = [ProductSpecificationCell itemWidth];
-    CGFloat x = kBorderMargin + (kVerticalMargin + itemWidth) * xIdx;
-    CGRect btnF = {{x,y},{itemWidth,height}};
+    NSString *name = param[kSpecName];
+    CGSize itemSize = [ProductSpecificationCell itemWidthWithStr:name];
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGRect btnF = {{x,y},itemSize};
     btn.frame = btnF;
     [btn addTarget:self action:@selector(tapSpecifiBtn:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -99,9 +142,11 @@
     return 30;
 }
 
-+ (CGFloat)itemWidth
++ (CGSize)itemWidthWithStr:(NSString*)str
 {
-    return (kScreenWidth - kBorderMargin * 2 - kHorizontalMargin) / 2;
+    CGFloat height = [CommHelper strHeightWithStr:str font:[SpecButton titleHFont] width:MAXFLOAT];
+    CGFloat width = [CommHelper strWidthWithStr:str font:[SpecButton titleHFont] height:height];
+    return CGSizeMake((width + 8 * 4), (height + 8 * 2));
 }
 
 + (NSInteger)rowsCountWithCount:(NSInteger)count

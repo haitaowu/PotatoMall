@@ -38,6 +38,7 @@
 //@property (nonatomic,strong)UIImageView *tableheader;
 @property (nonatomic,strong)GoodsDetailTableHeader *headerView;
 @property (nonatomic,assign)CGFloat  paramsCellHeight;
+@property (nonatomic,assign)CGFloat  specCellHeight;
 
 @end
 
@@ -48,6 +49,11 @@
     [self setupToolbar];
     self.paramsCell.heightBlock = ^(ParamsType type,CGFloat height){
         self.paramsCellHeight = height;
+        [self.tableView reloadData];
+    };
+    
+    self.speciCell.cellBlock = ^(CGFloat height){
+        self.specCellHeight = height;
         [self.tableView reloadData];
     };
     [self setupTableHeaderView];
@@ -75,7 +81,7 @@
 {
     //tableView tableHeaderView
     GoodsDetailTableHeader *headerView = [[GoodsDetailTableHeader alloc] init];
-    CGFloat height = 222.5;
+    CGFloat height = 272.5;
     headerView.frame = CGRectMake(0, 0, kScreenWidth, height);
     self.tableView.tableHeaderView = headerView;
     headerView.adBlock = ^(id adInfo){
@@ -229,10 +235,11 @@
         }
     }else if(indexPath.section == kSpecifSectionIdx){
         if (indexPath.row == kSpecifRowIdx) {
-            NSInteger count = [self.goodsDetailModel.goodsSpecs count];
-            return [ProductSpecificationCell cellHieghtWithCount:count];
+//            NSInteger count = [self.goodsDetailModel.goodsSpecs count];
+//            return [ProductSpecificationCell cellHieghtWithCount:count];
+            return self.specCellHeight + 16;
         }else{
-            return 44;
+            return 30;
         }
     }else if(indexPath.section == kStoreSectionIdx){
         return 0.001;

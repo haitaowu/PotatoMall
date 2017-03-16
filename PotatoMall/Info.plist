@@ -33,6 +33,10 @@
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.tudou.</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>toudou</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

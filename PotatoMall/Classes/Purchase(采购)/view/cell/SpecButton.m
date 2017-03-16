@@ -27,6 +27,12 @@
     return YES;
 }
 
++ (UIFont*)titleHFont
+{
+    return [UIFont fontWithName:@"Helvetica"size:14.f];
+}
+
+
 #pragma mark - set up 
 - (void)setupUI
 {
@@ -45,6 +51,7 @@
     [self setTitleColor:kMainTitleBlackColor forState:UIControlStateNormal];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [self setBackgroundImage:[UIImage imageWithColor:kMainNavigationBarColor] forState:UIControlStateSelected];
+    self.titleLabel.font = [SpecButton titleHFont];
     [self setTitle:name forState:UIControlStateNormal];
     
 }

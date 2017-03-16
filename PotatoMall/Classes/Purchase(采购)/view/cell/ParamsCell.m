@@ -67,12 +67,6 @@
 - (void)setDetailModel:(GoodsDetailModel *)detailModel
 {
     _detailModel = detailModel;
-//    if (detailModel.imageSrc != nil) {
-//        NSURL *picUrl = [NSURL URLWithString:detailModel.imageSrc];
-//        UIImage *holderImg = [UIImage imageNamed:@"top_placeholder"];
-//        [self.imgView sd_setImageWithURL:picUrl placeholderImage:holderImg];
-//    }
-//    
     [self.webView loadHTMLString:detailModel.moblieDesc baseURL:nil];
     
     [self.paramsLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -84,15 +78,18 @@
     self.labelsHeight = height;
 }
 
+#pragma mark - UIWebViewDelegate methods
  - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
 //    CGFloat height = [[self.webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
-    CGFloat sHeight = self.webView.scrollView.contentSize.height;
 //    HTLog(@"scrollview height %f and %f",height,sHeight);
-    if (self.heightBlock != nil) {
-        self.heightBlock(ParamsTypeImage,sHeight);
-    }
-    self.imgsHeight = sHeight;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat sHeight = self.webView.scrollView.contentSize.height;
+        self.imgsHeight = sHeight;
+        if (self.heightBlock != nil) {
+            self.heightBlock(ParamsTypeImage,sHeight);
+        }
+    });
 }
 
 #pragma mark - private methods
@@ -122,6 +119,8 @@
     self.webView.hidden = NO;
     self.containerView.hidden = YES;
     if (self.heightBlock != nil) {
+        CGFloat sHeight = self.webView.scrollView.contentSize.height;
+        self.imgsHeight = sHeight;
         self.heightBlock(ParamsTypeLabels,self.imgsHeight);
     }
 }

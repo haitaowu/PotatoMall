@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/controller/ProductDetailTableController.m"
-            timestampString = "511343779.575323"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/view/cell/ParamsCell.m"
+            timestampString = "511354360.957287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-reqGoodsDetailWith:"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-webViewDidFinishLoad:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
