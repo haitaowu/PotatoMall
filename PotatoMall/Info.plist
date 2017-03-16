@@ -28,6 +28,12 @@
 				<string>wxd930ea5d5a258f4f</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.tudou.</string>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

@@ -15,9 +15,9 @@
 
 static NSString *HotArticleCellID = @"HotArticleCellID";
 
-@interface SearchTableController ()
-@property (nonatomic,strong)HTCustomeSearchBar *searchField;
+@interface SearchTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>@property (nonatomic,strong)HTCustomeSearchBar *searchField;
 @property (nonatomic,strong)NSMutableArray *articlesArray;
+@property (nonatomic,assign) BOOL firstReqFinished;
 @end
 
 @implementation SearchTableController
@@ -25,6 +25,8 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     [self setupUI];
     [self searchArticlsWithKeyWord:self.searchWord];
 }
@@ -88,13 +90,16 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         NSString *subUrl = @"article/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showInfoWithStatus:msg];
+//            [SVProgressHUD showInfoWithStatus:msg];
+            self.firstReqFinished = YES;
             if (status == StatusTypSuccess) {
                 self.articlesArray = [ArticleModel articlesWithData:data];
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
+            self.firstReqFinished = YES;
+            [self.tableView reloadData];
+//            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
@@ -134,6 +139,29 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 180;
+}
+
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else if ((self.firstReqFinished == YES) && (self.articlesArray.count <= 0)){
+        NSString *text = @"没有找到相关文章，请更换搜索内容再试试";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
 }
 
 @end

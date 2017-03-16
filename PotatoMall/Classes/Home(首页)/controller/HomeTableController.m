@@ -213,7 +213,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 50;
+        return 40;
     }else{
         return 0.001;
     }
