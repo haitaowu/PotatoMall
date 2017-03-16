@@ -400,7 +400,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
             return cell;
         }else{
             PurchHotCell *cell = [tableView dequeueReusableCellWithIdentifier:PurchHotCellID];
-            [cell setSpringHotGoods:self.springRecomGoods.list];
+            [cell setSpringHotGoods:self.springGoodsNew.list];
             __block typeof(self) blockSelf = self;
             cell.itemBlock = ^(GoodsModel *model){
                 [blockSelf performSegueWithIdentifier:@"productDetailSegue" sender:model];
@@ -416,13 +416,13 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 {
     if (section ==  kHotProductsSectionIdx) {
         if ([self.springGoodsNew.list count] > 0) {
-            return 50;
+            return 40;
         }else{
             return 0.001;
         }
     }else if (section == kProductsSectionIdx){
         if ([self.springRecomGoods.list count] > 0) {
-            return 50;
+            return 40;
         }else{
             return 0.001;
         }
@@ -487,13 +487,17 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 //        return height;
 //    }else
     
-    if (indexPath.section == kAdvertiseSectionIdx) {
-        CGFloat height = 190;
-        return height;
-    }else if (indexPath.section == kHotProductsSectionIdx) {
-        return 150;
-    }else{
+    if (self.selectedCateModel != nil) {
         return 110;
+    }else{
+        if (indexPath.section == kAdvertiseSectionIdx) {
+            CGFloat height = 190;
+            return height;
+        }else if (indexPath.section == kHotProductsSectionIdx) {
+            return 150;
+        }else{
+            return 110;
+        }
     }
 }
 
@@ -511,7 +515,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
                                      NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
         return [[NSAttributedString alloc] initWithString:text attributes:attributes];
     }else if ((self.firstReqFinished == YES) && (self.goodsArray.count <= 0)){
-        NSString *text = @"抱歉暂时还没有该商品类别";
+        NSString *text = @"抱歉，暂时还没有该类别商品";
         NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
                                      NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
         return [[NSAttributedString alloc] initWithString:text attributes:attributes];

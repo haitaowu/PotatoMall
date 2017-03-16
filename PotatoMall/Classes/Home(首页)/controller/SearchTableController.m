@@ -138,7 +138,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 100;
 }
 
 #pragma mark - DZNEmptyDataSetSource Methods

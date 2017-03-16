@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "GoodsDetailModel.h"
 
+typedef enum : NSUInteger {
+    ParamsTypeImage,
+    ParamsTypeLabels
+}  ParamsType;
+
+typedef void(^CellHeightBlock)(ParamsType type,CGFloat height);
 @interface ParamsCell : UITableViewCell
 @property (nonatomic,strong)GoodsDetailModel *detailModel;
-
+@property (nonatomic,copy) CellHeightBlock heightBlock;
 
 @end

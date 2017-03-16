@@ -47,17 +47,18 @@
     [self.titleView sizeToFit];
     CGSize titleSize = self.titleView.size;
     
+    CGFloat topDelta = 5;
     //imageView frame
     CGFloat imgVX = kLeftMargin;
     CGFloat imgH =  titleSize.height * kImageHeightPercent;
-    CGFloat imgVY = (viewSize.height  - imgH) * 0.5;
+    CGFloat imgVY = (viewSize.height  - imgH) * 0.5 + topDelta;
     CGRect imgVF = {{imgVX,imgVY},{imgH * 0.25,imgH}};
     self.imgView.frame = imgVF;
     
     //titleView frame
     CGFloat leftMargin = 5;
     CGFloat titleX = leftMargin + CGRectGetMaxX(imgVF);
-    CGFloat titleY = (viewSize.height - titleSize.height) * 0.5;
+    CGFloat titleY = (viewSize.height - titleSize.height) * 0.5 + topDelta;
     CGRect titleFrame = {{titleX,titleY},titleSize};
     self.titleView.frame = titleFrame;
     

@@ -69,6 +69,6 @@
 #define     kAlertEnterAccountMsg            @"请输入账号"
 #define     kAlertEnterPasswordMsg           @"请输入密码"
 //define url base
-#define     BASEURL                         @"http://121.42.197.212:8082/api/"
+#define     BASEURL                         @"http://123.56.190.116:8082/api/"
 
 

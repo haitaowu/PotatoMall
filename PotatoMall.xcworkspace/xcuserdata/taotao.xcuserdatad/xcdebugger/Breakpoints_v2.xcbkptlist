@@ -19,44 +19,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Me(&#x6211;)/MeInfo/controller/MeInfoTableController.m"
-            timestampString = "511068411.705316"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/controller/PurchaseTableController.m"
-            timestampString = "511107649.662228"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
-            landmarkName = "-reqGoodsWithCategoryModel:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Base/util/CommHelper.m"
-            timestampString = "511322039.481669"
+            timestampString = "511339116.916886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "+shareUrlWithScene:title:description:imageUrl:url:"
             landmarkType = "7">
          </BreakpointContent>
@@ -68,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Base/util/CommHelper.m"
-            timestampString = "511323039.858597"
+            timestampString = "511339116.916886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "+scaleImageWithImg:size:"
             landmarkType = "7">
          </BreakpointContent>
@@ -83,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/model/ArticleModel.m"
-            timestampString = "511334709.876409"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/controller/ProductDetailTableController.m"
+            timestampString = "511343779.575323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "+articlesWithData:"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-reqGoodsDetailWith:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

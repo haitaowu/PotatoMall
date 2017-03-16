@@ -16,14 +16,19 @@
 
 
 
-@interface ParamsCell()
+@interface ParamsCell()<UIWebViewDelegate>
 @property (nonatomic,weak)UIView  *containerView;
-@property (nonatomic,weak)UIImageView  *imgView;
+//@property (nonatomic,weak)UIImageView  *imgView;
+@property (nonatomic,weak)UIWebView  *webView;
 @property (nonatomic,weak)UIButton  *imageBtn;
 @property (nonatomic,weak)UIButton  *paramsStateBtn;
 @property (nonatomic,strong)NSMutableArray *paramsLabels;
+@property (nonatomic,assign) CGFloat labelsHeight;
+@property (nonatomic,assign) CGFloat imgsHeight;
 @end
 
+
+#define kParamsLabelHeight              44
 
 @implementation ParamsCell
 
@@ -47,7 +52,9 @@
 - (void)setupView
 {
     self.containerView = [self viewWithTag:555];
-    self.imgView = [self viewWithTag:444];
+//    self.imgView = [self viewWithTag:444];
+    self.webView = [self viewWithTag:99];
+    [self.webView setDelegate:self];
     self.imageBtn = [self viewWithTag:kImageBtnTag];
     self.imageBtn.titleLabel.font = [TitleLabel titleHFont];
     self.paramsStateBtn = [self viewWithTag:kParamsBtnTag];
@@ -60,17 +67,32 @@
 - (void)setDetailModel:(GoodsDetailModel *)detailModel
 {
     _detailModel = detailModel;
-    if (detailModel.imageSrc != nil) {
-        NSURL *picUrl = [NSURL URLWithString:detailModel.imageSrc];
-        UIImage *holderImg = [UIImage imageNamed:@"top_placeholder"];
-        [self.imgView sd_setImageWithURL:picUrl placeholderImage:holderImg];
-    }
-    
+//    if (detailModel.imageSrc != nil) {
+//        NSURL *picUrl = [NSURL URLWithString:detailModel.imageSrc];
+//        UIImage *holderImg = [UIImage imageNamed:@"top_placeholder"];
+//        [self.imgView sd_setImageWithURL:picUrl placeholderImage:holderImg];
+//    }
+//    
+    [self.webView loadHTMLString:detailModel.moblieDesc baseURL:nil];
     
     [self.paramsLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [detailModel.goodsParams enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self addParamsLabelWithDict:obj index:idx count:[_detailModel.goodsParams count]];
     }];
+    
+    CGFloat height = kParamsLabelHeight * [detailModel.goodsParams  count];
+    self.labelsHeight = height;
+}
+
+ - (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+//    CGFloat height = [[self.webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
+    CGFloat sHeight = self.webView.scrollView.contentSize.height;
+//    HTLog(@"scrollview height %f and %f",height,sHeight);
+    if (self.heightBlock != nil) {
+        self.heightBlock(ParamsTypeImage,sHeight);
+    }
+    self.imgsHeight = sHeight;
 }
 
 #pragma mark - private methods
@@ -86,7 +108,7 @@
     [self.containerView addSubview:label];
     
     CGSize containerSize = self.containerView.frame.size;
-    CGFloat height = containerSize.height / count;
+    CGFloat height = kParamsLabelHeight;
     CGFloat y = idx * height;
     CGRect labelF = {{0,y},{containerSize.width,height}};
     label.frame = labelF;
@@ -97,16 +119,23 @@
 {
     self.imageBtn.selected = YES;
     self.paramsStateBtn.selected = NO;
-    self.imgView.hidden = NO;
+    self.webView.hidden = NO;
     self.containerView.hidden = YES;
+    if (self.heightBlock != nil) {
+        self.heightBlock(ParamsTypeLabels,self.imgsHeight);
+    }
 }
 
 - (void)tapParamsSpecBtn
 {
     self.imageBtn.selected = NO;
     self.paramsStateBtn.selected = YES;
-    self.imgView.hidden = YES;
+    self.webView.hidden = YES;
     self.containerView.hidden = NO;
+    if (self.heightBlock != nil) {
+        self.heightBlock(ParamsTypeLabels,self.labelsHeight);
+    }
+    
 }
 
 

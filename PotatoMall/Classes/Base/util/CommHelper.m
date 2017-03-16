@@ -28,10 +28,27 @@
 //字符宽
 + (CGFloat)strWidthWithStr:(NSString*)str font:(UIFont*)font height:(CGFloat) height
 {
+    if (str == nil) {
+        str = @"";
+    }
+    HTLog(@"des = %@",str);
     CGSize size = CGSizeMake(MAXFLOAT,height);
     NSDictionary *attris = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
     CGSize textSize = [str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attris context:nil].size;
     return  textSize.width ;
+}
+
+
+//字符高
++ (CGFloat)strHeightWithStr:(NSString*)str font:(UIFont*)font width:(CGFloat) width
+{
+    if (str == nil) {
+        str = @"";
+    }
+    CGSize size = CGSizeMake(width,MAXFLOAT);
+    NSDictionary *attris = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
+    CGSize textSize = [str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attris context:nil].size;
+    return  textSize.height ;
 }
 
 

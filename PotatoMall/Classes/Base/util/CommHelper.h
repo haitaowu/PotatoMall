@@ -16,4 +16,5 @@
 + (CGFloat)strWidthWithStr:(NSString*)str font:(UIFont*)font height:(CGFloat) height;
 //分享url到朋友圈/朋友
 + (void)shareUrlWithScene:(int) scene title:(NSString*)title description:(NSString*)description imageUrl:(NSString*)imgUrl url:(NSString*)url;
++ (CGFloat)strHeightWithStr:(NSString*)str font:(UIFont*)font width:(CGFloat) width;
 @end

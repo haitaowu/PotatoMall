@@ -75,7 +75,7 @@
 {
     _model = model;
     self.titleLabel.text = model.goodsInfoName;
-    NSString *priceStr = [NSString stringWithFormat:@"￥%@/公斤",model.price];
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@",model.price];
     UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
     NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.price hlFont:hlFont];
     self.priceLabel.attributedText = attriPriceStr;

@@ -533,9 +533,6 @@
                                                 <constraint firstItem="k4N-uQ-Nrn" firstAttribute="centerY" secondItem="gfF-LR-OkO" secondAttribute="centerY" id="ydD-az-Pai"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="6Qx-Zd-Tmf" kind="show" id="hfm-5D-Q3f"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="IV8-5H-ez1">
                                         <rect key="frame" x="0.0" y="235" width="375" height="44"/>
@@ -796,6 +793,7 @@
                         <outlet property="nickNameField" destination="arZ-9L-tcX" id="b4t-Z2-Z4h"/>
                         <outlet property="realNameField" destination="33w-dO-fKA" id="Ksg-T5-j8X"/>
                         <outlet property="roleLabel" destination="2ap-ac-YXZ" id="qAu-IE-Ys1"/>
+                        <segue destination="6Qx-Zd-Tmf" kind="show" identifier="modifyRoleSegue" id="6Cj-53-eVZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtZ-67-OcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -920,7 +918,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjK-Ex-pJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4295" y="1979"/>
+            <point key="canvasLocation" x="4289" y="890"/>
         </scene>
         <!--个人信息-->
         <scene sceneID="I7Z-hN-5wN">
@@ -1134,8 +1132,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="gaD-yB-CaP"/>
                                                     <exclude reference="SyR-vh-Twg"/>
+                                                    <exclude reference="gaD-yB-CaP"/>
                                                     <exclude reference="p4K-Hy-Zqh"/>
                                                 </mask>
                                             </variation>

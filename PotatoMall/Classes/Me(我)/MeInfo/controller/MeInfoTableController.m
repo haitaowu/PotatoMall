@@ -204,6 +204,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         [self tapPickAvatarBtn];
+    }else if ((indexPath.section == 1) && (indexPath.row == 0)) {
+        UserModel *model = [UserModelUtil sharedInstance].userModel;
+        if (model.userType == nil){
+            [self performSegueWithIdentifier:@"modifyRoleSegue" sender:nil];
+        }
     }else if ((indexPath.section == 2) && (indexPath.row == 1)) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
         UIViewController *control = [storyBoard instantiateViewControllerWithIdentifier:@"ProviceTableController"];

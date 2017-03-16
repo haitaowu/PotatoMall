@@ -37,6 +37,7 @@
 @property (nonatomic,strong)GoodsDetailModel *goodsDetailModel;
 //@property (nonatomic,strong)UIImageView *tableheader;
 @property (nonatomic,strong)GoodsDetailTableHeader *headerView;
+@property (nonatomic,assign)CGFloat  paramsCellHeight;
 
 @end
 
@@ -45,6 +46,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupToolbar];
+    self.paramsCell.heightBlock = ^(ParamsType type,CGFloat height){
+        self.paramsCellHeight = height;
+        [self.tableView reloadData];
+    };
     [self setupTableHeaderView];
     
 //    [self setupTableviewTableHeader];
@@ -107,7 +112,7 @@
 //    self.moblieDescLabel.text = detailModel.moblieDesc;
     self.moblieDescLabel.text = detailModel.goodsInfoName;
     //价格
-    NSString *priceStr = [NSString stringWithFormat:@"￥%@/公斤",detailModel.price];
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@",detailModel.price];
     UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
     NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:detailModel.price hlFont:hlFont];
     self.priceLabel.attributedText = attriPriceStr;;
@@ -198,7 +203,13 @@
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 16;
+    if (section == 0) {
+        return 0.001;
+    }else if (section == 2) {
+        return 0.001;
+    }else{
+        return 8;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -210,7 +221,9 @@
 {
     if(indexPath.section == kDescriptionSectionIdx){
         if (indexPath.row == kDescriptionFirstRowIdx) {
-            return 120;
+            CGFloat width = kScreenWidth - 16 * 2;
+            CGFloat desHeight = [CommHelper strHeightWithStr:self.goodsDetailModel.goodsInfoName font:self.moblieDescLabel.font width:width];
+            return (desHeight + 30 + 16 * 2);
         }else{
             return 0.001;
         }
@@ -224,7 +237,7 @@
     }else if(indexPath.section == kStoreSectionIdx){
         return 0.001;
     }else if(indexPath.section == kImageParamsSectionIdx){
-        return 280;
+        return self.paramsCellHeight + 80;
     }else{
         return 44;
     }
