@@ -106,7 +106,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Iuy-Tx-uhF" kind="show" id="VRM-UJ-wnr"/>
+                                            <action selector="tapEditInfo:" destination="S8y-hi-qQu" eventType="touchUpInside" id="pez-DW-fj9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -169,6 +169,7 @@
                         <segue destination="wMD-pi-27o" kind="show" identifier="productSegue" id="w2B-Nl-lNU"/>
                         <segue destination="kQ8-uf-s8g" kind="show" identifier="salesSegue" id="32r-Rs-fEL"/>
                         <segue destination="zUt-qa-BKh" kind="show" identifier="orderesSegue" id="cxN-V4-LNx"/>
+                        <segue destination="Iuy-Tx-uhF" kind="show" identifier="meInfoSegue" id="j8B-bw-zAB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYt-I9-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1313,6 +1314,6 @@
         <image name="next" width="8" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AC8-gt-bZh"/>
+        <segue reference="j8B-bw-zAB"/>
     </inferredMetricsTieBreakers>
 </document>

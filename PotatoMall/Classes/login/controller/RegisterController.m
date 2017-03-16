@@ -236,14 +236,17 @@
         [SVProgressHUD showErrorWithStatus:@"请输入正确的手机号"];
         return;
     }
-    
     [SVProgressHUD showWithStatus:@"请求验证码"];
     NSString *subUrl = @"user/getCheckCode";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"1",kReqType,nil];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id list) {
         [self cuntingDown];
-        [SVProgressHUD showWithStatus:msg];
+        if (status == StatusTypSuccess) {
+            [SVProgressHUD showSuccessWithStatus:@"请求验证码成功"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"请求验证码失败"];
+        }
     } reqFail:^(int type, NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];
         [self cuntingDown];
@@ -286,7 +289,7 @@
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
     NSMutableDictionary *params = [self paramsByCurrentUser];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-        [SVProgressHUD showErrorWithStatus:msg];
+        [SVProgressHUD showSuccessWithStatus:msg];
         if (status == StatusTypSuccess) {
             UserModel *userModel = [self userModelWithData:data];
             [[UserModelUtil sharedInstance] archiveUserModel:userModel];

@@ -23,10 +23,8 @@
     self.window = [[UIWindow alloc] initWithFrame:bounds];
     [self showViewWithUserState];
     [self.window makeKeyAndVisible];
-    
     //add servers
     [self registerObserversforNotification];
-    
     //register weixin share
     [self registerWebChatShare];
     
@@ -113,7 +111,7 @@
 - (void)showViewWithUserState
 {
     if ([[UserModelUtil sharedInstance] userState] == NoRegister) {
-        [self setupLoginView];
+        [self userLoginSuccess];
     }else if ([[UserModelUtil sharedInstance] userState] == NoCompleted) {
         [self setupLoginView];
     }else{

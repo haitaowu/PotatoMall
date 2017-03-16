@@ -8,6 +8,7 @@
 
 #import "UserModelUtil.h"
 #import "SecurityUtil.h"
+#import "GoodsModel.h"
 
 
 #define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
@@ -45,8 +46,49 @@ static UserModelUtil *instance = nil;
         return _userModel;
     }
 }
+//购物车内产品的个数
+- (void)chartCountWithBlock:(ChartCountBlock) result
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        id userId = [UserModelUtil sharedInstance].userModel.userId;
+        params[kUserIdKey] = userId;
+        NSString *subUrl = @"cart/goCart";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                NSArray *array =  [GoodsModel goodsWithData:data];
+                self.chartCount = [array count];
+                result(self.chartCount);
+            }
+        } reqFail:^(int type, NSString *msg) {
+        }];
+    }
+}
 
 #pragma mark - public methods
+- (BOOL)isUserLogin
+{
+    if (self.userModel != nil) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (BOOL)isUserFinishedInfo
+{
+    if (self.userModel == nil) {
+        return NO;
+    }else{
+        if (self.userModel.userType == nil) {
+            return NO;
+        }else{
+            return YES;
+        }
+    }
+}
 /**类型 1:个体种植户 2：种植企业 3：批发商/采购商 4：种薯种植企业 5：农资电商卖家*/
 + (NSString*)userRoleWithType:(NSString*)type
 {

@@ -21,6 +21,7 @@
 #import "ProductDetailTableController.h"
 #import "SpringGoodsModel.h"
 #import "CateGoryNModel.h"
+#import "ChartView.h"
 
 
 #define kAdvertiseSectionIdx            0
@@ -41,6 +42,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 @property (nonatomic,strong)SpringGoodsModel *springGoodsNew;
 @property (nonatomic,strong)SpringGoodsModel *springRecomGoods;
 @property (nonatomic,strong)CateGoryNModel *selectedCateModel;
+@property (nonatomic,strong)ChartView *chartView;
 @property (nonatomic,assign) int pageNo;
 @property (nonatomic,assign) int pageSize;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -57,6 +59,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    [self setupBaseInit];
     self.pageNo = 0;
     self.pageSize = 10;
     self.tableView.emptyDataSetSource = self;
@@ -74,6 +77,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     if (self.springRecomGoods.list == nil) {
         [self requestProductsData];
     }
+    NSString *chartCount = [NSString stringWithFormat:@"%ld",[UserModelUtil sharedInstance].chartCount];
+    [self.chartView updateCountWithStr:chartCount];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -115,6 +120,14 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         [blockSelf showSearchHistoryView];
     }];
     self.navigationItem.titleView = searchField;
+    
+    ChartView *chartView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:chartView];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    chartView.chartBlock = ^(){
+        [blockSelf tapShowChartBtn:nil];
+    };
+    self.chartView = chartView;
 }
 
 - (void)setupTableViewFooter
@@ -131,6 +144,15 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 }
 
 #pragma mark - private methods
+- (void)setupBaseInit
+{
+    __block typeof(self) blockSelf = self;
+    [[UserModelUtil sharedInstance] chartCountWithBlock:^(NSInteger count) {
+        NSString *chartCount = [NSString stringWithFormat:@"%ld",count];
+        [blockSelf.chartView updateCountWithStr:chartCount];
+    }];
+}
+
 - (NSArray*)subItemTitlesWithSubItems:(NSArray*)subItems
 {
     NSMutableArray *titles = [NSMutableArray array];
@@ -201,6 +223,15 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     //春节新上 CJXS
     NSDictionary *springNewDict = [self dataWithCode:@"CJXS" list:list];
     self.springGoodsNew = [SpringGoodsModel goodsWithData:springNewDict];
+}
+
+#pragma mark - selectors
+- (IBAction)tapShowChartBtn:(id)sender {
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        [self performSegueWithIdentifier:@"chartSegue" sender:nil];
+    }else{
+        [self showLoginView];
+    }
 }
 
 - (id)dataWithCode:(NSString*)codeStr list:(NSArray*)list

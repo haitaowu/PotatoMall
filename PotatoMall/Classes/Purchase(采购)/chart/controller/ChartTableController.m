@@ -36,6 +36,7 @@ static NSString *HeaderID = @"HeaderID";
     [self.navigationController  setToolbarHidden:NO animated:YES];
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"preOrderSegue"]) {
@@ -175,6 +176,11 @@ static NSString *HeaderID = @"HeaderID";
                 [self.goodsArray removeObject:goodsModel];
                 [self.selectedGoods removeObject:goodsModel];
                 [self updateTotalPriceLabel];
+                NSInteger count = [UserModelUtil sharedInstance].chartCount;
+                if (count > 0) {
+                    count = count - 1;
+                    [UserModelUtil sharedInstance].chartCount = count;
+                }
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {

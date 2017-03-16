@@ -12,6 +12,7 @@
 #import<AVFoundation/AVCaptureDevice.h>
 #import<AVFoundation/AVMediaFormat.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "LoginViewController.h"
 
 #define kSaleSectionIndex               0
 #define kChargeSectionIndex             3
@@ -58,11 +59,17 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     [[UserModelUtil sharedInstance] avatarImageWithBlock:^(UIImage *img) {
         self.avatarView.image = img;
     }];
-    UserModel *model = [UserModelUtil sharedInstance].userModel;
-    self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
-    NSString *nickName = model.nickName;
-    if ((nickName.length <= 0) || (nickName == nil)) {
-        nickName = model.phone;
+    NSString *nickName ;
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        UserModel *model = [UserModelUtil sharedInstance].userModel;
+        self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
+        if ((nickName.length <= 0) || (nickName == nil)) {
+            nickName = model.phone;
+        }else{
+            nickName = model.nickName;
+        }
+    }else{
+        nickName = @"游客";
     }
     self.nickNameLabel.text = [NSString stringWithFormat:@"%@",nickName];
 }
@@ -95,6 +102,14 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 }
 
 #pragma mark - selectors
+- (IBAction)tapEditInfo:(id)sender {
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        [self performSegueWithIdentifier:@"meInfoSegue" sender:nil];
+    }else{
+        [self showLoginView];
+    }
+}
+
 - (IBAction)tapEditAvatarBtn:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
@@ -144,10 +159,15 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *menuData = self.menusData[indexPath.section];
-    NSString *segue = [menuData objectForKey:kSegueKey];
-    [self performSegueWithIdentifier:segue sender:nil];
+    if ([[UserModelUtil sharedInstance] isUserLogin] == NO) {
+        [self showLoginView];
+    }else{
+        NSDictionary *menuData = self.menusData[indexPath.section];
+        NSString *segue = [menuData objectForKey:kSegueKey];
+        [self performSegueWithIdentifier:segue sender:nil];
+    }
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

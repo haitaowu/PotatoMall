@@ -10,6 +10,7 @@
 #import "SecurityUtil.h"
 #import "FMDB.h"
 
+
 #define  kLibPath       NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
 #define kDataBasePath   [kLibPath stringByAppendingPathComponent:@"HomeSearch.db"]
 
@@ -180,6 +181,8 @@ static DataUtil *instance = nil;
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     return dict;
 }
+
+
 
 
 

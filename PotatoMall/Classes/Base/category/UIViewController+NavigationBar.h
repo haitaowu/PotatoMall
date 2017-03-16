@@ -10,4 +10,6 @@
 
 @interface UIViewController (NavigationBar)
 - (void)setNavigationBarMainStyle;
+- (void)showLoginView;
+
 @end

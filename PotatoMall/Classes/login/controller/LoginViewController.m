@@ -71,12 +71,22 @@
     _pwdTextField.leftView = pwdLeftBtn;
     _pwdTextField.leftViewMode = UITextFieldViewModeAlways;
     
-    
-    UIView *view = [[UIView alloc] init];
-    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:view];
-    self.navigationItem.leftBarButtonItems = @[leftBarItem];
-    
     [_pwdTextField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
+    if (![self.type isEqualToString:kPresentModal]) {
+        UIView *view = [[UIView alloc] init];
+        UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+        self.navigationItem.leftBarButtonItems = @[leftBarItem];
+    }
+
+}
+- (void)tapBackBtn
+{
+    if ([self.type isEqualToString:kPresentModal]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [super tapBackBtn];
+    }
 }
 
 #pragma mark - private methods
@@ -151,7 +161,7 @@
         NSString *subUrl = @"user/login";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showWithStatus:msg];
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             if (status == StatusTypSuccess) {
                 NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
                 NSDictionary *modelDict = dataDict[@"obj"];
@@ -159,7 +169,8 @@
                 UserModel *model = [UserModel mj_objectWithKeyValues:modelDict];
                 [[UserModelUtil sharedInstance] archiveUserModel:model];
                 [UserModelUtil saveUser:accountTxt password:pwdTxt];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+                [self tapBackBtn];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
             }
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];

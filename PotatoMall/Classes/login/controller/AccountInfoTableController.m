@@ -146,7 +146,7 @@
     NSDictionary *userDict = [dict objectForKey:@"obj"];
     UserModel *model = [UserModel mj_objectWithKeyValues:userDict];
     model.avatarData = UIImagePNGRepresentation(self.avatarImg);
-    [[UserModelUtil sharedInstance] archiveUserModel:model];
+    [[UserModelUtil sharedInstance] archiveUserModel:nil];
     [self performSegueWithIdentifier:@"successSegue" sender:nil];
     return model;
 }

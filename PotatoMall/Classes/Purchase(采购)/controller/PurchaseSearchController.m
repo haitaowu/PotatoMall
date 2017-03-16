@@ -16,7 +16,7 @@
 
 static NSString *GoodsCellID = @"GoodsCellID";
 
-@interface PurchaseSearchController ()
+@interface PurchaseSearchController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong)HTCustomeSearchBar *searchField;
 @property (nonatomic,strong)NSMutableArray *goodsArray;
 @property (weak, nonatomic) IBOutlet UIButton *compreBtn;
@@ -26,6 +26,7 @@ static NSString *GoodsCellID = @"GoodsCellID";
 
 @property (nonatomic,copy) NSString *priceOrder;
 @property (nonatomic,copy) NSString *salesSort;
+@property (nonatomic,assign) BOOL firstReqFinished;
 
 @end
 
@@ -34,6 +35,8 @@ static NSString *GoodsCellID = @"GoodsCellID";
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     [self setupUI];
     [self tapComprehenBtn:nil];
 }
@@ -159,11 +162,13 @@ static NSString *GoodsCellID = @"GoodsCellID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
 //            [SVProgressHUD showInfoWithStatus:msg];
+            self.firstReqFinished = YES;
             if (status == StatusTypSuccess) {
                 self.goodsArray =  [GoodsModel goodsWithData:data];
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
+            self.firstReqFinished = YES;
 //            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
@@ -203,6 +208,30 @@ static NSString *GoodsCellID = @"GoodsCellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 120;
+}
+
+
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else if ((self.firstReqFinished == YES) && (self.goodsArray.count <= 0)){
+        NSString *text = @"没有找到相关商品，请更换搜索内容再试试";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
 }
 
 @end

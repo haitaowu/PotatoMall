@@ -15,6 +15,7 @@
 #import "SDCycleScrollView.h"
 #import "GoodsDetailTableHeader.h"
 #import "WXApi.h"
+#import "ChartView.h"
 
 
 #define kDescriptionSectionIdx              0
@@ -37,6 +38,7 @@
 @property (nonatomic,strong)GoodsDetailModel *goodsDetailModel;
 //@property (nonatomic,strong)UIImageView *tableheader;
 @property (nonatomic,strong)GoodsDetailTableHeader *headerView;
+@property (nonatomic,strong)ChartView *chartView;
 @property (nonatomic,assign)CGFloat  paramsCellHeight;
 @property (nonatomic,assign)CGFloat  specCellHeight;
 
@@ -47,6 +49,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupToolbar];
+    [self setupUI];
+    [self setBaseInit];
     self.paramsCell.heightBlock = ^(ParamsType type,CGFloat height){
         self.paramsCellHeight = height;
         [self.tableView reloadData];
@@ -74,9 +78,23 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO];
+    NSString *chartCount = [NSString stringWithFormat:@"%ld",[UserModelUtil sharedInstance].chartCount];
+    [self.chartView updateCountWithStr:chartCount];
 }
 
 #pragma mark - setup UI 
+- (void)setupUI
+{
+    __block typeof(self) blockSelf = self;
+    ChartView *chartView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:chartView];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    chartView.chartBlock = ^(){
+        [blockSelf tapShowChartBtn:nil];
+    };
+    self.chartView = chartView;
+}
+
 - (void)setupTableHeaderView
 {
     //tableView tableHeaderView
@@ -95,10 +113,18 @@
     __block typeof(self) blockSelf = self;
     HTPurchaseBar *bar = [HTPurchaseBar customBarWithPurchaseBlock:^{
         NSLog(@"purchase  order...");
-        [blockSelf performSegueWithIdentifier:@"preOrderSegue" sender:@[self.goodModel]];
+        if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+            [blockSelf performSegueWithIdentifier:@"preOrderSegue" sender:@[self.goodModel]];
+        }else{
+            [blockSelf showLoginView];
+        }
     } chartBlock:^{
         NSLog(@"chart  order...");
-        [blockSelf addGoodsCurrentToChart];
+        if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+            [blockSelf addGoodsCurrentToChart];
+        }else{
+            [blockSelf showLoginView];
+        }
     }];
     
     bar.shareBlock = ^(){
@@ -129,6 +155,15 @@
 }
 
 #pragma mark - private methods
+- (void)setBaseInit
+{
+    __block typeof(self) blockSelf = self;
+    [[UserModelUtil sharedInstance] chartCountWithBlock:^(NSInteger count) {
+        NSString *chartCount = [NSString stringWithFormat:@"%ld",count];
+        [blockSelf.chartView updateCountWithStr:chartCount];
+    }];
+}
+
 - (void)reqGoodsInfo
 {
     if(self.goodModel != nil){
@@ -161,6 +196,16 @@
     }
 }
 
+#pragma mark - selectors
+- (IBAction)tapShowChartBtn:(id)sender {
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        [self performSegueWithIdentifier:@"chartSegue" sender:nil];
+    }else{
+        [self showLoginView];
+    }
+}
+
+
 #pragma mark - requset server
 - (void)addGoodsCurrentToChart
 {
@@ -175,6 +220,9 @@
             [SVProgressHUD showSuccessWithStatus:@"商品已添加到购物车"];
             if (status == StatusTypSuccess) {
                 HTLog(@"add to chart success baby .....");
+                [UserModelUtil sharedInstance].chartCount =  [UserModelUtil sharedInstance].chartCount + 1;
+                NSString *chartCount = [NSString stringWithFormat:@"%ld",[UserModelUtil sharedInstance].chartCount];
+                [self.chartView updateCountWithStr:chartCount];
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {

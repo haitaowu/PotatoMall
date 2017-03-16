@@ -108,6 +108,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     self.tableView.tableHeaderView = headerView;
     headerView.adBlock = ^(id adInfo){
         HTLog(@"click ad info ");
+        [self performSegueWithIdentifier:@"detailSegue" sender:adInfo];
     };
     self.headerView = headerView;
 }

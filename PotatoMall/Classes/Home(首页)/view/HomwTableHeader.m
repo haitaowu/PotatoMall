@@ -13,6 +13,7 @@
 @interface HomwTableHeader()<SDCycleScrollViewDelegate>
 @property (nonatomic,strong) SDCycleScrollView *cycleScrollView;
 @property (nonatomic,strong)NSArray *imgs;
+@property (nonatomic,strong)NSArray *adInfos;
 @end
 
 @implementation HomwTableHeader
@@ -44,6 +45,7 @@
 #pragma mark - public methods
 - (void)loadAdsWithImages:(id)imgs
 {
+    self.adInfos = imgs;
     NSMutableArray *imgArray = [NSMutableArray array];
     for (ArticleModel *obj in imgs){
         NSString *imgSrc = [obj.imgSrc copy];
@@ -59,7 +61,7 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     if (self.adBlock != nil) {
-        id sender = self.imgs[index];
+        id sender = self.adInfos[index];
         self.adBlock(sender);
     }
 }

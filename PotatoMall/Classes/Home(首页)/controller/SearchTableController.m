@@ -15,7 +15,8 @@
 
 static NSString *HotArticleCellID = @"HotArticleCellID";
 
-@interface SearchTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>@property (nonatomic,strong)HTCustomeSearchBar *searchField;
+@interface SearchTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
+@property (nonatomic,strong)HTCustomeSearchBar *searchField;
 @property (nonatomic,strong)NSMutableArray *articlesArray;
 @property (nonatomic,assign) BOOL firstReqFinished;
 @end

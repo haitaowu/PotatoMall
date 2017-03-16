@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+NavigationBar.h"
+#import "LoginViewController.h"
 
 
 
@@ -28,4 +29,17 @@
     NSDictionary *navBarAttries = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil];
     [navBar setTitleTextAttributes:navBarAttries];
 }
+
+
+- (void)showLoginView
+{
+    UIStoryboard *loginStory = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UINavigationController *loginNav = [loginStory instantiateViewControllerWithIdentifier:@"loginNav"];
+    LoginViewController *rootController = (LoginViewController*)[[loginNav childViewControllers] firstObject];
+    rootController.type = kPresentModal;
+    [self presentViewController:loginNav animated:YES completion:nil];
+}
+
+
+
 @end

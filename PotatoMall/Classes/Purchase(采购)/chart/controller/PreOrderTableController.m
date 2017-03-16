@@ -141,6 +141,13 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
             [self.tableView.mj_footer endRefreshing];
             if (status == StatusTypSuccess) {
                 HTLog(@"success order submit ");
+                NSArray *goodsArr = params[kGoodsInfosKey];
+                NSInteger count = [UserModelUtil sharedInstance].chartCount;
+                count = count - goodsArr.count;
+                if(count <= 0){
+                    count = 0;
+                }
+                [UserModelUtil sharedInstance].chartCount = count;
                 [self performSegueWithIdentifier:@"submitSuccSugue" sender:nil];
             }
             [self.tableView reloadData];

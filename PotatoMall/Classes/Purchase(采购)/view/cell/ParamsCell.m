@@ -97,9 +97,9 @@
 {
     NSString *name = param[kParamName];
     NSString *value = param[kParamValue];
-    NSString *text = [NSString stringWithFormat:@"%@:%@",name,value];
+    NSString *text = [NSString stringWithFormat:@"%@：%@",name,value];
     TitleLabel *label = [[TitleLabel alloc] init];
-    label.textColor = kMainTitleBlackColor;
+    label.textColor = kBtnDisableStateColor;
     label.text = text;
     [self.paramsLabels addObject:label];
     [self.containerView addSubview:label];

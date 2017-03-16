@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" id="gQ9-Od-5xB">
                         <barButtonItem key="rightBarButtonItem" image="purchase_chart" id="5hE-R5-zXn">
                             <connections>
-                                <segue destination="0WF-gB-wgd" kind="show" id="qIn-nv-cAh"/>
+                                <action selector="tapShowChartBtn:" destination="CD5-FY-2xr" id="HsX-hq-t0R"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -62,6 +62,7 @@
                         <outlet property="topScrollView" destination="BBe-5w-vuX" id="HEf-og-XTu"/>
                         <segue destination="RL1-mJ-cHh" kind="show" identifier="searchGoodsSegue" id="DeN-bw-iab"/>
                         <segue destination="iJc-fz-zfI" kind="show" identifier="productDetailSegue" id="QjT-o2-6wd"/>
+                        <segue destination="0WF-gB-wgd" kind="show" identifier="chartSegue" id="oAO-RY-N3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVg-b1-R5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -472,7 +473,7 @@
                     <navigationItem key="navigationItem" title="商品详情" id="FZj-9X-Uim">
                         <barButtonItem key="rightBarButtonItem" image="purchase_chart" id="AEg-GJ-LVi">
                             <connections>
-                                <segue destination="0WF-gB-wgd" kind="show" id="ZZV-lS-I89"/>
+                                <action selector="tapShowChartBtn:" destination="iJc-fz-zfI" id="Sus-of-Av2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -483,6 +484,7 @@
                         <outlet property="speciCell" destination="w4E-3H-nO9" id="cQP-EA-bDr"/>
                         <outlet property="statusView" destination="giR-Lh-wUS" id="lTm-FP-3re"/>
                         <segue destination="mSA-0c-k4F" kind="show" identifier="preOrderSegue" id="xOU-b6-sZd"/>
+                        <segue destination="0WF-gB-wgd" kind="show" identifier="chartSegue" id="eKZ-fS-Gk4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9tl-Yi-gzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -571,11 +573,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noti" translatesAutoresizingMaskIntoConstraints="NO" id="Mdz-8S-hkp">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="119"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dh-Hh-fsp">
+                                                    <rect key="frame" x="16" y="28" width="341" height="65"/>
+                                                    <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抱歉，暂时无法提供“官方车队运输服务”相关功能及服务将陆续开放，敬请关注" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1l2-sr-4uO" customClass="TitleLabel">
+                                                    <rect key="frame" x="32" y="28" width="309" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="65" id="J6c-iN-1kg"/>
+                                                        <constraint firstAttribute="width" constant="309" id="SNk-jb-xK8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0dh-Hh-fsp" firstAttribute="trailing" secondItem="1l2-sr-4uO" secondAttribute="trailing" constant="16" id="BCC-8m-VWg"/>
+                                                <constraint firstItem="0dh-Hh-fsp" firstAttribute="leading" secondItem="1l2-sr-4uO" secondAttribute="leading" constant="-16" id="CPV-uV-q42"/>
+                                                <constraint firstItem="0dh-Hh-fsp" firstAttribute="top" secondItem="1l2-sr-4uO" secondAttribute="top" id="Ehk-Ib-OxP"/>
+                                                <constraint firstItem="0dh-Hh-fsp" firstAttribute="bottom" secondItem="1l2-sr-4uO" secondAttribute="bottom" id="aYP-zG-ru6"/>
+                                                <constraint firstItem="1l2-sr-4uO" firstAttribute="leading" secondItem="RBV-pk-vsf" secondAttribute="leading" constant="32" id="oai-Ko-Ukt"/>
+                                                <constraint firstItem="1l2-sr-4uO" firstAttribute="centerY" secondItem="RBV-pk-vsf" secondAttribute="centerY" id="yKh-RC-p4c"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -589,7 +609,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cwk-s2-YHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5094" y="386"/>
+            <point key="canvasLocation" x="5093.6000000000004" y="385.45727136431788"/>
         </scene>
         <!--购物车-->
         <scene sceneID="Tpt-Jc-IVX">
@@ -622,7 +642,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-CG-g8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="1743"/>
+            <point key="canvasLocation" x="2681" y="1388"/>
         </scene>
         <!--Navgation Controller-->
         <scene sceneID="maT-us-C34">
@@ -791,12 +811,11 @@
         <image name="chart_transSel" width="14" height="14"/>
         <image name="chart_transUnSel" width="14" height="14"/>
         <image name="farmer" width="150" height="150"/>
-        <image name="noti" width="694" height="172"/>
         <image name="purchase_chart" width="24" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="deb-yH-d2m"/>
-        <segue reference="ZZV-lS-I89"/>
+        <segue reference="QjT-o2-6wd"/>
         <segue reference="xOU-b6-sZd"/>
+        <segue reference="eKZ-fS-Gk4"/>
     </inferredMetricsTieBreakers>
 </document>

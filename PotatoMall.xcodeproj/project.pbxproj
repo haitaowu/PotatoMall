@@ -29,6 +29,7 @@
 		BE0DDB5B1E6D63A100F15168 /* HTPurchaseBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0DDB591E6D63A100F15168 /* HTPurchaseBar.xib */; };
 		BE1076CB1E67AAAF00304436 /* HTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1076CA1E67AAAF00304436 /* HTTextField.m */; };
 		BE257E281E71AD7D00AA277B /* OrderDetailTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE257E271E71AD7D00AA277B /* OrderDetailTableController.m */; };
+		BE2D0CF51E7AB794007A154F /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2D0CF41E7AB794007A154F /* ChartView.m */; };
 		BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2FDFCB1E61219B00A96E17 /* HomwTableHeader.m */; };
 		BE3052CA1E66C94000C74300 /* StateRadiusBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3052C91E66C94000C74300 /* StateRadiusBtn.m */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
@@ -195,6 +196,8 @@
 		BE1076CA1E67AAAF00304436 /* HTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTextField.m; sourceTree = "<group>"; };
 		BE257E261E71AD7D00AA277B /* OrderDetailTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailTableController.h; sourceTree = "<group>"; };
 		BE257E271E71AD7D00AA277B /* OrderDetailTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTableController.m; sourceTree = "<group>"; };
+		BE2D0CF31E7AB794007A154F /* ChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartView.h; sourceTree = "<group>"; };
+		BE2D0CF41E7AB794007A154F /* ChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartView.m; sourceTree = "<group>"; };
 		BE2FDFCA1E61219B00A96E17 /* HomwTableHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomwTableHeader.h; sourceTree = "<group>"; };
 		BE2FDFCB1E61219B00A96E17 /* HomwTableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomwTableHeader.m; sourceTree = "<group>"; };
 		BE3052C81E66C94000C74300 /* StateRadiusBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateRadiusBtn.h; sourceTree = "<group>"; };
@@ -982,6 +985,8 @@
 				BECC9F971E6EDCC2001DE8F1 /* PurchaseAdsCell.h */,
 				BECC9F981E6EDCC2001DE8F1 /* PurchaseAdsCell.m */,
 				BECC9F991E6EDCC2001DE8F1 /* PurchaseAdsCell.xib */,
+				BE2D0CF31E7AB794007A154F /* ChartView.h */,
+				BE2D0CF41E7AB794007A154F /* ChartView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1324,6 +1329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE5ED7F81E62B90900C4B1D0 /* LoginViewController.m in Sources */,
+				BE2D0CF51E7AB794007A154F /* ChartView.m in Sources */,
 				BE5ED7C01E6256C300C4B1D0 /* RadiusButton.m in Sources */,
 				BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */,
 				BEC7F99C1E69A44E0029E6D6 /* ArticleDetailModel.m in Sources */,

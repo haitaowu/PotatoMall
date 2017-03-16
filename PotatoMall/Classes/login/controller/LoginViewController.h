@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 
+#define  kPresentModal              @"modal"
+
 @interface LoginViewController : BaseTableViewController
 @property (nonatomic,copy) NSString *type;
 
