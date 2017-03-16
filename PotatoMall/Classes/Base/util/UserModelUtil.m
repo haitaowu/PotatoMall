@@ -108,6 +108,7 @@ static UserModelUtil *instance = nil;
 - (UserModel*)unArchiveUserModel
 {
     _userModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kAccountInfoPath];
+    HTLog(@"unarchive user model %@",_userModel);
     return _userModel;
 }
 
@@ -115,9 +116,13 @@ static UserModelUtil *instance = nil;
 {
     _userModel = accountModel;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
+    if (accountModel == nil) {
         [NSKeyedArchiver archiveRootObject:accountModel toFile:kAccountInfoPath];
-    });
+    }else{
+        dispatch_async(queue, ^{
+            [NSKeyedArchiver archiveRootObject:accountModel toFile:kAccountInfoPath];
+        });
+    }
 }
 
 

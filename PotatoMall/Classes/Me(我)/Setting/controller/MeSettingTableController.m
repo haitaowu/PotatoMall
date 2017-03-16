@@ -22,7 +22,10 @@
 #pragma mark - private methods
 - (void)userTapLogout
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLogoutSuccessNotification object:nil];
+    [SVProgressHUD showSuccessWithStatus:@"退出成功"];
+     [[UserModelUtil sharedInstance] archiveUserModel:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLogoutSuccessNotification object:nil];
 }
 
 #pragma mark - private methods
@@ -58,7 +61,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
         [self userTapLogout];
-        [[UserModelUtil sharedInstance] archiveUserModel:nil];
+       
         HTLog(@"user tap logout button ");
     }else if ((indexPath.section == 0) && (indexPath.row == 2)) {
         [self pourTrash];
