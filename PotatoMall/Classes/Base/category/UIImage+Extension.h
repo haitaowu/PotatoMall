@@ -1,5 +1,5 @@
 //
-//  UIImage+Color.h
+//  UIImage+Extension.h
 //  PotatoMall
 //
 //  Created by taotao on 25/02/2017.
@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (Color)
+@interface UIImage (Extension)
 // 通过颜色创建UIImage
 +(UIImage*)imageWithColor:(UIColor*) color;
+- (UIImage*)thumbImgWithSize:(CGSize)thumbSize;
 @end

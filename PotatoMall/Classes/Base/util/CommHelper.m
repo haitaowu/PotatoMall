@@ -42,13 +42,15 @@
 }
 
 
-+ (void)shareUrlWithScene:(int) scene title:(NSString*)title description:(NSString*)description image:(UIImage*)img url:(NSString*)url
++ (void)shareUrlWithScene:(int) scene title:(NSString*)title description:(NSString*)description imageUrl:(NSString*)imgUrl url:(NSString*)url
 {
     WXMediaMessage *mediaMsg = [WXMediaMessage message];
     mediaMsg.title = title;
     mediaMsg.description = description;
-    [mediaMsg setThumbImage:img];
-    
+    [CommHelper shareImageWithUrl:imgUrl finishedBlock:^(UIImage *img) {
+        UIImage *scaleImg = [self scaleImageWithImg:img size:CGSizeMake(50,50)];
+        [mediaMsg setThumbImage:scaleImg];
+    }];
     WXWebpageObject *webPageObj = [WXWebpageObject object];
     webPageObj.webpageUrl = url;
     mediaMsg.mediaObject = webPageObj;
@@ -60,4 +62,25 @@
     [WXApi sendReq:msgReq];
 }
 
+#pragma mark - private methods
++ (void)shareImageWithUrl:(NSString*)imgUrl finishedBlock:(void(^)(UIImage *img))finishedBlock
+{
+    NSURL *url = [NSURL URLWithString:imgUrl];
+    SDWebImageManager *imgManager = [SDWebImageManager sharedManager];
+    [imgManager downloadImageWithURL:url options:SDWebImageHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (error == nil) {
+            finishedBlock(image);
+        }
+    }];
+}
+
++ (UIImage*)scaleImageWithImg:(UIImage*)img size:(CGSize)thumSize
+{
+    NSData *orginData = UIImagePNGRepresentation(img);
+    UIImage *scaleImg = [img thumbImgWithSize:thumSize];
+    NSData *scaleData = UIImagePNGRepresentation(scaleImg);
+    HTLog(@"orginImage length = %ld scaleimage length = %ld",orginData.length,scaleData.length);
+    return scaleImg;
+}
 @end

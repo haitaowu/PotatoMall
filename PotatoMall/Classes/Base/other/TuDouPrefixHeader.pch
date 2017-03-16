@@ -18,7 +18,7 @@
 #import "MJRefresh.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
-#import "UIImage+Color.h"
+#import "UIImage+Extension.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "CommHelper.h"
 #import "TitleLabel.h"

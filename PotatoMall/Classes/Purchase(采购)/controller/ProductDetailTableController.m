@@ -78,15 +78,6 @@
     self.headerView = headerView;
 }
 
-//- (void)setupTableviewTableHeader
-//{
-//    CGFloat height = kScreenWidth * 2.0 / 3.0;
-//    CGFloat width = kScreenWidth;
-//    CGRect tableHeaderF = {{0,0},{width,height}};
-//    UIImageView *tableheader = [[UIImageView alloc] initWithFrame:tableHeaderF];
-//    self.tableView.tableHeaderView = tableheader;
-//    self.tableheader = tableheader;
-//}
 
 - (void)setupToolbar
 {
@@ -256,7 +247,7 @@
     }
     
     if (scene != -1) {
-        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName image:[UIImage imageNamed:@"goods_placehodler"] url:@"www.baidu.com"];
+        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:@"www.baidu.com"];
     }
 }
 @end

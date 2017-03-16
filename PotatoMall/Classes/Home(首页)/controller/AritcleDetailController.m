@@ -89,7 +89,7 @@
     }
     
     if (scene != -1) {
-        [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt image:[UIImage imageNamed:@"goods_placehodler"] url:@"www.baidu.com"];
+        [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt imageUrl:self.paramModel.imgSrc url:@"www.baidu.com"];
     }
 }
 

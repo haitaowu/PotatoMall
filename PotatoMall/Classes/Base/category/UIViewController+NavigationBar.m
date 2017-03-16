@@ -7,7 +7,6 @@
 //
 
 #import "UIViewController+NavigationBar.h"
-#import "UIImage+Color.h"
 
 
 

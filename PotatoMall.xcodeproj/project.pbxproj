@@ -45,7 +45,7 @@
 		BE5ED79D1E619E6A00C4B1D0 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED79C1E619E6A00C4B1D0 /* BaseTableViewController.m */; };
 		BE5ED7A01E619FAC00C4B1D0 /* AritcleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED79F1E619FAC00C4B1D0 /* AritcleDetailController.m */; };
 		BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7A91E61B3F700C4B1D0 /* Reachability.m */; };
-		BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7AF1E61C06000C4B1D0 /* UIImage+Color.m */; };
+		BE5ED7B01E61C06000C4B1D0 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7AF1E61C06000C4B1D0 /* UIImage+Extension.m */; };
 		BE5ED7C01E6256C300C4B1D0 /* RadiusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7BF1E6256C300C4B1D0 /* RadiusButton.m */; };
 		BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7C21E62579700C4B1D0 /* NSString+Extentsion.m */; };
 		BE5ED7D31E628DD800C4B1D0 /* AppInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5ED7D21E628DD800C4B1D0 /* AppInfoHelper.m */; };
@@ -225,8 +225,8 @@
 		BE5ED79F1E619FAC00C4B1D0 /* AritcleDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AritcleDetailController.m; sourceTree = "<group>"; };
 		BE5ED7A81E61B3F700C4B1D0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		BE5ED7A91E61B3F700C4B1D0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		BE5ED7AE1E61C06000C4B1D0 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
-		BE5ED7AF1E61C06000C4B1D0 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		BE5ED7AE1E61C06000C4B1D0 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		BE5ED7AF1E61C06000C4B1D0 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		BE5ED7BE1E6256C300C4B1D0 /* RadiusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusButton.h; sourceTree = "<group>"; };
 		BE5ED7BF1E6256C300C4B1D0 /* RadiusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusButton.m; sourceTree = "<group>"; };
 		BE5ED7C11E62579700C4B1D0 /* NSString+Extentsion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extentsion.h"; sourceTree = "<group>"; };
@@ -844,8 +844,8 @@
 				BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */,
 				BE5535491E5EA17A0021E2C6 /* UIViewController+NavigationBar.h */,
 				BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */,
-				BE5ED7AE1E61C06000C4B1D0 /* UIImage+Color.h */,
-				BE5ED7AF1E61C06000C4B1D0 /* UIImage+Color.m */,
+				BE5ED7AE1E61C06000C4B1D0 /* UIImage+Extension.h */,
+				BE5ED7AF1E61C06000C4B1D0 /* UIImage+Extension.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -1399,7 +1399,7 @@
 				BED202821E7062BB00437133 /* OrderSuccessController.m in Sources */,
 				BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */,
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
-				BE5ED7B01E61C06000C4B1D0 /* UIImage+Color.m in Sources */,
+				BE5ED7B01E61C06000C4B1D0 /* UIImage+Extension.m in Sources */,
 				BE5ED7FA1E62B90900C4B1D0 /* PwdBackController.m in Sources */,
 				BEDECE331E72967200EEA29B /* CancelOrderCell.m in Sources */,
 				BEF0EE2F1E7137CF003E06DB /* OrderDetailTransHeader.m in Sources */,

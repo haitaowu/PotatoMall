@@ -32,7 +32,6 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 @end
 
 @implementation OrdersTableController
-
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,10 +53,34 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+#pragma mark - private methods
+- (void)updateUIWithSelectedStatus:(int)status
+{
+    //订单状态 0待确认 1未付款 2待提货 3已完成  -1为全部（暂定）
+    if (status == -1) {
+       self.ordersArray = self.originOrders;
+    }else{
+        NSMutableArray *orders = [self ordersWithStatus:[NSString stringWithFormat:@"%d",status]];
+        self.ordersArray = orders;
+    }
+    [self.tableView reloadData];
+}
 
-#pragma mark - setup UI 
+- (NSMutableArray*)ordersWithStatus:(NSString*)status
+{
+    NSMutableArray *orders = [NSMutableArray array];
+    for (OrderModel *obj in self.originOrders) {
+        if ([obj.orderStatus isEqualToString:status]) {
+            [orders addObject:obj];
+        }
+    }
+    return orders;
+}
+
+#pragma mark - setup UI
 - (void)setupTableviewTableheader
 {
+    //订单状态 0待确认 1未付款 2待提货 3已完成  -1为全部（暂定）
     self.subItemTitles = @[@"全部",@"待确认",@"未付款",@"待提货",@"已完成"];
     CGRect frame =  CGRectMake(0, 0, kScreenWidth, 44);
     self.tableviewHeaderView = [[TopScrollView alloc] initWithFrame:frame];
@@ -71,10 +94,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     __block typeof(self) blockSelf = self;
     self.tableviewHeaderView.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
         HTLog(@"top at scrollview at index title %@",title);
-        if (idx == 0) {
-            blockSelf.ordersArray = blockSelf.originOrders;
-        }
-        [blockSelf.tableView reloadData];
+        int index = (int)idx - 1;
+        [blockSelf updateUIWithSelectedStatus:index];
     };
     self.tableView.tableHeaderView = self.tableviewHeaderView;
 }
