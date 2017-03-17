@@ -11,6 +11,7 @@
 #import "AppInfoHelper.h"
 #import "HTNavgationController.h"
 #import "ArticleDetailModel.h"
+#import "GoodsModel.h"
 
 
 
@@ -26,6 +27,7 @@
     self.window = [[UIWindow alloc] initWithFrame:bounds];
     [self showViewWithUserState];
     [self.window makeKeyAndVisible];
+    HTLog(@"didFinishLaunchingWithOptions");
     //add servers
     [self registerObserversforNotification];
     //register weixin share
@@ -37,7 +39,7 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    HTLog(@"handleOpenURL %@",url.absoluteString);
+    [self skipWithSchemeUrl:url];
     return  [WXApi handleOpenURL:url delegate:self];
 }
 
@@ -47,6 +49,7 @@
     NSString *urlStr = [url absoluteString];
     HTLog(@"openURL %@",urlStr);
     [self skipWithSchemeUrl:url];
+    
     return  isSuc;
 }
 
@@ -99,17 +102,52 @@
 {
     NSString *abStr = url.absoluteString;
     NSArray *urls = [abStr componentsSeparatedByString:@"//"];
-    NSArray *schemes = [[urls lastObject] componentsSeparatedByString:@":"];
+    NSArray *schemes = [[urls lastObject] componentsSeparatedByString:@"?"];
     NSString *skipType = [schemes firstObject];
     NSString *skipID = [schemes lastObject];
     HTLog(@"skipTyp %@ --- skipId%@",skipType,skipID);
     if ([skipType isEqualToString:kArticleSkipType]) {
-        ArticleDetailModel *articleModel = [[ArticleDetailModel alloc] init];
-        articleModel.infoId = skipID;
-        NSMutableDictionary *sender = [NSMutableDictionary dictionary];
-        sender[kNotiUserInfoKey] = articleModel;
-        [[NSNotificationCenter defaultCenter] postNotificationName:kOpenArticleLinkNotification object:nil userInfo:sender];
+        UIViewController *rootControl = self.window.rootViewController;
+        if ([rootControl isKindOfClass:[UITabBarController class]]) {
+            [self naviationControllsPopSubControls];
+            UITabBarController *tabBarController = (UITabBarController*)rootControl;
+            tabBarController.selectedIndex = 0;
+            ArticleDetailModel *articleModel = [[ArticleDetailModel alloc] init];
+            articleModel.infoId = skipID;
+            NSMutableDictionary *sender = [NSMutableDictionary dictionary];
+            sender[kNotiUserInfoKey] = articleModel;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kOpenArticleLinkNotification object:nil userInfo:sender];
+            });
+        }
     }else{
+        if (skipID != nil) {
+        UIViewController *rootControl = self.window.rootViewController;
+        if ([rootControl isKindOfClass:[UITabBarController class]]) {
+            [self naviationControllsPopSubControls];
+            UITabBarController *tabBarController = (UITabBarController*)rootControl;
+            tabBarController.selectedIndex = 1;
+            GoodsModel *articleModel = [[GoodsModel alloc] init];
+            articleModel.goodsInfoId = skipID;
+            NSMutableDictionary *sender = [NSMutableDictionary dictionary];
+            sender[kNotiUserInfoKey] = articleModel;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kOpenProductLinkNotification object:nil userInfo:sender];
+            });
+        }
+            
+        }
+    }
+}
+
+- (void)naviationControllsPopSubControls
+{
+    UIViewController *rootControl = self.window.rootViewController;
+    if ([rootControl isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController*)rootControl;
+        for (UIViewController *control in tabBarController.childViewControllers) {
+            [control.navigationController popToRootViewControllerAnimated:NO];
+        }
     }
 }
 
@@ -124,6 +162,7 @@
         [self userLoginSuccess];
     }
 }
+
 #pragma mark - setup UI
 -(void)setupLoginView
 {

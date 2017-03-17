@@ -59,7 +59,6 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    [self setupBaseInit];
     self.pageNo = 0;
     self.pageSize = 10;
     self.tableView.emptyDataSetSource = self;
@@ -68,17 +67,22 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     [self setupTableViewFooter];
 //    [self requestCategoryData];
     [self requestProductsData];
+    [self registerNotifcation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewWillAppear:animated] ;
     [self.navigationController  setToolbarHidden:YES animated:YES];
     if (self.springRecomGoods.list == nil) {
         [self requestProductsData];
     }
-    NSString *chartCount = [NSString stringWithFormat:@"%ld",[UserModelUtil sharedInstance].chartCount];
-    [self.chartView updateCountWithStr:chartCount];
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        [self updateChartCountLabel];
+    }else{
+        NSString *chartCount = @"0";
+        [self.chartView updateCountWithStr:chartCount];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -95,7 +99,10 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     }
 }
 
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - setup UI
 - (void)registerTableNibCell
@@ -144,7 +151,13 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 }
 
 #pragma mark - private methods
-- (void)setupBaseInit
+
+- (void)registerNotifcation
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openProductDetail:) name:kOpenProductLinkNotification object:nil];
+}
+
+- (void)updateChartCountLabel
 {
     __block typeof(self) blockSelf = self;
     [[UserModelUtil sharedInstance] chartCountWithBlock:^(NSInteger count) {
@@ -245,29 +258,16 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     return [NSDictionary dictionary];
 }
 
+#pragma mark - selectors
+- (void)openProductDetail:(NSNotification*)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    NSDictionary *userInfo = sender.userInfo;
+    GoodsModel *model = userInfo[kNotiUserInfoKey];
+    [self performSegueWithIdentifier:@"productDetailSegue" sender:model];
+}
+
 #pragma mark - requset server
-//- (void)requestCategoryData
-//{
-//    if ([RequestUtil networkAvaliable] == NO) {
-//        [self.tableView.mj_footer endRefreshing];
-//        [self.tableView reloadData];
-//    }else{
-//        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"0",kParentIdKey, nil];
-//        NSString *subUrl = @"goods/findCatalogByParentId";
-//        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-//        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-//            [self.tableView.mj_footer endRefreshing];
-//            if (status == StatusTypSuccess) {
-//                self.categoryArray = [ProdCateModel productCategoryesWithData:data];
-//                [self setupCateGoryView];
-//                            }
-//        } reqFail:^(int type, NSString *msg) {
-//            [self.tableView.mj_footer endRefreshing];
-//        }];
-//    }
-//}
-
-
 - (void)requestProductsData
 {
     if ([RequestUtil networkAvaliable] == NO) {

@@ -32,10 +32,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.tudou.</string>
+			<string>com.tudou</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>toudou</string>
+				<string>tudou</string>
 			</array>
 		</dict>
 	</array>

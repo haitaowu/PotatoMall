@@ -93,7 +93,7 @@
     }
     
     if (scene != -1) {
-        NSString *urlStr = [NSString stringWithFormat:@"toudou://%@:146",kArticleSkipType];
+        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kArticleSkipType,self.articleModel.infoId];
         [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt imageUrl:self.paramModel.imgSrc url:urlStr];
     }
 }

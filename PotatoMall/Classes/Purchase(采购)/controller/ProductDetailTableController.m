@@ -78,7 +78,12 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO];
-    NSString *chartCount = [NSString stringWithFormat:@"%ld",[UserModelUtil sharedInstance].chartCount];
+    NSString *chartCount;
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        chartCount =  [NSString stringWithFormat:@"%ld",[UserModelUtil sharedInstance].chartCount];
+    }else{
+        chartCount = @"0";
+    }
     [self.chartView updateCountWithStr:chartCount];
 }
 
@@ -315,7 +320,8 @@
     }
     
     if (scene != -1) {
-        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:@"www.baidu.com"];
+        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,self.goodModel.goodsInfoId];
+        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
     }
 }
 @end
