@@ -24,11 +24,12 @@ static NSString *OrderStateHeaderID = @"OrderStateHeaderID";
 
 static NSString *OrderStateFooterID = @"OrderStateFooterID";
 
-@interface OrdersTableController ()
+@interface OrdersTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong)NSMutableArray *ordersArray;
 @property (nonatomic,strong)NSMutableArray *originOrders;
 @property (strong, nonatomic) TopScrollView *tableviewHeaderView;
 @property (nonatomic,strong)NSArray *subItemTitles;
+@property (nonatomic,assign) BOOL firstReqFinished;
 @end
 
 @implementation OrdersTableController
@@ -101,6 +102,9 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 }
 - (void)setupTableView
 {
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
     UINib *cellNib = [UINib nibWithNibName:@"OrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:OrderCellID];
     
@@ -133,12 +137,14 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
 //            [SVProgressHUD showInfoWithStatus:msg];
+            self.firstReqFinished = YES;
             if (status == StatusTypSuccess) {
                 self.originOrders = [OrderModel ordersWithData:data];
                 self.ordersArray =  self.originOrders;
             }
             [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
+            self.firstReqFinished = YES;
 //            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
@@ -228,5 +234,27 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     [self.view endEditing:NO];
 }
 
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else if ((self.firstReqFinished == YES) && (self.ordersArray.count <= 0)){
+        NSString *text = @"没有找到该状态的相关订单";
+        NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                     NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
+}
 
 @end

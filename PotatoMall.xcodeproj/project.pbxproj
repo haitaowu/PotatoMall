@@ -148,6 +148,7 @@
 		BEF0EE381E71484F003E06DB /* OrderStateFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE361E71484F003E06DB /* OrderStateFooter.xib */; };
 		BEF0EE3C1E714B7E003E06DB /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE3A1E714B7E003E06DB /* OrderCell.m */; };
 		BEF0EE3D1E714B7E003E06DB /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE3B1E714B7E003E06DB /* OrderCell.xib */; };
+		BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEFBCB721E7B732C005A333D /* InfoPlist.strings */; };
 		BEFFAB961E6E8DA4006D1FDE /* TopScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFAB951E6E8DA4006D1FDE /* TopScrollView.m */; };
 		BEFFAB991E6E8F43006D1FDE /* ProdCateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFAB981E6E8F43006D1FDE /* ProdCateModel.m */; };
 		BEFFEE1E1E7536B4003E6240 /* CommHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE1D1E7536B4003E6240 /* CommHelper.m */; };
@@ -411,6 +412,9 @@
 		BEF0EE391E714B7E003E06DB /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
 		BEF0EE3A1E714B7E003E06DB /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
 		BEF0EE3B1E714B7E003E06DB /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		BEFBCB711E7B732C005A333D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEFBCB731E7B732F005A333D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BEFBCB741E7B7331005A333D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEFFAB941E6E8DA4006D1FDE /* TopScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopScrollView.h; sourceTree = "<group>"; };
 		BEFFAB951E6E8DA4006D1FDE /* TopScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopScrollView.m; sourceTree = "<group>"; };
 		BEFFAB971E6E8F43006D1FDE /* ProdCateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProdCateModel.h; sourceTree = "<group>"; };
@@ -599,6 +603,7 @@
 				BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */,
 				BE3099721E5C71AE0062EBA9 /* Supporting Files */,
 				BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */,
+				BEFBCB721E7B732C005A333D /* InfoPlist.strings */,
 			);
 			path = PotatoMall;
 			sourceTree = "<group>";
@@ -1227,6 +1232,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = BE3099661E5C71AD0062EBA9;
 			productRefGroup = BE3099701E5C71AD0062EBA9 /* Products */;
@@ -1274,6 +1280,7 @@
 				BEDECE341E72967200EEA29B /* CancelOrderCell.xib in Resources */,
 				BEF0EE2B1E7136FB003E06DB /* OrderStateHeader.xib in Resources */,
 				BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */,
+				BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */,
 				BE93AF2D1E65B88E001F99BC /* SearchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1453,6 +1460,16 @@
 				BED016A81E5EFD120033154D /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BEFBCB721E7B732C005A333D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEFBCB711E7B732C005A333D /* Base */,
+				BEFBCB731E7B732F005A333D /* zh-Hans */,
+				BEFBCB741E7B7331005A333D /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
