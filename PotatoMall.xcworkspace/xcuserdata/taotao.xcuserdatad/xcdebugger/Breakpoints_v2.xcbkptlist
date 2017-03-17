@@ -99,13 +99,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/util/UserModelUtil.m"
-            timestampString = "511366540.37202"
+            filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/view/ArticleContentView.m"
+            timestampString = "511400160.39589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-unArchiveUserModel"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-setDetail:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,13 +115,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/util/UserModelUtil.m"
-            timestampString = "511366761.653114"
+            filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/view/ArticleContentView.m"
+            timestampString = "511398379.176952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-archiveUserModel:"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-layoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -131,13 +131,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/util/UserModelUtil.m"
-            timestampString = "511366761.653114"
+            filePath = "PotatoMall/Classes/Home(&#x9996;&#x9875;)/view/ArticleContentView.m"
+            timestampString = "511400160.39589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-archiveUserModel:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-layoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

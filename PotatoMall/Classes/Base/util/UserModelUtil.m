@@ -108,7 +108,6 @@ static UserModelUtil *instance = nil;
 - (UserModel*)unArchiveUserModel
 {
     _userModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kAccountInfoPath];
-    HTLog(@"unarchive user model %@",_userModel);
     return _userModel;
 }
 

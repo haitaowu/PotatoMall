@@ -9,12 +9,14 @@
 #import "AritcleDetailController.h"
 #import "ArticleDetailModel.h"
 #import "WXApi.h"
+#import "ArticleContentView.h"
 
 @interface AritcleDetailController ()<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet ArticleContentView *contentView;
 @property (nonatomic,strong)ArticleDetailModel *articleModel;
 @end
 
@@ -31,10 +33,11 @@
 #pragma mark - setup UI 
 - (void)setupUIWithDetail:(ArticleDetailModel*)detail
 {
-    self.titleLabel.text = detail.title;
-    self.authorLabel.text = detail.author;
-    self.dateLabel.text = detail.createDate;
-    [self.webview loadHTMLString:detail.content baseURL:nil];
+    [self.contentView setDetail:detail];
+//    self.titleLabel.text = detail.title;
+//    self.authorLabel.text = detail.author;
+//    self.dateLabel.text = detail.createDate;
+//    [self.webview loadHTMLString:detail.content baseURL:nil];
 }
 
 
@@ -58,6 +61,7 @@
 {
     if ([RequestUtil networkAvaliable] == NO) {
     }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         NSString *subUrl = @"article/detail";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
