@@ -52,18 +52,27 @@
 #define     kCityCodeKey                     @"cityCode"
 #define     kAddressNameKey                  @"addressName"
 
-#define     kParentIdKey                    @"parentId"
+#define     kParentIdKey                     @"parentId"
 
+
+//分享链接跳转
+#define kProductSkipType                    @"Product"
+#define kArticleSkipType                    @"Article"
 
 //user account password
 #define     kLoginAccountKey                @"loginAccountKey"
 #define     kLoginPwdKey                    @"loginPwdKey"
+
+#define     kNotiUserInfoKey                               @"kNotiUserInfoKey"
 //define notification
 #define     kLoginSuccessNotification                       @"LoginSuccessNotification"
 #define     kUserLogoutSuccessNotification                  @"UserLogoutSuccessNotification"
 #define     kSelectedCityNotification                       @"kSelectedCityNotification"
 
-#define     kCancelOrderSuccessNotification                       @"kCancelOrderSuccessNotification"
+#define     kCancelOrderSuccessNotification                 @"kCancelOrderSuccessNotification"
+
+#define     kOpenArticleLinkNotification                    @"kOpenArticleLinkNotification"
+#define     kOpenProductLinkNotification                    @"kOpenProductLinkNotification"
 
 //alert info msessage
 #define     kAlertEnterAccountMsg            @"请输入账号"

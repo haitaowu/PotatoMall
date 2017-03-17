@@ -35,6 +35,7 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     [self setupUI];
     [self setupTableView];
     [self fetchAdsInfo];
+    [self registerNotifcation];
 }
 
 
@@ -47,6 +48,17 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
         AritcleDetailController *destinationControl = (AritcleDetailController*)[segue destinationViewController];
         destinationControl.paramModel = sender;
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - private methods
+- (void)registerNotifcation
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openArticle:) name:kOpenArticleLinkNotification object:nil];
 }
 
 #pragma mark - setup UI
@@ -124,6 +136,15 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     };
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchHistoryControl];
     [self presentViewController:navController animated:NO completion:nil];
+}
+
+#pragma mark - selectors 
+- (void)openArticle:(NSNotification*)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    NSDictionary *userInfo = sender.userInfo;
+    ArticleModel *model = userInfo[kNotiUserInfoKey];
+    [self performSegueWithIdentifier:@"detailSegue" sender:model];
 }
 
 #pragma mark - requset server

@@ -93,7 +93,8 @@
     }
     
     if (scene != -1) {
-        [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt imageUrl:self.paramModel.imgSrc url:@"www.baidu.com"];
+        NSString *urlStr = [NSString stringWithFormat:@"toudou://%@:146",kArticleSkipType];
+        [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt imageUrl:self.paramModel.imgSrc url:urlStr];
     }
 }
 
