@@ -92,15 +92,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="XvN-gG-OUj">
-                                        <rect key="frame" x="359" y="27" width="8" height="13"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_next" translatesAutoresizingMaskIntoConstraints="NO" id="XvN-gG-OUj">
+                                        <rect key="frame" x="357" y="28.5" width="10" height="10"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="8" id="5s6-aF-xHl"/>
-                                            <constraint firstAttribute="width" secondItem="XvN-gG-OUj" secondAttribute="height" multiplier="2:3" id="Upv-4C-BW8"/>
+                                            <constraint firstAttribute="width" constant="10" id="5s6-aF-xHl"/>
+                                            <constraint firstAttribute="width" secondItem="XvN-gG-OUj" secondAttribute="height" multiplier="1:1" id="Upv-4C-BW8"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ok-qn-Nww">
-                                        <rect key="frame" x="265" y="19" width="86" height="29"/>
+                                        <rect key="frame" x="266" y="19" width="86" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="完善个人信息">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="trailing" secondItem="XvN-gG-OUj" secondAttribute="trailing" constant="8" id="ueb-lp-qhh"/>
                                     <constraint firstItem="wkn-sw-V5E" firstAttribute="leading" secondItem="gWM-hY-rb9" secondAttribute="leading" id="vWh-KF-TRg"/>
                                     <constraint firstItem="eG4-AA-xgB" firstAttribute="leading" secondItem="Lmi-vM-3XB" secondAttribute="leading" id="z9G-Gv-Svb"/>
-                                    <constraint firstItem="XvN-gG-OUj" firstAttribute="leading" secondItem="9ok-qn-Nww" secondAttribute="trailing" constant="8" id="zlg-SJ-yqq"/>
+                                    <constraint firstItem="XvN-gG-OUj" firstAttribute="leading" secondItem="9ok-qn-Nww" secondAttribute="trailing" constant="5" id="zlg-SJ-yqq"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dd0-y8-MG7">
@@ -399,7 +399,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JhP-zm-ViJ">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JhP-zm-ViJ" id="Xx8-EK-wmd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1027,7 +1027,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vfA-vi-Uft">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vfA-vi-Uft" id="xoq-2W-Vup">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1308,6 +1308,7 @@
         <image name="avatar" width="67" height="67"/>
         <image name="farmer" width="150" height="150"/>
         <image name="me_auth" width="41" height="12"/>
+        <image name="me_next" width="21" height="21"/>
         <image name="me_sexCircle" width="14" height="14"/>
         <image name="me_sexCircleSel" width="14" height="14"/>
         <image name="nav_bgY" width="320" height="64"/>

@@ -23,7 +23,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="首页" id="TE9-VD-viY">
-                        <barButtonItem key="rightBarButtonItem" image="nav_scan" id="s1z-lG-67G"/>
+                        <barButtonItem key="rightBarButtonItem" image="nav_scan" id="s1z-lG-67G">
+                            <connections>
+                                <action selector="tapScanCodeItem:" destination="pRV-gY-6bO" id="aKO-da-U32"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Z2j-Ml-bfh" kind="show" identifier="searchSegue" id="LAm-61-3oN"/>

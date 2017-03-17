@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/AppDelegate.m"
-            timestampString = "511414281.658333"
+            timestampString = "511453304.580481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-naviationControllsPopSubControls"
             landmarkType = "7">
          </BreakpointContent>

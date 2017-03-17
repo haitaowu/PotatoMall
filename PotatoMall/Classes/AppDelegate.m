@@ -33,6 +33,10 @@
     //register weixin share
     [self registerWebChatShare];
     
+    
+    [SVProgressHUD setBackgroundColor:RGBA(0, 0, 0, 0.8)];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    
     return YES;
 }
 

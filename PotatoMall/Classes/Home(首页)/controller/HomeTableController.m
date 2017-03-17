@@ -147,6 +147,10 @@ static NSString *HotArticleCellID = @"HotArticleCellID";
     [self performSegueWithIdentifier:@"detailSegue" sender:model];
 }
 
+- (IBAction)tapScanCodeItem:(id)sender {
+    [SVProgressHUD showInfoWithStatus:@"功能暂时未开放"];
+}
+
 #pragma mark - requset server
 - (void)requestMoreArticlesWith:(NSDictionary*)params
 {

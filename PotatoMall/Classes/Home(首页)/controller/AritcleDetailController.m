@@ -61,7 +61,7 @@
 {
     if ([RequestUtil networkAvaliable] == NO) {
     }else{
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         NSString *subUrl = @"article/detail";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {

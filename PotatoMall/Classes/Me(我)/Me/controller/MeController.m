@@ -111,12 +111,16 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 }
 
 - (IBAction)tapEditAvatarBtn:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:@"取消"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"相机",@"相册",nil];
-    [actionSheet showInView:self.view];
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"取消"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"相机",@"相册",nil];
+        [actionSheet showInView:self.view];
+    }else{
+        [self showLoginView];
+    }
 }
 
 #pragma mark - Table view data source
