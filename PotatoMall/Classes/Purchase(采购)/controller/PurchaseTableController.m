@@ -24,6 +24,10 @@
 #import "ChartView.h"
 
 
+#define kRecommandProductsCellHeight   120
+
+
+
 #define kAdvertiseSectionIdx            0
 #define kSpringNewSectionIdx            1
 #define kProductsSectionIdx             2
@@ -518,13 +522,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section == kCategorySectionIdx) {
-//        CGFloat height = kScrollViewHeight;
-//        return height;
-//    }else
-    
     if (self.selectedCateModel != nil) {
-        return 110;
+        return kRecommandProductsCellHeight;
     }else{
         if (indexPath.section == kAdvertiseSectionIdx) {
             CGFloat height = 190;
@@ -532,7 +531,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         }else if (indexPath.section == kSpringNewSectionIdx) {
             return 150;
         }else{
-            return 110;
+            return kRecommandProductsCellHeight;
         }
     }
 }

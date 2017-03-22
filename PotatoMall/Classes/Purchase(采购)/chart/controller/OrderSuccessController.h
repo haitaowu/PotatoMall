@@ -9,7 +9,5 @@
 #import "BaseViewController.h"
 
 @interface OrderSuccessController : BaseViewController
-@property (nonatomic,copy) NSString *desTitle;
-@property (nonatomic,copy) NSString *navTitle;
 
 @end

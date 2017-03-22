@@ -399,7 +399,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JhP-zm-ViJ">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JhP-zm-ViJ" id="Xx8-EK-wmd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -814,22 +814,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutus" translatesAutoresizingMaskIntoConstraints="NO" id="weJ-YL-HWc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="116" y="114" width="143" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="weJ-YL-HWc" secondAttribute="height" multiplier="143:111" id="5vY-5i-jar"/>
+                                    <constraint firstAttribute="width" constant="143" id="ucA-5x-0KV"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本号：v1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5D-cW-EI8">
+                                <rect key="frame" x="127" y="248" width="120" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="土豆集（内蒙古）农业科技有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRm-ko-TPW">
+                                <rect key="frame" x="41" y="581" width="294" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©2017 tudouji.com.cn 版权所有" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQV-vu-bqa">
+                                <rect key="frame" x="59.5" y="539" width="256" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="weJ-YL-HWc" firstAttribute="top" secondItem="hMr-c4-miy" secondAttribute="top" id="cdB-mU-GKM"/>
-                            <constraint firstAttribute="trailing" secondItem="weJ-YL-HWc" secondAttribute="trailing" id="fnL-5j-G1H"/>
-                            <constraint firstItem="weJ-YL-HWc" firstAttribute="leading" secondItem="hMr-c4-miy" secondAttribute="leading" id="gaf-W0-NQK"/>
-                            <constraint firstItem="4HU-Id-f18" firstAttribute="top" secondItem="weJ-YL-HWc" secondAttribute="bottom" id="wV9-N5-ECY"/>
+                            <constraint firstItem="PQV-vu-bqa" firstAttribute="centerX" secondItem="hMr-c4-miy" secondAttribute="centerX" id="6XB-dM-rar"/>
+                            <constraint firstItem="4HU-Id-f18" firstAttribute="top" secondItem="zRm-ko-TPW" secondAttribute="bottom" constant="64" id="9wa-Vx-igH"/>
+                            <constraint firstItem="I5D-cW-EI8" firstAttribute="centerX" secondItem="hMr-c4-miy" secondAttribute="centerX" id="pbU-tR-V4M"/>
+                            <constraint firstItem="zRm-ko-TPW" firstAttribute="top" secondItem="PQV-vu-bqa" secondAttribute="bottom" constant="20" id="qss-nS-DXR"/>
+                            <constraint firstItem="weJ-YL-HWc" firstAttribute="centerX" secondItem="hMr-c4-miy" secondAttribute="centerX" id="sTJ-Cg-Lmh"/>
+                            <constraint firstItem="weJ-YL-HWc" firstAttribute="top" secondItem="VDF-72-gTm" secondAttribute="bottom" constant="50" id="w48-Jm-XR5"/>
+                            <constraint firstItem="zRm-ko-TPW" firstAttribute="centerX" secondItem="hMr-c4-miy" secondAttribute="centerX" id="yUd-3E-oHg"/>
+                            <constraint firstItem="I5D-cW-EI8" firstAttribute="top" secondItem="weJ-YL-HWc" secondAttribute="bottom" constant="23" id="z4h-Qp-QE1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="关于我们" id="Qci-6x-ara"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fit-5L-duZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3226" y="1709"/>
+            <point key="canvasLocation" x="3224.8000000000002" y="1708.6956521739132"/>
         </scene>
         <!--请选择账号身份-->
         <scene sceneID="tT5-8c-PTK">
@@ -1027,7 +1053,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vfA-vi-Uft">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vfA-vi-Uft" id="xoq-2W-Vup">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1304,7 +1330,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aboutus" width="750" height="1334"/>
+        <image name="aboutus" width="143" height="111"/>
         <image name="avatar" width="67" height="67"/>
         <image name="farmer" width="150" height="150"/>
         <image name="me_auth" width="41" height="12"/>

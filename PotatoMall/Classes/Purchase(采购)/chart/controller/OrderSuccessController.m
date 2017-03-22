@@ -18,7 +18,7 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLabel.text = self.navTitle;
+    [self.navigationController  setToolbarHidden:YES animated:NO];
 }
 
 - (void)tapBackBtn
