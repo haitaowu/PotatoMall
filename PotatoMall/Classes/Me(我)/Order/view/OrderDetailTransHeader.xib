@@ -17,76 +17,99 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uht-5o-HnZ" userLabel="bagView">
                     <rect key="frame" x="0.0" y="0.0" width="512" height="160"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZh-Oh-beb" userLabel="topBgView">
-                    <rect key="frame" x="0.0" y="0.0" width="512" height="41"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提货方式：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx" customClass="TitleLabel">
-                    <rect key="frame" x="16" y="16" width="80" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="g4i-WZ-rQG"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单备注：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="008-wW-0RU" customClass="TitleLabel">
-                    <rect key="frame" x="16" y="49" width="80" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="zs0-M1-6YE"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自有车队现场提货" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Fw-y5f" customClass="TitleLabel">
-                    <rect key="frame" x="96" y="16" width="115" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0N-mV-zye">
-                    <rect key="frame" x="96" y="50" width="408" height="102"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单总价：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx" customClass="TitleLabel">
+                            <rect key="frame" x="16" y="15" width="80" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="L6v-zt-GSn"/>
+                                <constraint firstAttribute="width" constant="80" id="z9Q-cq-7JK"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="008-wW-0RU" customClass="TitleLabel">
+                            <rect key="frame" x="16" y="51" width="80" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单总价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Fw-y5f" customClass="TitleLabel">
+                            <rect key="frame" x="98" y="16.5" width="58" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-UW-FwV" customClass="TitleLabel">
+                            <rect key="frame" x="98" y="52.5" width="58" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提货方式：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbM-d0-fgE" customClass="TitleLabel">
+                            <rect key="frame" x="16" y="87" width="80" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提货方式：" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5x-Tc-Lc8" customClass="TitleLabel">
+                            <rect key="frame" x="98" y="88.5" width="72" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单备注：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uid-uY-aWM" customClass="TitleLabel">
+                            <rect key="frame" x="16" y="123" width="80" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单备注" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Uc-uGT" customClass="TitleLabel">
+                            <rect key="frame" x="98" y="124.5" width="57.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="w5x-Tc-Lc8" firstAttribute="centerY" secondItem="TbM-d0-fgE" secondAttribute="centerY" id="6gM-Ez-0rq"/>
+                        <constraint firstItem="008-wW-0RU" firstAttribute="width" secondItem="ora-5t-ZKx" secondAttribute="width" id="7PG-Q2-5rz"/>
+                        <constraint firstItem="008-wW-0RU" firstAttribute="top" secondItem="ora-5t-ZKx" secondAttribute="bottom" constant="16" id="8RK-dO-Uf2"/>
+                        <constraint firstItem="uid-uY-aWM" firstAttribute="height" secondItem="ora-5t-ZKx" secondAttribute="height" id="8VE-VY-exX"/>
+                        <constraint firstItem="uid-uY-aWM" firstAttribute="width" secondItem="ora-5t-ZKx" secondAttribute="width" id="9LE-c4-YiS"/>
+                        <constraint firstItem="w5x-Tc-Lc8" firstAttribute="leading" secondItem="TbM-d0-fgE" secondAttribute="trailing" constant="2" id="H5q-uv-XbU"/>
+                        <constraint firstItem="ora-5t-ZKx" firstAttribute="leading" secondItem="uht-5o-HnZ" secondAttribute="leading" constant="16" id="ILu-wf-2Ym"/>
+                        <constraint firstItem="pUh-Uc-uGT" firstAttribute="leading" secondItem="uid-uY-aWM" secondAttribute="trailing" constant="2" id="JTi-Cg-Rd2"/>
+                        <constraint firstItem="pUh-Uc-uGT" firstAttribute="centerY" secondItem="uid-uY-aWM" secondAttribute="centerY" id="Kip-yH-iQz"/>
+                        <constraint firstItem="pUh-Fw-y5f" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="trailing" constant="2" id="a0D-NO-enD"/>
+                        <constraint firstItem="ora-5t-ZKx" firstAttribute="top" secondItem="uht-5o-HnZ" secondAttribute="top" constant="15" id="bMV-94-YzH"/>
+                        <constraint firstItem="008-wW-0RU" firstAttribute="height" secondItem="ora-5t-ZKx" secondAttribute="height" id="gNj-b9-zfh"/>
+                        <constraint firstItem="Yn4-UW-FwV" firstAttribute="leading" secondItem="008-wW-0RU" secondAttribute="trailing" constant="2" id="ghK-uy-Z0d"/>
+                        <constraint firstItem="Yn4-UW-FwV" firstAttribute="centerY" secondItem="008-wW-0RU" secondAttribute="centerY" id="hTu-i3-tvh"/>
+                        <constraint firstItem="TbM-d0-fgE" firstAttribute="top" secondItem="008-wW-0RU" secondAttribute="bottom" constant="16" id="hZK-gQ-RI6"/>
+                        <constraint firstItem="TbM-d0-fgE" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="leading" id="hhz-TP-Pfe"/>
+                        <constraint firstItem="uid-uY-aWM" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="leading" id="hla-3f-DyA"/>
+                        <constraint firstItem="008-wW-0RU" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="leading" id="mhL-8E-gQD"/>
+                        <constraint firstItem="uid-uY-aWM" firstAttribute="top" secondItem="TbM-d0-fgE" secondAttribute="bottom" constant="16" id="q1B-VW-CiA"/>
+                        <constraint firstItem="TbM-d0-fgE" firstAttribute="height" secondItem="ora-5t-ZKx" secondAttribute="height" id="uqo-5i-NV7"/>
+                        <constraint firstItem="TbM-d0-fgE" firstAttribute="width" secondItem="ora-5t-ZKx" secondAttribute="width" id="yWz-b8-jGA"/>
+                        <constraint firstItem="pUh-Fw-y5f" firstAttribute="centerY" secondItem="ora-5t-ZKx" secondAttribute="centerY" id="znK-Kh-SeU"/>
+                    </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-UW-FwV" customClass="TitleLabel">
-                    <rect key="frame" x="96" y="50" width="400" height="67"/>
-                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <string key="text">订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注订单备注订单备注订单备注订单备注这是订单备注</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <constraints>
-                <constraint firstItem="008-wW-0RU" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="leading" id="01u-Dn-ASs"/>
-                <constraint firstItem="Yn4-UW-FwV" firstAttribute="leading" secondItem="008-wW-0RU" secondAttribute="trailing" id="23z-mY-KnI"/>
-                <constraint firstItem="RZh-Oh-beb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="93z-yE-7DE"/>
-                <constraint firstItem="008-wW-0RU" firstAttribute="top" secondItem="ora-5t-ZKx" secondAttribute="bottom" constant="16" id="BH7-vG-fWK"/>
                 <constraint firstItem="uht-5o-HnZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="C5p-Ii-EdU"/>
                 <constraint firstAttribute="bottom" secondItem="uht-5o-HnZ" secondAttribute="bottom" id="CKb-eX-c2H"/>
-                <constraint firstAttribute="trailing" secondItem="RZh-Oh-beb" secondAttribute="trailing" id="DDX-oH-CEn"/>
-                <constraint firstItem="RZh-Oh-beb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QBO-0g-QQG"/>
                 <constraint firstAttribute="trailing" secondItem="uht-5o-HnZ" secondAttribute="trailing" id="Qtk-5K-PpB"/>
-                <constraint firstItem="Yn4-UW-FwV" firstAttribute="top" secondItem="pUh-Fw-y5f" secondAttribute="bottom" constant="17" id="WDs-iJ-aqd"/>
-                <constraint firstItem="Yn4-UW-FwV" firstAttribute="top" secondItem="o0N-mV-zye" secondAttribute="top" id="ZXB-id-RVI"/>
                 <constraint firstItem="uht-5o-HnZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aJU-sG-qzv"/>
-                <constraint firstAttribute="bottom" secondItem="o0N-mV-zye" secondAttribute="bottom" constant="8" id="hn3-4t-u3M"/>
-                <constraint firstItem="Yn4-UW-FwV" firstAttribute="leading" secondItem="o0N-mV-zye" secondAttribute="leading" id="jtz-O1-d1h"/>
-                <constraint firstItem="pUh-Fw-y5f" firstAttribute="centerY" secondItem="ora-5t-ZKx" secondAttribute="centerY" id="lhD-1i-Jqe"/>
-                <constraint firstAttribute="trailing" secondItem="o0N-mV-zye" secondAttribute="trailing" constant="8" id="mmc-qU-reD"/>
-                <constraint firstItem="ora-5t-ZKx" firstAttribute="bottom" secondItem="RZh-Oh-beb" secondAttribute="bottom" constant="-8" id="n9W-D9-FAz"/>
-                <constraint firstItem="ora-5t-ZKx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ogg-gw-z9q"/>
-                <constraint firstItem="ora-5t-ZKx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="pe7-gw-oKG"/>
-                <constraint firstItem="pUh-Fw-y5f" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="trailing" id="sT1-MT-8oB"/>
-                <constraint firstAttribute="trailing" secondItem="Yn4-UW-FwV" secondAttribute="trailing" constant="16" id="wGl-SR-pFa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="remarksLabel" destination="Yn4-UW-FwV" id="M7Q-JA-2gU"/>
-                <outlet property="transportModeLabel" destination="pUh-Fw-y5f" id="1ff-pd-Tvt"/>
+                <outlet property="orderDateLabel" destination="Yn4-UW-FwV" id="KNL-AI-Vxd"/>
+                <outlet property="priceLabel" destination="pUh-Fw-y5f" id="ihL-Q2-Z8d"/>
+                <outlet property="remarksLabel" destination="pUh-Uc-uGT" id="OJC-Vi-rha"/>
+                <outlet property="transportModeLabel" destination="w5x-Tc-Lc8" id="agJ-H4-uyZ"/>
             </connections>
             <point key="canvasLocation" x="122" y="-300"/>
         </view>

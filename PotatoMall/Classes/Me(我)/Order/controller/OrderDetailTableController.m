@@ -128,14 +128,14 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     if (section == 0) {
         return 56;
     }else{
-        return 150;
+        return 158;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 56;
+        return 0.001;
     }else{
         return 50;
     }
@@ -155,18 +155,16 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    if (section == 0) {
-        OrderDetailFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailFooterID];
-        [footer setOrderModel:self.orderModel];
-//        OrderModel *orderModel = self.ordersArray[section];
-//        OrderDetailStateFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailStateFooterID];
-        return footer;
-    }else{
-        return nil;
-    }
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    if (section == 0) {
+//        OrderDetailFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderDetailFooterID];
+//        [footer setOrderModel:self.orderModel];
+//        return footer;
+//    }else{
+//        return nil;
+//    }
+//}
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

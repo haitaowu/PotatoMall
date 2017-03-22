@@ -18,6 +18,10 @@
 #pragma mark - override methods
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.cancelBtn.layer.borderColor = [UIColor redColor].CGColor;
+    self.cancelBtn.layer.borderWidth = 1;
+    self.cancelBtn.layer.masksToBounds = YES;
+    self.cancelBtn.layer.cornerRadius = 5;
 }
 
 
