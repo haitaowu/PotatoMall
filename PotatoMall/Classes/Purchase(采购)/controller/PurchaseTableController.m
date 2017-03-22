@@ -25,7 +25,7 @@
 
 
 #define kAdvertiseSectionIdx            0
-#define kHotProductsSectionIdx          1
+#define kSpringNewSectionIdx            1
 #define kProductsSectionIdx             2
 
 
@@ -371,7 +371,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
                 }else{
                     return 0;
                 }
-            }else if (section == kHotProductsSectionIdx) {
+            }else if (section == kSpringNewSectionIdx) {
                 if ([self.springGoodsNew.list count] > 0) {
                     return 1;
                 }else{
@@ -445,7 +445,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section ==  kHotProductsSectionIdx) {
+    if (section ==  kSpringNewSectionIdx) {
         if ([self.springGoodsNew.list count] > 0) {
             return 40;
         }else{
@@ -467,7 +467,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     if (self.selectedCateModel != nil) {
         return 0.001;
     }else{
-        if (section ==  kHotProductsSectionIdx) {
+        if (section ==  kSpringNewSectionIdx) {
             return 15;
         }else{
             return 0.001;
@@ -478,13 +478,18 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GoodsModel *model = self.springRecomGoods.list[indexPath.row];
+    GoodsModel *model;
+    if (self.selectedCateModel != nil) {
+        model = self.goodsArray[indexPath.row];
+    }else{
+        model = self.springRecomGoods.list[indexPath.row];
+    }
     [self performSegueWithIdentifier:@"productDetailSegue" sender:model];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section ==  kHotProductsSectionIdx) {
+    if (section ==  kSpringNewSectionIdx) {
         if ([self.springGoodsNew.list count] > 0) {
             NSString *title = self.springGoodsNew.name;
             PurSectionHeader *titleHeader = [[PurSectionHeader alloc] initWithTitle:title moreTitle:nil];
@@ -524,7 +529,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         if (indexPath.section == kAdvertiseSectionIdx) {
             CGFloat height = 190;
             return height;
-        }else if (indexPath.section == kHotProductsSectionIdx) {
+        }else if (indexPath.section == kSpringNewSectionIdx) {
             return 150;
         }else{
             return 110;
