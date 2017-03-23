@@ -60,7 +60,15 @@
         self.specCellHeight = height;
         [self.tableView reloadData];
     };
+    
     [self setupTableHeaderView];
+    
+    self.speciCell.specBlock = ^(id specInfo){
+        NSString *goodsId = specInfo[kGoodInfoId];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[kGoodsInfoIdKey] = goodsId;
+        [self reqGoodsDetailWith:params];
+    };
     
 //    [self setupTableviewTableHeader];
     [self reqGoodsInfo];

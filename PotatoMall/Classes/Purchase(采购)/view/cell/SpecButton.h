@@ -12,7 +12,7 @@
 
 
 #define kSpecName                  @"specName"
-#define kGoodInfoId                @"goodInfoId"
+#define kGoodInfoId                @"goodsInfoId"
 
 @interface SpecButton : UIButton
 @property (nonatomic,strong)NSDictionary *specDict;

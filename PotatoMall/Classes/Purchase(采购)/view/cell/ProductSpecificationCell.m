@@ -70,6 +70,8 @@
 {
     _detailModel = detailModel;
     [self.specifBtns makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.specifBtns removeAllObjects];
+    
     [detailModel.goodsSpecs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self addParamsLabelWithDict:obj index:idx count:[_detailModel.goodsSpecs count]];
     }];
@@ -78,6 +80,15 @@
     [self.specifBtns enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self layoutBtnWithBtn:obj index:idx];
     }];
+    
+    //设置选中规格根据当前商品的详情
+    for (SpecButton *obj in self.specifBtns) {
+        NSString *goodsId = obj.specDict[kGoodInfoId];
+        if ([goodsId isEqualToString:detailModel.goodsInfoId]) {
+            obj.selected = YES;
+        }
+    }
+    
     if (self.cellBlock != nil) {
         SpecButton *btn = [self.specifBtns lastObject];
         CGFloat height = CGRectGetMaxY(btn.frame);
@@ -109,9 +120,9 @@
 {
     SpecButton *btn = [[SpecButton alloc] init];
     [btn setSpecDict:param];
-    if (idx == 0) {
-        btn.selected = YES;
-    }
+//    if (idx == 0) {
+//        btn.selected = YES;
+//    }
     [self.specifBtns addObject:btn];
     [self.contentView addSubview:btn];
     
