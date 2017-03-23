@@ -133,6 +133,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         id userId = [UserModelUtil sharedInstance].userModel.userId;
         params[kUserIdKey] = userId;
+        params[@"pageNo"] = @"1";
+        params[@"pageSize"] = @"10";
         NSString *subUrl = @"order/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {

@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMs-vB-Agm">
-                        <rect key="frame" x="318" y="82.5" width="80" height="29"/>
+                        <rect key="frame" x="318" y="83" width="80" height="29"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="lAi-43-1UN"/>
                         </constraints>
@@ -55,19 +55,284 @@
                             <action selector="tapCancelBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ycx-sM-BZn"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sX-Fs-oWk" userLabel="unpayView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-Vw-Gth">
+                                <rect key="frame" x="318" y="83" width="80" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="cSe-aB-ziz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="支付订单">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapPayOrderBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="t3Y-sH-EHy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhY-uT-avf">
+                                <rect key="frame" x="218" y="83" width="80" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="CIJ-yb-W02"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="取消订单">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapCancelBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="i7P-5y-7Nu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="N3j-Vw-Gth" firstAttribute="centerY" secondItem="mhY-uT-avf" secondAttribute="centerY" id="8qc-Jl-hwz"/>
+                            <constraint firstItem="N3j-Vw-Gth" firstAttribute="centerY" secondItem="2sX-Fs-oWk" secondAttribute="centerY" id="VHT-ex-ibv"/>
+                            <constraint firstItem="N3j-Vw-Gth" firstAttribute="leading" secondItem="mhY-uT-avf" secondAttribute="trailing" constant="20" id="bTe-r6-UVb"/>
+                            <constraint firstAttribute="trailing" secondItem="N3j-Vw-Gth" secondAttribute="trailing" constant="16" id="ggB-Ij-Jd8"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IR1-hl-QlQ" userLabel="prepareTransView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEI-WY-WfH">
+                                <rect key="frame" x="318" y="83" width="80" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Kcx-ZO-hba"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="确定提货">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapConfirmRecivedBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XF4-Gq-1ae"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-Cd-PtL">
+                                <rect key="frame" x="258" y="83" width="40" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Yqy-Pq-GfY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="退单">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapCancelOrderBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o5c-Ae-tVs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="XEI-WY-WfH" firstAttribute="centerY" secondItem="IR1-hl-QlQ" secondAttribute="centerY" id="Ktb-gP-0Re"/>
+                            <constraint firstItem="XEI-WY-WfH" firstAttribute="centerY" secondItem="O1v-Cd-PtL" secondAttribute="centerY" id="o9A-Sy-ZmS"/>
+                            <constraint firstAttribute="trailing" secondItem="XEI-WY-WfH" secondAttribute="trailing" constant="16" id="tfn-z6-3YI"/>
+                            <constraint firstItem="XEI-WY-WfH" firstAttribute="leading" secondItem="O1v-Cd-PtL" secondAttribute="trailing" constant="20" id="xy5-1c-Y4W"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbE-S2-rqV" userLabel="finishOrderView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ton-nr-YQr">
+                                <rect key="frame" x="318" y="83" width="80" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="6Pe-56-hRo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="再次购买">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapBuyAgainBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jvQ-8t-n2u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVv-tY-uyU">
+                                <rect key="frame" x="218" y="83" width="80" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="wgY-62-g3w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="删除订单">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapCancelOrderBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Ym-gi-rQT"/>
+                                    <action selector="tapDeleteOrderBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NDl-au-U8m"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Ton-nr-YQr" firstAttribute="centerY" secondItem="WbE-S2-rqV" secondAttribute="centerY" id="A64-fd-3dr"/>
+                            <constraint firstItem="Ton-nr-YQr" firstAttribute="centerY" secondItem="LVv-tY-uyU" secondAttribute="centerY" id="DGc-ef-0Mu"/>
+                            <constraint firstAttribute="trailing" secondItem="Ton-nr-YQr" secondAttribute="trailing" constant="16" id="ZP6-T6-VsE"/>
+                            <constraint firstItem="Ton-nr-YQr" firstAttribute="leading" secondItem="LVv-tY-uyU" secondAttribute="trailing" constant="20" id="rqk-wb-cSW"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1T-La-Sx8" userLabel="confirmCancelView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkV-ci-E4H">
+                                <rect key="frame" x="318" y="83" width="80" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="tiM-CL-I4v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="重新购买">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapReBuyBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="saQ-Yy-33P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="kkV-ci-E4H" firstAttribute="centerY" secondItem="u1T-La-Sx8" secondAttribute="centerY" id="0pX-EL-4ln"/>
+                            <constraint firstAttribute="trailing" secondItem="kkV-ci-E4H" secondAttribute="trailing" constant="16" id="UFv-W8-t4i"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQC-eC-FUW" userLabel="verifyView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="敬请耐心等待" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSL-yN-y5d" customClass="TitleLabel">
+                                <rect key="frame" x="312" y="89" width="86" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xSL-yN-y5d" firstAttribute="centerY" secondItem="WQC-eC-FUW" secondAttribute="centerY" id="Ijs-Z8-saJ"/>
+                            <constraint firstAttribute="trailing" secondItem="xSL-yN-y5d" secondAttribute="trailing" constant="16" id="dyY-RO-OhF"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="SVR-df-KJA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1Ak-yZ-Kks"/>
+                    <constraint firstAttribute="trailing" secondItem="IR1-hl-QlQ" secondAttribute="trailing" id="33P-lT-EwO"/>
                     <constraint firstItem="KMs-vB-Agm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3s1-hl-d4o"/>
+                    <constraint firstItem="WbE-S2-rqV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BfE-yU-dzl"/>
                     <constraint firstAttribute="trailing" secondItem="KMs-vB-Agm" secondAttribute="trailing" constant="16" id="CcM-0I-p1v"/>
                     <constraint firstItem="SVR-df-KJA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="EC0-az-G8f"/>
+                    <constraint firstItem="u1T-La-Sx8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JZ6-M5-IVc"/>
+                    <constraint firstItem="2sX-Fs-oWk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LAr-LU-LK4"/>
+                    <constraint firstItem="u1T-La-Sx8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OhA-yD-Pgv"/>
+                    <constraint firstAttribute="bottom" secondItem="u1T-La-Sx8" secondAttribute="bottom" id="UBR-9H-SII"/>
+                    <constraint firstItem="WQC-eC-FUW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YTD-fI-mer"/>
+                    <constraint firstItem="IR1-hl-QlQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ydx-Rl-5hE"/>
+                    <constraint firstAttribute="trailing" secondItem="2sX-Fs-oWk" secondAttribute="trailing" id="ZE3-4h-eBA"/>
+                    <constraint firstItem="2sX-Fs-oWk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zam-g2-Oae"/>
+                    <constraint firstAttribute="trailing" secondItem="WbE-S2-rqV" secondAttribute="trailing" id="cND-6K-tFu"/>
+                    <constraint firstAttribute="trailing" secondItem="u1T-La-Sx8" secondAttribute="trailing" id="dYu-ma-ZgR"/>
+                    <constraint firstAttribute="bottom" secondItem="2sX-Fs-oWk" secondAttribute="bottom" id="hAh-QJ-FQ2"/>
+                    <constraint firstItem="IR1-hl-QlQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hkM-YW-MS6"/>
                     <constraint firstItem="Vfd-SN-SSh" firstAttribute="leading" secondItem="SVR-df-KJA" secondAttribute="trailing" constant="-1" id="lgg-el-od0"/>
+                    <constraint firstAttribute="bottom" secondItem="WbE-S2-rqV" secondAttribute="bottom" id="oD8-gf-jfd"/>
+                    <constraint firstItem="WQC-eC-FUW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="oiv-a0-Gl8"/>
+                    <constraint firstAttribute="bottom" secondItem="WQC-eC-FUW" secondAttribute="bottom" id="puk-da-a8E"/>
+                    <constraint firstAttribute="trailing" secondItem="WQC-eC-FUW" secondAttribute="trailing" id="qAt-cr-zBR"/>
+                    <constraint firstAttribute="bottom" secondItem="IR1-hl-QlQ" secondAttribute="bottom" id="w7s-Bs-tDI"/>
                     <constraint firstItem="Vfd-SN-SSh" firstAttribute="centerY" secondItem="SVR-df-KJA" secondAttribute="centerY" id="wjG-Kn-uga"/>
+                    <constraint firstItem="WbE-S2-rqV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xsx-rK-rNT"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="buyAgainBtn" destination="Ton-nr-YQr" id="0vd-MA-gxn"/>
                 <outlet property="cancelBtn" destination="KMs-vB-Agm" id="0Bu-mq-6BQ"/>
+                <outlet property="cancelOrderBtn" destination="O1v-Cd-PtL" id="bAf-ZJ-MQR"/>
+                <outlet property="confirmCancelView" destination="u1T-La-Sx8" id="y9a-WI-Hxc"/>
+                <outlet property="confirmRecivedBtn" destination="XEI-WY-WfH" id="Dti-i5-xkl"/>
                 <outlet property="dateLabel" destination="Vfd-SN-SSh" id="Yv4-vM-Xs6"/>
+                <outlet property="deleteOrderBtn" destination="LVv-tY-uyU" id="NqD-dl-Vok"/>
+                <outlet property="finishOrderView" destination="WbE-S2-rqV" id="vMA-Ke-U4O"/>
+                <outlet property="payOrderBtn" destination="N3j-Vw-Gth" id="ZBm-M6-FJF"/>
+                <outlet property="prepareTransView" destination="IR1-hl-QlQ" id="FZS-zK-RbL"/>
+                <outlet property="reBuyBtn" destination="kkV-ci-E4H" id="C4n-GM-htw"/>
+                <outlet property="unpayCancelBtn" destination="mhY-uT-avf" id="jqo-ec-zEF"/>
+                <outlet property="unpayView" destination="2sX-Fs-oWk" id="uKv-lx-ABp"/>
+                <outlet property="verifyView" destination="WQC-eC-FUW" id="cbK-0m-9dP"/>
             </connections>
             <point key="canvasLocation" x="81" y="130"/>
         </tableViewCell>
