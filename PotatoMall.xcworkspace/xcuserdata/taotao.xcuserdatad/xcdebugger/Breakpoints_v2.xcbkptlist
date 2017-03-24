@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Me(&#x6211;)/Order/controller/OrderDetailTableController.m"
-            timestampString = "512030002.727719"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/PreOrderTableController.m"
             timestampString = "512029134.753102"
             startingColumnNumber = "9223372036854775807"
@@ -80,6 +64,22 @@
             startingLineNumber = "166"
             endingLineNumber = "166"
             landmarkName = "-submitOrdderDataWithParams:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Me(&#x6211;)/Order/controller/OrderDetailTableController.m"
+            timestampString = "512031755.692965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-returnOrderAlertView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

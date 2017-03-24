@@ -101,6 +101,41 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     detailControl.goodsArray = [NSMutableArray arrayWithArray: model.list];
     [self.navigationController pushViewController:detailControl animated:YES];
 }
+
+
+- (void)returnOrderAlertView
+{
+    NSString *message = @"如需退单请联系平台客服人员，并告知退单原因。";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 22;
+}
+
+
+- (void)confirmRecivedAlertView
+{
+    NSString *message = @"请确认您已成功提取所有订单上的商品，点击【确认】后该订单将被视为交易完成";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 33;
+}
+
+//修改订单状态。
+- (void)updateOrderStatusWithStatus:(NSString*)status
+{
+    //14:退单 3:确定提货
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kOrderIdKey] = self.orderModel.orderId;
+    NSString *name = [UserModelUtil sharedInstance].userModel.realName;
+    if (name.length <= 0) {
+        name = [UserModelUtil sharedInstance].userModel.phone;
+    }
+    params[kUserNameKey] = name;
+    params[@"status"] = status;
+    [self submitUpdateStatusWithParams:params];
+}
+
+
 //添加到购物车的请求参数
 - (NSDictionary*)chartParams
 {
@@ -114,11 +149,28 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         [carts addObject:goods];
     }
     params[@"carts"] = carts;
-    
     return params;
 }
 
 #pragma mark - requset server
+- (void)submitUpdateStatusWithParams:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+    }else{
+        NSString *subUrl = @"order/updateStatusOrder";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+        }];
+    }
+}
 - (void)addGoodsToChartWithOrderModel:(OrderModel*)orderModel
 {
     if ([RequestUtil networkAvaliable] == NO) {
@@ -193,6 +245,15 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         if (buttonIndex == 1) {
             [self submitDeleteCurrentOrder];
         }
+    }else if (alertView.tag == 22) {
+        //14:退单 3:确定提货
+        if (buttonIndex == 1) {
+            [self updateOrderStatusWithStatus:@"14"];
+        }
+    }else if (alertView.tag == 33) {
+        if (buttonIndex == 1) {
+            [self updateOrderStatusWithStatus:@"3"];
+        }
     }
 }
 
@@ -238,6 +299,17 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         //重新、再次购买
         cell.reBuyBlock = ^(OrderModel *model){
             [blockSelf addGoodsToChartWithOrderModel:model];
+        };
+        
+        //14:退单 3:确定提货
+        //确定提货
+        cell.confirmRecivedBlock = ^(){
+            [self confirmRecivedAlertView];
+        };
+        
+        //退单
+        cell.retuOrderBlock = ^(){
+            [self returnOrderAlertView];
         };
         
         return cell;

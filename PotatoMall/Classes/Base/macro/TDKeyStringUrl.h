@@ -31,6 +31,7 @@
 #define     kGoodsInfosKey                  @"goodsInfos"
 #define     kRemarkKey                      @"remark"
 #define     kNumKey                         @"num"
+#define     kUserNameKey                    @"userName"
 
 #define     kShippingMobileKey               @"shippingMobile"
 #define     kShippingPersonKey               @"shippingPerson"

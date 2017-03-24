@@ -128,7 +128,7 @@
         self.cancelBtn.hidden = YES;
         self.unpayView.hidden = YES;
     }else{
-        self.verifyView.hidden = YES;
+        self.verifyView.hidden = NO;
         self.confirmCancelView.hidden = YES;
         self.finishOrderView.hidden = YES;
         self.prepareTransView.hidden = YES;
@@ -153,10 +153,16 @@
 
 //退单
 - (IBAction)tapCancelOrderBtn:(id)sender {
+    if (self.retuOrderBlock != nil) {
+        self.retuOrderBlock();
+    }
 }
 
 //确定提货
 - (IBAction)tapConfirmRecivedBtn:(id)sender {
+    if (self.confirmRecivedBlock != nil) {
+        self.confirmRecivedBlock();
+    }
 }
 
 

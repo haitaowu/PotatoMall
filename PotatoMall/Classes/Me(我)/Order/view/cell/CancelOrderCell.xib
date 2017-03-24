@@ -227,7 +227,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="tapCancelOrderBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Ym-gi-rQT"/>
                                     <action selector="tapDeleteOrderBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NDl-au-U8m"/>
                                 </connections>
                             </button>
