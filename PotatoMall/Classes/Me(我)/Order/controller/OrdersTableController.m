@@ -67,7 +67,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.tableView.mj_header beginRefreshing];
+    NSDictionary *params = [self headerParams];
+    [self reqOrdersDataWithParams:params];
 }
 
 #pragma mark - private methods
@@ -187,6 +188,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         [self reqOrdersDataWithParams:params];
     }];
     self.tableView.mj_header = header;
+    [self.tableView.mj_header beginRefreshing];
+    
 }
 
 - (void)setupTableViewFooter

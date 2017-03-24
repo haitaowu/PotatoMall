@@ -36,7 +36,17 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共1件商品" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4Y-6c-shn" customClass="TitleLabel">
-                            <rect key="frame" x="351" y="12" width="64" height="17"/>
+                            <rect key="frame" x="355" y="12" width="64" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卖家已修改价格" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iH-qg-nSl">
+                            <rect key="frame" x="229" y="8" width="110" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="i4s-2e-xYm"/>
+                                <constraint firstAttribute="width" constant="110" id="mZ0-Qz-HdL"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -47,10 +57,12 @@
                         <constraint firstItem="DHh-ZI-wOC" firstAttribute="centerY" secondItem="o4Y-6c-shn" secondAttribute="centerY" id="7Wv-Ki-lrL"/>
                         <constraint firstAttribute="height" constant="40" id="CF0-D8-Vfr"/>
                         <constraint firstItem="DHh-ZI-wOC" firstAttribute="leading" secondItem="inQ-X2-cpD" secondAttribute="trailing" constant="8" id="DU5-Tz-PNB"/>
-                        <constraint firstItem="inQ-X2-cpD" firstAttribute="leading" secondItem="o4Y-6c-shn" secondAttribute="trailing" constant="20" id="J2l-HY-mWr"/>
+                        <constraint firstItem="inQ-X2-cpD" firstAttribute="leading" secondItem="o4Y-6c-shn" secondAttribute="trailing" constant="16" id="J2l-HY-mWr"/>
+                        <constraint firstItem="o4Y-6c-shn" firstAttribute="leading" secondItem="4iH-qg-nSl" secondAttribute="trailing" constant="16" id="RbH-oh-3KX"/>
                         <constraint firstItem="DHh-ZI-wOC" firstAttribute="centerY" secondItem="inQ-X2-cpD" secondAttribute="centerY" id="SyT-Xf-KkJ"/>
                         <constraint firstItem="DHh-ZI-wOC" firstAttribute="centerY" secondItem="aE8-0t-zLw" secondAttribute="centerY" id="ikX-2a-zta"/>
                         <constraint firstAttribute="trailing" secondItem="DHh-ZI-wOC" secondAttribute="trailing" constant="16" id="jBy-G3-nKx"/>
+                        <constraint firstItem="o4Y-6c-shn" firstAttribute="centerY" secondItem="4iH-qg-nSl" secondAttribute="centerY" id="oso-jp-V2n"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0y8-mV-02i" userLabel="separatorLine">
@@ -122,6 +134,7 @@
                 <outlet property="countLabel" destination="o4Y-6c-shn" id="mDP-Kq-6Sq"/>
                 <outlet property="dateLabel" destination="pUh-Fw-y5f" id="UlN-go-2Wr"/>
                 <outlet property="priceLabel" destination="DHh-ZI-wOC" id="kEz-64-P2x"/>
+                <outlet property="updateLabel" destination="4iH-qg-nSl" id="Dbb-QF-l3U"/>
             </connections>
             <point key="canvasLocation" x="126" y="-313.5"/>
         </view>

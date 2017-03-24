@@ -47,6 +47,9 @@
 /** 用户ID*/
 @property (nonatomic,copy) NSString *userId;
 
+/** 价格是否修改过*/
+@property (nonatomic,copy) NSString *isUpdate;
+
 /** 货品对象集合*/
 @property (nonatomic,strong) NSArray *list;
 

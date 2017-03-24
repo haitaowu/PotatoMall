@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UILabel *updateLabel;
 @end
 
 @implementation OrderStateFooter
@@ -20,6 +21,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    self.updateLabel.layer.borderColor = kMainTitleBlackColor.CGColor;
+    self.updateLabel.layer.borderWidth = 1;
+    self.updateLabel.layer.masksToBounds = YES;
+    self.updateLabel.layer.cornerRadius = 5;
 }
 #pragma mark - private methods
 - (NSString*)orderGoodsCount
@@ -42,6 +47,11 @@
     
     NSString *countStr = [self orderGoodsCount];
     self.countLabel.text = [NSString stringWithFormat:@"共%@件商品",countStr];
+    if ([orderModel.isUpdate isEqualToString:@"1"]) {
+        self.updateLabel.hidden = NO;
+    }else{
+        self.updateLabel.hidden = YES;
+    }
 }
 
 
