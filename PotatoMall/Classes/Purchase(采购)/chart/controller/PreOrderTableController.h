@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 
+#define kByNow                  @"buyNow"
+#define kByFormChart            @"kByFormChart"
+
 @interface PreOrderTableController : BaseTableViewController
 @property (nonatomic,strong)NSMutableArray *goodsArray;
+@property (nonatomic,copy) NSString *buyType;
 @end

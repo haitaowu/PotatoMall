@@ -78,6 +78,7 @@
 {
     if ([segue.identifier isEqualToString:@"preOrderSegue"]) {
         PreOrderTableController *destinationControl = (PreOrderTableController*)[segue destinationViewController];
+        destinationControl.buyType = kByNow;
         destinationControl.goodsArray = sender;
     }
 }

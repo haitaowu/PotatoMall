@@ -88,14 +88,20 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 - (NSDictionary*)paramsCurrent
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    NSMutableArray *goodsArr = [NSMutableArray array];
-    for (GoodsModel *obj in self.goodsArray) {
-        NSMutableDictionary *goods = [NSMutableDictionary dictionary];
-        goods[kGoodsInfoIdKey] = obj.goodsInfoId;
-        goods[kNumKey] = obj.selectedCount;
-        [goodsArr addObject:goods];
+    if ([self.buyType isEqualToString:kByNow]) {
+        GoodsModel *obj = [self.goodsArray firstObject];
+        params[kGoodsInfoIdKey] = obj.goodsInfoId;
+        params[kNumKey] = obj.selectedCount;
+    }else{
+        NSMutableArray *goodsArr = [NSMutableArray array];
+        for (GoodsModel *obj in self.goodsArray) {
+            NSMutableDictionary *goods = [NSMutableDictionary dictionary];
+            goods[kGoodsInfoIdKey] = obj.goodsInfoId;
+            goods[kNumKey] = obj.selectedCount;
+            [goodsArr addObject:goods];
+        }
+        params[kGoodsInfosKey] = goodsArr;
     }
-    params[kGoodsInfosKey] = goodsArr;
     NSString *phone = [UserModelUtil sharedInstance].userModel.phone;
     params[kShippingMobileKey] = phone ;
     params[kShippingPersonKey] = phone;
@@ -135,7 +141,12 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
         [self.tableView.mj_footer endRefreshing];
         [self.tableView reloadData];
     }else{
-        NSString *subUrl = @"order/commitOrder";
+        NSString *subUrl = nil;
+        if ([self.buyType isEqualToString:kByNow]) {
+            subUrl = @"order/buyNowCommitOrder";
+        }else{
+            subUrl = @"order/commitOrder";
+        }
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             [self.tableView.mj_footer endRefreshing];
