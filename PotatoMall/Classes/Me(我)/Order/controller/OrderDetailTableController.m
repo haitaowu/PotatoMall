@@ -11,7 +11,7 @@
 #import "OrderModel.h"
 #import "HTCalculatorToolBar.h"
 #import "OrderStateHeader.h"
-//#import "OrderDetailStateFooter.h"
+#import "ChartTableController.h"
 #import "OrderDetailTransHeader.h"
 #import "TopScrollView.h"
 #import "CancelOrderCell.h"
@@ -80,6 +80,22 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     alert.tag = 88;
 }
 
+- (void)showDeleteOrderAlertView
+{
+    NSString *message = @"确定删除订单吗？";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 99;
+}
+
+- (void)showGoodsToChartViewWithModel:(OrderModel*) model
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Purchase" bundle:nil];
+    ChartTableController *detailControl = [storyBoard instantiateViewControllerWithIdentifier:@"ChartTableController"];
+    detailControl.goodsArray = [NSMutableArray arrayWithArray: model.list];
+    [self.navigationController pushViewController:detailControl animated:YES];
+}
+
 #pragma mark - requset server
 - (void)submitCancelCurrentOrder{
     if ([RequestUtil networkAvaliable] == NO) {
@@ -102,12 +118,36 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         }];
     }
 }
+
+- (void)submitDeleteCurrentOrder{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+    }else{
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.orderModel.orderId,kOrderIdKey, nil];
+        NSString *subUrl = @"order/deleteOrder";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            //            [SVProgressHUD showInfoWithStatus:msg];
+            if (status == StatusTypSuccess) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            //            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
 #pragma mark - UIAlertViewDelegate delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == 88) {
         if (buttonIndex == 1) {
             [self submitCancelCurrentOrder];
+        }
+    }else if (alertView.tag == 99) {
+        if (buttonIndex == 1) {
+            [self submitDeleteCurrentOrder];
         }
     }
 }
@@ -128,7 +168,7 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ((indexPath.section == 0)) {
         OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderCellID];
-        OrderGoodsModel *goodsModel = self.orderModel.list[indexPath.row];
+        GoodsModel *goodsModel = self.orderModel.list[indexPath.row];
         [cell updateUIWithModel:goodsModel totalCount:self.orderModel.list.count row:indexPath.row];
 //        cell.model = goodsModel;
         return cell;
@@ -144,6 +184,16 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         //支付订单
         cell.payOrderBlock = ^(){
             [blockSelf showPrepareAlertView];
+        };
+        
+        //删除订单
+        cell.deleteOrderBlock = ^(OrderModel *model){
+            [blockSelf showDeleteOrderAlertView];
+        };
+        
+        //再次购买
+        cell.reBuyBlock = ^(OrderModel *model){
+            [blockSelf showGoodsToChartViewWithModel:model];
         };
         
         return cell;

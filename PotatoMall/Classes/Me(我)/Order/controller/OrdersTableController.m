@@ -14,7 +14,7 @@
 #import "OrderStateFooter.h"
 #import "TopScrollView.h"
 #import "OrderDetailTableController.h"
-#import "OrderGoodsModel.h"
+#import "GoodsModel.h"
 
 
 
@@ -220,7 +220,11 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
             self.firstReqFinished = YES;
             if (status == StatusTypSuccess) {
                 self.ordersArray =  [OrderModel ordersWithData:data];
-                [self.tableView.mj_footer setHidden:NO];
+                if (self.ordersArray.count > 0) {
+                    [self.tableView.mj_footer setHidden:NO];
+                }else{
+                    [self.tableView.mj_footer setHidden:YES];
+                }
             }
             [self.tableView reloadData];
             [self.tableView.mj_header endRefreshing];
@@ -269,7 +273,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderCellID];
     OrderModel *orderModel = self.ordersArray[indexPath.section];
-    OrderGoodsModel *goodsModel = orderModel.list[indexPath.row];
+    GoodsModel *goodsModel = orderModel.list[indexPath.row];
     [cell updateUIWithModel:goodsModel totalCount:orderModel.list.count row:indexPath.row];
     return cell;
 }
@@ -352,6 +356,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
                                      NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
         return [[NSAttributedString alloc] initWithString:text attributes:attributes];
     }else if ((self.firstReqFinished == YES) && (self.ordersArray.count <= 0)){
+        [self.tableView.mj_footer setHidden:YES];
         NSString *text = @"没有找到该状态的相关订单";
         NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
                                      NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};

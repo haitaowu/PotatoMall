@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OrderGoodsModel.h"
+#import "GoodsModel.h"
 
 
 @interface OrderDetailCell : UITableViewCell
-@property (nonatomic,copy) OrderGoodsModel *model;
+@property (nonatomic,copy) GoodsModel *model;
 @end

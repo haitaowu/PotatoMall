@@ -7,7 +7,7 @@
 //
 
 #import "OrderDetailTransHeader.h"
-#import "OrderGoodsModel.h"
+#import "GoodsModel.h"
 
 @interface OrderDetailTransHeader()
 @property (weak, nonatomic) IBOutlet UILabel *remarksLabel;

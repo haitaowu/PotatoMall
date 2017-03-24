@@ -24,7 +24,7 @@
 
 
 #pragma mark -  setter and getter methods 
-- (void)setModel:(OrderGoodsModel *)model
+- (void)setModel:(GoodsModel *)model
 {
     _model = model;
     self.titleLabel.text = model.goodsInfoName;

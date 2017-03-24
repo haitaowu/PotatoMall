@@ -10,4 +10,5 @@
 
 
 @interface ChartTableController : BaseTableViewController
+@property (nonatomic,strong)NSMutableArray *goodsArray;
 @end

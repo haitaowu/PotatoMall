@@ -162,10 +162,16 @@
 
 //删除订单
 - (IBAction)tapDeleteOrderBtn:(id)sender {
+    if (self.deleteOrderBlock != nil) {
+        self.deleteOrderBlock(self.model);
+    }
 }
 
 //再次购买
 - (IBAction)tapBuyAgainBtn:(id)sender {
+    if (self.reBuyBlock != nil) {
+        self.reBuyBlock(self.model);
+    }
 }
 
 //重新购买

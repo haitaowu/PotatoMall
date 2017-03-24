@@ -19,7 +19,6 @@ static NSString *HeaderID = @"HeaderID";
 
 @interface ChartTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong)HTCalculatorToolBar *toolBar;
-@property (nonatomic,strong)NSMutableArray *goodsArray;
 @property (nonatomic,strong)NSMutableArray *selectedGoods;
 @property (nonatomic,assign) BOOL firstReqFinished;
 @end
@@ -31,11 +30,14 @@ static NSString *HeaderID = @"HeaderID";
     [super viewDidLoad];
     [self setupTableView];
     self.firstReqFinished = NO;
-    [self reqGoodsData];
     [self setupNavToolbar];
     [self.navigationController  setToolbarHidden:NO animated:YES];
+    if (self.goodsArray == nil) {
+        [self reqGoodsData];
+    }else{
+        [self.tableView reloadData];
+    }
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

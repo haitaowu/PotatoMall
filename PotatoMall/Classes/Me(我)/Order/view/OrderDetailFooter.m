@@ -7,7 +7,7 @@
 //
 
 #import "OrderDetailFooter.h"
-#import "OrderGoodsModel.h"
+#import "GoodsModel.h"
 
 @interface OrderDetailFooter()
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
@@ -25,7 +25,7 @@
 - (NSString*)orderGoodsCount
 {
     int count = 0;
-    for (OrderGoodsModel *obj in self.orderModel.list) {
+    for (GoodsModel *obj in self.orderModel.list) {
         count += [obj.num intValue];;
     }
     NSString *countStr = [NSString stringWithFormat:@"%d",count];

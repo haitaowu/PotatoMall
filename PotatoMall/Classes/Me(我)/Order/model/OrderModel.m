@@ -12,7 +12,7 @@
 
 + (NSDictionary *)mj_objectClassInArray
 {
-    NSDictionary *mapDict = @{@"list": @"OrderGoodsModel"};
+    NSDictionary *mapDict = @{@"list": @"GoodsModel"};
     return mapDict;
 }
 

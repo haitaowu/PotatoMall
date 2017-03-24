@@ -28,7 +28,7 @@
 {
 }
 
-- (void)updateUIWithModel:(OrderGoodsModel*) model totalCount:(NSInteger)count row:(NSInteger)row
+- (void)updateUIWithModel:(GoodsModel*) model totalCount:(NSInteger)count row:(NSInteger)row
 {
     [self setModel:model];
     if(row == (count - 1)){
@@ -39,7 +39,7 @@
 }
 
 #pragma mark -  setter and getter methods 
-- (void)setModel:(OrderGoodsModel *)model
+- (void)setModel:(GoodsModel *)model
 {
     _model = model;
     self.titleLabel.text = model.goodsInfoName;

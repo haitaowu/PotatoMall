@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OrderGoodsModel.h"
+#import "GoodsModel.h"
 
 
 
 @interface OrderCell : UITableViewCell
-@property (nonatomic,copy) OrderGoodsModel *model;
-- (void)updateUIWithModel:(OrderGoodsModel*) model totalCount:(NSInteger)count row:(NSInteger)row;
+@property (nonatomic,copy) GoodsModel *model;
+- (void)updateUIWithModel:(GoodsModel*) model totalCount:(NSInteger)count row:(NSInteger)row;
 @end

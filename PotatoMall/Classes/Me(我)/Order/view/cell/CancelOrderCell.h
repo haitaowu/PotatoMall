@@ -11,9 +11,13 @@
 
 typedef void(^CancelBlock)();
 typedef void(^PayOrderBlock)();
+typedef void(^DeleteOrderBlock)(OrderModel *model);
+typedef void(^ReBuyBlock)(OrderModel *model);
 
 @interface CancelOrderCell : UITableViewCell
 @property (nonatomic,copy) OrderModel *model;
 @property (nonatomic,copy)CancelBlock  cancelBlock;
 @property (nonatomic,copy)PayOrderBlock  payOrderBlock;
+@property (nonatomic,copy)DeleteOrderBlock  deleteOrderBlock;
+@property (nonatomic,copy)ReBuyBlock  reBuyBlock;
 @end
