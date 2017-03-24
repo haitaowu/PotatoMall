@@ -146,6 +146,9 @@
 
 //支付订单
 - (IBAction)tapPayOrderBtn:(id)sender {
+    if (self.payOrderBlock != nil) {
+        self.payOrderBlock();
+    }
 }
 
 //退单

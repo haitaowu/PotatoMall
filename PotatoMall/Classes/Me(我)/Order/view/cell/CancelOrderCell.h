@@ -10,8 +10,10 @@
 #import "OrderModel.h"
 
 typedef void(^CancelBlock)();
+typedef void(^PayOrderBlock)();
 
 @interface CancelOrderCell : UITableViewCell
 @property (nonatomic,copy) OrderModel *model;
 @property (nonatomic,copy)CancelBlock  cancelBlock;
+@property (nonatomic,copy)PayOrderBlock  payOrderBlock;
 @end

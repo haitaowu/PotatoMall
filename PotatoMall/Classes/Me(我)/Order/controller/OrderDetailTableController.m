@@ -29,7 +29,7 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
 
 
 
-@interface OrderDetailTableController ()
+@interface OrderDetailTableController ()<UIAlertViewDelegate>
 //@property (nonatomic,strong)NSMutableArray *ordersArray;
 //@property (strong, nonatomic)  TopScrollView *tableviewHeaderView;
 @property (nonatomic,strong)NSArray *subItemTitles;
@@ -64,10 +64,24 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     [self.tableView registerNib:counterNib forHeaderFooterViewReuseIdentifier:OrderDetailFooterID];
 }
 
-
-#pragma mark - requset server
 - (void)cancelCurrentOrder
 {
+    NSString *message = @"确定取消订单吗？";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 88;
+}
+
+- (void)showPrepareAlertView
+{
+    NSString *message = @"线上支付暂时还没有开通，请联系平台客服咨询订单的支付方式。";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 88;
+}
+
+#pragma mark - requset server
+- (void)submitCancelCurrentOrder{
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
@@ -86,6 +100,15 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         } reqFail:^(int type, NSString *msg) {
 //            [SVProgressHUD showErrorWithStatus:msg];
         }];
+    }
+}
+#pragma mark - UIAlertViewDelegate delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 88) {
+        if (buttonIndex == 1) {
+            [self submitCancelCurrentOrder];
+        }
     }
 }
 
@@ -116,6 +139,11 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         cell.cancelBlock = ^(){
             HTLog(@"tap cancel button ");
             [blockSelf cancelCurrentOrder];
+        };
+        
+        //支付订单
+        cell.payOrderBlock = ^(){
+            [blockSelf showPrepareAlertView];
         };
         
         return cell;
