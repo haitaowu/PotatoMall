@@ -84,8 +84,10 @@
 {
     if ([self.type isEqualToString:kPresentModal]) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kGuestLoginSuccessNotification object:nil];
     }else{
-        [super tapBackBtn];
+//        [super tapBackBtn];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
     }
 }
 

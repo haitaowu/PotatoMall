@@ -255,6 +255,7 @@
 
 - (IBAction)tapRegisterBtn:(id)sender {
     [self.view endEditing:YES];
+    
     NSString *pwdTxt = self.pwdTextField.text;
     NSString *phoneTxt = self.phoneTextField.text;
     NSString *codeTxt = self.codeTextField.text;

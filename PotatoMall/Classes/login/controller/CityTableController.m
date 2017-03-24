@@ -27,6 +27,12 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"distriSegue"]) {
@@ -97,6 +103,7 @@
         NSString *subUrl = @"area/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
 //            [SVProgressHUD showSuccessWithStatus:msg];
 //            [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {

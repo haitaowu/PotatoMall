@@ -17,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setuBarAppear];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(guestLoginSuccess) name:kGuestLoginSuccessNotification object:nil];
+    
     UIStoryboard *homeStory = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
     HTNavgationController *homeNav = [homeStory instantiateViewControllerWithIdentifier:@"HomeNav"];
     [self addSubControllerWithChildControlelr:homeNav imageName:@"tabhome" selectdImgName:@"tabhome_selt" title:@"首页"];
@@ -30,7 +33,30 @@
     [self addSubControllerWithChildControlelr:shoppingNav imageName:@"tabme" selectdImgName:@"tabme_selt" title:@"我"];
 }
 
+#pragma mark - setup ui
+- (void)setuBarAppear
+{
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 49)];
+    UIView *sepView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+    sepView.backgroundColor = UIColorFromRGB(0xf2f2f2);
+    [backView addSubview:sepView];
+    backView.backgroundColor = [UIColor whiteColor];
+    [self.tabBar insertSubview:backView atIndex:0];
+    self.tabBar.opaque = YES;
+    [self.tabBar setClipsToBounds:YES];
+}
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+//游客登录成功 进入我界面
+- (void)guestLoginSuccess
+{
+    self.selectedIndex = 2;
+}
 
 - (void)addSubControllerWithChildControlelr:(HTNavgationController*)navController imageName:(NSString*)imgName selectdImgName:(NSString*)selectedImageName title:(NSString*)title
 {

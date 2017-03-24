@@ -25,6 +25,12 @@
     [self requestCityDatasWith:params];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"citySegue"]) {
@@ -94,7 +100,7 @@
         NSString *subUrl = @"area/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-//            [SVProgressHUD showSuccessWithStatus:msg];
+            [SVProgressHUD dismiss];
 //            [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
                 self.citiesArray = [self articlesWithData:data];

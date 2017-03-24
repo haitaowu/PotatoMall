@@ -1385,6 +1385,14 @@
                             <constraint firstItem="aJ7-q6-5oD" firstAttribute="top" secondItem="y29-9n-yr6" secondAttribute="bottom" constant="60" id="vBk-sb-GLy"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ehW-IK-3Db">
+                        <barButtonItem key="rightBarButtonItem" title="进入首页" id="Atm-6I-1DY">
+                            <connections>
+                                <action selector="tapShowHomeItem:" destination="VPE-JD-E8V" id="OkZ-zP-0bC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="titleLabel" destination="ePG-iM-rp5" id="Ix6-RD-upv"/>
                     </connections>

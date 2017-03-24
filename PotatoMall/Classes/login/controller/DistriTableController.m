@@ -27,6 +27,12 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -93,6 +99,7 @@
         NSString *subUrl = @"area/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
 //            [SVProgressHUD showSuccessWithStatus:msg];
 //            [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {

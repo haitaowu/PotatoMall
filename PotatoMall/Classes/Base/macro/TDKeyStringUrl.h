@@ -67,6 +67,7 @@
 #define     kNotiUserInfoKey                               @"kNotiUserInfoKey"
 //define notification
 #define     kLoginSuccessNotification                       @"LoginSuccessNotification"
+#define     kGuestLoginSuccessNotification                  @"kGuestLoginSuccessNotification"
 #define     kUserLogoutSuccessNotification                  @"UserLogoutSuccessNotification"
 #define     kSelectedCityNotification                       @"kSelectedCityNotification"
 

@@ -50,7 +50,7 @@
 {
     if ([segue.identifier isEqualToString:@"successSegue"]) {
         RegisterSuccessController *destinationControl = (RegisterSuccessController*)segue.destinationViewController;
-        destinationControl.title = @"完成注册！";
+        destinationControl.title = @"完成注册";
         destinationControl.desTitle = @"恭喜，你已成功注册！";
     }
 }
@@ -141,15 +141,15 @@
 }
 
 #pragma mark - private methods
-- (UserModel*)updateUserInfoSuccessWith:(id)data
+- (void)updateUserInfoSuccessWith:(id)data
 {
-    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
-    NSDictionary *userDict = [dict objectForKey:@"obj"];
-    UserModel *model = [UserModel mj_objectWithKeyValues:userDict];
-    model.avatarData = UIImagePNGRepresentation(self.avatarImg);
+//    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+//    NSDictionary *userDict = [dict objectForKey:@"obj"];
+//    UserModel *model = [UserModel mj_objectWithKeyValues:userDict];
+//    model.avatarData = UIImagePNGRepresentation(self.avatarImg);
     [[UserModelUtil sharedInstance] archiveUserModel:nil];
     [self performSegueWithIdentifier:@"successSegue" sender:nil];
-    return model;
+//    return model;
 }
 
 #pragma mark - requset server

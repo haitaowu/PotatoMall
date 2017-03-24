@@ -18,12 +18,17 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLabel.text = self.navTitle;
+    self.titleLabel.text = self.desTitle;
 }
 
 - (void)tapBackBtn
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)tapShowHomeItem:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+    
 }
 
 
