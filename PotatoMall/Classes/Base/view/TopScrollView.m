@@ -7,6 +7,7 @@
 //
 
 #import "TopScrollView.h"
+#import "TitleLabel.h"
 
 
 #define kSliderHeight               4
@@ -146,7 +147,7 @@
     CGFloat itemHeight = kScrollViewHeight - kSliderHeight;
     for (int idx = 0 ; idx < titles.count; idx++) {
         
-        UIButton * btn = [[UIButton alloc] init];
+        UIButton *btn = [[UIButton alloc] init];
         btn.titleLabel.font = [TitleLabel titleHFont];
         if (idx == 0) {
             btn.selected = YES;
@@ -159,7 +160,6 @@
         [btn setTitleColor:selectedColor forState:UIControlStateSelected];
         NSString *title = titles[idx];
         [btn setTitle:title forState:UIControlStateNormal];
-        [btn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         btn.tag = idx;
         [btn addTarget:self action:@selector(tapAtItem:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];

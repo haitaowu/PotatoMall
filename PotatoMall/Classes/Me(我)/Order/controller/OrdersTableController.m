@@ -148,6 +148,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 //    CGRect frame =  CGRectMake(0, 0, kScreenWidth, 44);
 //    self.tableviewHeaderView = [[TopScrollView alloc] initWithFrame:frame];
     self.tableviewHeaderView.backgroundColor = [UIColor whiteColor];
+    [self.tableviewHeaderView showSeparatorLine];
     self.tableviewHeaderView.titles = [NSMutableArray arrayWithArray:_subItemTitles];
     self.tableviewHeaderView.normalTextColor = kMainTitleBlackColor;
     self.tableviewHeaderView.selectedTextColor = kMainNavigationBarColor;

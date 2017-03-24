@@ -7,6 +7,7 @@
 //
 
 #import "GoodsCell.h"
+#import "TitleLabel.h"
 #import "NSString+Extentsion.h"
 
 #define kSiderMargin                    16
@@ -18,7 +19,7 @@
 
 
 @interface GoodsCell ()
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet TitleLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *picView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adrLabel;
@@ -28,6 +29,7 @@
 #pragma mark - override methods
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.adrLabel.font = [UIFont fontWithName:@"Helvetica" size:14.0f];
 }
 
 - (void)layoutSubviews

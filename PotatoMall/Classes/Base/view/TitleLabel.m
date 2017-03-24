@@ -32,6 +32,7 @@
 
 + (UIFont*)titleHFont
 {
-    return [UIFont fontWithName:@"Helvetica"size:16.f];
+    return [UIFont fontWithName:@"Helvetica" size:16.f];
 }
+
 @end
