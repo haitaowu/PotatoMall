@@ -168,8 +168,8 @@
                         <segue destination="P1o-dH-RAW" kind="show" identifier="chargeSegue" id="9x4-23-HGy"/>
                         <segue destination="wMD-pi-27o" kind="show" identifier="productSegue" id="w2B-Nl-lNU"/>
                         <segue destination="kQ8-uf-s8g" kind="show" identifier="salesSegue" id="32r-Rs-fEL"/>
-                        <segue destination="zUt-qa-BKh" kind="show" identifier="orderesSegue" id="cxN-V4-LNx"/>
                         <segue destination="Iuy-Tx-uhF" kind="show" identifier="meInfoSegue" id="j8B-bw-zAB"/>
+                        <segue destination="5Mu-Tg-Cwh" kind="show" identifier="orderesSegue" id="hbo-tH-SnY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYt-I9-Y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -389,6 +389,54 @@
             </objects>
             <point key="canvasLocation" x="2375" y="-548"/>
         </scene>
+        <!--Orders Table Controller-->
+        <scene sceneID="VUg-70-SxE">
+            <objects>
+                <viewController id="5Mu-Tg-Cwh" customClass="OrdersTableController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7OR-5G-SnI"/>
+                        <viewControllerLayoutGuide type="bottom" id="ffR-sH-wvw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I1W-cf-VAz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoC-f0-egd" customClass="TopScrollView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="M0x-Rz-zSq"/>
+                                </constraints>
+                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ER3-le-OnV">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Mu-Tg-Cwh" id="iba-CM-jyQ"/>
+                                    <outlet property="delegate" destination="5Mu-Tg-Cwh" id="s3l-fs-oOj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ffR-sH-wvw" firstAttribute="top" secondItem="ER3-le-OnV" secondAttribute="bottom" id="1oY-ru-lFB"/>
+                            <constraint firstAttribute="trailing" secondItem="NoC-f0-egd" secondAttribute="trailing" id="LdU-gL-2Vu"/>
+                            <constraint firstItem="ER3-le-OnV" firstAttribute="top" secondItem="NoC-f0-egd" secondAttribute="bottom" id="eW5-kR-t9R"/>
+                            <constraint firstItem="ER3-le-OnV" firstAttribute="leading" secondItem="I1W-cf-VAz" secondAttribute="leading" id="fyH-za-VYF"/>
+                            <constraint firstItem="NoC-f0-egd" firstAttribute="leading" secondItem="I1W-cf-VAz" secondAttribute="leading" id="oQB-6b-Kty"/>
+                            <constraint firstItem="NoC-f0-egd" firstAttribute="top" secondItem="7OR-5G-SnI" secondAttribute="bottom" id="qWx-5K-2he"/>
+                            <constraint firstAttribute="trailing" secondItem="ER3-le-OnV" secondAttribute="trailing" id="xRO-n7-ty6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ER3-le-OnV" id="d1S-dE-R51"/>
+                        <outlet property="tableviewHeaderView" destination="NoC-f0-egd" id="CD6-gc-yIK"/>
+                        <segue destination="U5X-Vm-aJ1" kind="show" identifier="detailSegue" id="ngD-zM-0c6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRA-xu-E8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2306.4000000000001" y="243.32833583208398"/>
+        </scene>
         <!--我的采购-->
         <scene sceneID="wR4-x9-ucb">
             <objects>
@@ -413,13 +461,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="我的采购" id="UY1-1u-a5y"/>
-                    <connections>
-                        <segue destination="U5X-Vm-aJ1" kind="show" identifier="detailSegue" id="wYr-1B-mic"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCR-Ci-DFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2374" y="205"/>
+            <point key="canvasLocation" x="4193" y="-513"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Zj8-BY-SjK">

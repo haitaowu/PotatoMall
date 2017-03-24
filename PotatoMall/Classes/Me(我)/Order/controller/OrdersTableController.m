@@ -18,6 +18,7 @@
 
 
 
+
 static NSString *OrderCellID = @"OrderCell";
 
 static NSString *OrderStateHeaderID = @"OrderStateHeaderID";
@@ -26,10 +27,16 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 
 @interface OrdersTableController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong)NSMutableArray *ordersArray;
-@property (nonatomic,strong)NSMutableArray *originOrders;
-@property (strong, nonatomic) TopScrollView *tableviewHeaderView;
+//@property (nonatomic,strong)NSMutableArray *originOrders;
+@property (strong, nonatomic) IBOutlet TopScrollView *tableviewHeaderView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *subItemTitles;
 @property (nonatomic,assign) BOOL firstReqFinished;
+
+@property (nonatomic,assign) int pageNo;
+@property (nonatomic,assign) int pageSize;
+@property (nonatomic,assign) int currentStatus;
+
 @end
 
 @implementation OrdersTableController
@@ -37,7 +44,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
-    [self reqOrdersData];
+    self.pageSize = 10;
+    self.currentStatus = -1;
     [self setupTableviewTableheader];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelOrderSuccess:) name:kCancelOrderSuccessNotification object:nil];
 }
@@ -54,28 +62,80 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-#pragma mark - private methods
-- (void)updateUIWithSelectedStatus:(int)status
+
+- (void)viewWillAppear:(BOOL)animated
 {
-    //订单状态 0待确认 1未付款 2待提货 3已完成  -1为全部（暂定）
-    if (status == -1) {
-       self.ordersArray = self.originOrders;
-    }else{
-        NSMutableArray *orders = [self ordersWithStatus:[NSString stringWithFormat:@"%d",status]];
-        self.ordersArray = orders;
-    }
-    [self.tableView reloadData];
+    [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
 }
 
-- (NSMutableArray*)ordersWithStatus:(NSString*)status
+#pragma mark - private methods
+//- (void)setupBaseData
+//{
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    id userId = [UserModelUtil sharedInstance].userModel.userId;
+//    params[kUserIdKey] = userId;
+//    params[kPageNo] = @(self.pageNo);
+//    params[kPageSize] =@(self.pageSize);
+//    [self reqOrdersDataWithParams:params];
+//}
+
+- (void)updateUIWithSelectedStatus:(int)status
 {
-    NSMutableArray *orders = [NSMutableArray array];
-    for (OrderModel *obj in self.originOrders) {
-        if ([obj.orderStatus isEqualToString:status]) {
-            [orders addObject:obj];
-        }
+    self.currentStatus = status;
+    //订单状态 0待确认 1未付款 2待提货 3已完成  -1为全部（暂定）
+    [self.tableView.mj_header beginRefreshing];
+//    if (status == -1) {
+//       self.ordersArray = self.originOrders;
+//    }else{
+//        NSMutableArray *orders = [self ordersWithStatus:[NSString stringWithFormat:@"%d",status]];
+//        self.ordersArray = orders;
+//    }
+//    [self.tableView reloadData];
+}
+
+//- (NSMutableArray*)ordersWithStatus:(NSString*)status
+//{
+//    NSMutableArray *orders = [NSMutableArray array];
+//    for (OrderModel *obj in self.originOrders) {
+//        if ([obj.orderStatus isEqualToString:status]) {
+//            [orders addObject:obj];
+//        }
+//    }
+//    return orders;
+//}
+
+- (NSDictionary*)headerParams
+{
+    self.pageNo = 1;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    id userId = [UserModelUtil sharedInstance].userModel.userId;
+    params[kUserIdKey] = userId;
+    params[kPageNo] = @(self.pageNo);
+    params[kPageSize] = @(self.pageSize);
+    if (self.currentStatus == -1) {
+        params[@"orderStatus"] = @[@0,@1, @2, @3, @4, @8, @14];
+    }else{
+        params[@"orderStatus"] = @[@(self.currentStatus)];
     }
-    return orders;
+    return params;
+}
+
+
+- (NSDictionary*)footerParams
+{
+    self.pageNo ++;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    id userId = [UserModelUtil sharedInstance].userModel.userId;
+    params[kUserIdKey] = userId;
+    params[kPageNo] = @(self.pageNo);
+    params[kPageSize] = @(self.pageSize);
+    if (self.currentStatus == -1) {
+        params[@"orderStatus"] = @[@0,@1, @2, @3, @4, @8, @14];
+    }else{
+        params[@"orderStatus"] = @[@(self.currentStatus)];
+    }
+    return params;
 }
 
 #pragma mark - setup UI
@@ -83,8 +143,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 {
     //订单状态 0待确认 1未付款 2待提货 3已完成  -1为全部（暂定）
     self.subItemTitles = @[@"全部",@"待确认",@"未付款",@"待提货",@"已完成"];
-    CGRect frame =  CGRectMake(0, 0, kScreenWidth, 44);
-    self.tableviewHeaderView = [[TopScrollView alloc] initWithFrame:frame];
+//    CGRect frame =  CGRectMake(0, 0, kScreenWidth, 44);
+//    self.tableviewHeaderView = [[TopScrollView alloc] initWithFrame:frame];
     self.tableviewHeaderView.backgroundColor = [UIColor whiteColor];
     self.tableviewHeaderView.titles = [NSMutableArray arrayWithArray:_subItemTitles];
     self.tableviewHeaderView.normalTextColor = kMainTitleBlackColor;
@@ -98,12 +158,14 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         int index = (int)idx - 1;
         [blockSelf updateUIWithSelectedStatus:index];
     };
-    self.tableView.tableHeaderView = self.tableviewHeaderView;
+//    self.tableView.tableHeaderView = self.tableviewHeaderView;
 }
 - (void)setupTableView
 {
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
+    [self setupTableViewHeader];
+    [self setupTableViewFooter];
     
     UINib *cellNib = [UINib nibWithNibName:@"OrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:OrderCellID];
@@ -116,6 +178,27 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     [self.tableView registerNib:footerNib forHeaderFooterViewReuseIdentifier:OrderStateFooterID];
 }
 
+#pragma mark - setup UI
+- (void)setupTableViewHeader
+{
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSDictionary *params = [self headerParams];
+        [self reqOrdersDataWithParams:params];
+    }];
+    self.tableView.mj_header = header;
+}
+
+- (void)setupTableViewFooter
+{
+    MJRefreshAutoNormalFooter  *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        NSDictionary *params = [self footerParams];
+        [self reqMoreOrdersDataWithParams:params];
+    }];
+    self.tableView.mj_footer = footer;
+    [self.tableView.mj_footer setHidden:YES];
+}
+
+
 #pragma mark - selectors
 - (void)cancelOrderSuccess:(NSNotification*)sender
 {
@@ -125,29 +208,48 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 }
 
 #pragma mark - requset server
-- (void)reqOrdersData
+- (void)reqOrdersDataWithParams:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView reloadData];
     }else{
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        id userId = [UserModelUtil sharedInstance].userModel.userId;
-        params[kUserIdKey] = userId;
-        params[@"pageNo"] = @"1";
-        params[@"pageSize"] = @"10";
         NSString *subUrl = @"order/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
 //            [SVProgressHUD showInfoWithStatus:msg];
             self.firstReqFinished = YES;
             if (status == StatusTypSuccess) {
-                self.originOrders = [OrderModel ordersWithData:data];
-                self.ordersArray =  self.originOrders;
+                self.ordersArray =  [OrderModel ordersWithData:data];
+                [self.tableView.mj_footer setHidden:NO];
             }
             [self.tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
         } reqFail:^(int type, NSString *msg) {
+            [self.tableView.mj_header endRefreshing];
             self.firstReqFinished = YES;
-//            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
+- (void)reqMoreOrdersDataWithParams:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView reloadData];
+    }else{
+        NSString *subUrl = @"order/list";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            //            [SVProgressHUD showInfoWithStatus:msg];
+            self.firstReqFinished = YES;
+            if (status == StatusTypSuccess) {
+                NSMutableArray *ordersArray = [OrderModel ordersWithData:data];
+               [self.ordersArray addObjectsFromArray:ordersArray];
+            }
+            [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+        } reqFail:^(int type, NSString *msg) {
+            [self.tableView.mj_footer endRefreshing];
+            self.firstReqFinished = YES;
         }];
     }
 }

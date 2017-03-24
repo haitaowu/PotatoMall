@@ -31,7 +31,7 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
 
 @interface OrderDetailTableController ()
 //@property (nonatomic,strong)NSMutableArray *ordersArray;
-@property (strong, nonatomic) TopScrollView *tableviewHeaderView;
+//@property (strong, nonatomic)  TopScrollView *tableviewHeaderView;
 @property (nonatomic,strong)NSArray *subItemTitles;
 @end
 

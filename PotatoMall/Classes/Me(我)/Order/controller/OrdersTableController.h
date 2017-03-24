@@ -6,8 +6,7 @@
 //  Copyright © 2017 taotao. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-
-@interface OrdersTableController : BaseTableViewController
+@interface OrdersTableController : BaseViewController
 @end
