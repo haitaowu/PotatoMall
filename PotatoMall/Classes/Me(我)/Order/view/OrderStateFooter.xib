@@ -66,21 +66,21 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0y8-mV-02i" userLabel="separatorLine">
-                    <rect key="frame" x="16" y="40" width="504" height="1"/>
+                    <rect key="frame" x="0.0" y="40" width="520" height="1"/>
                     <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="VtV-5f-Qvj"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx" customClass="TitleLabel">
-                    <rect key="frame" x="16" y="56" width="67" height="61"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx">
+                    <rect key="frame" x="16" y="56" width="61.5" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-3-8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Fw-y5f" customClass="TitleLabel">
-                    <rect key="frame" x="85" y="79" width="58" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-3-8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Fw-y5f">
+                    <rect key="frame" x="79.5" y="80" width="54" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -115,7 +115,7 @@
                 <constraint firstItem="aE8-0t-zLw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OBY-tm-xJn"/>
                 <constraint firstItem="0y8-mV-02i" firstAttribute="top" secondItem="aE8-0t-zLw" secondAttribute="bottom" id="Rej-eT-YTN"/>
                 <constraint firstAttribute="trailing" secondItem="P99-Dv-OnB" secondAttribute="trailing" constant="16" id="ZQb-63-61w"/>
-                <constraint firstItem="0y8-mV-02i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ctU-Nc-d94"/>
+                <constraint firstItem="0y8-mV-02i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ctU-Nc-d94"/>
                 <constraint firstAttribute="trailing" secondItem="aE8-0t-zLw" secondAttribute="trailing" id="ezY-mM-TVG"/>
                 <constraint firstItem="YFL-GD-y1S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hAT-9T-I93"/>
                 <constraint firstAttribute="bottom" secondItem="YFL-GD-y1S" secondAttribute="bottom" id="htB-0Y-9cU"/>

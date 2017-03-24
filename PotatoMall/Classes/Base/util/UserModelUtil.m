@@ -93,11 +93,11 @@ static UserModelUtil *instance = nil;
 + (NSString*)userRoleWithType:(NSString*)type
 {
     if ([type isEqualToString:@"1"]) {
-        return @"个体种植户";
+        return @"马铃薯种植户";
     }else if ([type isEqualToString:@"2"]) {
         return @"种植企业 ";
     }else if ([type isEqualToString:@"3"]) {
-        return @"批发商/采购商";
+        return @"马铃薯采购商";
     }else if ([type isEqualToString:@"4"]) {
         return @"种薯种植企业";
     }else{

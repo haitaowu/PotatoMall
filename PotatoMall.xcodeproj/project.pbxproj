@@ -489,12 +489,12 @@
 			children = (
 				BE077A611E6A975F006F0EFB /* ChartTableController.h */,
 				BE077A621E6A975F006F0EFB /* ChartTableController.m */,
-				BED202801E7062BB00437133 /* OrderSuccessController.h */,
-				BED202811E7062BB00437133 /* OrderSuccessController.m */,
 				BED84A021E6FD905001E7A27 /* PreOrderTableController.h */,
 				BED84A031E6FD905001E7A27 /* PreOrderTableController.m */,
 				BED84A171E7004B7001E7A27 /* TransportTableController.h */,
 				BED84A181E7004B7001E7A27 /* TransportTableController.m */,
+				BED202801E7062BB00437133 /* OrderSuccessController.h */,
+				BED202811E7062BB00437133 /* OrderSuccessController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";

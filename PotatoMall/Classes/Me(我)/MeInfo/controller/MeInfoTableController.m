@@ -82,6 +82,13 @@
                                                     otherButtonTitles:@"相机",@"相册",nil];
     [actionSheet showInView:self.view];
 }
+//修改已经确定的用户身份给出的提示语
+- (void)showAlertView
+{
+    NSString *message = @"帐号身份不可随意更改，如有更改必要请联系客服人员，并说明情况";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    [alert show];
+}
 
 
 #pragma mark - selectors
@@ -208,6 +215,8 @@
         UserModel *model = [UserModelUtil sharedInstance].userModel;
         if (model.userType == nil){
             [self performSegueWithIdentifier:@"modifyRoleSegue" sender:nil];
+        }else{
+            [self showAlertView];
         }
     }else if ((indexPath.section == 2) && (indexPath.row == 1)) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];

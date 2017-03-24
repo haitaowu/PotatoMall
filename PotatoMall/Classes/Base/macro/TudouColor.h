@@ -13,7 +13,7 @@
 
 #define kHotArticleitleColor                    UIColorFromRGB(0x3E3E3E)
 
-#define  kEmptyDataTitleFont                [UIFont systemFontOfSize:12.0f]
+#define  kEmptyDataTitleFont                    [UIFont fontWithName:@"Helvetica" size:16.f]
 
 
 #define kMainNavigationBarColor                 RGBA(253, 187, 63, 1)

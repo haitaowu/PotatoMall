@@ -97,7 +97,7 @@
         NSString *subUrl = @"area/list";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            [SVProgressHUD showSuccessWithStatus:msg];
+//            [SVProgressHUD showSuccessWithStatus:msg];
 //            [self.tableView.mj_header endRefreshing];
             if (status == StatusTypSuccess) {
                 self.citiesArray = [self articlesWithData:data];

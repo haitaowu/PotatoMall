@@ -42,6 +42,7 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController.toolbar setBackgroundColor:[UIColor whiteColor]];
     [self updateUserInfoUI];
 }
 
@@ -59,19 +60,20 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     [[UserModelUtil sharedInstance] avatarImageWithBlock:^(UIImage *img) {
         self.avatarView.image = img;
     }];
-    NSString *nickName ;
+    NSString *roleTitle ;
     if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
         UserModel *model = [UserModelUtil sharedInstance].userModel;
+        NSString *nickName = model.nickName;
         self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
         if ((nickName.length <= 0) || (nickName == nil)) {
-            nickName = model.phone;
+            roleTitle = model.phone;
         }else{
-            nickName = model.nickName;
+            roleTitle = model.nickName;
         }
     }else{
-        nickName = @"游客";
+        roleTitle = @"游客";
     }
-    self.nickNameLabel.text = [NSString stringWithFormat:@"%@",nickName];
+    self.nickNameLabel.text = [NSString stringWithFormat:@"%@",roleTitle];
 }
 
 #pragma mark - requset server

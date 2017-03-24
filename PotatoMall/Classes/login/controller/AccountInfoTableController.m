@@ -100,13 +100,14 @@
 
 - (IBAction)submitUserInfo:(id)sender {
     UserModel *model = [UserModelUtil sharedInstance].userModel;
-    if (self.avatarImg == nil) {
-    [SVProgressHUD showInfoWithStatus:@"请选择头像"];
-    return;
+//    if (self.avatarImg == nil) {
+//    [SVProgressHUD showInfoWithStatus:@"请选择头像"];
+//    return;
 //    }else if ([self.nickNameField.text strWithoutSpace].length <= 0) {
 //        [SVProgressHUD showInfoWithStatus:@"请输入昵称"];
 //        return;
-    }else if ([self.realNameField.text strWithoutSpace].length <= 0) {
+//    }else
+    if ([self.realNameField.text strWithoutSpace].length <= 0) {
         [SVProgressHUD showInfoWithStatus:@"请输入真实姓名"];
         return;
     }else if ([self.idTextField.text strWithoutSpace].length <= 0) {

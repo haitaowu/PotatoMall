@@ -78,6 +78,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 {
     [super viewWillAppear:animated] ;
     [self.navigationController  setToolbarHidden:YES animated:YES];
+    [self.navigationController.toolbar setBackgroundColor:[UIColor whiteColor]];
     if (self.springRecomGoods.list == nil) {
         [self requestProductsData];
     }
