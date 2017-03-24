@@ -44,6 +44,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
+    self.title = @"我的采购";
     self.pageSize = 10;
     self.currentStatus = -1;
     [self setupTableviewTableheader];

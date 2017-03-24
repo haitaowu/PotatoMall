@@ -176,6 +176,9 @@
 
 //重新购买
 - (IBAction)tapReBuyBtn:(id)sender {
+    if (self.reBuyBlock != nil) {
+        self.reBuyBlock(self.model);
+    }
 }
 
 @end

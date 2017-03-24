@@ -392,7 +392,7 @@
         <!--Orders Table Controller-->
         <scene sceneID="VUg-70-SxE">
             <objects>
-                <viewController id="5Mu-Tg-Cwh" customClass="OrdersTableController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5Mu-Tg-Cwh" customClass="OrdersTableController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7OR-5G-SnI"/>
                         <viewControllerLayoutGuide type="bottom" id="ffR-sH-wvw"/>

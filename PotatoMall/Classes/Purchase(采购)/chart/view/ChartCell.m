@@ -84,11 +84,11 @@
     }
     
 //    model.selectedCount = @"1";
-//    if (model.num.length > 0) {
-//        self.countField.text = model.num;
-//    }else{
-//        self.countField.text = @"1";
-//    }
+    if (model.num.length > 0) {
+        self.countField.text = model.num;
+    }else{
+        self.countField.text = @"1";
+    }
     self.selectView.selected = self.model.isSelected;
 }
 

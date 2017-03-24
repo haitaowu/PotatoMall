@@ -43,6 +43,12 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     [self setupTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController  setToolbarHidden:YES animated:NO];
+}
+
 #pragma mark - setup UI 
 - (void)setupTableView
 {
@@ -95,8 +101,46 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     detailControl.goodsArray = [NSMutableArray arrayWithArray: model.list];
     [self.navigationController pushViewController:detailControl animated:YES];
 }
+//添加到购物车的请求参数
+- (NSDictionary*)chartParams
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = [UserModelUtil sharedInstance].userModel.userId;
+    NSMutableArray *carts = [NSMutableArray array];
+    for (GoodsModel *obj in self.orderModel.list) {
+        NSMutableDictionary *goods = [NSMutableDictionary dictionary];
+        goods[kGoodsInfoIdKey] = obj.goodsInfoId;
+        goods[kNumKey] = obj.num;
+        [carts addObject:goods];
+    }
+    params[@"carts"] = carts;
+    
+    return params;
+}
 
 #pragma mark - requset server
+- (void)addGoodsToChartWithOrderModel:(OrderModel*)orderModel
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+    }else{
+        NSDictionary *params = [self chartParams];
+        NSString *subUrl = @"cart/addShopCart";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                [self showGoodsToChartViewWithModel:orderModel];
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"商品已经下架"];
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            //            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
 - (void)submitCancelCurrentOrder{
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView.mj_header endRefreshing];
@@ -191,9 +235,9 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
             [blockSelf showDeleteOrderAlertView];
         };
         
-        //再次购买
+        //重新、再次购买
         cell.reBuyBlock = ^(OrderModel *model){
-            [blockSelf showGoodsToChartViewWithModel:model];
+            [blockSelf addGoodsToChartWithOrderModel:model];
         };
         
         return cell;
