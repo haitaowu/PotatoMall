@@ -10,6 +10,7 @@
 #import "ArticleDetailModel.h"
 #import "WXApi.h"
 #import "ArticleContentView.h"
+#import "HTAlertView.h"
 
 @interface AritcleDetailController ()<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet ArticleContentView *contentView;
 @property (nonatomic,strong)ArticleDetailModel *articleModel;
+@property (nonatomic,strong)HTAlertView  *shareAlertView;
 @end
 
 @implementation AritcleDetailController
@@ -41,18 +43,24 @@
 }
 
 
+-(HTAlertView *)shareAlertView
+{
+    if(_shareAlertView== nil)
+    {
+        __block typeof(self) blockSelf = self;
+        _shareAlertView = [HTAlertView showAleretViewWithFriendsBlock:^{
+            [blockSelf shareWithScene:WXSceneSession];
+        } allFriendsBlock:^{
+            [blockSelf shareWithScene:WXSceneTimeline];
+        }];
+    }
+    return _shareAlertView;
+}
+
+
 #pragma mark - selectors
 - (IBAction)tapShareItem:(id)sender {
-    if([WXApi isWXAppInstalled]){
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享"
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"取消"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"分享到朋友圈",@"分享到朋友",nil];
-        [actionSheet showInView:self.view];
-    }else{
-        [SVProgressHUD showErrorWithStatus:@"请安装微信再使用该功能"];
-    }
+    [self.shareAlertView showView];
 }
 
 
@@ -76,27 +84,39 @@
     }
 }
 
-
-#pragma mark - UIAction sheet delegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)shareWithScene:(int) scene
 {
-    int scene = -1;
-    switch (buttonIndex) {
-        case 0:
-            scene = WXSceneTimeline;
-            break;
-        case 1:
-            scene = WXSceneSession;
-            break;
-        default:
-            break;
-    }
-    
-    if (scene != -1) {
-        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kArticleSkipType,self.articleModel.infoId];
-        [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt imageUrl:self.paramModel.imgSrc url:urlStr];
+    if([WXApi isWXAppInstalled]){
+        if (scene != -1) {
+            NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kArticleSkipType,self.articleModel.infoId];
+            [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt imageUrl:self.paramModel.imgSrc url:urlStr];
+        }
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"请安装微信再使用该功能"];
     }
 }
+
+
+#pragma mark - UIAction sheet delegate
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    int scene = -1;
+//    switch (buttonIndex) {
+//        case 0:
+//            scene = WXSceneTimeline;
+//            break;
+//        case 1:
+//            scene = WXSceneSession;
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    if (scene != -1) {
+//        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kArticleSkipType,self.articleModel.infoId];
+//        [CommHelper shareUrlWithScene:scene title:self.paramModel.title description:self.paramModel.descrpt imageUrl:self.paramModel.imgSrc url:urlStr];
+//    }
+//}
 
 
 

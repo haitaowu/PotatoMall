@@ -58,10 +58,9 @@ static HTAlertView *instance = nil;
     [self disappearView];
 }
 
-
 - (void)disappearView
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.001 animations:^{
         self.alpha = 0;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];

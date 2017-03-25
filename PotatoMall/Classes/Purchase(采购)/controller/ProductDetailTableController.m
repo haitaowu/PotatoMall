@@ -332,9 +332,13 @@
 
 - (void)shareWithScene:(int) scene
 {
-    if (scene != -1) {
-        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,self.goodModel.goodsInfoId];
-        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
+    if([WXApi isWXAppInstalled]){
+        if (scene != -1) {
+            NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,self.goodModel.goodsInfoId];
+            [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
+        }
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"请安装微信再使用该功能"];
     }
 }
 
