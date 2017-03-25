@@ -60,20 +60,21 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     [[UserModelUtil sharedInstance] avatarImageWithBlock:^(UIImage *img) {
         self.avatarView.image = img;
     }];
-    NSString *roleTitle ;
     if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
         UserModel *model = [UserModelUtil sharedInstance].userModel;
         NSString *nickName = model.nickName;
         self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
+        NSString *roleTitle ;
         if ((nickName.length <= 0) || (nickName == nil)) {
             roleTitle = model.phone;
         }else{
             roleTitle = model.nickName;
         }
+        self.nickNameLabel.text = [NSString stringWithFormat:@"%@",roleTitle];
     }else{
-        roleTitle = @"游客";
+        self.nickNameLabel.text = @"游客";
+        self.roleLabel.text = @"";
     }
-    self.nickNameLabel.text = [NSString stringWithFormat:@"%@",roleTitle];
 }
 
 #pragma mark - requset server

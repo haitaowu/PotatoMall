@@ -116,7 +116,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     params[kPageNo] = @(self.pageNo);
     params[kPageSize] = @(self.pageSize);
     if (self.currentStatus == -1) {
-        params[@"orderStatus"] = @[@0,@1, @2, @3, @4, @8, @14];
+        params[@"orderStatus"] = @[@0,@1, @2, @3, @8, @14];
     }else{
         params[@"orderStatus"] = @[@(self.currentStatus)];
     }
@@ -133,7 +133,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     params[kPageNo] = @(self.pageNo);
     params[kPageSize] = @(self.pageSize);
     if (self.currentStatus == -1) {
-        params[@"orderStatus"] = @[@0,@1, @2, @3, @4, @8, @14];
+        params[@"orderStatus"] = @[@0,@1, @2, @3, @8, @14];
     }else{
         params[@"orderStatus"] = @[@(self.currentStatus)];
     }
