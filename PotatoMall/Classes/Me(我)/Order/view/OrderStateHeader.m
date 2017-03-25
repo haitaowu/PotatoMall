@@ -27,7 +27,15 @@
     _orderModel = orderModel;
     self.orderNumLabel.text = orderModel.orderCode;
     self.stateLabel.text = [orderModel orderStatusZH];
+    
+    //订单状态 0待确认 1未付款 2待提货 3已完成  同意退货:已退单 已提交退货审核:退单审核中...
+    if (([orderModel.orderStatus isEqualToString:@"14"]) || ([orderModel.orderStatus isEqualToString:@"14"])) {
+        self.stateLabel.textColor = [UIColor redColor];
+    }else{
+        self.stateLabel.textColor = kMainNavigationBarColor;
+    }
 }
+
 
 
 @end
