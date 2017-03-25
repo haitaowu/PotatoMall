@@ -15,6 +15,8 @@
 		BE077A721E6A9ADA006F0EFB /* PlustField.m in Sources */ = {isa = PBXBuildFile; fileRef = BE077A711E6A9ADA006F0EFB /* PlustField.m */; };
 		BE077A781E6AC581006F0EFB /* ChartSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE077A771E6AC581006F0EFB /* ChartSectionHeader.m */; };
 		BE077A7A1E6AC606006F0EFB /* ChartSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE077A791E6AC606006F0EFB /* ChartSectionHeader.xib */; };
+		BE0B09971E8622E200635E71 /* HTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0B09951E8622E200635E71 /* HTAlertView.m */; };
+		BE0B09981E8622E200635E71 /* HTAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0B09961E8622E200635E71 /* HTAlertView.xib */; };
 		BE0CFD421E6DA0F200003FE1 /* ParamsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0CFD411E6DA0F200003FE1 /* ParamsCell.m */; };
 		BE0CFD451E6DA13B00003FE1 /* ProductSpecificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0CFD441E6DA13B00003FE1 /* ProductSpecificationCell.m */; };
 		BE0CFD481E6DB85B00003FE1 /* SpecButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0CFD471E6DB85B00003FE1 /* SpecButton.m */; };
@@ -174,6 +176,9 @@
 		BE077A761E6AC581006F0EFB /* ChartSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartSectionHeader.h; sourceTree = "<group>"; };
 		BE077A771E6AC581006F0EFB /* ChartSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartSectionHeader.m; sourceTree = "<group>"; };
 		BE077A791E6AC606006F0EFB /* ChartSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartSectionHeader.xib; sourceTree = "<group>"; };
+		BE0B09941E8622E200635E71 /* HTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAlertView.h; sourceTree = "<group>"; };
+		BE0B09951E8622E200635E71 /* HTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAlertView.m; sourceTree = "<group>"; };
+		BE0B09961E8622E200635E71 /* HTAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTAlertView.xib; sourceTree = "<group>"; };
 		BE0CFD401E6DA0F200003FE1 /* ParamsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamsCell.h; sourceTree = "<group>"; };
 		BE0CFD411E6DA0F200003FE1 /* ParamsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParamsCell.m; sourceTree = "<group>"; };
 		BE0CFD431E6DA13B00003FE1 /* ProductSpecificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSpecificationCell.h; sourceTree = "<group>"; };
@@ -533,6 +538,16 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		BE0B09931E8622E200635E71 /* HTPopShareView */ = {
+			isa = PBXGroup;
+			children = (
+				BE0B09941E8622E200635E71 /* HTAlertView.h */,
+				BE0B09951E8622E200635E71 /* HTAlertView.m */,
+				BE0B09961E8622E200635E71 /* HTAlertView.xib */,
+			);
+			path = HTPopShareView;
+			sourceTree = "<group>";
+		};
 		BE0DDB3B1E6D0B4300F15168 /* toolbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -710,6 +725,7 @@
 		BE5ED7A61E61B3F700C4B1D0 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				BE0B09931E8622E200635E71 /* HTPopShareView */,
 				BE5ED7DB1E62B29000C4B1D0 /* AES */,
 				BE5ED7A71E61B3F700C4B1D0 /* Reachability */,
 				BED8FA571E77922000795F7E /* WeChatShare */,
@@ -1274,6 +1290,7 @@
 				BE0DDB4E1E6D46FA00F15168 /* GoodsCell.xib in Resources */,
 				BED84A131E6FEF91001E7A27 /* OrderFeedCell.xib in Resources */,
 				BE6DAEE61E73CE9700E82C47 /* Launch Screen.storyboard in Resources */,
+				BE0B09981E8622E200635E71 /* HTAlertView.xib in Resources */,
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
 				BE59A4711E63CEE00077D9AD /* MeMenus.plist in Resources */,
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
@@ -1415,6 +1432,7 @@
 				BE59A47C1E63D8520077D9AD /* MeSettingTableController.m in Sources */,
 				BE2D0CF81E7AD0CC007A154F /* ArticleContentView.m in Sources */,
 				BEF0EE3C1E714B7E003E06DB /* OrderCell.m in Sources */,
+				BE0B09971E8622E200635E71 /* HTAlertView.m in Sources */,
 				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
 				BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */,

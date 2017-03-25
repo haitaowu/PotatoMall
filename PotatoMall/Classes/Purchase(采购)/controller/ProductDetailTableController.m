@@ -16,6 +16,7 @@
 #import "GoodsDetailTableHeader.h"
 #import "WXApi.h"
 #import "ChartView.h"
+#import "HTAlertView.h"
 
 
 #define kDescriptionSectionIdx              0
@@ -41,6 +42,7 @@
 @property (nonatomic,strong)ChartView *chartView;
 @property (nonatomic,assign)CGFloat  paramsCellHeight;
 @property (nonatomic,assign)CGFloat  specCellHeight;
+@property (nonatomic,strong)HTAlertView  *shareAlertView;
 
 @end
 
@@ -96,6 +98,21 @@
     [self.chartView updateCountWithStr:chartCount];
 }
 
+-(HTAlertView *)shareAlertView
+{
+    if(_shareAlertView== nil)
+    {
+        __block typeof(self) blockSelf = self;
+        _shareAlertView = [HTAlertView showAleretViewWithFriendsBlock:^{
+            [blockSelf shareWithScene:WXSceneSession];
+        } allFriendsBlock:^{
+            [blockSelf shareWithScene:WXSceneTimeline];
+        }];
+    }
+    return _shareAlertView;
+}
+
+
 #pragma mark - setup UI 
 - (void)setupUI
 {
@@ -143,7 +160,8 @@
     
     bar.shareBlock = ^(){
         NSLog(@"tap share block ");
-        [blockSelf tapShareProduct];
+        [self.shareAlertView showView];
+//        [blockSelf tapShareProduct];
     };
     CGRect frame = self.navigationController.toolbar.frame;
     bar.frame = frame;
@@ -309,6 +327,14 @@
         return self.paramsCellHeight + 80;
     }else{
         return 44;
+    }
+}
+
+- (void)shareWithScene:(int) scene
+{
+    if (scene != -1) {
+        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,self.goodModel.goodsInfoId];
+        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
     }
 }
 

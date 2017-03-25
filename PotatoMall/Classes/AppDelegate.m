@@ -125,19 +125,19 @@
             });
         }
     }else{
-        if (skipID != nil) {
-        UIViewController *rootControl = self.window.rootViewController;
-        if ([rootControl isKindOfClass:[UITabBarController class]]) {
-            [self naviationControllsPopSubControls];
-            UITabBarController *tabBarController = (UITabBarController*)rootControl;
-            tabBarController.selectedIndex = 1;
-            GoodsModel *articleModel = [[GoodsModel alloc] init];
-            articleModel.goodsInfoId = skipID;
-            NSMutableDictionary *sender = [NSMutableDictionary dictionary];
-            sender[kNotiUserInfoKey] = articleModel;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotificationName:kOpenProductLinkNotification object:nil userInfo:sender];
-            });
+        if ((skipID != nil) && (![skipID containsString:@"wechat"])){
+            UIViewController *rootControl = self.window.rootViewController;
+            if ([rootControl isKindOfClass:[UITabBarController class]]) {
+                [self naviationControllsPopSubControls];
+                UITabBarController *tabBarController = (UITabBarController*)rootControl;
+                tabBarController.selectedIndex = 1;
+                GoodsModel *articleModel = [[GoodsModel alloc] init];
+                articleModel.goodsInfoId = skipID;
+                NSMutableDictionary *sender = [NSMutableDictionary dictionary];
+                sender[kNotiUserInfoKey] = articleModel;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kOpenProductLinkNotification object:nil userInfo:sender];
+                });
         }
             
         }
