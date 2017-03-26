@@ -89,7 +89,18 @@
         if (self.heightBlock != nil) {
             self.heightBlock(ParamsTypeImage,sHeight);
         }
+        [self centerImageWithWebView:webView];
     });
+}
+
+//居中图片。
+- (void)centerImageWithWebView:(UIWebView*)webView
+{
+    NSString *bodyStyleVertical = @"document.getElementsByTagName('body')[0].style.verticalAlign = 'middle';";
+    NSString *bodyStyleHorizontal = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
+    
+    [webView stringByEvaluatingJavaScriptFromString:bodyStyleVertical];
+    [webView stringByEvaluatingJavaScriptFromString:bodyStyleHorizontal];
 }
 
 #pragma mark - private methods
