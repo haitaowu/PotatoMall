@@ -67,7 +67,26 @@
 - (void)setDetailModel:(GoodsDetailModel *)detailModel
 {
     _detailModel = detailModel;
-    [self.webView loadHTMLString:detailModel.moblieDesc baseURL:nil];
+    NSString *htmls = [NSString stringWithFormat:@"<html> \n"
+                       "<head> \n"
+                       "<style type=\"text/css\"> \n"
+                       "body {font-size:15px;}\n"
+                       "</style> \n"
+                       "</head> \n"
+                       "<body>"
+                       "<script type='text/javascript'>"
+                       "window.onload = function(){\n"
+                       "var $img = document.getElementsByTagName('img');\n"
+                       "for(var p in  $img){\n"
+                       " $img[p].style.width = '100%%';\n"
+                       "$img[p].style.height ='auto'\n"
+                       "}\n"
+                       "}"
+                       "</script>%@"
+                       "</body>"
+                       "</html>",detailModel.moblieDesc];
+    
+    [self.webView loadHTMLString:htmls baseURL:nil];
     
     [self.paramsLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [detailModel.goodsParams enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -89,19 +108,18 @@
         if (self.heightBlock != nil) {
             self.heightBlock(ParamsTypeImage,sHeight);
         }
-        [self centerImageWithWebView:webView];
     });
 }
 
 //居中图片。
-- (void)centerImageWithWebView:(UIWebView*)webView
-{
-    NSString *bodyStyleVertical = @"document.getElementsByTagName('body')[0].style.verticalAlign = 'middle';";
-    NSString *bodyStyleHorizontal = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
-    
-    [webView stringByEvaluatingJavaScriptFromString:bodyStyleVertical];
-    [webView stringByEvaluatingJavaScriptFromString:bodyStyleHorizontal];
-}
+//- (void)centerImageWithWebView:(UIWebView*)webView
+//{
+//    NSString *bodyStyleVertical = @"document.getElementsByTagName('body')[0].style.verticalAlign = 'middle';";
+//    NSString *bodyStyleHorizontal = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
+//    
+//    [webView stringByEvaluatingJavaScriptFromString:bodyStyleVertical];
+//    [webView stringByEvaluatingJavaScriptFromString:bodyStyleHorizontal];
+//}
 
 #pragma mark - private methods
 - (void)addParamsLabelWithDict:(NSDictionary*)param index:(NSInteger)idx count:(NSInteger)count
