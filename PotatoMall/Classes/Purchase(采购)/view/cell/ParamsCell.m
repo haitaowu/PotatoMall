@@ -70,7 +70,7 @@
     NSString *htmls = [NSString stringWithFormat:@"<html> \n"
                        "<head> \n"
                        "<style type=\"text/css\"> \n"
-                       "body {font-size:15px;}\n"
+                       "body {font-family: \"%@\"; font-size: %f;}\n"
                        "</style> \n"
                        "</head> \n"
                        "<body>"
@@ -84,9 +84,14 @@
                        "}"
                        "</script>%@"
                        "</body>"
-                       "</html>",detailModel.moblieDesc];
+                       "</html>", @"宋体", 0.0,detailModel.moblieDesc];
+    
+    
+    
+    
     
     [self.webView loadHTMLString:htmls baseURL:nil];
+    
     
     [self.paramsLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [detailModel.goodsParams enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -102,6 +107,7 @@
 {
 //    CGFloat height = [[self.webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
 //    HTLog(@"scrollview height %f and %f",height,sHeight);
+    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '160%'"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         CGFloat sHeight = self.webView.scrollView.contentSize.height;
         self.imgsHeight = sHeight;
