@@ -27,7 +27,7 @@
     self.window = [[UIWindow alloc] initWithFrame:bounds];
     [self showViewWithUserState];
     [self.window makeKeyAndVisible];
-    HTLog(@"didFinishLaunchingWithOptions");
+//    HTLog(@"didFinishLaunchingWithOptions");
     //add servers
     [self registerObserversforNotification];
     //register weixin share
@@ -50,8 +50,8 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
-    NSString *urlStr = [url absoluteString];
-    HTLog(@"openURL %@",urlStr);
+//    NSString *urlStr = [url absoluteString];
+//    HTLog(@"openURL %@",urlStr);
     [self skipWithSchemeUrl:url];
     
     return  isSuc;
@@ -99,7 +99,7 @@
 #pragma mark - private methods
 - (void)registerWebChatShare
 {
-    [WXApi registerApp:@"wxd930ea5d5a258f4f"];
+    [WXApi registerApp:@"wxb7f5c0499cde499f"];
 }
 
 - (void)skipWithSchemeUrl:(NSURL*)url

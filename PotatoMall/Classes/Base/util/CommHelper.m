@@ -67,16 +67,16 @@
     [CommHelper shareImageWithUrl:imgUrl finishedBlock:^(UIImage *img) {
         UIImage *scaleImg = [self scaleImageWithImg:img size:CGSizeMake(50,50)];
         [mediaMsg setThumbImage:scaleImg];
+        WXWebpageObject *webPageObj = [WXWebpageObject object];
+        webPageObj.webpageUrl = url;
+        mediaMsg.mediaObject = webPageObj;
+        
+        SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
+        msgReq.bText = NO;
+        msgReq.message = mediaMsg;
+        msgReq.scene = scene;
+        [WXApi sendReq:msgReq];
     }];
-    WXWebpageObject *webPageObj = [WXWebpageObject object];
-    webPageObj.webpageUrl = url;
-    mediaMsg.mediaObject = webPageObj;
-    
-    SendMessageToWXReq *msgReq = [[SendMessageToWXReq alloc] init];
-    msgReq.bText = NO;
-    msgReq.message = mediaMsg;
-    msgReq.scene = scene;
-    [WXApi sendReq:msgReq];
 }
 
 #pragma mark - private methods
