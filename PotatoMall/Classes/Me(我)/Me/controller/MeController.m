@@ -7,12 +7,14 @@
 //
 
 #import "MeController.h"
-#import "MeMenuCell.h"
+
 #import "AppInfoHelper.h"
 #import<AVFoundation/AVCaptureDevice.h>
 #import<AVFoundation/AVMediaFormat.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "LoginViewController.h"
+#import "MeMenuCollectionViewCell.h"
+
 
 #define kSaleSectionIndex               0
 #define kChargeSectionIndex             3
@@ -22,8 +24,9 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 
 
 @interface MeController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong)NSArray *menusData;
+//@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong)NSArray *menusDataTitle;
+@property (nonatomic,strong)NSArray *menusDataImage;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
@@ -37,6 +40,8 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableview];
+    self.menusDataTitle=[NSArray arrayWithObjects:@"采购",@"种植",@"钱包",@"问答",@"设置",nil];
+    self.menusDataImage=[NSArray arrayWithObjects:@"purchase",@"plant",@"wallet",@"qa",@"setting",nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,14 +51,73 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     [self updateUserInfoUI];
 }
 
-#pragma mark - setup UI 
+#pragma mark - setup UI
 - (void)setupTableview
 {
-    UINib *menuCellNib = [UINib nibWithNibName:@"MeMenuCell" bundle:nil];
-    [self.tableView registerNib:menuCellNib forCellReuseIdentifier:MeMenuCellID];
-    self.menusData = [AppInfoHelper arrayWithPlistFile:@"MeMenus"];
-    [self.tableView reloadData];
+    //    UINib *menuCellNib = [UINib nibWithNibName:@"MeMenuCell" bundle:nil];
+    //    [self.tableView registerNib:menuCellNib forCellReuseIdentifier:MeMenuCellID];
+    //    self.menusData = [AppInfoHelper arrayWithPlistFile:@"MeMenus"];
+    //    [self.tableView reloadData];
+    
+    UICollectionViewFlowLayout * layOut = [[UICollectionViewFlowLayout alloc]init];
+    layOut.itemSize = CGSizeMake(88,88); //设置item的大小
+    layOut.scrollDirection = UICollectionViewScrollDirectionVertical; //设置布局方式
+    layOut.sectionInset = UIEdgeInsetsMake(0, 0,0, 0); //设置距离上 左 下 右
+    
+    
+    UICollectionView * collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 88, kScreenWidth,220) collectionViewLayout:layOut];
+    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    collectionView.scrollEnabled = NO;
+    [self.view addSubview:collectionView];
+    
+    [collectionView registerClass:[MeMenuCollectionViewCell class] forCellWithReuseIdentifier:MeMenuCellID];
 }
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 5;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    MeMenuCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MeMenuCellID forIndexPath:indexPath];
+    
+    NSLog(@"name===%@",[self.menusDataImage objectAtIndex:indexPath.row]);
+    [cell.titlelabel setText:[self.menusDataTitle objectAtIndex:indexPath.row]];
+    
+    if(indexPath.row==0){
+            [cell.logoimage setImage:[UIImage imageNamed:@"purchase"]];
+    }else{
+            [cell.logoimage setImage:[UIImage imageNamed:[self.menusDataImage objectAtIndex:indexPath.row]]];
+    }
+    
+    return cell;
+    
+    
+}
+
+// 选中某item
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if(indexPath.row==0){
+        [self performSegueWithIdentifier:@"orderesSegue" sender:nil];
+    }
+    
+    if(indexPath.row==1){
+        
+        [self performSegueWithIdentifier:@"plantidentifier" sender:nil];
+        
+    }
+    
+    if(indexPath.row==4){
+        
+        [self performSegueWithIdentifier:@"settingSegue" sender:nil];
+        
+    }
+    
+    
+}
+
 
 - (void)updateUserInfoUI
 {
@@ -81,7 +145,7 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 - (void)submitUserAvtarImage:(UIImage *)avatarImg
 {
     if ([RequestUtil networkAvaliable] == NO) {
-        [self.tableView reloadData];
+//        [self.tableView reloadData];
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         UserModel *model = [UserModelUtil sharedInstance].userModel;
@@ -126,60 +190,10 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     }
 }
 
-#pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [self.menusData count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MeMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:MeMenuCellID];
-    NSDictionary *menuData = self.menusData[indexPath.section];
-    [cell setMenuData:menuData indexPath:indexPath];
-    return cell;
-}
 
 
-#pragma mark - UITableView --- Table view  delegate
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-//    if (section == kSaleSectionIndex) {
-//        return 16;
-//    }else if (section == kChargeSectionIndex) {
-//        return 16;
-//    }else if (section == kSettingSectionIndex) {
-    return 16;
-//    }else{
-//        return 0.001;
-//    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.001;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([[UserModelUtil sharedInstance] isUserLogin] == NO) {
-        [self showLoginView];
-    }else{
-        NSDictionary *menuData = self.menusData[indexPath.section];
-        NSString *segue = [menuData objectForKey:kSegueKey];
-        [self performSegueWithIdentifier:segue sender:nil];
-    }
-}
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50;
-}
 
 
 #pragma mark - UIAction sheet delegate

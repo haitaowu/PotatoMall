@@ -11,6 +11,7 @@ target 'PotatoMall' do
    pod 'MJRefresh', '~> 3.1.12'
    pod 'SDCycleScrollView', '~> 1.65'
    pod 'DZNEmptyDataSet', '~> 1.8.1'
+   pod 'BRPickerView'
 end
 
 

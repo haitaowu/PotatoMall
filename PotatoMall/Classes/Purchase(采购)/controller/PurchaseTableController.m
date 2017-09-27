@@ -184,6 +184,7 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 - (void)setupCateGoryView
 {
     NSArray *subItemTitles = [self subItemTitlesWithSubItems:self.categoryArray];
+    NSLog(@"categoryArray==%@",self.categoryArray);
     self.topScrollView.titles = [NSMutableArray arrayWithArray:subItemTitles];
     [self.topScrollView showSeparatorLine];
     [self.topScrollView scrollVisibleTo:0];

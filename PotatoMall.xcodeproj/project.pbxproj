@@ -7,6 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371D2A611F6269AE0082B91E /* plantmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 371D2A601F6269AE0082B91E /* plantmodel.m */; };
+		374B99741F66623C008DC328 /* PlantPlanTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374B99731F66623C008DC328 /* PlantPlanTableViewController.m */; };
+		374B997B1F666F2A008DC328 /* PlantTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 374B99791F666F2A008DC328 /* PlantTimeTableViewCell.m */; };
+		374B997C1F666F2A008DC328 /* PlantTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374B997A1F666F2A008DC328 /* PlantTimeTableViewCell.xib */; };
+		374B99801F6674C9008DC328 /* PlantListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 374B997E1F6674C9008DC328 /* PlantListTableViewCell.m */; };
+		374B99811F6674C9008DC328 /* PlantListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374B997F1F6674C9008DC328 /* PlantListTableViewCell.xib */; };
+		3750E15A1F72A049007F4056 /* PlanthandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3750E1581F72A049007F4056 /* PlanthandleViewController.m */; };
+		3750E15B1F72A049007F4056 /* PlanthandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3750E1591F72A049007F4056 /* PlanthandleViewController.xib */; };
+		3759C11B1F6A23FD00E9A358 /* PlantUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3759C1191F6A23FC00E9A358 /* PlantUserViewController.m */; };
+		3759C11C1F6A23FD00E9A358 /* PlantUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3759C11A1F6A23FC00E9A358 /* PlantUserViewController.xib */; };
+		3759C1201F6A547900E9A358 /* plantuserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3759C11E1F6A547900E9A358 /* plantuserTableViewCell.m */; };
+		3759C1211F6A547900E9A358 /* plantuserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3759C11F1F6A547900E9A358 /* plantuserTableViewCell.xib */; };
+		375CA4981F794B5E009AA629 /* PlantStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375CA4961F794B5E009AA629 /* PlantStateViewController.m */; };
+		375CA4991F794B5E009AA629 /* PlantStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375CA4971F794B5E009AA629 /* PlantStateViewController.xib */; };
+		37644EAA1F60255D0084AB5C /* PlantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37644EA91F60255D0084AB5C /* PlantViewController.m */; };
+		37644EAD1F6030F60084AB5C /* PlantInfoControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37644EAC1F6030F60084AB5C /* PlantInfoControllerViewController.m */; };
+		3771FD8B1F690D5200A8413D /* PlantPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771FD8A1F690D5200A8413D /* PlantPlanViewController.m */; };
+		3771FD901F6A157800A8413D /* PlanWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3771FD8E1F6A157800A8413D /* PlanWebViewViewController.m */; };
+		3771FD911F6A157800A8413D /* PlanWebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3771FD8F1F6A157800A8413D /* PlanWebViewViewController.xib */; };
+		3774A5321F6BA44E00B39A2D /* PlantAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3774A5301F6BA44E00B39A2D /* PlantAddViewController.m */; };
+		3774A5331F6BA44E00B39A2D /* PlantAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3774A5311F6BA44E00B39A2D /* PlantAddViewController.xib */; };
+		3774A5371F6E39A300B39A2D /* PlantSetting0ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3774A5351F6E39A300B39A2D /* PlantSetting0ViewController.m */; };
+		3774A5381F6E39A300B39A2D /* PlantSetting0ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3774A5361F6E39A300B39A2D /* PlantSetting0ViewController.xib */; };
+		37789DA01F584EAF007F1FA0 /* MeMenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37789D9E1F584EAF007F1FA0 /* MeMenuCollectionViewCell.m */; };
+		37789DA11F584EAF007F1FA0 /* MeMenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37789D9F1F584EAF007F1FA0 /* MeMenuCollectionViewCell.xib */; };
+		378A60A41F74031900D73138 /* PlantDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 378A60A21F74031900D73138 /* PlantDoneViewController.m */; };
+		378A60A51F74031900D73138 /* PlantDoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 378A60A31F74031900D73138 /* PlantDoneViewController.xib */; };
+		378A60A91F74047700D73138 /* plantdoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 378A60A71F74047700D73138 /* plantdoneTableViewCell.m */; };
+		378A60AA1F74047700D73138 /* plantdoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 378A60A81F74047700D73138 /* plantdoneTableViewCell.xib */; };
+		37B464F81F72AE5A00659CEE /* PlantListTableCell1TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B464F61F72AE5A00659CEE /* PlantListTableCell1TableViewCell.m */; };
+		37B464F91F72AE5A00659CEE /* PlantListTableCell1TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B464F71F72AE5A00659CEE /* PlantListTableCell1TableViewCell.xib */; };
+		37E6C1AA1F63D7FB009167C4 /* PlantManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E6C1A91F63D7FB009167C4 /* PlantManageViewController.m */; };
+		37EDA6571F6AC001008C31CF /* plantlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EDA6551F6AC001008C31CF /* plantlistViewController.m */; };
+		37EDA6581F6AC001008C31CF /* plantlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37EDA6561F6AC001008C31CF /* plantlistViewController.xib */; };
+		37EDA6621F6ACF05008C31CF /* PlantInfomationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EDA6611F6ACF05008C31CF /* PlantInfomationTableViewController.m */; };
+		37EDA6661F6AD513008C31CF /* PlantSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EDA6641F6AD513008C31CF /* PlantSettingViewController.m */; };
+		37EDA6671F6AD513008C31CF /* PlantSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37EDA6651F6AD513008C31CF /* PlantSettingViewController.xib */; };
 		4EB6496BCAB51F1EC4B5F062 /* libPods-PotatoMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */; };
 		BE077A5B1E6A967C006F0EFB /* PurchaseTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE077A5A1E6A967C006F0EFB /* PurchaseTableController.m */; };
 		BE077A651E6A975F006F0EFB /* ChartTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE077A621E6A975F006F0EFB /* ChartTableController.m */; };
@@ -90,6 +127,7 @@
 		BEADCF761E76477600EFFA01 /* ModifyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF751E76477600EFFA01 /* ModifyAccountController.m */; };
 		BEADCF791E76692700EFFA01 /* ModifyPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF781E76692700EFFA01 /* ModifyPwdController.m */; };
 		BEADCF7C1E767AB600EFFA01 /* TitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF7B1E767AB600EFFA01 /* TitleLabel.m */; };
+		BEBDA6061F7B369C00996488 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBDA6051F7B369C00996488 /* NSDictionary+Extension.m */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
 		BEC06DD51E5C796300667D73 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC06DD41E5C796300667D73 /* Home.storyboard */; };
@@ -136,8 +174,6 @@
 		BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */; };
 		BEE8EED71E63CAB0008FD2D4 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE8EED31E63CAB0008FD2D4 /* MeController.m */; };
 		BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEE8EED61E63CAB0008FD2D4 /* Me.storyboard */; };
-		BEE8EEDC1E63CAD6008FD2D4 /* MeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE8EEDA1E63CAD6008FD2D4 /* MeMenuCell.m */; };
-		BEE8EEDD1E63CAD6008FD2D4 /* MeMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE8EEDB1E63CAD6008FD2D4 /* MeMenuCell.xib */; };
 		BEF0EE1C1E711E41003E06DB /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE1A1E711E41003E06DB /* OrderDetailCell.m */; };
 		BEF0EE1D1E711E41003E06DB /* OrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE1B1E711E41003E06DB /* OrderDetailCell.xib */; };
 		BEF0EE201E712AEE003E06DB /* OrderGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE1F1E712AEE003E06DB /* OrderGoodsModel.m */; };
@@ -161,6 +197,65 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		371D2A5F1F6269AE0082B91E /* plantmodel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = plantmodel.h; sourceTree = "<group>"; };
+		371D2A601F6269AE0082B91E /* plantmodel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plantmodel.m; sourceTree = "<group>"; };
+		374B99721F66623C008DC328 /* PlantPlanTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantPlanTableViewController.h; sourceTree = "<group>"; };
+		374B99731F66623C008DC328 /* PlantPlanTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantPlanTableViewController.m; sourceTree = "<group>"; };
+		374B99781F666F2A008DC328 /* PlantTimeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantTimeTableViewCell.h; sourceTree = "<group>"; };
+		374B99791F666F2A008DC328 /* PlantTimeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantTimeTableViewCell.m; sourceTree = "<group>"; };
+		374B997A1F666F2A008DC328 /* PlantTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantTimeTableViewCell.xib; sourceTree = "<group>"; };
+		374B997D1F6674C9008DC328 /* PlantListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantListTableViewCell.h; sourceTree = "<group>"; };
+		374B997E1F6674C9008DC328 /* PlantListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantListTableViewCell.m; sourceTree = "<group>"; };
+		374B997F1F6674C9008DC328 /* PlantListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantListTableViewCell.xib; sourceTree = "<group>"; };
+		3750E1571F72A049007F4056 /* PlanthandleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanthandleViewController.h; sourceTree = "<group>"; };
+		3750E1581F72A049007F4056 /* PlanthandleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanthandleViewController.m; sourceTree = "<group>"; };
+		3750E1591F72A049007F4056 /* PlanthandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanthandleViewController.xib; sourceTree = "<group>"; };
+		3759C1181F6A23FC00E9A358 /* PlantUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantUserViewController.h; sourceTree = "<group>"; };
+		3759C1191F6A23FC00E9A358 /* PlantUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantUserViewController.m; sourceTree = "<group>"; };
+		3759C11A1F6A23FC00E9A358 /* PlantUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantUserViewController.xib; sourceTree = "<group>"; };
+		3759C11D1F6A547900E9A358 /* plantuserTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = plantuserTableViewCell.h; sourceTree = "<group>"; };
+		3759C11E1F6A547900E9A358 /* plantuserTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plantuserTableViewCell.m; sourceTree = "<group>"; };
+		3759C11F1F6A547900E9A358 /* plantuserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = plantuserTableViewCell.xib; sourceTree = "<group>"; };
+		375CA4951F794B5E009AA629 /* PlantStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantStateViewController.h; sourceTree = "<group>"; };
+		375CA4961F794B5E009AA629 /* PlantStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantStateViewController.m; sourceTree = "<group>"; };
+		375CA4971F794B5E009AA629 /* PlantStateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantStateViewController.xib; sourceTree = "<group>"; };
+		37644EA81F60255D0084AB5C /* PlantViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantViewController.h; sourceTree = "<group>"; };
+		37644EA91F60255D0084AB5C /* PlantViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantViewController.m; sourceTree = "<group>"; };
+		37644EAB1F6030F60084AB5C /* PlantInfoControllerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantInfoControllerViewController.h; sourceTree = "<group>"; };
+		37644EAC1F6030F60084AB5C /* PlantInfoControllerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantInfoControllerViewController.m; sourceTree = "<group>"; };
+		3771FD891F690D5200A8413D /* PlantPlanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantPlanViewController.h; sourceTree = "<group>"; };
+		3771FD8A1F690D5200A8413D /* PlantPlanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantPlanViewController.m; sourceTree = "<group>"; };
+		3771FD8D1F6A157800A8413D /* PlanWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanWebViewViewController.h; sourceTree = "<group>"; };
+		3771FD8E1F6A157800A8413D /* PlanWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanWebViewViewController.m; sourceTree = "<group>"; };
+		3771FD8F1F6A157800A8413D /* PlanWebViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanWebViewViewController.xib; sourceTree = "<group>"; };
+		3774A52F1F6BA44E00B39A2D /* PlantAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantAddViewController.h; sourceTree = "<group>"; };
+		3774A5301F6BA44E00B39A2D /* PlantAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantAddViewController.m; sourceTree = "<group>"; };
+		3774A5311F6BA44E00B39A2D /* PlantAddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantAddViewController.xib; sourceTree = "<group>"; };
+		3774A5341F6E39A300B39A2D /* PlantSetting0ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantSetting0ViewController.h; sourceTree = "<group>"; };
+		3774A5351F6E39A300B39A2D /* PlantSetting0ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantSetting0ViewController.m; sourceTree = "<group>"; };
+		3774A5361F6E39A300B39A2D /* PlantSetting0ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantSetting0ViewController.xib; sourceTree = "<group>"; };
+		37789D9D1F584EAF007F1FA0 /* MeMenuCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeMenuCollectionViewCell.h; sourceTree = "<group>"; };
+		37789D9E1F584EAF007F1FA0 /* MeMenuCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeMenuCollectionViewCell.m; sourceTree = "<group>"; };
+		37789D9F1F584EAF007F1FA0 /* MeMenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeMenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		378A60A11F74031900D73138 /* PlantDoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantDoneViewController.h; sourceTree = "<group>"; };
+		378A60A21F74031900D73138 /* PlantDoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantDoneViewController.m; sourceTree = "<group>"; };
+		378A60A31F74031900D73138 /* PlantDoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantDoneViewController.xib; sourceTree = "<group>"; };
+		378A60A61F74047700D73138 /* plantdoneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = plantdoneTableViewCell.h; sourceTree = "<group>"; };
+		378A60A71F74047700D73138 /* plantdoneTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plantdoneTableViewCell.m; sourceTree = "<group>"; };
+		378A60A81F74047700D73138 /* plantdoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = plantdoneTableViewCell.xib; sourceTree = "<group>"; };
+		37B464F51F72AE5A00659CEE /* PlantListTableCell1TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantListTableCell1TableViewCell.h; sourceTree = "<group>"; };
+		37B464F61F72AE5A00659CEE /* PlantListTableCell1TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantListTableCell1TableViewCell.m; sourceTree = "<group>"; };
+		37B464F71F72AE5A00659CEE /* PlantListTableCell1TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantListTableCell1TableViewCell.xib; sourceTree = "<group>"; };
+		37E6C1A81F63D7FB009167C4 /* PlantManageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantManageViewController.h; sourceTree = "<group>"; };
+		37E6C1A91F63D7FB009167C4 /* PlantManageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantManageViewController.m; sourceTree = "<group>"; };
+		37EDA6541F6AC001008C31CF /* plantlistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = plantlistViewController.h; sourceTree = "<group>"; };
+		37EDA6551F6AC001008C31CF /* plantlistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plantlistViewController.m; sourceTree = "<group>"; };
+		37EDA6561F6AC001008C31CF /* plantlistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = plantlistViewController.xib; sourceTree = "<group>"; };
+		37EDA6601F6ACF05008C31CF /* PlantInfomationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantInfomationTableViewController.h; sourceTree = "<group>"; };
+		37EDA6611F6ACF05008C31CF /* PlantInfomationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantInfomationTableViewController.m; sourceTree = "<group>"; };
+		37EDA6631F6AD513008C31CF /* PlantSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantSettingViewController.h; sourceTree = "<group>"; };
+		37EDA6641F6AD513008C31CF /* PlantSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantSettingViewController.m; sourceTree = "<group>"; };
+		37EDA6651F6AD513008C31CF /* PlantSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantSettingViewController.xib; sourceTree = "<group>"; };
 		3FAB3FE170A80D905C8EBAD6 /* Pods-PotatoMall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatoMall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall.debug.xcconfig"; sourceTree = "<group>"; };
 		786FBEE6DAF21E1944F06459 /* libPods-PotatoMall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PotatoMall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D94E15617EABD70CA237FA /* Pods-PotatoMall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatoMall.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotatoMall/Pods-PotatoMall.release.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +414,8 @@
 		BEADCF781E76692700EFFA01 /* ModifyPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdController.m; sourceTree = "<group>"; };
 		BEADCF7A1E767AB600EFFA01 /* TitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleLabel.h; sourceTree = "<group>"; };
 		BEADCF7B1E767AB600EFFA01 /* TitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleLabel.m; sourceTree = "<group>"; };
+		BEBDA6041F7B369C00996488 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
+		BEBDA6051F7B369C00996488 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
 		BEC06DAE1E5C76D300667D73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		BEC06DB81E5C76F500667D73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -395,9 +492,6 @@
 		BEE8EED21E63CAB0008FD2D4 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
 		BEE8EED31E63CAB0008FD2D4 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
 		BEE8EED61E63CAB0008FD2D4 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
-		BEE8EED91E63CAD6008FD2D4 /* MeMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeMenuCell.h; sourceTree = "<group>"; };
-		BEE8EEDA1E63CAD6008FD2D4 /* MeMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeMenuCell.m; sourceTree = "<group>"; };
-		BEE8EEDB1E63CAD6008FD2D4 /* MeMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeMenuCell.xib; sourceTree = "<group>"; };
 		BEF0EE191E711E41003E06DB /* OrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailCell.h; sourceTree = "<group>"; };
 		BEF0EE1A1E711E41003E06DB /* OrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailCell.m; sourceTree = "<group>"; };
 		BEF0EE1B1E711E41003E06DB /* OrderDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailCell.xib; sourceTree = "<group>"; };
@@ -455,6 +549,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37644EA71F6025380084AB5C /* plant */ = {
+			isa = PBXGroup;
+			children = (
+				37644EA81F60255D0084AB5C /* PlantViewController.h */,
+				37644EA91F60255D0084AB5C /* PlantViewController.m */,
+				37644EAB1F6030F60084AB5C /* PlantInfoControllerViewController.h */,
+				37644EAC1F6030F60084AB5C /* PlantInfoControllerViewController.m */,
+				37E6C1A81F63D7FB009167C4 /* PlantManageViewController.h */,
+				37E6C1A91F63D7FB009167C4 /* PlantManageViewController.m */,
+				374B99721F66623C008DC328 /* PlantPlanTableViewController.h */,
+				374B99731F66623C008DC328 /* PlantPlanTableViewController.m */,
+				375CA4951F794B5E009AA629 /* PlantStateViewController.h */,
+				375CA4961F794B5E009AA629 /* PlantStateViewController.m */,
+				375CA4971F794B5E009AA629 /* PlantStateViewController.xib */,
+				3771FD891F690D5200A8413D /* PlantPlanViewController.h */,
+				3771FD8A1F690D5200A8413D /* PlantPlanViewController.m */,
+				3771FD8D1F6A157800A8413D /* PlanWebViewViewController.h */,
+				3771FD8E1F6A157800A8413D /* PlanWebViewViewController.m */,
+				3771FD8F1F6A157800A8413D /* PlanWebViewViewController.xib */,
+				3759C1181F6A23FC00E9A358 /* PlantUserViewController.h */,
+				3759C1191F6A23FC00E9A358 /* PlantUserViewController.m */,
+				3759C11A1F6A23FC00E9A358 /* PlantUserViewController.xib */,
+				37EDA6541F6AC001008C31CF /* plantlistViewController.h */,
+				37EDA6551F6AC001008C31CF /* plantlistViewController.m */,
+				37EDA6561F6AC001008C31CF /* plantlistViewController.xib */,
+				37EDA6601F6ACF05008C31CF /* PlantInfomationTableViewController.h */,
+				37EDA6611F6ACF05008C31CF /* PlantInfomationTableViewController.m */,
+				37EDA6631F6AD513008C31CF /* PlantSettingViewController.h */,
+				37EDA6641F6AD513008C31CF /* PlantSettingViewController.m */,
+				37EDA6651F6AD513008C31CF /* PlantSettingViewController.xib */,
+				3774A5341F6E39A300B39A2D /* PlantSetting0ViewController.h */,
+				3774A5351F6E39A300B39A2D /* PlantSetting0ViewController.m */,
+				3774A5361F6E39A300B39A2D /* PlantSetting0ViewController.xib */,
+				3774A52F1F6BA44E00B39A2D /* PlantAddViewController.h */,
+				3774A5301F6BA44E00B39A2D /* PlantAddViewController.m */,
+				3774A5311F6BA44E00B39A2D /* PlantAddViewController.xib */,
+				3750E1571F72A049007F4056 /* PlanthandleViewController.h */,
+				3750E1581F72A049007F4056 /* PlanthandleViewController.m */,
+				3750E1591F72A049007F4056 /* PlanthandleViewController.xib */,
+				378A60A11F74031900D73138 /* PlantDoneViewController.h */,
+				378A60A21F74031900D73138 /* PlantDoneViewController.m */,
+				378A60A31F74031900D73138 /* PlantDoneViewController.xib */,
+			);
+			path = plant;
+			sourceTree = "<group>";
+		};
 		94F3168BB54E218012B16116 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -866,6 +1006,8 @@
 		BEC06DBC1E5C77D000667D73 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				BEBDA6041F7B369C00996488 /* NSDictionary+Extension.h */,
+				BEBDA6051F7B369C00996488 /* NSDictionary+Extension.m */,
 				BE5ED7C11E62579700C4B1D0 /* NSString+Extentsion.h */,
 				BE5ED7C21E62579700C4B1D0 /* NSString+Extentsion.m */,
 				BEAAA5F91E5D85E8008943EC /* UIView+PositionExt.h */,
@@ -1099,6 +1241,7 @@
 		BEE8EED01E63CAB0008FD2D4 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				37644EA71F6025380084AB5C /* plant */,
 				BEE8EED11E63CAB0008FD2D4 /* controller */,
 				BEE8EED41E63CAB0008FD2D4 /* model */,
 				BEE8EED51E63CAB0008FD2D4 /* view */,
@@ -1119,6 +1262,8 @@
 			isa = PBXGroup;
 			children = (
 				BE59A4701E63CEE00077D9AD /* MeMenus.plist */,
+				371D2A5F1F6269AE0082B91E /* plantmodel.h */,
+				371D2A601F6269AE0082B91E /* plantmodel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1127,9 +1272,24 @@
 			isa = PBXGroup;
 			children = (
 				BEE8EED61E63CAB0008FD2D4 /* Me.storyboard */,
-				BEE8EED91E63CAD6008FD2D4 /* MeMenuCell.h */,
-				BEE8EEDA1E63CAD6008FD2D4 /* MeMenuCell.m */,
-				BEE8EEDB1E63CAD6008FD2D4 /* MeMenuCell.xib */,
+				37789D9D1F584EAF007F1FA0 /* MeMenuCollectionViewCell.h */,
+				37789D9E1F584EAF007F1FA0 /* MeMenuCollectionViewCell.m */,
+				37789D9F1F584EAF007F1FA0 /* MeMenuCollectionViewCell.xib */,
+				374B99781F666F2A008DC328 /* PlantTimeTableViewCell.h */,
+				374B99791F666F2A008DC328 /* PlantTimeTableViewCell.m */,
+				374B997A1F666F2A008DC328 /* PlantTimeTableViewCell.xib */,
+				374B997D1F6674C9008DC328 /* PlantListTableViewCell.h */,
+				374B997E1F6674C9008DC328 /* PlantListTableViewCell.m */,
+				374B997F1F6674C9008DC328 /* PlantListTableViewCell.xib */,
+				37B464F51F72AE5A00659CEE /* PlantListTableCell1TableViewCell.h */,
+				37B464F61F72AE5A00659CEE /* PlantListTableCell1TableViewCell.m */,
+				37B464F71F72AE5A00659CEE /* PlantListTableCell1TableViewCell.xib */,
+				3759C11D1F6A547900E9A358 /* plantuserTableViewCell.h */,
+				3759C11E1F6A547900E9A358 /* plantuserTableViewCell.m */,
+				3759C11F1F6A547900E9A358 /* plantuserTableViewCell.xib */,
+				378A60A61F74047700D73138 /* plantdoneTableViewCell.h */,
+				378A60A71F74047700D73138 /* plantdoneTableViewCell.m */,
+				378A60A81F74047700D73138 /* plantdoneTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1265,10 +1425,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEE8EEDD1E63CAD6008FD2D4 /* MeMenuCell.xib in Resources */,
 				BE077A7A1E6AC606006F0EFB /* ChartSectionHeader.xib in Resources */,
 				BEF0EE301E7137CF003E06DB /* OrderDetailTransHeader.xib in Resources */,
+				3771FD911F6A157800A8413D /* PlanWebViewViewController.xib in Resources */,
 				BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */,
+				374B997C1F666F2A008DC328 /* PlantTimeTableViewCell.xib in Resources */,
 				BEFFEE291E7591FA003E6240 /* OrderDetailFooter.xib in Resources */,
 				BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */,
 				BED95E021E6EF82100054F45 /* HotCollectionCell.xib in Resources */,
@@ -1280,23 +1441,36 @@
 				BE0DDB5B1E6D63A100F15168 /* HTPurchaseBar.xib in Resources */,
 				BE0DDB451E6D0B4300F15168 /* HTSubmitBar.xib in Resources */,
 				BED84A0E1E6FDB9E001E7A27 /* OrderPayFooter.xib in Resources */,
+				3774A5331F6BA44E00B39A2D /* PlantAddViewController.xib in Resources */,
 				BECC9F961E6ED2B8001DE8F1 /* CategoryCell.xib in Resources */,
 				BEF0EE3D1E714B7E003E06DB /* OrderCell.xib in Resources */,
+				37B464F91F72AE5A00659CEE /* PlantListTableCell1TableViewCell.xib in Resources */,
+				374B99811F6674C9008DC328 /* PlantListTableViewCell.xib in Resources */,
+				3750E15B1F72A049007F4056 /* PlanthandleViewController.xib in Resources */,
 				BE077A6F1E6A9998006F0EFB /* ChartCell.xib in Resources */,
 				BE5B803F1E5F1F12005FDE1A /* HotArticleCell.xib in Resources */,
 				BED84A091E6FD9C4001E7A27 /* CarryCell.xib in Resources */,
 				BE0DDB431E6D0B4300F15168 /* HTCalculatorToolBar.xib in Resources */,
 				BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */,
 				BE0DDB4E1E6D46FA00F15168 /* GoodsCell.xib in Resources */,
+				378A60A51F74031900D73138 /* PlantDoneViewController.xib in Resources */,
 				BED84A131E6FEF91001E7A27 /* OrderFeedCell.xib in Resources */,
 				BE6DAEE61E73CE9700E82C47 /* Launch Screen.storyboard in Resources */,
 				BE0B09981E8622E200635E71 /* HTAlertView.xib in Resources */,
+				378A60AA1F74047700D73138 /* plantdoneTableViewCell.xib in Resources */,
 				BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */,
 				BE59A4711E63CEE00077D9AD /* MeMenus.plist in Resources */,
+				37EDA6581F6AC001008C31CF /* plantlistViewController.xib in Resources */,
+				37789DA11F584EAF007F1FA0 /* MeMenuCollectionViewCell.xib in Resources */,
+				3759C1211F6A547900E9A358 /* plantuserTableViewCell.xib in Resources */,
+				3774A5381F6E39A300B39A2D /* PlantSetting0ViewController.xib in Resources */,
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
 				BEDECE341E72967200EEA29B /* CancelOrderCell.xib in Resources */,
+				37EDA6671F6AD513008C31CF /* PlantSettingViewController.xib in Resources */,
 				BEF0EE2B1E7136FB003E06DB /* OrderStateHeader.xib in Resources */,
 				BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */,
+				375CA4991F794B5E009AA629 /* PlantStateViewController.xib in Resources */,
+				3759C11C1F6A23FD00E9A358 /* PlantUserViewController.xib in Resources */,
 				BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */,
 				BE93AF2D1E65B88E001F99BC /* SearchCell.xib in Resources */,
 			);
@@ -1371,12 +1545,14 @@
 				BEF0EE261E71365D003E06DB /* OrdersTableController.m in Sources */,
 				BE5ED7E71E62B29000C4B1D0 /* NSData+AES.m in Sources */,
 				BE077A6E1E6A9998006F0EFB /* ChartCell.m in Sources */,
+				37EDA6571F6AC001008C31CF /* plantlistViewController.m in Sources */,
 				BEFFAB991E6E8F43006D1FDE /* ProdCateModel.m in Sources */,
 				BECC9FA11E6EE459001DE8F1 /* PurSectionHeader.m in Sources */,
 				BE6DAEE41E73971500E82C47 /* SpringGoodsModel.m in Sources */,
 				BE5ED7A01E619FAC00C4B1D0 /* AritcleDetailController.m in Sources */,
 				BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */,
 				BECC9F9E1E6EDE80001DE8F1 /* PurAdModel.m in Sources */,
+				371D2A611F6269AE0082B91E /* plantmodel.m in Sources */,
 				BED84A041E6FD905001E7A27 /* PreOrderTableController.m in Sources */,
 				BE3052CA1E66C94000C74300 /* StateRadiusBtn.m in Sources */,
 				BE1076CB1E67AAAF00304436 /* HTTextField.m in Sources */,
@@ -1389,11 +1565,11 @@
 				BE93C2EF1E67F9B300CC0B96 /* AccountInfoTableController.m in Sources */,
 				BE93C2F81E680E0000CC0B96 /* CityModel.m in Sources */,
 				BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */,
-				BEE8EEDC1E63CAD6008FD2D4 /* MeMenuCell.m in Sources */,
 				BEADCF731E7645AA00EFFA01 /* AccountTableController.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */,
 				BED84A011E6FCCDF001E7A27 /* PurchaseMoresController.m in Sources */,
+				37644EAD1F6030F60084AB5C /* PlantInfoControllerViewController.m in Sources */,
 				BECC9FA41E6EE5F9001DE8F1 /* HorizonAlignBtn.m in Sources */,
 				BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */,
 				BECC9F951E6ED2B8001DE8F1 /* CategoryCell.m in Sources */,
@@ -1401,8 +1577,10 @@
 				BEE2602A1E7A531F006AE48E /* SubTitleLabel.m in Sources */,
 				BEADCF761E76477600EFFA01 /* ModifyAccountController.m in Sources */,
 				BE5908111E74E66600D77152 /* CateGoryNModel.m in Sources */,
+				37E6C1AA1F63D7FB009167C4 /* PlantManageViewController.m in Sources */,
 				BEF0EE2A1E7136FB003E06DB /* OrderStateHeader.m in Sources */,
 				BEFFEE241E754039003E6240 /* GoodsModel.m in Sources */,
+				374B99741F66623C008DC328 /* PlantPlanTableViewController.m in Sources */,
 				BEF0EE371E71484F003E06DB /* OrderStateFooter.m in Sources */,
 				BE8FA4E81E646C2D00F92C46 /* ArticleModel.m in Sources */,
 				BECC9F9A1E6EDCC2001DE8F1 /* PurchaseAdsCell.m in Sources */,
@@ -1415,9 +1593,14 @@
 				BE5B80421E5F2783005FDE1A /* SectionHeaderTitle.m in Sources */,
 				BE0DDB5A1E6D63A100F15168 /* HTPurchaseBar.m in Sources */,
 				BE5ED7E81E62B29000C4B1D0 /* SecurityUtil.m in Sources */,
+				3759C1201F6A547900E9A358 /* plantuserTableViewCell.m in Sources */,
+				3759C11B1F6A23FD00E9A358 /* PlantUserViewController.m in Sources */,
+				3771FD8B1F690D5200A8413D /* PlantPlanViewController.m in Sources */,
 				BED84A191E7004B7001E7A27 /* TransportTableController.m in Sources */,
+				3774A5321F6BA44E00B39A2D /* PlantAddViewController.m in Sources */,
 				BE0DDB421E6D0B4300F15168 /* HTCalculatorToolBar.m in Sources */,
 				BEF0EE1C1E711E41003E06DB /* OrderDetailCell.m in Sources */,
+				374B997B1F666F2A008DC328 /* PlantTimeTableViewCell.m in Sources */,
 				BE93C2F21E680D6200CC0B96 /* ProviceTableController.m in Sources */,
 				BEF0EE201E712AEE003E06DB /* OrderGoodsModel.m in Sources */,
 				BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */,
@@ -1432,24 +1615,32 @@
 				BE59A47C1E63D8520077D9AD /* MeSettingTableController.m in Sources */,
 				BE2D0CF81E7AD0CC007A154F /* ArticleContentView.m in Sources */,
 				BEF0EE3C1E714B7E003E06DB /* OrderCell.m in Sources */,
+				3774A5371F6E39A300B39A2D /* PlantSetting0ViewController.m in Sources */,
+				37EDA6621F6ACF05008C31CF /* PlantInfomationTableViewController.m in Sources */,
+				3750E15A1F72A049007F4056 /* PlanthandleViewController.m in Sources */,
 				BE0B09971E8622E200635E71 /* HTAlertView.m in Sources */,
 				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
+				3771FD901F6A157800A8413D /* PlanWebViewViewController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
 				BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */,
+				375CA4981F794B5E009AA629 /* PlantStateViewController.m in Sources */,
 				BE0DDB4D1E6D46FA00F15168 /* GoodsCell.m in Sources */,
 				BED36E9D1E68FD1900DDF82F /* RegisterSuccessController.m in Sources */,
 				BED202821E7062BB00437133 /* OrderSuccessController.m in Sources */,
 				BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */,
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
+				37789DA01F584EAF007F1FA0 /* MeMenuCollectionViewCell.m in Sources */,
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Extension.m in Sources */,
 				BE59845D1E8547F700166B70 /* TopScrollView.m in Sources */,
 				BE5ED7FA1E62B90900C4B1D0 /* PwdBackController.m in Sources */,
 				BEDECE331E72967200EEA29B /* CancelOrderCell.m in Sources */,
 				BEF0EE2F1E7137CF003E06DB /* OrderDetailTransHeader.m in Sources */,
 				BE93AF2C1E65B88E001F99BC /* SearchCell.m in Sources */,
+				37B464F81F72AE5A00659CEE /* PlantListTableCell1TableViewCell.m in Sources */,
 				BE8FA4E51E6460F500F92C46 /* User.m in Sources */,
 				BE5ED7F91E62B90900C4B1D0 /* PasswordBackController.m in Sources */,
 				BE0CFD421E6DA0F200003FE1 /* ParamsCell.m in Sources */,
+				37644EAA1F60255D0084AB5C /* PlantViewController.m in Sources */,
 				BE7F9A2C1E6D7BE300DD21CF /* ProductDetailTableController.m in Sources */,
 				BE93AF281E65B7BF001F99BC /* SeachSectionHeader.m in Sources */,
 				BED84A081E6FD9C4001E7A27 /* CarryCell.m in Sources */,
@@ -1460,10 +1651,15 @@
 				BE93C2EC1E67C5E300CC0B96 /* UserIDController.m in Sources */,
 				BED84A0D1E6FDB9E001E7A27 /* OrderPayFooter.m in Sources */,
 				BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */,
+				BEBDA6061F7B369C00996488 /* NSDictionary+Extension.m in Sources */,
+				37EDA6661F6AD513008C31CF /* PlantSettingViewController.m in Sources */,
 				BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */,
 				BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */,
+				378A60A41F74031900D73138 /* PlantDoneViewController.m in Sources */,
+				378A60A91F74047700D73138 /* plantdoneTableViewCell.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
 				BE7F9A2F1E6D80FD00DD21CF /* GoodsDetailModel.m in Sources */,
+				374B99801F6674C9008DC328 /* PlantListTableViewCell.m in Sources */,
 				BEFFEE211E753D1A003E6240 /* GoodsDetailTableHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1602,6 +1798,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PotatoMall/Classes/lib/WeChatShare",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1655,6 +1852,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PotatoMall/Classes/lib/WeChatShare",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
