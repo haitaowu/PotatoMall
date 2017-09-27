@@ -10,17 +10,15 @@
 #import "plantmodel.h"
 #import "BRPickerView.h"
 
-
 @interface PlantInfoControllerViewController ()
-
 @end
 
 @implementation PlantInfoControllerViewController
 
+#pragma mark - Overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"种植信息";
-    
     self.view.userInteractionEnabled = YES;
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
@@ -28,7 +26,6 @@
     [self.view addGestureRecognizer:singleTap];
     
     self.pickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 50, self.view.bounds.size.width, 280)];
-    
 //
 //    //指定数据源和委托
     self.pickerView.delegate = self;
@@ -39,16 +36,23 @@
         self.numtextfield.enabled=false ;
         [self.buttoncell setHidden:YES];
     }
-    
-    
-    
-    
-    
-    
     // Do any additional setup after loading the view.
 }
 
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self findSysDictByType:[self Paramstype:@"1"]];
+    [self findSysDictByType:[self Paramstype:@"2"]];
+    [self findSysDictByType:[self Paramstype:@"3"]];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSDictionary *parama=[self whetherFillPlatInfoParams];
+    [self whetherFillPlatInfo:parama];
+}
+
+#pragma mark - Privates
 - (NSDictionary *)whetherFillPlatInfoParams
 {
     UserModel *model = [UserModelUtil sharedInstance].userModel;
@@ -57,13 +61,59 @@
     return params;
 }
 
+-(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
+{
+    [self.view endEditing:YES];
+}
 
+- (NSDictionary *)userParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    return params;
+}
+
+- (NSDictionary *)Paramstype:(NSString*)type
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"type"] = type;
+    return params;
+}
+//
+- (void)setupPickViewWithTitles:(NSArray*)titles title:(NSString*)title defaultTitle:(NSString*)defaultTitle block:(void(^)(NSInteger))block
+{
+    __weak typeof(self) weakSelf = self;
+//    [BRStringPickerView showStringPickerWithTitle:title dataSource:titles defaultSelValue:defaultTitle isAutoSelect:YES resultBlock:^(id selectValue) {
+//        //        weakSelf.field.text = selectValue;
+//        [field setTitle:selectValue forState:UIControlStateNormal];
+//    }];
+    [BRStringPickerView showSPickerWithTitle:title dataSource:titles resultBlock:^(NSInteger idx, id selectValue) {
+        block(idx);
+//        [field setTitle:selectValue forState:UIControlStateNormal];
+    }];
+}
+
+
+- (NSDictionary *)plantParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    params[@"cropName"] = cropName;
+    params[@"platType"] = platType;
+    params[@"platSource"] = platSource;
+    params[@"platArea"] = self.numtextfield.text;
+    params[@"platAddress"] = self.addresstextfield.text;
+    return params;
+}
+
+
+#pragma mark - requset server
 - (void)whetherFillPlatInfo:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
-        
     }else{
-        
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         NSString *subUrl = @"/user_union/whetherUserUnion";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
@@ -78,53 +128,20 @@
                     NSDictionary *parama=[self userParams];
                     [self detailUserPlat:parama];
                 }
-                
-                
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
         }];
-        
     }
-    
-    
-    
-    
 }
 
-
-
--(void)viewWillAppear:(BOOL)animated{
-    [self findSysDictByType:[self Paramstype:@"1"]];
-    [self findSysDictByType:[self Paramstype:@"2"]];
-    [self findSysDictByType:[self Paramstype:@"3"]];
-    
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    NSDictionary *parama=[self whetherFillPlatInfoParams];
-    [self whetherFillPlatInfo:parama];
-    
-}
-
--(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer
-
-{
-    
-    [self.view endEditing:YES];
-    
-}
-
-
-#pragma mark - requset server
 - (void)detailUserPlat:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView reloadData];
     }else{
-        
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         NSString *subUrl = @"/user/detailUserPlat";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
@@ -176,16 +193,10 @@
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
         }];
-        
     }
-    
-    
-    
-    
 }
 
 //查询字典
-#pragma mark - requset server
 - (void)findSysDictByType:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
@@ -222,30 +233,8 @@
 
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-- (NSDictionary *)userParams
-{
-    UserModel *model = [UserModelUtil sharedInstance].userModel;
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[kUserIdKey] = model.userId;
-    return params;
-}
-
-- (NSDictionary *)Paramstype:(NSString*)type
-{
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"type"] = type;
-    return params;
-}
-
-
-
-
-
+#pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.001;
@@ -328,69 +317,81 @@
 }
 
 
-//
-- (void)setupMarriagePickView
-{
-    __weak typeof(self) weakSelf = self;
-    [BRStringPickerView showStringPickerWithTitle:@"婚姻" dataSource:@[@"已婚", @"未婚"] defaultSelValue:@"未婚" isAutoSelect:YES resultBlock:^(id selectValue) {
-//        weakSelf.marriageField.text = selectValue;
-    }];
-}
 
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
+#pragma mark - Selectors
 //上茬作物
 - (IBAction)lastbuttonclick:(id)sender {
-    if([_canclick isEqualToString:@"1"]){
-        return;
+//    if([_canclick isEqualToString:@"1"]){
+//        return;
+//    }
+//    _pickerView.tag=0;
+//    [_pickerView reloadAllComponents];
+//    [self.view addSubview:_pickerView];
+    NSMutableArray *array = [NSMutableArray array];
+    for (plantmodel *model in type0) {
+        [array addObject:model.name];
     }
-    _pickerView.tag=0;
-    [_pickerView reloadAllComponents];
-    [self.view addSubview:_pickerView];
+    if ([array count] > 0){
+        NSArray *titles = array;
+        NSString *title = @"上茬作物";
+        NSString *defaultTitle = [array firstObject];
+        __weak typeof(self) weakSelf = self;
+        [self setupPickViewWithTitles:titles title:title defaultTitle:defaultTitle block:^(NSInteger idx) {
+            plantmodel *model = type0[idx];
+            [weakSelf.lastmodelbutton setTitle:model.name forState:UIControlStateNormal];
+            cropName=model.uid;
+        }];
+    }
 }
 
+//种署
 - (IBAction)zhongsuclick:(id)sender {
-    if([_canclick isEqualToString:@"1"]){
-        return;
+//    if([_canclick isEqualToString:@"1"]){
+//        return;
+//    }
+//    _pickerView.tag=1;
+//    [_pickerView reloadAllComponents];
+//    [self.view addSubview:_pickerView];
+    NSMutableArray *array = [NSMutableArray array];
+    for (plantmodel *model in type1) {
+        [array addObject:model.name];
     }
-    _pickerView.tag=1;
-    [_pickerView reloadAllComponents];
-    [self.view addSubview:_pickerView];
+    if ([array count] > 0){
+        NSArray *titles = array;
+        NSString *title = @"种薯";
+        NSString *defaultTitle = [array firstObject];
+        __weak typeof(self) weakSelf = self;
+        [self setupPickViewWithTitles:titles title:title defaultTitle:defaultTitle block:^(NSInteger idx) {
+            plantmodel *model = type1[idx];
+            [weakSelf.zhongsubutton setTitle:model.name forState:UIControlStateNormal];
+            platType=model.uid;
+        }];
+    }
 }
 
+//种薯来源
 - (IBAction)laiyuanclick:(id)sender {
-    if([_canclick isEqualToString:@"1"]){
-        return;
+//    if([_canclick isEqualToString:@"1"]){
+//        return;
+//    }
+//    _pickerView.tag=2;
+//    [_pickerView reloadAllComponents];
+//    [self.view addSubview:_pickerView];
+    NSMutableArray *array = [NSMutableArray array];
+    for (plantmodel *model in type2) {
+        [array addObject:model.name];
     }
-    _pickerView.tag=2;
-    [_pickerView reloadAllComponents];
-    [self.view addSubview:_pickerView];
-}
-
-
-- (NSDictionary *)plantParams
-{
-    UserModel *model = [UserModelUtil sharedInstance].userModel;
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[kUserIdKey] = model.userId;
-    params[@"cropName"] = cropName;
-    params[@"platType"] = platType;
-    params[@"platSource"] = platSource;
-    params[@"platArea"] = self.numtextfield.text;
-    params[@"platAddress"] = self.addresstextfield.text;
-    return params;
+    if ([array count] > 0){
+        NSArray *titles = array;
+        NSString *title = @"种薯来源";
+        NSString *defaultTitle = [array firstObject];
+        __weak typeof(self) weakSelf = self;
+        [self setupPickViewWithTitles:titles title:title defaultTitle:defaultTitle block:^(NSInteger idx) {
+            plantmodel *model = type2[idx];
+            [weakSelf.laiyuanbutton setTitle:model.name forState:UIControlStateNormal];
+            platSource=model.uid;
+        }];
+    }
 }
 
 //提交用户修改数据

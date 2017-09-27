@@ -21,14 +21,31 @@
 // 是否开启自动选择
 @property (nonatomic, assign) BOOL isAutoSelect;
 @property (nonatomic, copy) BRStringResultBlock resultBlock;
+
+@property (nonatomic, copy) HTStringResultBlock htResultBlock;
 // 单列选中的项
 @property (nonatomic, copy) NSString *selectedItem;
 // 多列选中的项
 @property (nonatomic, strong) NSMutableArray *selectedItems;
 
+
+@property (nonatomic, assign) NSInteger selectedRow;
+
+
 @end
 
+#pragma mark ht added
 @implementation BRStringPickerView
++ (void)showSPickerWithTitle:(NSString *)title
+                  dataSource:(NSArray *)dataSource
+                 resultBlock:(HTStringResultBlock)resultBlock
+{
+    if (dataSource == nil || dataSource.count == 0) {
+        return;
+    }
+    BRStringPickerView *strPickerView = [[BRStringPickerView alloc]initWithTitle:title dataSource:dataSource  resultBlock:resultBlock];
+    [strPickerView showWithAnimation:YES];
+}
 
 #pragma mark - 显示自定义字符串选择器
 + (void)showStringPickerWithTitle:(NSString *)title
@@ -84,6 +101,21 @@
     }
     return self;
 }
+
+
+#pragma mark ht added
+- (instancetype)initWithTitle:(NSString *)title dataSource:(NSArray *)dataSource resultBlock:(HTStringResultBlock)resultBlock {
+    if (self = [super init]) {
+        self.title = title;
+        self.dataSource = dataSource;
+        self.htResultBlock = resultBlock;
+        self.selectedItem = [dataSource firstObject];
+        [self loadData];
+        [self initUI];
+    }
+    return self;
+}
+
 
 #pragma mark - 初始化子视图
 - (void)initUI {
@@ -239,6 +271,13 @@
             _resultBlock([self.selectedItems copy]);
         }
     }
+    if(_htResultBlock) {
+        if (self.isSingleColumn) {
+            _htResultBlock(self.selectedRow,[self.selectedItem copy]);
+        } else {
+            _htResultBlock(self.selectedRow,[self.selectedItems copy]);
+        }
+    }
 }
 
 #pragma mark - 字符串选择器
@@ -298,7 +337,13 @@
     }
 }
 
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 44;
+}
+
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.selectedRow = row;
     if (self.isSingleColumn) {
         self.selectedItem = _dataSource[row];
     } else {
@@ -312,6 +357,14 @@
             } else {
                 _resultBlock([self.selectedItems copy]);
             }
+        }
+    }
+    
+    if(_htResultBlock) {
+        if (self.isSingleColumn) {
+            _htResultBlock(self.selectedRow,[self.selectedItem copy]);
+        } else {
+            _htResultBlock(self.selectedRow,[self.selectedItems copy]);
         }
     }
 }
