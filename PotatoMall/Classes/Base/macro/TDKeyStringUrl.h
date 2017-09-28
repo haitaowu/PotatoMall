@@ -55,6 +55,9 @@
 
 #define     kParentIdKey                     @"parentId"
 
+#define     kUnionIDKey                      @"unionId"
+
+
 
 //分享链接跳转
 #define kProductSkipType                    @"Product"

@@ -100,19 +100,25 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 {
     
     if(indexPath.row==0){
-        [self performSegueWithIdentifier:@"orderesSegue" sender:nil];
+        if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+            [self performSegueWithIdentifier:@"orderesSegue" sender:nil];
+        }else{
+            [self showLoginView];
+        }
     }
-    
     if(indexPath.row==1){
-        
-        [self performSegueWithIdentifier:@"plantidentifier" sender:nil];
-        
+        if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+            [self performSegueWithIdentifier:@"plantidentifier" sender:nil];
+        }else{
+            [self showLoginView];
+        }
     }
-    
     if(indexPath.row==4){
-        
-        [self performSegueWithIdentifier:@"settingSegue" sender:nil];
-        
+        if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+            [self performSegueWithIdentifier:@"settingSegue" sender:nil];
+        }else{
+            [self showLoginView];
+        }
     }
     
     

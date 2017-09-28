@@ -10,7 +10,7 @@
 #import "BaseTableViewController.h"
 @interface PlantViewController : BaseTableViewController{
     NSString *unionId;
-    Boolean selection0;
+//    Boolean selection0;
     NSString *message;
 }
 @property (weak, nonatomic) IBOutlet UITableViewCell *nocell;
