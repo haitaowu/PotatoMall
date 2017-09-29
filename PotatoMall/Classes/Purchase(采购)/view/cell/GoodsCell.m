@@ -77,10 +77,12 @@
 {
     _model = model;
     self.titleLabel.text = model.goodsInfoName;
-    NSString *priceStr = [NSString stringWithFormat:@"￥%@",model.price];
+    NSString *price = (model.price == nil) ? @"0":model.price;
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@",price];
     UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
-    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.price hlFont:hlFont];
+    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:price hlFont:hlFont];
     self.priceLabel.attributedText = attriPriceStr;
+    
     self.adrLabel.text = model.goodsPlace;
     if (model.imageSrc != nil) {
         NSURL *picUrl = [NSURL URLWithString:model.imageSrc];

@@ -1396,7 +1396,7 @@
 				TargetAttributes = {
 					BE30996E1E5C71AD0062EBA9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TCQ9E2BH2Y;
+						DevelopmentTeam = YTV9736654;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1787,7 +1787,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TCQ9E2BH2Y;
+				DEVELOPMENT_TEAM = YTV9736654;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PotatoMall/Classes/Base/other/TuDouPrefixHeader.pch";
@@ -1841,7 +1841,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TCQ9E2BH2Y;
+				DEVELOPMENT_TEAM = YTV9736654;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PotatoMall/Classes/Base/other/TuDouPrefixHeader.pch";

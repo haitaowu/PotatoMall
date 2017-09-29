@@ -166,11 +166,16 @@
             model.userId = [obj objectForKey:@"obj"];
             model.phone = phoneTxt;
             self.model = model;
+        
         }else{
             [SVProgressHUD showWithStatus:msg];
         }
     } reqFail:^(int type, NSString *msg) {
-        [SVProgressHUD showErrorWithStatus:msg];
+        if (type == 1006){
+            [SVProgressHUD showInfoWithStatus:@"该手机号尚未注册"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:msg];
+        }
     }];
 }
 

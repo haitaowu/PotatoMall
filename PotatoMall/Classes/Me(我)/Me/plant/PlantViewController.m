@@ -184,9 +184,9 @@
             }
         }else{
             if (self.isAddedPlaned == YES){
-                return 0;
-            }else{
                 return 3;
+            }else{
+                return 0;
             }
         }
     }else{

@@ -232,7 +232,11 @@
 
 
 
-
+#pragma mark - UIScrollView delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
+}
 
 #pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -327,6 +331,7 @@
 //    _pickerView.tag=0;
 //    [_pickerView reloadAllComponents];
 //    [self.view addSubview:_pickerView];
+    [self.view endEditing:YES];
     NSMutableArray *array = [NSMutableArray array];
     for (plantmodel *model in type0) {
         [array addObject:model.name];
@@ -352,6 +357,7 @@
 //    _pickerView.tag=1;
 //    [_pickerView reloadAllComponents];
 //    [self.view addSubview:_pickerView];
+    [self.view endEditing:YES];
     NSMutableArray *array = [NSMutableArray array];
     for (plantmodel *model in type1) {
         [array addObject:model.name];
@@ -377,6 +383,7 @@
 //    _pickerView.tag=2;
 //    [_pickerView reloadAllComponents];
 //    [self.view addSubview:_pickerView];
+    [self.view endEditing:YES];
     NSMutableArray *array = [NSMutableArray array];
     for (plantmodel *model in type2) {
         [array addObject:model.name];
@@ -396,7 +403,7 @@
 
 //提交用户修改数据
 - (IBAction)submitinfo:(id)sender {
-    
+    [self.view endEditing:YES];
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView reloadData];
     }else{

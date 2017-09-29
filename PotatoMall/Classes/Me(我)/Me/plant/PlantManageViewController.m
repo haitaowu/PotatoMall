@@ -20,7 +20,7 @@
 @end
 
 @implementation PlantManageViewController
-
+#pragma mark - Overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"合作社管理";
@@ -44,17 +44,35 @@
     [self.navigationController  setToolbarHidden:YES animated:YES];
     [self.navigationController.toolbar setBackgroundColor:[UIColor whiteColor]];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"plantplan"]) {
+        PlantPlanTableViewController *vc = segue.destinationViewController;
+        vc.unionId =self.unionId;
+        vc.createDate=time;
+    }
+    
+    if ([segue.identifier isEqualToString:@"planinfo"]) {
+        PlantInfoControllerViewController *vc = segue.destinationViewController;
+        vc.canclick=@"1";
+    }
+    
+    if ([segue.identifier isEqualToString:@"plantinfomation"]) {
+        PlantInfomationTableViewController *vc = segue.destinationViewController;
+        vc.unionId =self.unionId;
+    }
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - Privates
 - (void)findWalletDetail:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
-        
     }else{
-        
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         NSString *subUrl = @"/wallet/findWalletDetail";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
@@ -71,21 +89,14 @@
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
         }];
-        
     }
-    
-    
-    
-    
 }
-
 
 - (void)detailUserUnion:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
         
     }else{
-        
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         NSString *subUrl = @"/user_union/detailUserUnion";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
@@ -103,12 +114,7 @@
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
         }];
-        
     }
-    
-    
-    
-    
 }
 
 - (NSDictionary *)detailUserUnionaParams
@@ -130,11 +136,7 @@
     return params;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+#pragma mark - Table view data source
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [tabledata count];
@@ -158,7 +160,7 @@
     
 }
 
-
+#pragma mark - UITableView --- Table view  delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -175,11 +177,7 @@
 //        _PlanWebViewViewController.murl = murl;
         _PlantUserViewController.unionId =self.unionId;
         [self.navigationController pushViewController:_PlantUserViewController animated:YES];
-        
-        
-        
     }
-    
     
     if (indexPath.row==3) {
         plantlistViewController *_plantlistViewController = [[plantlistViewController alloc] init];
@@ -187,34 +185,10 @@
 //        _PlantUserViewController.unionId =self.unionId;
         [self.navigationController pushViewController:_plantlistViewController animated:YES];
     }
-    
-    
-    
 }
 
 
 
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"plantplan"]) {
-        PlantPlanTableViewController *vc = segue.destinationViewController;
-        vc.unionId =self.unionId;
-        vc.createDate=time;
-    }
-    
-    if ([segue.identifier isEqualToString:@"planinfo"]) {
-        PlantInfoControllerViewController *vc = segue.destinationViewController;
-        vc.canclick=@"1";
-    }
-    
-    if ([segue.identifier isEqualToString:@"plantinfomation"]) {
-        PlantInfomationTableViewController *vc = segue.destinationViewController;
-        vc.unionId =self.unionId;
-    }
-}
  
 
 @end
