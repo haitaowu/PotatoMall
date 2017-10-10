@@ -1318,15 +1318,8 @@
                                                     <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_auth" translatesAutoresizingMaskIntoConstraints="NO" id="LkU-G9-DV8">
-                                                    <rect key="frame" x="255" y="16" width="41" height="12"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="41" id="O2j-h6-hUg"/>
-                                                        <constraint firstAttribute="width" secondItem="LkU-G9-DV8" secondAttribute="height" multiplier="41:12" id="heZ-bq-Tzi"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="真实姓名" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33w-dO-fKA">
-                                                    <rect key="frame" x="95" y="0.0" width="160" height="44"/>
+                                                    <rect key="frame" x="135" y="0.0" width="160" height="44"/>
                                                     <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1344,13 +1337,11 @@
                                                 <constraint firstItem="5vJ-3x-bAp" firstAttribute="centerY" secondItem="Czf-PM-tUq" secondAttribute="centerY" id="GzN-je-N5V"/>
                                                 <constraint firstItem="5vJ-3x-bAp" firstAttribute="leading" secondItem="Czf-PM-tUq" secondAttribute="leading" constant="8" id="H4J-6e-UrC"/>
                                                 <constraint firstItem="OeI-Jp-DOw" firstAttribute="leading" secondItem="Czf-PM-tUq" secondAttribute="leading" constant="16" id="KoX-W7-tNA"/>
-                                                <constraint firstItem="LkU-G9-DV8" firstAttribute="centerY" secondItem="Czf-PM-tUq" secondAttribute="centerY" id="PsU-E5-ZMe"/>
                                                 <constraint firstAttribute="trailing" secondItem="OeI-Jp-DOw" secondAttribute="trailing" id="ac1-ap-l0U"/>
+                                                <constraint firstAttribute="trailing" secondItem="33w-dO-fKA" secondAttribute="trailing" constant="25" id="dXB-LX-LIL"/>
                                                 <constraint firstAttribute="bottom" secondItem="OeI-Jp-DOw" secondAttribute="bottom" id="ddI-IY-pCy"/>
                                                 <constraint firstItem="33w-dO-fKA" firstAttribute="top" secondItem="Czf-PM-tUq" secondAttribute="top" id="f4j-HD-wHO"/>
                                                 <constraint firstItem="33w-dO-fKA" firstAttribute="width" secondItem="Czf-PM-tUq" secondAttribute="width" multiplier="0.5" id="oZ3-jY-7Gw"/>
-                                                <constraint firstItem="LkU-G9-DV8" firstAttribute="leading" secondItem="33w-dO-fKA" secondAttribute="trailing" id="rGT-v7-cQI"/>
-                                                <constraint firstAttribute="trailing" secondItem="LkU-G9-DV8" secondAttribute="trailing" constant="24" id="yna-cB-Xpk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2441,7 +2432,6 @@
         <image name="ic_me_plant_info" width="30" height="34"/>
         <image name="ic_me_plant_union" width="31" height="30"/>
         <image name="ic_red_clock" width="27" height="27"/>
-        <image name="me_auth" width="41" height="12"/>
         <image name="me_next" width="21" height="21"/>
         <image name="me_sexCircle" width="14" height="14"/>
         <image name="me_sexCircleSel" width="14" height="14"/>

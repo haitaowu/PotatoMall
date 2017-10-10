@@ -39,11 +39,12 @@
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:leftImage forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0, 0, 30, 30);
+    leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 15);
     [leftBtn addTarget:self action:@selector(tapBackBtn) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    spaceItem.width = -15;
-    self.navigationItem.leftBarButtonItems = @[spaceItem,leftBarItem];
+//    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//    spaceItem.width = -15;
+    self.navigationItem.leftBarButtonItems = @[leftBarItem];
 }
 
 #pragma mark - selectors
