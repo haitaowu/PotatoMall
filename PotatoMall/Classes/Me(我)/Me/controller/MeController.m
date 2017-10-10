@@ -14,6 +14,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "LoginViewController.h"
 #import "MeMenuCollectionViewCell.h"
+#import "NSDictionary+Extension.h"
 
 
 #define kSaleSectionIndex               0
@@ -49,6 +50,16 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     [super viewWillAppear:animated];
     [self.navigationController.toolbar setBackgroundColor:[UIColor whiteColor]];
     [self updateUserInfoUI];
+    NSDictionary *parama=[self whetherUserUnionParams];
+    [self whetherUserUnion:parama];
+}
+
+- (NSDictionary *)whetherUserUnionParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    return params;
 }
 
 #pragma mark - setup UI
@@ -174,6 +185,55 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     }
 }
 
+- (void)reqUserInfoWithUnionId:(NSString*)unionID
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+     ;
+    if (model == nil) {
+        return;
+    }
+    NSDictionary *params;
+    if ((unionID == nil) || (unionID.length <= 0)){
+       params = [NSDictionary dictionaryWithObjectsAndKeys:model.userId,kUserIdKey,@"2",@"type",nil];
+    }else{
+        params = [NSDictionary dictionaryWithObjectsAndKeys:model.userId, kUserIdKey,unionID,@"unionId",@"1",@"type",nil];
+    }
+    NSString *subUrl = @"wallet/findWalletDetail";
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        if (status == StatusTypSuccess) {
+            NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
+            NSDictionary *modelDict = dataDict[@"obj"];
+            //id user
+            NSString *availableBalance = [NSString stringWithFormat:@"账户余额:%@元",[modelDict objectForKey:@"availableBalance"]];
+            self.moneyLabel.text = availableBalance;
+//            [[UserModelUtil sharedInstance] archiveUserModel:model];
+        }
+    } reqFail:^(int type, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+    }];
+}
+
+- (void)whetherUserUnion:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        return;
+    }else{
+        NSString *subUrl = @"/user_union/whetherUserUnion";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            NSString *unionID = nil;
+            if (status == StatusTypSuccess) {
+                NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
+                NSDictionary *obj = dataDict[@"obj"];
+                 unionID = [obj strValueForKey:@"unionId"];
+            }
+            [self reqUserInfoWithUnionId:unionID];
+        } reqFail:^(int type, NSString *msg) {
+        }];
+    }
+}
+
 #pragma mark - selectors
 - (IBAction)tapEditInfo:(id)sender {
     if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
@@ -195,11 +255,6 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
         [self showLoginView];
     }
 }
-
-
-
-
-
 
 
 #pragma mark - UIAction sheet delegate

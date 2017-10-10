@@ -67,8 +67,7 @@
                 NSString *statusStr = [data strValueForKey:@"status"];
                 if([statusStr isEqualToString:@"5"]){
 //                    selection0=YES;
-                    self.isUnioned = YES;
-                    
+                    self.isUnioned = NO;
                     [self.mstatebutton setTitle:@"创建联合体种正在审核中>>" forState:UIControlStateNormal];
                 } else if([statusStr isEqualToString:@"4"]){
                     self.isUnioned = NO;
@@ -80,16 +79,15 @@
                     self.isUnioned = YES;
                     [self requestAddedPlanStateWithUnionId:unionID];
                 }else if([statusStr isEqualToString:@"1"]){
-//                    selection0=YES;
                     self.isUnioned = NO;
-                    [self.mstatebutton setTitle:@"创建联合体种植体>>" forState:UIControlStateNormal];
+                    [self.mstatebutton setTitle:@"创建申请审核中......>>" forState:UIControlStateNormal];
+                    
                     [self.mstatebutton addTarget:self action:@selector(stateclick:) forControlEvents:UIControlEventTouchUpInside];
                     [self requestAddedPlanStateWithUnionId:unionID];
                 }else if([statusStr isEqualToString:@"0"]){
                     self.isUnioned = NO;
-//                    selection0=YES;
                     self.mstatebutton.tag=-1;
-                    [self.mstatebutton setTitle:@"创建申请审核中......>>" forState:UIControlStateNormal];
+                    [self.mstatebutton setTitle:@"创建联合体种植体>>" forState:UIControlStateNormal];
                 }
                 
 //                if ([data objectForKey:@"unionId"]) {

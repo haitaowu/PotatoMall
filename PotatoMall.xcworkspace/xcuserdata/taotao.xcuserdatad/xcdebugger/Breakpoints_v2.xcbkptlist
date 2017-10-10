@@ -20,12 +20,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Me(&#x6211;)/Me/plant/PlantViewController.m"
-            timestampString = "528292687.60019"
+            timestampString = "529292565.317048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/PreOrderTableController.m"
+            timestampString = "528859223.057722"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-submitOrdderDataWithParams:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/PreOrderTableController.m"
+            timestampString = "528859234.477704"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-submitOrdderDataWithParams:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Base/net/RequestUtil.m"
+            timestampString = "528859496.707427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "+POSTWithURL:params:reqSuccess:reqFail:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/PreOrderTableController.m"
+            timestampString = "528859288.757939"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-submitOrdderDataWithParams:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PreOrderTableController submitOrdderDataWithParams:]"
+                  moduleName = "PotatoMall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taotao/Documents/workspace/iOS/PotatoMall/PotatoMall/PotatoMall/Classes/Purchase(%E9%87%87%E8%B4%AD)/chart/controller/PreOrderTableController.m"
+                  timestampString = "529292417.008766"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "544">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__54-[PreOrderTableController submitOrdderDataWithParams:]_block_invoke"
+                  moduleName = "PotatoMall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taotao/Documents/workspace/iOS/PotatoMall/PotatoMall/PotatoMall/Classes/Purchase(%E9%87%87%E8%B4%AD)/chart/controller/PreOrderTableController.m"
+                  timestampString = "529292417.010838"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Me(&#x6211;)/Me/controller/MeController.m"
+            timestampString = "529292565.317195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "-reqUserInfoWithUnionId:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
