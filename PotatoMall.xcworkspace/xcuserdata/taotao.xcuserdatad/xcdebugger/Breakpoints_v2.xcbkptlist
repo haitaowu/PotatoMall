@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/PreOrderTableController.m"
-            timestampString = "529480756.503103"
+            timestampString = "529491548.446795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-submitOrdderDataWithParams:"
             landmarkType = "7">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/AddMofityAdrTableController.m"
-            timestampString = "529481209.052726"
+            timestampString = "529491548.447264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-tapConfirmBtn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/PreOrderTableController.m"
-            timestampString = "529480756.50461"
+            timestampString = "529491548.447344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "196"
@@ -100,7 +100,7 @@
                   moduleName = "PotatoMall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taotao/Documents/workspace/iOS/PotatoMall/PotatoMall/PotatoMall/Classes/Purchase(%E9%87%87%E8%B4%AD)/chart/controller/PreOrderTableController.m"
-                  timestampString = "529481209.229801"
+                  timestampString = "529488212.770282"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "196"
@@ -115,7 +115,7 @@
                   moduleName = "PotatoMall"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taotao/Documents/workspace/iOS/PotatoMall/PotatoMall/PotatoMall/Classes/Purchase(%E9%87%87%E8%B4%AD)/chart/controller/PreOrderTableController.m"
-                  timestampString = "529481209.231483"
+                  timestampString = "529488212.7725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "196"
@@ -131,13 +131,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Base/net/RequestUtil.m"
-            timestampString = "529480086.145464"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/view/EditAddressCell.m"
+            timestampString = "529491548.44765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "+POSTWithURL:params:reqSuccess:reqFail:"
+            landmarkName = "-setAdrInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -147,13 +147,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/PreOrderTableController.m"
-            timestampString = "529480756.505042"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/AddressListTableController.m"
+            timestampString = "529491548.448036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-showAddAddressView"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AddressListTableController reqAddDefaultAdr:]"
+                  moduleName = "PotatoMall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taotao/Documents/workspace/iOS/PotatoMall/PotatoMall/PotatoMall/Classes/Purchase(%E9%87%87%E8%B4%AD)/chart/controller/AddressListTableController.m"
+                  timestampString = "529488212.740824"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[AddressListTableController reqAddDefaultAdr:]_block_invoke"
+                  moduleName = "PotatoMall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taotao/Documents/workspace/iOS/PotatoMall/PotatoMall/PotatoMall/Classes/Purchase(%E9%87%87%E8%B4%AD)/chart/controller/AddressListTableController.m"
+                  timestampString = "529488212.743595"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/AddressListTableController.m"
+            timestampString = "529491548.448095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "-reqAddDefaultAdr:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PotatoMall/Classes/Purchase(&#x91c7;&#x8d2d;)/chart/controller/AddressListTableController.m"
+            timestampString = "529491548.448155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-showModiftAddressViewWith:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

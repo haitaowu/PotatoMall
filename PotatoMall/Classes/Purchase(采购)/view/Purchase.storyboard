@@ -519,6 +519,7 @@
                         <segue destination="weT-ND-Wmv" kind="show" identifier="transportSegue" id="MRa-hw-QO1"/>
                         <segue destination="VJd-q2-XFN" kind="show" identifier="submitSuccSugue" id="Z9X-Wi-1Q3"/>
                         <segue destination="OkX-N4-99O" kind="show" identifier="addModifySegue" id="m6d-Pt-VPk"/>
+                        <segue destination="2w0-sh-cNe" kind="show" identifier="adrListSegue" id="Dul-e8-mWh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvt-gN-4uM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -873,7 +874,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="选择城市" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6u-8h-6py">
-                                                    <rect key="frame" x="82" y="1" width="261" height="55"/>
+                                                    <rect key="frame" x="82" y="1" width="261" height="49"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1002,7 +1003,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRv-Re-lc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5093.6000000000004" y="1117.6911544227887"/>
+            <point key="canvasLocation" x="6225" y="1863"/>
         </scene>
         <!--Order Success Controller-->
         <scene sceneID="qNi-U5-GA6">
@@ -1046,6 +1047,29 @@
             </objects>
             <point key="canvasLocation" x="4670" y="1863"/>
         </scene>
+        <!--收货地址-->
+        <scene sceneID="ylV-wi-32y">
+            <objects>
+                <tableViewController id="2w0-sh-cNe" customClass="AddressListTableController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="3Hl-Ks-7l9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="2w0-sh-cNe" id="bB1-G5-6Re"/>
+                            <outlet property="delegate" destination="2w0-sh-cNe" id="3F4-ew-veV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="收货地址" id="ghV-rv-jYc"/>
+                    <connections>
+                        <segue destination="OkX-N4-99O" kind="show" identifier="addModifySegue" id="mQ6-Pv-bnt"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qez-uA-WB9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6226" y="958"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chart_success" width="97" height="97"/>
@@ -1056,8 +1080,9 @@
         <image name="purchase_chart" width="24" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="mQ6-Pv-bnt"/>
         <segue reference="eKZ-fS-Gk4"/>
         <segue reference="xOU-b6-sZd"/>
-        <segue reference="QjT-o2-6wd"/>
+        <segue reference="deb-yH-d2m"/>
     </inferredMetricsTieBreakers>
 </document>

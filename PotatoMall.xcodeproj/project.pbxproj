@@ -135,6 +135,11 @@
 		BEADCF761E76477600EFFA01 /* ModifyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF751E76477600EFFA01 /* ModifyAccountController.m */; };
 		BEADCF791E76692700EFFA01 /* ModifyPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF781E76692700EFFA01 /* ModifyPwdController.m */; };
 		BEADCF7C1E767AB600EFFA01 /* TitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADCF7B1E767AB600EFFA01 /* TitleLabel.m */; };
+		BEB7F6D51F8F3EB30067944F /* EditAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F6D21F8F3EB20067944F /* EditAddressCell.m */; };
+		BEB7F6D61F8F45FA0067944F /* EditAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F6D31F8F3EB30067944F /* EditAddressCell.xib */; };
+		BEB7F6D91F8F46C50067944F /* AddressListTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F6D71F8F46C40067944F /* AddressListTableController.m */; };
+		BEB7F6DD1F8F4E1A0067944F /* AddAdrFuncCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F6DC1F8F4E1A0067944F /* AddAdrFuncCell.m */; };
+		BEB7F6DE1F8F4F220067944F /* AddAdrFuncCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F6DB1F8F4E1A0067944F /* AddAdrFuncCell.xib */; };
 		BEBDA6061F7B369C00996488 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBDA6051F7B369C00996488 /* NSDictionary+Extension.m */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
@@ -435,6 +440,14 @@
 		BEADCF781E76692700EFFA01 /* ModifyPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdController.m; sourceTree = "<group>"; };
 		BEADCF7A1E767AB600EFFA01 /* TitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleLabel.h; sourceTree = "<group>"; };
 		BEADCF7B1E767AB600EFFA01 /* TitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleLabel.m; sourceTree = "<group>"; };
+		BEB7F6D21F8F3EB20067944F /* EditAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditAddressCell.m; sourceTree = "<group>"; };
+		BEB7F6D31F8F3EB30067944F /* EditAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAddressCell.xib; sourceTree = "<group>"; };
+		BEB7F6D41F8F3EB30067944F /* EditAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditAddressCell.h; sourceTree = "<group>"; };
+		BEB7F6D71F8F46C40067944F /* AddressListTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressListTableController.m; sourceTree = "<group>"; };
+		BEB7F6D81F8F46C40067944F /* AddressListTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressListTableController.h; sourceTree = "<group>"; };
+		BEB7F6DA1F8F4E190067944F /* AddAdrFuncCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddAdrFuncCell.h; sourceTree = "<group>"; };
+		BEB7F6DB1F8F4E1A0067944F /* AddAdrFuncCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAdrFuncCell.xib; sourceTree = "<group>"; };
+		BEB7F6DC1F8F4E1A0067944F /* AddAdrFuncCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddAdrFuncCell.m; sourceTree = "<group>"; };
 		BEBDA6041F7B369C00996488 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		BEBDA6051F7B369C00996488 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
@@ -665,6 +678,8 @@
 				BED202811E7062BB00437133 /* OrderSuccessController.m */,
 				BE132DB01F8F06E3002E9A9A /* AddMofityAdrTableController.h */,
 				BE132DB11F8F06E3002E9A9A /* AddMofityAdrTableController.m */,
+				BEB7F6D81F8F46C40067944F /* AddressListTableController.h */,
+				BEB7F6D71F8F46C40067944F /* AddressListTableController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -708,6 +723,12 @@
 				BEAC41BF1F8E6679000C5F6D /* OrderAddressCell.h */,
 				BEAC41C01F8E667A000C5F6D /* OrderAddressCell.m */,
 				BEAC41BE1F8E6678000C5F6D /* OrderAddressCell.xib */,
+				BEB7F6D41F8F3EB30067944F /* EditAddressCell.h */,
+				BEB7F6D21F8F3EB20067944F /* EditAddressCell.m */,
+				BEB7F6D31F8F3EB30067944F /* EditAddressCell.xib */,
+				BEB7F6DA1F8F4E190067944F /* AddAdrFuncCell.h */,
+				BEB7F6DC1F8F4E1A0067944F /* AddAdrFuncCell.m */,
+				BEB7F6DB1F8F4E1A0067944F /* AddAdrFuncCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1459,6 +1480,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB7F6DE1F8F4F220067944F /* AddAdrFuncCell.xib in Resources */,
+				BEB7F6D61F8F45FA0067944F /* EditAddressCell.xib in Resources */,
 				BEAC41C21F8E6825000C5F6D /* OrderAddressCell.xib in Resources */,
 				BEAC41BD1F8E644A000C5F6D /* OrderTypeCell.xib in Resources */,
 				BEAC41B81F8E6375000C5F6D /* PayTypeCell.xib in Resources */,
@@ -1640,6 +1663,7 @@
 				BE0DDB421E6D0B4300F15168 /* HTCalculatorToolBar.m in Sources */,
 				BEF0EE1C1E711E41003E06DB /* OrderDetailCell.m in Sources */,
 				374B997B1F666F2A008DC328 /* PlantTimeTableViewCell.m in Sources */,
+				BEB7F6D51F8F3EB30067944F /* EditAddressCell.m in Sources */,
 				BE93C2F21E680D6200CC0B96 /* ProviceTableController.m in Sources */,
 				BEF0EE201E712AEE003E06DB /* OrderGoodsModel.m in Sources */,
 				BED95DFC1E6EF79100054F45 /* PurchHotCell.m in Sources */,
@@ -1647,6 +1671,7 @@
 				BE077A5B1E6A967C006F0EFB /* PurchaseTableController.m in Sources */,
 				BEADCF7C1E767AB600EFFA01 /* TitleLabel.m in Sources */,
 				BE5ED79D1E619E6A00C4B1D0 /* BaseTableViewController.m in Sources */,
+				BEB7F6D91F8F46C50067944F /* AddressListTableController.m in Sources */,
 				BE0DDB481E6D447E00F15168 /* PurchaseSearchController.m in Sources */,
 				BED604BF1E5DF7E6002BB119 /* HTCustomeSearchBar.m in Sources */,
 				BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */,
@@ -1661,6 +1686,7 @@
 				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
 				3771FD901F6A157800A8413D /* PlanWebViewViewController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
+				BEB7F6DD1F8F4E1A0067944F /* AddAdrFuncCell.m in Sources */,
 				BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */,
 				375CA4981F794B5E009AA629 /* PlantStateViewController.m in Sources */,
 				BE0DDB4D1E6D46FA00F15168 /* GoodsCell.m in Sources */,

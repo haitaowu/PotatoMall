@@ -195,9 +195,11 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
             self.defaultAdr = [obj objectForKey:@"obj"];
         }else{
             [SVProgressHUD showErrorWithStatus:msg];
+            self.defaultAdr = nil;
         }
         [self.tableView reloadData];
     } reqFail:^(int type, NSString *msg) {
+        self.defaultAdr = nil;
         [self.tableView reloadData];
 //        [SVProgressHUD showErrorWithStatus:msg];
     }];
@@ -358,7 +360,11 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     if (indexPath.section == kCarraySectionIdx) {
         [self performSegueWithIdentifier:@"transportSegue" sender:nil];
     }else if (indexPath.section == kAddressSectionIdx) {
-        [self performSegueWithIdentifier:@"addModifySegue" sender:nil];
+        if (self.defaultAdr != nil) {
+            [self performSegueWithIdentifier:@"adrListSegue" sender:nil];
+        }else{
+            [self performSegueWithIdentifier:@"addModifySegue" sender:nil];
+        }
     }
 }
 

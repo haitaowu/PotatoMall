@@ -6,6 +6,7 @@
 //  Copyright © 2017 taotao. All rights reserved.
 //
 
+#import "NSDictionary+Extension.h"
 #import "AddMofityAdrTableController.h"
 
 @interface AddMofityAdrTableController ()
@@ -23,6 +24,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedAddress:) name:kSelectedCityNotification object:nil];
     [self.navigationController  setToolbarHidden:YES animated:NO];
+    [self setupUI];
 }
 
 - (void)dealloc
@@ -30,6 +32,20 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - private methods
+- (void)setupUI
+{
+    if (self.editType == ReviceAdrTypeModify) {
+        self.reciverField.text = [self.adrInfo strValueForKey:@"addressName"];
+        self.phoneField.text = [self.adrInfo strValueForKey:@"addressMoblie"];
+        self.adrDetailField.text = [self.adrInfo strValueForKey:@"addressDetail"];
+        NSString *addressProvinceName = [self.adrInfo strValueForKey:@"addressProvinceName"];
+        NSString *addressCityName = [self.adrInfo strValueForKey:@"addressCityName"];
+        NSString *addressCountyName = [self.adrInfo strValueForKey:@"addressCountyName"];
+        NSString *cityStr = [NSString stringWithFormat:@"%@%@%@",addressProvinceName,addressCityName,addressCountyName];
+        self.cityField.text = cityStr;
+    }
+}
 #pragma mark - selectors
 //确认完成
 - (IBAction)tapConfirmBtn:(UIButton*)sender {
@@ -59,8 +75,8 @@
         params[@"addressCounty"] = [self.adrInfo objectForKey:@"infoCounty"];
         params[@"addressDetail"] = adrDetail;
         params[@"addressMoblie"] = phone;
-        params[@"addressZip"] = @"21400";
-        params[@"addressAlias"] = @"家里";
+//        params[@"addressZip"] = @"21400";
+//        params[@"addressAlias"] = @"家里";
         if (self.editType == ReviceAdrTypeAdd) {
             params[@"isDefault"] = @"1";
         }else{
@@ -97,7 +113,7 @@
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
         if (status == StatusTypSuccess) {
             [SVProgressHUD showSuccessWithStatus:msg];
-            id obj = [DataUtil dictionaryWithJsonStr:data];
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
             [SVProgressHUD showErrorWithStatus:msg];
         }
