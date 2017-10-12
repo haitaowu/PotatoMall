@@ -27,6 +27,15 @@
     customView.chartBlock = chartBlock;
     return customView;
 }
+#pragma mark - override methods
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    return self;
+}
 
 #pragma mark - selectors
 - (IBAction)tapToCalculator:(id)sender {

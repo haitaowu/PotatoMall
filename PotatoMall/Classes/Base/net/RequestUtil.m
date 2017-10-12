@@ -41,6 +41,37 @@
     
 }
 
+//ht 请求服务器 带有附件。
++ (void)POSTWithURL:(NSString *)url params:(id)params attach:(UIImage*)img reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail
+{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableDictionary *finalParams = [self globalParamsWith:params];
+    NSData *imgData = UIImagePNGRepresentation(img);
+    finalParams[@"avatar"] = [[NSString alloc] initWithData:imgData encoding:NSUTF8StringEncoding];
+    manager.requestSerializer.timeoutInterval = kRequestTimerout;
+    [manager POST:url parameters:finalParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        if (img != nil) {
+            NSData *imgData = UIImagePNGRepresentation(img);
+            if (img != nil) {
+                [formData appendPartWithFileData:imgData name:@"avatar" fileName:@"avatar.png" mimeType:@"image/png"];
+            }
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSNumber *codeNum = responseObject[@"code"];
+        NSString *msg = responseObject[@"msg"];
+        id data = responseObject[@"data"];
+        if ([codeNum intValue] == StatusTypSuccess) {
+            success(StatusTypSuccess,msg,data);
+        }else{
+            fail([codeNum intValue],msg);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        fail(StatusTypNetWorkError,@"网络连接问题");
+    }];
+}
+
 
 //ht 请求数据修改个人信息 带有头像。
 + (void)POSTUserWithURL:(NSString *)url params:(id)params image:(UIImage*)img reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail
@@ -142,8 +173,8 @@
         if (failure) {
         }
     }];
-    
 }
+
 #pragma mark - private methods
 + (NSMutableDictionary*)globalParamsWith:(NSDictionary*)params
 {

@@ -214,6 +214,7 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     }];
 }
 
+//检查用户是否加入联合社
 - (void)whetherUserUnion:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {

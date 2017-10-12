@@ -62,6 +62,18 @@ typedef void(^ReqFail)(int type,NSString* msg);
 + (void)getWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 
+
+/**
+ *  发送一个POST请求 请求服务器 带有附件
+ *
+ *  @param url     请求路径
+ *  @param params  请求参数
+ *  @param success 请求成功后的回调
+ *  @param fail 请求失败后的回调
+ */
++ (void)POSTWithURL:(NSString *)url params:(id)params attach:(UIImage*)img reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail;
+
+
 //+ (void)isConnect;
 
 /**

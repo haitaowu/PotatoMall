@@ -76,8 +76,13 @@
     CityModel *model = self.citiesArray[indexPath.row];
     NSString *address = [NSString stringWithFormat:@"%@ %@ %@",self.provieModel.name,self.cityModel.name,model.name];
     [UserModelUtil sharedInstance].userModel.districtId = model.cityId;
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedCityNotification object:address];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedCityNotification object:address];
+    NSDictionary *adrDict = @{@"infoProvince":self.provieModel.cityId,@"infoCity":self.cityModel.cityId,@"infoCounty":model.cityId,@"infoAddress":address};
+    NSDictionary *useInfo = @{@"adr":adrDict};
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedCityNotification object:address userInfo:useInfo];
+    
 }
+
 
 #pragma mark - private methods
 - (NSMutableArray*)articlesWithData:(id)data

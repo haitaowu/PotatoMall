@@ -46,7 +46,10 @@
     return params;
 }
 
+#pragma mark - selectors
+//创建联合体种植体>
 - (void)stateclick:(UIButton *)sender{
+    [self performSegueWithIdentifier:@"creUnionSegue" sender:nil];
 }
 
 #pragma mark - requset server
@@ -82,12 +85,13 @@
                     self.isUnioned = NO;
                     [self.mstatebutton setTitle:@"创建申请审核中......>>" forState:UIControlStateNormal];
                     
-                    [self.mstatebutton addTarget:self action:@selector(stateclick:) forControlEvents:UIControlEventTouchUpInside];
+                    
                     [self requestAddedPlanStateWithUnionId:unionID];
                 }else if([statusStr isEqualToString:@"0"]){
                     self.isUnioned = NO;
                     self.mstatebutton.tag=-1;
                     [self.mstatebutton setTitle:@"创建联合体种植体>>" forState:UIControlStateNormal];
+                    [self.mstatebutton addTarget:self action:@selector(stateclick:) forControlEvents:UIControlEventTouchUpInside];
                 }
                 
 //                if ([data objectForKey:@"unionId"]) {

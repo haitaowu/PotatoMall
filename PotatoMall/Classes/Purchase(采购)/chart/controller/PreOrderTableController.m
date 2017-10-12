@@ -8,22 +8,40 @@
 
 #import "PreOrderTableController.h"
 #import "CarryCell.h"
+#import "OrderAddressCell.h"
+#import "OrderTypeCell.h"
 #import "ChartCell.h"
 #import "OrderPayFooter.h"
 #import "OrderFeedCell.h"
+#import "PayTypeCell.h"
 #import "HTSubmitBar.h"
+#import "NSDictionary+Extension.h"
 #import "TransportTableController.h"
+#import "AddMofityAdrTableController.h"
 
 static NSString *ChartCellID = @"ChartCellID";
 static NSString *CarryCellID = @"CarryCellID";
+static NSString *PayTypeCellID = @"PayTypeCellID";
+static NSString *OrderTypeCellID = @"OrderTypeCellID";
+static NSString *OrderAddressCellID = @"OrderAddressCellID";
 static NSString *OrderFeedCellID = @"OrderFeedCellID";
 static NSString *OrderPayFooterID = @"OrderPayFooterID";
+
+#define kCarraySectionIdx           0
+#define kPayTypeSectionIdx          1
+#define kOrderTypeSectionIdx        2
+#define kAddressSectionIdx          3
+#define kOrdersSectionIdx           4
+#define kRemarkSectionIdx           5
 
 
 @interface PreOrderTableController ()
 @property (nonatomic,weak)HTSubmitBar *toolBar;
 @property (weak, nonatomic)  UILabel *carryLabel;
+@property (weak, nonatomic)  UILabel *payTypeLabel;
+@property (weak, nonatomic)  UILabel *orderTypeLabel;
 @property (weak, nonatomic)  OrderFeedCell *orderCell;
+@property(nonatomic,strong) NSDictionary *defaultAdr;
 
 @end
 
@@ -41,6 +59,8 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController  setToolbarHidden:NO animated:NO];
+    [self reqDefaultReciveAdr];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -48,6 +68,14 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     if ([segue.identifier isEqualToString:@"transportSegue"]) {
         TransportTableController *destinationControl = (TransportTableController*)[segue destinationViewController];
         destinationControl.carryLabel = self.carryLabel;
+    }else if ([segue.identifier isEqualToString:@"addModifySegue"]) {
+        AddMofityAdrTableController *destinationControl = [segue destinationViewController];
+        if (self.defaultAdr == nil) {
+            destinationControl.editType = ReviceAdrTypeAdd;
+        }else{
+            destinationControl.editType = ReviceAdrTypeModify;
+            destinationControl.adrInfo = self.defaultAdr;
+        }
     }
 }
 
@@ -57,8 +85,8 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     __block typeof(self) blockSelf = self;
     HTSubmitBar *bar = [HTSubmitBar customBarWithAllBlock:^{
         NSLog(@"submit order...");
-        NSDictionary *params = [blockSelf paramsCurrent];
-        [blockSelf submitOrdderDataWithParams:params];
+        NSMutableDictionary *params = [blockSelf paramsCurrent];
+        [blockSelf prepareforSubmitOrderWithParams:params];
         
     }];
     self.toolBar = bar;
@@ -76,6 +104,14 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     UINib *carryCellNib = [UINib nibWithNibName:@"CarryCell" bundle:nil];
     [self.tableView registerNib:carryCellNib forCellReuseIdentifier:CarryCellID];
     
+    UINib *PayTypeCellNib = [UINib nibWithNibName:@"PayTypeCell" bundle:nil];
+    [self.tableView registerNib:PayTypeCellNib forCellReuseIdentifier:PayTypeCellID];
+    
+    UINib *OrderTypeCellNib = [UINib nibWithNibName:@"OrderTypeCell" bundle:nil];
+    [self.tableView registerNib:OrderTypeCellNib forCellReuseIdentifier:OrderTypeCellID];
+    
+    UINib *OrderAddressCellNib = [UINib nibWithNibName:@"OrderAddressCell" bundle:nil];
+    [self.tableView registerNib:OrderAddressCellNib forCellReuseIdentifier:OrderAddressCellID];
     
     UINib *feedNib = [UINib nibWithNibName:@"OrderFeedCell" bundle:nil];
     [self.tableView registerNib:feedNib forCellReuseIdentifier:OrderFeedCellID];
@@ -85,7 +121,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 }
 
 #pragma mark - private methods
-- (NSDictionary*)paramsCurrent
+- (NSMutableDictionary*)paramsCurrent
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if ([self.buyType isEqualToString:kByNow]) {
@@ -106,6 +142,8 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     params[kShippingMobileKey] = phone ;
     params[kShippingPersonKey] = phone;
     params[kDeliveryTypKey] = @"1";
+    params[@"orderLinePay"] = @"0";
+    
     
     params[kUserIdKey] = [UserModelUtil sharedInstance].userModel.userId;
     NSString *feedStr = self.orderCell.textView.text;
@@ -134,8 +172,58 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     return totalPrice;
 }
 
+- (NSDictionary *)whetherUserUnionParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    return params;
+}
+
+//请求默认收货地址。
+- (void)reqDefaultReciveAdr
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    NSString *subUrl = @"address/selectUserDefaultAddress";
+    NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+    [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        if (status == StatusTypSuccess) {
+            id obj = [DataUtil dictionaryWithJsonStr:data];
+            HTLog(@"address default = %@",obj);
+            self.defaultAdr = [obj objectForKey:@"obj"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:msg];
+        }
+        [self.tableView reloadData];
+    } reqFail:^(int type, NSString *msg) {
+        [self.tableView reloadData];
+//        [SVProgressHUD showErrorWithStatus:msg];
+    }];
+}
+//提交订单之前请求是否加入合作社。
+- (void)prepareforSubmitOrderWithParams:(NSMutableDictionary*)params
+{
+    NSDictionary *unionParams =[self whetherUserUnionParams];
+    [self whetherUserUnion:unionParams resultBlock:^(NSString *uionId, BOOL reqState) {
+        if (reqState == YES) {
+            if ((uionId == nil) || (uionId.length <= 0)){
+                params[@"type"] = @"2";
+                params[@"unionId"] = @"";
+            }else{
+                params[@"unionId"] = uionId;
+                params[@"type"] = @"1";
+            }
+            [self submitOrdderDataWithParams:params];
+        }else{
+            HTLog(@"request timeout");
+        }
+    }];
+}
+
 #pragma mark - requset server
-- (void)submitOrdderDataWithParams:(NSDictionary*)params
+- (void)submitOrdderDataWithParams:(NSMutableDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView.mj_footer endRefreshing];
@@ -168,15 +256,35 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     }
 }
 
+//检查用户是否加入联合社
+- (void)whetherUserUnion:(NSDictionary*)params resultBlock:(void(^)(NSString *uionId,BOOL reqState))resultBlock
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        return;
+    }else{
+        NSString *subUrl = @"/user_union/whetherUserUnion";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            NSString *unionID = nil;
+            if (status == StatusTypSuccess) {
+                NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
+                NSDictionary *obj = dataDict[@"obj"];
+                unionID = [obj strValueForKey:@"unionId"];
+            }
+            resultBlock(unionID,YES);
+        } reqFail:^(int type, NSString *msg) {
+            resultBlock(nil,NO);
+        }];
+    }
+}
+
 #pragma mark - UITableView ---  Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    }else if(section == 1){
+     if(section == kOrdersSectionIdx){
         return [self.goodsArray count];
     }else{
         return 1;
@@ -184,11 +292,23 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.section == kCarraySectionIdx) {
         CarryCell *cell = [tableView dequeueReusableCellWithIdentifier:CarryCellID];
         self.carryLabel = cell.carryLabel;
         return cell;
-    }else if(indexPath.section == 1){
+    }else if(indexPath.section == kPayTypeSectionIdx){
+        PayTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:PayTypeCellID];
+        self.payTypeLabel = cell.payTypeLabel;
+        return cell;
+    }else if(indexPath.section == kOrderTypeSectionIdx){
+        OrderTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderTypeCellID];
+        self.orderTypeLabel = cell.orderTypeLabel;
+        return cell;
+    }else if(indexPath.section == kAddressSectionIdx){
+        OrderAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderAddressCellID];
+        cell.adrInfo = self.defaultAdr;
+        return cell;
+    }else if(indexPath.section == kOrdersSectionIdx){
         ChartCell *cell = [tableView dequeueReusableCellWithIdentifier:ChartCellID];
         GoodsModel *model = self.goodsArray[indexPath.row];
         [cell updateNODeleteWithModel:model];
@@ -212,64 +332,68 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
+//    if (section == 0) {
         return 0.001;
-    }else if(section == 1){
-        return 0.001;
-    }else{
-        return 16;
-    }
+//    }else if(section == 1){
+//        return 0.001;
+//    }else{
+//        return 16;
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 16;
-    }else if(section == 1){
-        return 50;
-    }else{
-        return 0.001;
-    }
+//    if (section == 0) {
+        return 10;
+//    }else if(section == 1){
+//        return 50;
+//    }else{
+//        return 0.001;
+//    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0) {
+    if (indexPath.section == kCarraySectionIdx) {
         [self performSegueWithIdentifier:@"transportSegue" sender:nil];
+    }else if (indexPath.section == kAddressSectionIdx) {
+        [self performSegueWithIdentifier:@"addModifySegue" sender:nil];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 50;
-    }else if(indexPath.section == 1){
+    if (indexPath.section == kRemarkSectionIdx) {
+        return 150;
+    }else if(indexPath.section == kAddressSectionIdx){
+        return 80;
+    }else if(indexPath.section == kOrdersSectionIdx){
         return 120;
     }else{
-        return 150;
+        return 50;
     }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return nil;
-    }else if(section == 1){
-        OrderPayFooter *payFooter = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderPayFooterID];
-        return payFooter;
-    }else{
-        return nil;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
-{
-    if ([view isMemberOfClass:[OrderPayFooter class]]) {
-        OrderPayFooter *footer =  (OrderPayFooter *)view;
-        [footer.backgroundView setBackgroundColor:[UIColor whiteColor]];
-    }
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    if (section == 0) {
+//        return nil;
+//    }else if(section == 1){
+//        OrderPayFooter *payFooter = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderPayFooterID];
+//        return payFooter;
+//    }else{
+//        return nil;
+//    }
+//}
+//
+//- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
+//{
+//    if ([view isMemberOfClass:[OrderPayFooter class]]) {
+//        OrderPayFooter *footer =  (OrderPayFooter *)view;
+//        [footer.backgroundView setBackgroundColor:[UIColor whiteColor]];
+//    }
+//}
 
 #pragma mark - UIScorllView delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView

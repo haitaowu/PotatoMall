@@ -16,4 +16,5 @@ typedef void(^ShareBlock)();
 @property (nonatomic,copy)ShareBlock  shareBlock;
 
 + (HTPurchaseBar*)customBarWithPurchaseBlock:(PurchaseBlock)purchaseBlock chartBlock:(AddChartBlock)chartBlock;
+
 @end
