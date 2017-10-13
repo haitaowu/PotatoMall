@@ -24,8 +24,14 @@
     if (sender.selected == YES) {
         self.carryLabel.text = @"自提";
     }
-    
 }
+
+#pragma mark - UITableView --- Table view  delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.001;
+}
+
 
 
 
