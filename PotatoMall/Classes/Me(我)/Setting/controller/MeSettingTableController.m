@@ -28,7 +28,13 @@
 //    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLogoutSuccessNotification object:nil];
 }
 
-#pragma mark - private methods
+//show recie address
+- (void)showAddressListView
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Purchase" bundle:nil];
+    UIViewController *control = [storyBoard instantiateViewControllerWithIdentifier:@"AddressListTableController"];
+    [self.navigationController pushViewController:control animated:YES];
+}
 - (void)pourTrash
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"确定要清除缓存" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil];
@@ -63,6 +69,8 @@
         [self userTapLogout];
        
         HTLog(@"user tap logout button ");
+    }else if ((indexPath.section == 0) && (indexPath.row == 1)) {
+        [self showAddressListView];
     }else if ((indexPath.section == 0) && (indexPath.row == 2)) {
         [self pourTrash];
     }
