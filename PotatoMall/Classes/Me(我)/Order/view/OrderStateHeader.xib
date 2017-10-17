@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OrderStateHeader">
+            <rect key="frame" x="0.0" y="0.0" width="512" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlb-4y-ciX" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="16" width="512" height="144"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ora-5t-ZKx">
+                            <rect key="frame" x="8" y="65.5" width="49.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JE22308394388" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-Fw-y5f">
+                            <rect key="frame" x="56.5" y="66" width="97" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待确认" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZV-vo-zyG">
+                            <rect key="frame" x="454.5" y="65.5" width="49.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="pUh-Fw-y5f" firstAttribute="centerY" secondItem="ora-5t-ZKx" secondAttribute="centerY" id="Gng-2c-Tld"/>
+                        <constraint firstItem="ora-5t-ZKx" firstAttribute="centerY" secondItem="dlb-4y-ciX" secondAttribute="centerY" id="LLv-Jw-dtg"/>
+                        <constraint firstItem="ora-5t-ZKx" firstAttribute="leading" secondItem="dlb-4y-ciX" secondAttribute="leading" constant="8" id="OsT-7r-jEp"/>
+                        <constraint firstItem="pUh-Fw-y5f" firstAttribute="leading" secondItem="ora-5t-ZKx" secondAttribute="trailing" constant="-1" id="YF6-El-q3Z"/>
+                        <constraint firstAttribute="trailing" secondItem="YZV-vo-zyG" secondAttribute="trailing" constant="8" id="knq-dr-ac5"/>
+                        <constraint firstItem="YZV-vo-zyG" firstAttribute="centerY" secondItem="pUh-Fw-y5f" secondAttribute="centerY" id="rU2-yc-XH4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dlb-4y-ciX" secondAttribute="trailing" id="MLG-yt-STj"/>
+                <constraint firstAttribute="bottom" secondItem="dlb-4y-ciX" secondAttribute="bottom" id="SK6-RM-pES"/>
+                <constraint firstItem="dlb-4y-ciX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nTa-sh-Dut"/>
+                <constraint firstItem="dlb-4y-ciX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="vpq-HT-Tvp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="orderNumLabel" destination="pUh-Fw-y5f" id="VL5-JE-46J"/>
+                <outlet property="stateLabel" destination="YZV-vo-zyG" id="iVa-cK-6wT"/>
+            </connections>
+            <point key="canvasLocation" x="122" y="-300"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChartSectionHeader">
+            <rect key="frame" x="0.0" y="0.0" width="498" height="153"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xn-fl-O3x" userLabel="checkBox">
+                    <rect key="frame" x="16" y="65" width="17" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="17" id="3ny-0b-Tgf"/>
+                        <constraint firstAttribute="width" secondItem="1Xn-fl-O3x" secondAttribute="height" multiplier="17:22" id="6CK-HE-g5X"/>
+                    </constraints>
+                    <state key="normal" image="chart_unSelect"/>
+                    <state key="selected" image="chart_select"/>
+                    <connections>
+                        <action selector="tapSelectBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y5C-rm-KQ0"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jy5-7A-JFa" customClass="TitleLabel">
+                    <rect key="frame" x="49" y="68" width="29" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1Xn-fl-O3x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="8On-eP-RcF"/>
+                <constraint firstItem="jy5-7A-JFa" firstAttribute="leading" secondItem="1Xn-fl-O3x" secondAttribute="trailing" constant="16" id="OWB-Y8-p39"/>
+                <constraint firstItem="jy5-7A-JFa" firstAttribute="centerY" secondItem="1Xn-fl-O3x" secondAttribute="centerY" id="T1e-jE-Fqj"/>
+                <constraint firstItem="1Xn-fl-O3x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ypw-wC-2ll"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="selectBtn" destination="1Xn-fl-O3x" id="xIi-Em-qb9"/>
+            </connections>
+            <point key="canvasLocation" x="115" y="-303.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chart_select" width="17" height="17"/>
+        <image name="chart_unSelect" width="17" height="17"/>
+    </resources>
+</document>

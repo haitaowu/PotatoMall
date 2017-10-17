@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddAdrFuncCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加新的收货地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDR-pp-01a" customClass="TitleLabel">
+                        <rect key="frame" x="107.5" y="14" width="115" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.24313725489999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmF-UU-yGJ">
+                        <rect key="frame" x="96" y="11" width="10" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="GSs-2A-cqj"/>
+                            <constraint firstAttribute="width" secondItem="fmF-UU-yGJ" secondAttribute="height" multiplier="5:11" id="PTr-vz-O8f"/>
+                        </constraints>
+                        <state key="normal" image="chart_plus"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jO-eg-a9I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                        <connections>
+                            <action selector="tapAddAdrBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bPD-yM-rvK"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="8jO-eg-a9I" secondAttribute="trailing" id="0og-gJ-k2x"/>
+                    <constraint firstItem="8jO-eg-a9I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F7B-Wn-37r"/>
+                    <constraint firstAttribute="bottom" secondItem="8jO-eg-a9I" secondAttribute="bottom" constant="-2.5" id="OOD-F0-kf3"/>
+                    <constraint firstItem="8jO-eg-a9I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rrr-je-MZg"/>
+                    <constraint firstItem="DDR-pp-01a" firstAttribute="leading" secondItem="fmF-UU-yGJ" secondAttribute="trailing" constant="1.5" id="T8J-ao-Ws0"/>
+                    <constraint firstItem="DDR-pp-01a" firstAttribute="centerY" secondItem="fmF-UU-yGJ" secondAttribute="centerY" id="aUp-nk-hyY"/>
+                    <constraint firstItem="DDR-pp-01a" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="5" id="iTl-cD-7jm"/>
+                    <constraint firstItem="DDR-pp-01a" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uS8-uC-W86"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chart_plus" width="10" height="10"/>
+    </resources>
+</document>
