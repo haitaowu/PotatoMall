@@ -18,6 +18,7 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"购买成功";
     [self.navigationController  setToolbarHidden:YES animated:NO];
 }
 

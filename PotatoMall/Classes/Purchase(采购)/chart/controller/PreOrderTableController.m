@@ -249,6 +249,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
         }
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
             [self.tableView.mj_footer endRefreshing];
             if (status == StatusTypSuccess) {
                 HTLog(@"success order submit ");
@@ -274,7 +275,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
         [SVProgressHUD showInfoWithStatus:@"请选择收货地址"];
         return;
     }
-    
+    [SVProgressHUD showWithStatus:@"购买中..."];
     NSMutableDictionary *params = [self paramsCurrent];
     [self submitOrdderDataWithParams:params];
 }

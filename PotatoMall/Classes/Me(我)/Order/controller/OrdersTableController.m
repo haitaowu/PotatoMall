@@ -15,7 +15,7 @@
 #import "TopScrollView.h"
 #import "OrderDetailTableController.h"
 #import "GoodsModel.h"
-
+#import "NSDictionary+Extension.h"
 
 
 
@@ -36,6 +36,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 @property (nonatomic,assign) int pageNo;
 @property (nonatomic,assign) int pageSize;
 @property (nonatomic,assign) int currentStatus;
+@property(nonatomic,copy) NSString *unionId;
 
 @end
 
@@ -69,6 +70,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     [super viewWillAppear:animated];
     NSDictionary *params = [self headerParams];
     [self reqOrdersDataWithParams:params];
+    [self checkUserUnionState];
 }
 
 #pragma mark - private methods
@@ -116,9 +118,15 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     params[kPageNo] = @(self.pageNo);
     params[kPageSize] = @(self.pageSize);
     if (self.currentStatus == -1) {
-        params[@"orderStatus"] = @[@0,@1, @2, @3, @8, @14];
+        params[@"orderStatus"] = @[@0,@1, @2, @3,@4, @8, @14,@19];
     }else{
         params[@"orderStatus"] = @[@(self.currentStatus)];
+    }
+    if (self.unionId == nil) {
+        params[@"type"] = @"2";
+    }else{
+        params[@"unionId"] = self.unionId;
+        params[@"type"] = @"1";
     }
     return params;
 }
@@ -132,12 +140,39 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     params[kUserIdKey] = userId;
     params[kPageNo] = @(self.pageNo);
     params[kPageSize] = @(self.pageSize);
+//    19待确定 0 1 2 3 4  8  14
     if (self.currentStatus == -1) {
-        params[@"orderStatus"] = @[@0,@1, @2, @3, @8, @14];
+        params[@"orderStatus"] = @[@0,@1, @2, @3,@4, @8, @14,@19];
     }else{
         params[@"orderStatus"] = @[@(self.currentStatus)];
     }
+    if (self.unionId == nil) {
+        params[@"type"] = @"2";
+    }else{
+        params[@"unionId"] = self.unionId;
+        params[@"type"] = @"1";
+    }
     return params;
+}
+
+//检查是否加入联全社
+- (void)checkUserUnionState
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    [self whetherUserUnion:params resultBlock:^(NSString *uionId, BOOL reqState) {
+        if (reqState == YES) {
+            if ((uionId == nil) || (uionId.length <= 0)){
+                self.unionId = nil;
+            }else{
+                self.unionId = uionId;
+            }
+        }else{
+            self.unionId = nil;
+            HTLog(@"request timeout");
+        }
+    }];
 }
 
 #pragma mark - setup UI
@@ -181,7 +216,6 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     [self.tableView registerNib:footerNib forHeaderFooterViewReuseIdentifier:OrderStateFooterID];
 }
 
-#pragma mark - setup UI
 - (void)setupTableViewHeader
 {
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -259,6 +293,28 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         } reqFail:^(int type, NSString *msg) {
             [self.tableView.mj_footer endRefreshing];
             self.firstReqFinished = YES;
+        }];
+    }
+}
+
+//检查用户是否加入联合社
+- (void)whetherUserUnion:(NSDictionary*)params resultBlock:(void(^)(NSString *uionId,BOOL reqState))resultBlock
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        return;
+    }else{
+        NSString *subUrl = @"/user_union/whetherUserUnion";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            NSString *unionID = nil;
+            if (status == StatusTypSuccess) {
+                NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
+                NSDictionary *obj = dataDict[@"obj"];
+                unionID = [obj strValueForKey:@"unionId"];
+            }
+            resultBlock(unionID,YES);
+        } reqFail:^(int type, NSString *msg) {
+            resultBlock(nil,NO);
         }];
     }
 }
