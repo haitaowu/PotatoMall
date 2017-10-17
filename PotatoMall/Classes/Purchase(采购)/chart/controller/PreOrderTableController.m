@@ -68,6 +68,12 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     [self reqDefaultReciveAdr];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"transportSegue"]) {
