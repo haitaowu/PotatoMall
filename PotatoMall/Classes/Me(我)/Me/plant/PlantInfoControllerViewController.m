@@ -48,8 +48,11 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    NSDictionary *parama=[self whetherFillPlatInfoParams];
-    [self whetherFillPlatInfo:parama];
+//    NSDictionary *parama=[self whetherFillPlatInfoParams];
+//    [self whetherFillPlatInfo:parama];
+    
+    NSDictionary *parama=[self userParams];
+    [self detailUserPlat:parama];
 }
 
 #pragma mark - Privates
@@ -110,32 +113,50 @@
 
 
 #pragma mark - requset server
-- (void)whetherFillPlatInfo:(NSDictionary*)params
-{
-    if ([RequestUtil networkAvaliable] == NO) {
-    }else{
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
-        NSString *subUrl = @"/user_union/whetherUserUnion";
-        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-        
-        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
-                data=[plantmodel plantWithData:data];
-                
-                NSLog(@"data==%@",data);
-                if([data objectForKey:@"unionId"]){
-                    NSDictionary *parama=[self userParams];
-                    [self detailUserPlat:parama];
-                }
-            }else{
-                [SVProgressHUD showErrorWithStatus:msg];
-            }
-        } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
-        }];
-    }
-}
+//- (void)whetherFillPlatInfo:(NSDictionary*)params
+//{
+//    if ([RequestUtil networkAvaliable] == NO) {
+//    }else{
+//        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+//        NSString *subUrl = @"/user_union/whetherUserUnion";
+//        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+//        
+//        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+//            if (status == StatusTypSuccess) {
+////                [SVProgressHUD showSuccessWithStatus:msg];
+//                data=[plantmodel plantWithData:data];
+//                
+//                NSLog(@"data==%@",data);
+//                if([data objectForKey:@"unionId"]){
+//                    NSDictionary *parama=[self userParams];
+//                    [self detailUserPlat:parama];
+//                }
+//            }else{
+//                [SVProgressHUD showErrorWithStatus:msg];
+//            }
+//        } reqFail:^(int type, NSString *msg) {
+//            [SVProgressHUD showErrorWithStatus:msg];
+//        }];
+//    }
+//}
+
+//检查是否加入联全社
+//- (void)checkUserUnionState
+//{
+//    NSDictionary *unionParams =[self whetherFillPlatInfoParams];
+//    [self whetherUserUnion:unionParams resultBlock:^(NSString *uionId, BOOL reqState) {
+//        if (reqState == YES) {
+//            if ((uionId == nil) || (uionId.length <= 0)){
+//                self.unionId = nil;
+//            }else{
+//                self.unionId = uionId;
+//            }
+//        }else{
+//            self.unionId = nil;
+//            HTLog(@"request timeout");
+//        }
+//    }];
+//}
 
 - (void)detailUserPlat:(NSDictionary*)params
 {
@@ -147,8 +168,9 @@
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+//                [SVProgressHUD showSuccessWithStatus:msg];
                 
                 data=[plantmodel plantWithData:data];
                 [self.addresstextfield setText:[data objectForKey:@"platAddress"]];
@@ -208,7 +230,7 @@
         
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+//                [SVProgressHUD showSuccessWithStatus:msg];
                 
                 if([[params objectForKey:@"type"]isEqualToString:@"1"]){
                     type0=[plantmodel plantWithDataArray:data];
@@ -415,8 +437,6 @@
         [RequestUtil POSTWithURL:reqUrl params:[self plantParams] reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
                 [SVProgressHUD showSuccessWithStatus:msg];
-                
-                
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
