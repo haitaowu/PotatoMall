@@ -121,8 +121,9 @@ static NSString *AddAdrFuncCellID = @"AddAdrFuncCellID";
     NSString *subUrl = @"address/list";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        [SVProgressHUD dismiss];
         if (status == StatusTypSuccess) {
-            [SVProgressHUD showSuccessWithStatus:msg];
+//            [SVProgressHUD showSuccessWithStatus:msg];
             id obj = [DataUtil dictionaryWithJsonStr:data];
             self.dataArray = [obj objectForKey:@"obj"];
         }else{

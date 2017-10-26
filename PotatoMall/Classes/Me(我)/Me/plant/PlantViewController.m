@@ -63,8 +63,9 @@
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+//                [SVProgressHUD showSuccessWithStatus:msg];
                 data=[plantmodel plantWithData:data];
                 NSString *unionID=[data strValueForKey:@"unionId"];
                 NSString *statusStr = [data strValueForKey:@"status"];
@@ -135,8 +136,9 @@
     NSString *subUrl = @"/plat/whetherPlan";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        [SVProgressHUD dismiss];
         if (status == StatusTypSuccess) {
-            [SVProgressHUD showSuccessWithStatus:msg];
+//            [SVProgressHUD showSuccessWithStatus:msg];
             data=[plantmodel plantWithData:data];
             NSString *statusStr = [data strValueForKey:@"status"];
             if([statusStr isEqualToString:@"1"]){
