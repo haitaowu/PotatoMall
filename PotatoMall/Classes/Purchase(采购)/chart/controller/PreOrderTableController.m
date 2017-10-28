@@ -87,6 +87,8 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
             destinationControl.editType = ReviceAdrTypeModify;
             destinationControl.adrInfo = self.defaultAdr;
         }
+    }else if ([segue.identifier isEqualToString:@"submitSuccSugue"]) {
+        [self.navigationController  setToolbarHidden:YES animated:NO];
     }
 }
 
@@ -94,16 +96,20 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 - (void)setupNavToolbar
 {
     __block typeof(self) blockSelf = self;
-    HTSubmitBar *bar = [HTSubmitBar customBarWithAllBlock:^{
-        NSLog(@"submit order...");
-//        [blockSelf prepareforSubmitOrderWithParams:params];
+//    HTSubmitBar *bar = [HTSubmitBar customBarWithAllBlock:^{
+//        NSLog(@"submit order...");
+////        [blockSelf prepareforSubmitOrderWithParams:params];
+//        [blockSelf checkInputPrepareForSubmit];
+//    }];
+    
+    HTSubmitBar *bar = [HTSubmitBar submitBarWithAllBlock:^{
         [blockSelf checkInputPrepareForSubmit];
-       
-        
     }];
+    CGRect barF = CGRectMake(0, 0, kScreenWidth, 44);
+    bar.frame = barF;
     self.toolBar = bar;
-    CGRect frame = self.navigationController.toolbar.frame;
-    bar.frame = frame;
+//    CGRect frame = self.navigationController.toolbar.frame;
+//    bar.frame = frame;
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:bar];
     self.toolbarItems = @[barItem];
 }

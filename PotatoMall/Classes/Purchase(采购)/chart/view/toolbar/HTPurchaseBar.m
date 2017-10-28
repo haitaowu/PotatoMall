@@ -88,8 +88,6 @@
 #pragma mark - private methods
 - (void)setupUI
 {
-    self.backgroundColor = [UIColor greenColor];
-    
     UIButton *purBtn = [[UIButton alloc] init];
     self.purBtn = purBtn;
     [purBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -118,8 +116,6 @@
     [shareBtn setImage:[UIImage imageNamed:@"com_share"] forState:UIControlStateNormal];
     [shareBtn addTarget:self action:@selector(tapShareToFriendsBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:shareBtn];
-    
-    self.backgroundColor  = [UIColor greenColor];
 }
 
 

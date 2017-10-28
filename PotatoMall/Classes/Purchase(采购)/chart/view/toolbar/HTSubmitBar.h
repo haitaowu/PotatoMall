@@ -14,4 +14,5 @@ typedef void(^SubmitBlock)();
 
 + (HTSubmitBar*)customBarWithAllBlock:(SubmitBlock)submitBlock;
 - (void)updateTotalPriceTitle:(NSString*)priceStr;
++ (HTSubmitBar*)submitBarWithAllBlock:(SubmitBlock)submitBlock;
 @end
