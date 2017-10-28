@@ -13,7 +13,6 @@
 @property (weak, nonatomic) UILabel *totalLabel;
 @property (weak, nonatomic) UIButton *statueBtn;
 @property (nonatomic,copy)SubmitBlock  submitBlock;
-
 @end
 
 
@@ -27,7 +26,6 @@
     return customView;
 }
 
-
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -40,7 +38,7 @@
     
     [self.titleLabel sizeToFit];
     CGSize titleSize = self.titleLabel.size;
-    CGFloat titleX = 0;
+    CGFloat titleX = 8;
     CGFloat titleY = (viewSize.height - titleSize.height) * 0.5;
     CGRect titleF = {{titleX,titleY},titleSize};
     self.titleLabel.frame = titleF;
@@ -57,7 +55,8 @@
     
     if (@available(iOS 11,*)){
         self.statueBtn.x = self.statueBtn.x + margin;
-//        self.titleLabel.x = self.titleLabel.x + margin;
+        self.titleLabel.x = self.titleLabel.x - 16;
+        self.totalLabel.x = self.totalLabel.x - 16;
     }
     
 }

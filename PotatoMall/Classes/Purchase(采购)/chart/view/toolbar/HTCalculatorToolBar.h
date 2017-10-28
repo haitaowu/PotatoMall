@@ -19,6 +19,7 @@ typedef void(^CalculatorBlock)();
 
 @interface HTCalculatorToolBar : UIView
 
++ (HTCalculatorToolBar*)calculatorBarWithAllBlock:(SelectAllBlock)alBlock unSelectBlock:(UnSelectAllBlock)unSelBlock calculatorBlock:(CalculatorBlock)calcuBlock;
 + (HTCalculatorToolBar*)customToolBarWithAllBlock:(SelectAllBlock)alBlock unSelectBlock:(UnSelectAllBlock)unSelBlock calculatorBlock:(CalculatorBlock)calcuBlock;
 - (void)updateTotalPriceTitle:(NSString*)priceStr selectState:(SelectedStateType) state;
 @end

@@ -63,7 +63,7 @@
     if (@available(iOS 11,*)){
         self.purBtn.x = self.purBtn.x + margin;
         self.addBtn.x = self.addBtn.x + margin;
-        self.shareBtn.x = self.shareBtn.x - margin -8;
+        self.shareBtn.x = self.shareBtn.x - 16;
     }
     
 }

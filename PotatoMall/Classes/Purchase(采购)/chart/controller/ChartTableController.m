@@ -62,7 +62,21 @@ static NSString *HeaderID = @"HeaderID";
 - (void)setupNavToolbar
 {
     [self.navigationController  setToolbarHidden:NO animated:YES];
-    HTCalculatorToolBar *toolbar = [HTCalculatorToolBar customToolBarWithAllBlock:^{
+//    HTCalculatorToolBar *toolbar = [HTCalculatorToolBar customToolBarWithAllBlock:^{
+//        self.selectedGoods = [NSMutableArray arrayWithArray:self.goodsArray];
+//        [self selectedAllGoods];
+//        [self updateTotalPriceLabel];
+//    } unSelectBlock:^{
+//        [self.selectedGoods removeAllObjects];
+//        [self unSelectedAllGoods];
+//        [self updateTotalPriceLabel];
+//    } calculatorBlock:^{
+//        if ([self.selectedGoods count] > 0) {
+//            [self performSegueWithIdentifier:@"preOrderSegue" sender:self.selectedGoods];
+//        }
+//    }];
+    
+    HTCalculatorToolBar *toolbar = [HTCalculatorToolBar calculatorBarWithAllBlock:^{
         self.selectedGoods = [NSMutableArray arrayWithArray:self.goodsArray];
         [self selectedAllGoods];
         [self updateTotalPriceLabel];
@@ -76,11 +90,21 @@ static NSString *HeaderID = @"HeaderID";
         }
     }];
     
-    CGRect frame = self.navigationController.toolbar.frame;
-    toolbar.frame = frame;
+//    CGRect frame = self.navigationController.toolbar.frame;
+//    toolbar.frame = frame;
+    CGRect barF = CGRectMake(0, 0, kScreenWidth, 44);
+    toolbar.frame = barF;
     self.toolBar = toolbar;
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
-    self.toolbarItems = @[barItem];
+    NSArray *barItems = [NSArray array];
+    if (@available(iOS 11,*)){
+        barItems = @[barItem];
+    }else{
+        UIBarButtonItem *flexLeftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *flexibleButtonItemRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        barItems = @[flexLeftItem,barItem,flexibleButtonItemRight];
+    }
+    self.toolbarItems = barItems;
 }
 
 - (void)setupTableView

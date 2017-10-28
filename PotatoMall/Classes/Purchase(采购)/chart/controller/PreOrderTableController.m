@@ -111,7 +111,15 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 //    CGRect frame = self.navigationController.toolbar.frame;
 //    bar.frame = frame;
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:bar];
-    self.toolbarItems = @[barItem];
+    NSArray *barItems = [NSArray array];
+    if (@available(iOS 11,*)){
+        barItems = @[barItem];
+    }else{
+        UIBarButtonItem *flexLeftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *flexibleButtonItemRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        barItems = @[flexLeftItem,barItem,flexibleButtonItemRight];
+    }
+    self.toolbarItems = barItems;
 }
 
 - (void)setupTableView
