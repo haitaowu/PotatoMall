@@ -142,14 +142,14 @@
 - (void)setupToolbar
 {
     __block typeof(self) blockSelf = self;
-    HTPurchaseBar *bar = [HTPurchaseBar customBarWithPurchaseBlock:^{
+    HTPurchaseBar *bar = [HTPurchaseBar purBarWithBlock:^{
         NSLog(@"purchase  order...");
         if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
             [blockSelf performSegueWithIdentifier:@"preOrderSegue" sender:@[self.goodModel]];
         }else{
             [blockSelf showLoginView];
         }
-    } chartBlock:^{
+    } cartBlock:^{
         NSLog(@"chart  order...");
         if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
             [blockSelf addGoodsCurrentToChart];
@@ -157,16 +157,47 @@
             [blockSelf showLoginView];
         }
     }];
+//
+//    HTPurchaseBar *bar = [HTPurchaseBar customBarWithPurchaseBlock:^{
+//        NSLog(@"purchase  order...");
+//        if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+//            [blockSelf performSegueWithIdentifier:@"preOrderSegue" sender:@[self.goodModel]];
+//        }else{
+//            [blockSelf showLoginView];
+//        }
+//    } chartBlock:^{
+//        NSLog(@"chart  order...");
+//        if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+//            [blockSelf addGoodsCurrentToChart];
+//        }else{
+//            [blockSelf showLoginView];
+//        }
+//    }];
     
     bar.shareBlock = ^(){
         NSLog(@"tap share block ");
         [self.shareAlertView showView];
 //        [blockSelf tapShareProduct];
     };
-    CGRect frame = self.navigationController.toolbar.frame;
-    bar.frame = frame;
+    
+    CGRect barF = CGRectMake(0, 0, kScreenWidth, 44);
+    bar.frame = barF;
+    
+    NSArray *barItems = [NSArray array];
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:bar];
-    self.toolbarItems = @[barItem];
+    if (@available(iOS 11,*)){
+        [barItem.customView.widthAnchor constraintEqualToConstant:375].active = YES;
+        [barItem.customView.heightAnchor constraintEqualToConstant:44].active = YES;
+        
+        barItems = @[barItem];
+    }else{
+        UIBarButtonItem *flexibleButtonItemRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *flexLeftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        barItems = @[flexLeftItem,barItem,flexibleButtonItemRight];
+//        barItems = @[barItem];
+    }
+    
+    self.toolbarItems = barItems;
 }
 
 #pragma mark - update UI

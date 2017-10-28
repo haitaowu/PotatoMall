@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^PurchaseBlock)();
-typedef void(^AddChartBlock)();
+typedef void(^AddCartBlock)();
 typedef void(^ShareBlock)();
 
 @interface HTPurchaseBar : UIView
 @property (nonatomic,copy)ShareBlock  shareBlock;
 
-+ (HTPurchaseBar*)customBarWithPurchaseBlock:(PurchaseBlock)purchaseBlock chartBlock:(AddChartBlock)chartBlock;
++ (HTPurchaseBar*)customBarWithPurchaseBlock:(PurchaseBlock)purchaseBlock chartBlock:(AddCartBlock)chartBlock;
+
++ (HTPurchaseBar*)purBarWithBlock:(PurchaseBlock)purBlock cartBlock:(AddCartBlock)cartBlock;
 
 @end

@@ -74,6 +74,7 @@
 		BE2FDFCC1E61219B00A96E17 /* HomwTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2FDFCB1E61219B00A96E17 /* HomwTableHeader.m */; };
 		BE3052CA1E66C94000C74300 /* StateRadiusBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3052C91E66C94000C74300 /* StateRadiusBtn.m */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
+		BE3954451FA2DC3C00D5E06D /* VertiImgTitleBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3954441FA2DC3B00D5E06D /* VertiImgTitleBtn.m */; };
 		BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5496A91E60321C00A19940 /* RequestUtil.m */; };
 		BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */; };
 		BE5908111E74E66600D77152 /* CateGoryNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5908101E74E66600D77152 /* CateGoryNModel.m */; };
@@ -324,6 +325,8 @@
 		BE30996F1E5C71AD0062EBA9 /* PotatoMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotatoMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE30997C1E5C71AE0062EBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE3954431FA2DC3B00D5E06D /* VertiImgTitleBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertiImgTitleBtn.h; sourceTree = "<group>"; };
+		BE3954441FA2DC3B00D5E06D /* VertiImgTitleBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertiImgTitleBtn.m; sourceTree = "<group>"; };
 		BE5496A81E60321C00A19940 /* RequestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestUtil.h; sourceTree = "<group>"; };
 		BE5496A91E60321C00A19940 /* RequestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUtil.m; sourceTree = "<group>"; };
 		BE5535491E5EA17A0021E2C6 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -940,6 +943,8 @@
 		BE5ED7BD1E6256C300C4B1D0 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				BE3954431FA2DC3B00D5E06D /* VertiImgTitleBtn.h */,
+				BE3954441FA2DC3B00D5E06D /* VertiImgTitleBtn.m */,
 				BECC9FA21E6EE5F9001DE8F1 /* HorizonAlignBtn.h */,
 				BECC9FA31E6EE5F9001DE8F1 /* HorizonAlignBtn.m */,
 				BE3052C81E66C94000C74300 /* StateRadiusBtn.h */,
@@ -1653,6 +1658,7 @@
 				BE5ED79A1E619C3600C4B1D0 /* BaseViewController.m in Sources */,
 				BEC06DB91E5C76F500667D73 /* main.m in Sources */,
 				BE5B80421E5F2783005FDE1A /* SectionHeaderTitle.m in Sources */,
+				BE3954451FA2DC3C00D5E06D /* VertiImgTitleBtn.m in Sources */,
 				BE0DDB5A1E6D63A100F15168 /* HTPurchaseBar.m in Sources */,
 				BE5ED7E81E62B29000C4B1D0 /* SecurityUtil.m in Sources */,
 				3759C1201F6A547900E9A358 /* plantuserTableViewCell.m in Sources */,

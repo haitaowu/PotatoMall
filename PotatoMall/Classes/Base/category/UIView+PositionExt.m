@@ -9,6 +9,7 @@
 #import "UIView+PositionExt.h"
 
 @implementation UIView (PositionExt)
+
 #pragma mark - setter method
 - (void)setCenterX:(CGFloat)centerX
 {
