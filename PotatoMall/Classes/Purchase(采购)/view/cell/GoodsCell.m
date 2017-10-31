@@ -101,9 +101,10 @@
 }
 
 
-
-
-
 #pragma mark - selectors
-
+- (IBAction)tapCoverBtn:(id)sender {
+    if (self.prouctBlock != nil) {
+        self.prouctBlock(self.model);
+    }
+}
 @end

@@ -218,7 +218,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 - (void)shouldShowOrderTypeSheetView
 {
     if (self.unionId == nil) {
-        [SVProgressHUD showInfoWithStatus:@"You Have No Choice"];
+        [SVProgressHUD showInfoWithStatus:@"个人订单不可选择"];
         return;
     }
     NSString *title = @"选择订单类型";

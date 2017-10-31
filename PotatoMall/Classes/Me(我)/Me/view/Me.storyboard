@@ -279,6 +279,9 @@
                                                 <constraint firstItem="asW-NF-ZDt" firstAttribute="centerY" secondItem="tEq-CF-Y5E" secondAttribute="centerY" id="o12-oD-bC6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="dy7-Cl-46v" kind="show" id="8ad-E3-oaR"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cPL-VY-h22">
                                         <rect key="frame" x="0.0" y="167" width="320" height="44"/>
@@ -303,9 +306,6 @@
                                                 <constraint firstItem="4Q0-pt-qFY" firstAttribute="centerY" secondItem="Djd-LR-okR" secondAttribute="centerY" id="gVM-ng-xQA"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="CSh-mK-ncI" kind="show" id="vWz-Y3-5h0"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -373,7 +373,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ElD-g1-X99" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1879" y="1269"/>
+            <point key="canvasLocation" x="1879" y="1245"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="szk-Zf-i9s">

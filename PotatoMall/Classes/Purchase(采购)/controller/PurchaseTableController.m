@@ -409,6 +409,10 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCellID];
         GoodsModel *model = self.goodsArray[indexPath.row];
         [cell setModel:model];
+        __block typeof(self) blockSelf = self;
+        cell.prouctBlock = ^(GoodsModel *goods) {
+           [blockSelf performSegueWithIdentifier:@"productDetailSegue" sender:goods];
+        };
         return cell;
     }else{
         //     if (indexPath.section == kCategorySectionIdx) {
@@ -433,6 +437,10 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
         }else if(indexPath.section == kProductsSectionIdx){
             GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCellID];
             GoodsModel *model = self.springRecomGoods.list[indexPath.row];
+            __block typeof(self) blockSelf = self;
+            cell.prouctBlock = ^(GoodsModel *goods) {
+                [blockSelf performSegueWithIdentifier:@"productDetailSegue" sender:goods];
+            };
             [cell setModel:model];
             return cell;
         }else{

@@ -108,6 +108,7 @@
 
 #pragma mark -  IBaction methods
 - (IBAction)tapModifyPwdBtn:(id)sender {
+    [self.view endEditing:YES];
     NSString *pwdTxt = self.pwdNewTextField.text;
     NSString *pwdAginTxt = self.pwdAginTextField.text;
     if (pwdTxt.length <= 0) {
@@ -132,6 +133,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[kPassword] = pwdTxt;
     params[kUserIdKey] = [UserModelUtil sharedInstance].userModel.userId;
+    [SVProgressHUD showWithStatus:@"修改密码中..."];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
         if (status == StatusTypSuccess) {
             [SVProgressHUD showSuccessWithStatus:msg];

@@ -71,7 +71,7 @@
         HTLog(@"user tap logout button ");
     }else if ((indexPath.section == 0) && (indexPath.row == 1)) {
         [self showAddressListView];
-    }else if ((indexPath.section == 0) && (indexPath.row == 2)) {
+    }else if ((indexPath.section == 0) && (indexPath.row == 3)) {
         [self pourTrash];
     }
 }

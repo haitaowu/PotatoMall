@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "GoodsModel.h"
 
+typedef void(^ProductTapBlock) (GoodsModel *goods);
+
 
 @interface GoodsCell : UITableViewCell
 @property (nonatomic,copy) GoodsModel *model;
+@property(nonatomic,copy) ProductTapBlock prouctBlock;
 @end
