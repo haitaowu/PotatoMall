@@ -86,8 +86,12 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 
 - (void)updateUIWithSelectedStatus:(int)status
 {
-    self.currentStatus = status;
-    //订单状态 0待确认 1未付款 2待提货 3已完成  -1为全部（暂定）
+    if (status == 0) {
+        self.currentStatus = 19;
+    }else{
+        self.currentStatus = status;
+    }
+    //订单状态 0待确认由 0 改为19？？ 1未付款 2待提货 3已完成  -1为全部（暂定）
     [self.tableView.mj_header beginRefreshing];
 //    if (status == -1) {
 //       self.ordersArray = self.originOrders;
@@ -117,6 +121,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     params[kUserIdKey] = userId;
     params[kPageNo] = @(self.pageNo);
     params[kPageSize] = @(self.pageSize);
+    //订单状态 0待确认由 0 改为19？？？ 1未付款 2待提货 3已完成  -1为全部（暂定）
     if (self.currentStatus == -1) {
         params[@"orderStatus"] = @[@0,@1, @2, @3,@4, @8, @14,@19];
     }else{
@@ -178,7 +183,7 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 #pragma mark - setup UI
 - (void)setupTableviewTableheader
 {
-    //订单状态 0待确认 1未付款 2待提货 3已完成  -1为全部（暂定）
+    //订单状态 0待确认由 0 改为19？？ 1未付款 2待提货 3已完成  -1为全部（暂定）
     self.subItemTitles = @[@"全部",@"待确认",@"未付款",@"待提货",@"已完成"];
 //    CGRect frame =  CGRectMake(0, 0, kScreenWidth, 44);
 //    self.tableviewHeaderView = [[TopScrollView alloc] initWithFrame:frame];

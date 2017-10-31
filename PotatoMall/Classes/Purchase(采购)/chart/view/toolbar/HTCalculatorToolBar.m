@@ -98,6 +98,7 @@
     }else if(state == SelectStateTypeAll){
         self.statueBtn.selected = YES;
     }
+    [self setNeedsLayout];
 }
 
 
