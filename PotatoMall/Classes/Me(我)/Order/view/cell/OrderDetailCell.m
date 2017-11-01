@@ -27,10 +27,10 @@
 - (void)setModel:(GoodsModel *)model
 {
     _model = model;
-    self.titleLabel.text = model.goodsInfoName;
-    self.priceLabel.text = model.price;
-    if (model.imageSrc != nil) {
-        NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
+    self.titleLabel.text = model.goodsName;
+    self.priceLabel.text = model.goodsPrice;
+    if (model.goodsImg != nil) {
+        NSURL *picUrl = [NSURL URLWithString:model.goodsImg];
         UIImage *holderImg = [UIImage imageNamed:@"palcehodler_A"];
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }

@@ -42,18 +42,18 @@
 - (void)setModel:(GoodsModel *)model
 {
     _model = model;
-    self.titleLabel.text = model.goodsInfoName;
-    NSString *priceStr = [NSString stringWithFormat:@"￥%@",model.price];
+    self.titleLabel.text = model.goodsName;
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@",model.goodsPrice];
     UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
-    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.price hlFont:hlFont];
+    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.goodsPrice hlFont:hlFont];
     self.priceLabel.attributedText = attriPriceStr;
     
     //number label
     self.numLabel.text = model.num;
     
-//    self.priceLabel.text = model.price;
-    if (model.imageSrc != nil) {
-        NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
+//    self.priceLabel.text = model.goodsPrice;
+    if (model.goodsImg != nil) {
+        NSURL *picUrl = [NSURL URLWithString:model.goodsImg];
         UIImage *holderImg = [UIImage imageNamed:@"goods_placehodler"];
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }

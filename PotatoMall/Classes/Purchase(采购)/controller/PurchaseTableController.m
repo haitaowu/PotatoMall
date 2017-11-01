@@ -69,7 +69,6 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
     self.tableView.emptyDataSetDelegate = self;
     [self registerTableNibCell];
     [self setupTableViewFooter];
-//    [self requestCategoryData];
     [self requestProductsData];
     [self registerNotifcation];
 }
@@ -325,6 +324,8 @@ static NSString *PurchHotCellID = @"PurchHotCellID";
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[kCatalogIdKey] = cateModel.url;
+    params[kPageNo] = @1;
+    params[kPageSize] = @(self.pageSize);
     return params;
 }
 

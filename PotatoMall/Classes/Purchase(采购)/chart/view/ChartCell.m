@@ -71,14 +71,14 @@
 - (void)setModel:(GoodsModel *)model
 {
     _model = model;
-    self.titleLabel.text = model.goodsInfoName;
+    self.titleLabel.text = model.goodsName;
     //price label set
-    NSString *priceStr = [NSString stringWithFormat:@"￥%@",model.price];
+    NSString *priceStr = [NSString stringWithFormat:@"￥%@",model.goodsPrice];
     UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
-    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.price hlFont:hlFont];
+    NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:model.goodsPrice hlFont:hlFont];
     self.priceLabel.attributedText = attriPriceStr;
-    if (model.imageSrc != nil) {
-        NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
+    if (model.goodsImg != nil) {
+        NSURL *picUrl = [NSURL URLWithString:model.goodsImg];
         UIImage *holderImg = [UIImage imageNamed:@"goods_placehodler"];
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }

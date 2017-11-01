@@ -144,7 +144,7 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     NSMutableArray *carts = [NSMutableArray array];
     for (GoodsModel *obj in self.orderModel.list) {
         NSMutableDictionary *goods = [NSMutableDictionary dictionary];
-        goods[kGoodsInfoIdKey] = obj.goodsInfoId;
+        goods[kGoodsInfoIdKey] = obj.goodsId;
         goods[kNumKey] = obj.num;
         [carts addObject:goods];
     }

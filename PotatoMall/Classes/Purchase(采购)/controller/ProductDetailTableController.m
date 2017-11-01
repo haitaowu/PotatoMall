@@ -98,6 +98,12 @@
     [self.chartView updateCountWithStr:chartCount];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 -(HTAlertView *)shareAlertView
 {
     if(_shareAlertView== nil)
@@ -231,7 +237,7 @@
 {
     if(self.goodModel != nil){
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        params[kGoodsInfoIdKey] = self.goodModel.goodsInfoId;
+        params[kGoodsInfoIdKey] = [self.goodModel realGoodId];
         [self reqGoodsDetailWith:params];
     }
 }
@@ -240,7 +246,7 @@
 - (NSDictionary*)chartParams
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[kGoodsInfoIdKey] = self.goodModel.goodsInfoId;
+    params[kGoodsInfoIdKey] = [self.goodModel realGoodId];
     params[kUserIdKey] = [UserModelUtil sharedInstance].userModel.userId;
     params[kNumKey] = @"1";
     return params;
@@ -296,6 +302,7 @@
 
 - (void)reqGoodsDetailWith:(NSDictionary*)params
 {
+    [SVProgressHUD showWithStatus:@"查询商品详情"];
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
@@ -311,7 +318,13 @@
                 [self.speciCell setDetailModel:self.goodsDetailModel];
             }
             [self.tableView reloadData];
+            if (self.goodsDetailModel == nil) {
+                [SVProgressHUD showInfoWithStatus:@"没有查询到详情"];
+            }else{
+                [SVProgressHUD dismiss];
+            }
         } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD dismiss];
 //            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
@@ -365,8 +378,8 @@
 {
     if([WXApi isWXAppInstalled]){
         if (scene != -1) {
-            NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,self.goodModel.goodsInfoId];
-            [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
+            NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,[self.goodModel realGoodId]];
+            [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsName description:self.goodModel.goodsName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
         }
     }else{
         [SVProgressHUD showErrorWithStatus:@"请安装微信再使用该功能"];
@@ -390,8 +403,8 @@
     }
     
     if (scene != -1) {
-        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,self.goodModel.goodsInfoId];
-        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsInfoName description:self.goodModel.goodsInfoName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
+        NSString *urlStr = [NSString stringWithFormat: @"http://120.25.201.82/tudou/article.html?type=%@&id=%@",kProductSkipType,[self.goodModel realGoodId]];
+        [CommHelper shareUrlWithScene:scene title:self.goodModel.goodsName description:self.goodModel.goodsName imageUrl:self.goodsDetailModel.imageSrc url:urlStr];
     }
 }
 @end

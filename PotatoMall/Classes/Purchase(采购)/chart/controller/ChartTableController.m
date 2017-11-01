@@ -155,7 +155,7 @@ static NSString *HeaderID = @"HeaderID";
 - (CGFloat)calculatorPriceWithModel:(GoodsModel*)model
 {
     NSInteger count = [model.selectedCount integerValue];
-    CGFloat price = [model.price floatValue];
+    CGFloat price = [model.goodsPrice floatValue];
     CGFloat totalPrice = price * count;
     return totalPrice;
 }
@@ -193,7 +193,7 @@ static NSString *HeaderID = @"HeaderID";
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         id userId = [UserModelUtil sharedInstance].userModel.userId;
         params[kUserIdKey] = userId;
-        params[kGoodsInfoIdsKey] = goodsModel.goodsInfoId;
+        params[kGoodsInfoIdsKey] = goodsModel.goodsId;
         NSString *subUrl = @"cart/deleteCartProduct";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {

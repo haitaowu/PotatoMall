@@ -76,16 +76,16 @@
 - (void)setModel:(GoodsModel *)model
 {
     _model = model;
-    self.titleLabel.text = model.goodsInfoName;
-    NSString *price = (model.price == nil) ? @"0":model.price;
+    self.titleLabel.text = model.goodsName;
+    NSString *price = (model.goodsPrice == nil) ? @"0":model.goodsPrice;
     NSString *priceStr = [NSString stringWithFormat:@"￥%@",price];
     UIFont *hlFont = [UIFont systemFontOfSize:(self.priceLabel.font.pointSize + 5)];
     NSAttributedString *attriPriceStr = [CommHelper attriWithStr:priceStr keyword:price hlFont:hlFont];
     self.priceLabel.attributedText = attriPriceStr;
     
     self.adrLabel.text = model.goodsPlace;
-    if (model.imageSrc != nil) {
-        NSURL *picUrl = [NSURL URLWithString:model.imageSrc];
+    if (model.goodsImg != nil) {
+        NSURL *picUrl = [NSURL URLWithString:model.goodsImg];
         UIImage *holderImg = [UIImage imageNamed:@"goods_placehodler"];
         [self.picView sd_setImageWithURL:picUrl placeholderImage:holderImg];
     }

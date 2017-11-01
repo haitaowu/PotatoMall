@@ -152,13 +152,13 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if ([self.buyType isEqualToString:kByNow]) {
         GoodsModel *obj = [self.goodsArray firstObject];
-        params[kGoodsInfoIdKey] = obj.goodsInfoId;
+        params[kGoodsInfoIdKey] = obj.goodsId;
         params[kNumKey] = obj.selectedCount;
     }else{
         NSMutableArray *goodsArr = [NSMutableArray array];
         for (GoodsModel *obj in self.goodsArray) {
             NSMutableDictionary *goods = [NSMutableDictionary dictionary];
-            goods[kGoodsInfoIdKey] = obj.goodsInfoId;
+            goods[kGoodsInfoIdKey] = obj.goodsId;
             goods[kNumKey] = obj.selectedCount;
             [goodsArr addObject:goods];
         }
@@ -198,7 +198,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
 - (CGFloat)calculatorPriceWithModel:(GoodsModel*)model
 {
     NSInteger count = [model.selectedCount integerValue];
-    CGFloat price = [model.price floatValue];
+    CGFloat price = [model.goodsPrice floatValue];
     CGFloat totalPrice = price * count;
     return totalPrice;
 }
@@ -418,7 +418,7 @@ static NSString *OrderPayFooterID = @"OrderPayFooterID";
         __block typeof(self) blockSelf = self;
         cell.countBlock = ^(GoodsModel *model){
             NSInteger count = [model.selectedCount integerValue];
-            CGFloat price = [model.price floatValue];
+            CGFloat price = [model.goodsPrice floatValue];
             CGFloat totalPrice = price * count;
             HTLog(@"current count = %f",totalPrice);
             [blockSelf productsTotalPrice];

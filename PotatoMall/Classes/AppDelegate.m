@@ -132,7 +132,7 @@
                 UITabBarController *tabBarController = (UITabBarController*)rootControl;
                 tabBarController.selectedIndex = 1;
                 GoodsModel *articleModel = [[GoodsModel alloc] init];
-                articleModel.goodsInfoId = skipID;
+                articleModel.goodsId = skipID;
                 NSMutableDictionary *sender = [NSMutableDictionary dictionary];
                 sender[kNotiUserInfoKey] = articleModel;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -9,6 +9,15 @@
 #import "GoodsModel.h"
 
 @implementation GoodsModel
+#pragma mark - public methods
+- (NSString*)realGoodId
+{
+    if (self.goodsId == nil) {
+        return self.goodsInfoId;
+    }else{
+        return self.goodsId;
+    }
+}
 
 + (NSMutableArray*)goodsWithData:(id)data
 {

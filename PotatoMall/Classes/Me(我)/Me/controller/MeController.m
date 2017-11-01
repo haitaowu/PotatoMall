@@ -155,6 +155,8 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     }else{
         self.nickNameLabel.text = @"游客";
         self.roleLabel.text = @"";
+        NSString *availableBalance = @"账户余额:0.00元";
+        self.moneyLabel.text = availableBalance;
     }
 }
 
@@ -210,6 +212,8 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
 //            [[UserModelUtil sharedInstance] archiveUserModel:model];
         }
     } reqFail:^(int type, NSString *msg) {
+        NSString *availableBalance = @"账户余额:0.00元";
+        self.moneyLabel.text = availableBalance;
         [SVProgressHUD showErrorWithStatus:msg];
     }];
 }
