@@ -264,19 +264,17 @@
             //        _PlanWebViewViewController.murl = murl;
             //        _PlantUserViewController.unionId =self.unionId;
             [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
-        }
-        if (indexPath.row==1) {
+        }else if (indexPath.row==1) {
             NSLog(@"message===%@",message);
-            if([message isEqualToString:@"审核通过"]){
+//            if([message isEqualToString:@"审核通过"]){
                 [self performSegueWithIdentifier:@"plantmanage" sender:nil];
-            }else{
-                PlanthandleViewController *_PlanthandleViewController= [[PlanthandleViewController alloc] init];
-                //        _PlanWebViewViewController.murl = murl;
-                _PlanthandleViewController.unionId =unionId;
-                [self.navigationController pushViewController:_PlanthandleViewController animated:YES];
-            }
-        }
-        if (indexPath.row==2) {
+//            }else{
+//                PlanthandleViewController *_PlanthandleViewController= [[PlanthandleViewController alloc] init];
+//                //        _PlanWebViewViewController.murl = murl;
+//                _PlanthandleViewController.unionId =unionId;
+//                [self.navigationController pushViewController:_PlanthandleViewController animated:YES];
+//            }
+        }else {
             [self performSegueWithIdentifier:@"plantinfoidentifier" sender:nil];
         }
     }else{

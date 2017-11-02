@@ -22,3 +22,4 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "CommHelper.h"
 #import "TitleLabel.h"
+#import "NSDictionary+Extension.h"

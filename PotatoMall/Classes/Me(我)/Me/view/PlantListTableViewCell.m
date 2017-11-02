@@ -12,13 +12,31 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    [self setupUI];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+#pragma mark - setup ui
+- (void)setupUI
+{
+    self.cellclickbutton.layer.cornerRadius = 3;
+    self.cellclickbutton.layer.borderWidth = 0.8;
+    self.cellclickbutton.layer.borderColor = kMainNavigationBarColor.CGColor;
+}
 
-    // Configure the view for the selected state
+#pragma mark - selectors
+- (IBAction)tapOptBtn:(id)sender {
+    if (self.optBlock != nil) {
+        self.optBlock(_model);
+    }
+}
+
+#pragma mark - setter methods
+- (void)setModel:(plantmodel *)model
+{
+    _model = model;
+    self.title.text=model.content;
+    self.content.text=model.catalogName;
+//    murl=model.helpUrl;
 }
 
 @end

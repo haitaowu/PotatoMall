@@ -17,22 +17,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"植保操作";
-    // Do any additional setup after loading the view from its nib.
+    [self setupBase];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - private methods
+- (void)setupBase
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    [self reqUnionPlanedInfoWith:params];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - requset server
+- (void)reqUnionPlanedInfoWith:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"/user_union/findUnionUserByUserId";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
+            if (status == StatusTypSuccess) {
+                NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
+                NSDictionary *obj = dataDict[@"obj"];
+                NSLog(@"obj = %@ data = %@",obj,dataDict);
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
 }
-*/
 
 @end
