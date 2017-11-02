@@ -36,6 +36,10 @@ typedef void(^ChartCountBlock)(NSInteger count);
 - (BOOL)isUserLogin;
 - (BOOL)isUserFinishedInfo;
 
+/**
+ *是否为管理员角色
+ */
+- (BOOL)isAdminRole;
 /**类型 1:个体种植户 2：种植企业 3：批发商/采购商 4：种薯种植企业 5：农资电商卖家*/
 + (NSString*)userRoleWithType:(NSString*)type;
 

@@ -1087,11 +1087,12 @@
                         <segue destination="Tdw-Pn-cKb" kind="show" identifier="plantinfoidentifier" id="VvW-Pq-Z5y"/>
                         <segue destination="eSL-rf-xOi" kind="showDetail" identifier="plantmanage" action="showViewController:sender:" id="ImQ-ux-hVf"/>
                         <segue destination="d3B-cF-pFc" kind="show" identifier="creUnionSegue" id="btT-JQ-VtC"/>
+                        <segue destination="O0m-uh-sg9" kind="show" identifier="planStateSegue" id="emB-j8-xvs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ec-YX-8bp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1879" y="-466"/>
+            <point key="canvasLocation" x="1879" y="-465"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="7Js-aU-mcT">
@@ -1613,7 +1614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fit-5L-duZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3791" y="1917"/>
+            <point key="canvasLocation" x="3098" y="2103"/>
         </scene>
         <!--请选择账号身份-->
         <scene sceneID="tT5-8c-PTK">
@@ -1943,7 +1944,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hc1-82-ndP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3225" y="2400"/>
+            <point key="canvasLocation" x="3099" y="2950"/>
         </scene>
         <!--修改登录密码-->
         <scene sceneID="uck-9I-yQB">
@@ -2214,7 +2215,7 @@
                     </cells>
                 </tableViewSection>
             </objects>
-            <point key="canvasLocation" x="3225" y="3152"/>
+            <point key="canvasLocation" x="1841" y="3116"/>
         </scene>
         <!--Plant Infomation Table View Controller-->
         <scene sceneID="ZX2-BE-adf">
@@ -2581,6 +2582,233 @@
             </objects>
             <point key="canvasLocation" x="3337.5" y="-1744.0140845070423"/>
         </scene>
+        <!--植保操作-->
+        <scene sceneID="GAb-xR-98b">
+            <objects>
+                <tableViewController id="O0m-uh-sg9" customClass="UnionedPlanOptStateController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vLS-3C-Tbo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <sections>
+                            <tableViewSection id="Ehi-2c-Oce">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="0rh-ov-lDV">
+                                        <rect key="frame" x="0.0" y="35" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0rh-ov-lDV" id="3gb-O4-TIl">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHG-rQ-1hZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="您还没有任何可执行的植保计划" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmR-VN-pNU">
+                                                            <rect key="frame" x="60" y="35" width="200" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="250" id="79g-xN-LEV">
+                                        <rect key="frame" x="0.0" y="155" width="320" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="79g-xN-LEV" id="MXH-S9-NKU">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZF0-dK-1jS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重要提示:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZs-M4-6I9">
+                                                            <rect key="frame" x="8" y="8" width="61.5" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="61.5" id="MPO-GR-Gff"/>
+                                                                <constraint firstAttribute="height" constant="17" id="zi6-9F-fbj"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.如果您以个体种植户身份申请植保计划后，将无法加入任何联合种植，请谨慎操作！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojc-CG-z6a">
+                                                            <rect key="frame" x="8" y="86.5" width="304" height="54"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.只有按平台植保计划完成所有的种植操作，才能获得平台未来提供的追朔服务。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEi-MW-5iV">
+                                                            <rect key="frame" x="8" y="140.5" width="304" height="53.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mjc-N2-EWy">
+                                                            <rect key="frame" x="0.0" y="202.5" width="320" height="1"/>
+                                                            <color key="backgroundColor" red="0.922423153" green="0.922423153" blue="0.922423153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="5fm-kx-qgb"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2i-g6-5Jb">
+                                                            <rect key="frame" x="0.0" y="211.5" width="320" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="nqw-xj-8Bf"/>
+                                                            </constraints>
+                                                            <state key="normal" title="以个人种植户身份申请植保计划&gt;&gt;"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.加入联合体种植后，将会受到联合体的统一植保计划，无需自行申请。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VU-it-TS9">
+                                                            <rect key="frame" x="8" y="33" width="304" height="53.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="VZs-M4-6I9" firstAttribute="top" secondItem="ZF0-dK-1jS" secondAttribute="top" constant="8" id="0hf-cO-ahj"/>
+                                                        <constraint firstItem="SEi-MW-5iV" firstAttribute="height" secondItem="6VU-it-TS9" secondAttribute="height" id="7gH-b7-vqc"/>
+                                                        <constraint firstItem="Ojc-CG-z6a" firstAttribute="top" secondItem="6VU-it-TS9" secondAttribute="bottom" id="9Ck-ZZ-D5F"/>
+                                                        <constraint firstItem="Ojc-CG-z6a" firstAttribute="leading" secondItem="6VU-it-TS9" secondAttribute="leading" id="Ifx-sF-5aF"/>
+                                                        <constraint firstItem="mjc-N2-EWy" firstAttribute="leading" secondItem="ZF0-dK-1jS" secondAttribute="leading" id="PHY-AQ-spr"/>
+                                                        <constraint firstItem="Ojc-CG-z6a" firstAttribute="height" secondItem="6VU-it-TS9" secondAttribute="height" id="R8Y-v7-grZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="mjc-N2-EWy" secondAttribute="trailing" id="SYF-ek-sCL"/>
+                                                        <constraint firstItem="u2i-g6-5Jb" firstAttribute="top" secondItem="mjc-N2-EWy" secondAttribute="bottom" constant="8" id="T4F-hq-IHi"/>
+                                                        <constraint firstItem="Ojc-CG-z6a" firstAttribute="trailing" secondItem="6VU-it-TS9" secondAttribute="trailing" id="TqR-PG-zAr"/>
+                                                        <constraint firstItem="SEi-MW-5iV" firstAttribute="trailing" secondItem="6VU-it-TS9" secondAttribute="trailing" id="YP3-od-xIC"/>
+                                                        <constraint firstItem="SEi-MW-5iV" firstAttribute="width" secondItem="6VU-it-TS9" secondAttribute="width" id="Zx3-Fu-ugB"/>
+                                                        <constraint firstItem="6VU-it-TS9" firstAttribute="top" secondItem="VZs-M4-6I9" secondAttribute="bottom" constant="8" id="afW-gX-YbW"/>
+                                                        <constraint firstItem="SEi-MW-5iV" firstAttribute="leading" secondItem="6VU-it-TS9" secondAttribute="leading" id="dwk-yP-h2g"/>
+                                                        <constraint firstAttribute="bottom" secondItem="u2i-g6-5Jb" secondAttribute="bottom" constant="8" id="hjI-uD-tsl"/>
+                                                        <constraint firstItem="Ojc-CG-z6a" firstAttribute="width" secondItem="6VU-it-TS9" secondAttribute="width" id="i92-qc-rIc"/>
+                                                        <constraint firstItem="SEi-MW-5iV" firstAttribute="top" secondItem="Ojc-CG-z6a" secondAttribute="bottom" id="izV-iE-Mrh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6VU-it-TS9" secondAttribute="trailing" constant="8" id="kEA-Qi-FQf"/>
+                                                        <constraint firstItem="VZs-M4-6I9" firstAttribute="leading" secondItem="ZF0-dK-1jS" secondAttribute="leading" constant="8" id="md0-Us-xF9"/>
+                                                        <constraint firstItem="6VU-it-TS9" firstAttribute="leading" secondItem="VZs-M4-6I9" secondAttribute="leading" id="rzS-4S-auY"/>
+                                                        <constraint firstItem="u2i-g6-5Jb" firstAttribute="leading" secondItem="ZF0-dK-1jS" secondAttribute="leading" id="uq9-MQ-Kxo"/>
+                                                        <constraint firstItem="mjc-N2-EWy" firstAttribute="top" secondItem="SEi-MW-5iV" secondAttribute="bottom" constant="8" id="vZa-R0-3Ao"/>
+                                                        <constraint firstAttribute="trailing" secondItem="u2i-g6-5Jb" secondAttribute="trailing" id="wdj-kx-OWA"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZF0-dK-1jS" firstAttribute="leading" secondItem="MXH-S9-NKU" secondAttribute="leading" id="IoZ-33-QOv"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZF0-dK-1jS" secondAttribute="trailing" id="fNu-cR-O0H"/>
+                                                <constraint firstItem="ZF0-dK-1jS" firstAttribute="top" secondItem="MXH-S9-NKU" secondAttribute="top" id="iza-B9-FP5"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZF0-dK-1jS" secondAttribute="bottom" id="mLA-cJ-ANs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="F5f-6j-oTI">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="BOI-lu-rbq">
+                                        <rect key="frame" x="0.0" y="441" width="320" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BOI-lu-rbq" id="btk-5C-cwp">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_wait_check" translatesAutoresizingMaskIntoConstraints="NO" id="P3H-Ej-UHi">
+                                                    <rect key="frame" x="100" y="40" width="120" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="DzS-Th-82f"/>
+                                                        <constraint firstAttribute="width" secondItem="P3H-Ej-UHi" secondAttribute="height" multiplier="1:1" id="q7g-a5-W2a"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植保计划正在申请中，请耐心等候......!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skA-Ca-H6a">
+                                                    <rect key="frame" x="22" y="168" width="276.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P3H-Ej-UHi" firstAttribute="centerX" secondItem="btk-5C-cwp" secondAttribute="centerX" id="J1q-2h-FSu"/>
+                                                <constraint firstItem="skA-Ca-H6a" firstAttribute="centerX" secondItem="P3H-Ej-UHi" secondAttribute="centerX" id="O5X-Lz-8VG"/>
+                                                <constraint firstItem="skA-Ca-H6a" firstAttribute="top" secondItem="P3H-Ej-UHi" secondAttribute="bottom" constant="8" id="jLC-hJ-o1Q"/>
+                                                <constraint firstItem="P3H-Ej-UHi" firstAttribute="top" secondItem="btk-5C-cwp" secondAttribute="top" constant="40" id="juh-AP-3wF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="3mG-8T-reO">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="szJ-Xh-3FB">
+                                        <rect key="frame" x="0.0" y="677" width="320" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="szJ-Xh-3FB" id="ztR-Ht-dvL">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9i-Zp-Uqh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_weihuodezhibaojihua" translatesAutoresizingMaskIntoConstraints="NO" id="Nxy-6B-ELf">
+                                                            <rect key="frame" x="120" y="20" width="80" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="g3i-wZ-sPY"/>
+                                                                <constraint firstAttribute="width" secondItem="Nxy-6B-ELf" secondAttribute="height" multiplier="1:1" id="vbF-68-T0l"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的联合体还没有申请到植保计划" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vae-oZ-gbP">
+                                                            <rect key="frame" x="53" y="120" width="215" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您可以联系所属联合体的管理员或创建人并询问联合体植保计划申请进度" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joT-Q4-3MO">
+                                                            <rect key="frame" x="10" y="145" width="300" height="33.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="300" id="DPj-uq-web"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Nxy-6B-ELf" firstAttribute="top" secondItem="r9i-Zp-Uqh" secondAttribute="top" constant="20" id="2U5-aT-vgE"/>
+                                                        <constraint firstItem="joT-Q4-3MO" firstAttribute="centerX" secondItem="r9i-Zp-Uqh" secondAttribute="centerX" id="OxM-F4-FG6"/>
+                                                        <constraint firstItem="Vae-oZ-gbP" firstAttribute="top" secondItem="Nxy-6B-ELf" secondAttribute="bottom" constant="20" id="OzR-b8-CY4"/>
+                                                        <constraint firstItem="Nxy-6B-ELf" firstAttribute="centerX" secondItem="Vae-oZ-gbP" secondAttribute="centerX" id="WPS-e4-een"/>
+                                                        <constraint firstItem="Nxy-6B-ELf" firstAttribute="centerX" secondItem="r9i-Zp-Uqh" secondAttribute="centerX" id="fTV-cN-T2T"/>
+                                                        <constraint firstItem="joT-Q4-3MO" firstAttribute="top" secondItem="Vae-oZ-gbP" secondAttribute="bottom" constant="8" id="h7H-ky-JxT"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="r9i-Zp-Uqh" firstAttribute="leading" secondItem="ztR-Ht-dvL" secondAttribute="leading" id="0ts-Gd-rvL"/>
+                                                <constraint firstItem="r9i-Zp-Uqh" firstAttribute="top" secondItem="ztR-Ht-dvL" secondAttribute="top" id="4Tj-QT-X5v"/>
+                                                <constraint firstAttribute="trailing" secondItem="r9i-Zp-Uqh" secondAttribute="trailing" id="Ky2-jK-CkV"/>
+                                                <constraint firstAttribute="bottom" secondItem="r9i-Zp-Uqh" secondAttribute="bottom" id="pWa-eh-hEp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="O0m-uh-sg9" id="0W6-tc-UZh"/>
+                            <outlet property="delegate" destination="O0m-uh-sg9" id="Pa2-Y8-32s"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="植保操作" id="9fo-rT-ZRa"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wqW-gz-FTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878.75" y="-1200"/>
+        </scene>
     </scenes>
     <resources>
         <image name="aboutus" width="143" height="111"/>
@@ -2591,6 +2819,8 @@
         <image name="ic_me_plant_info" width="30" height="34"/>
         <image name="ic_me_plant_union" width="31" height="30"/>
         <image name="ic_red_clock" width="27" height="27"/>
+        <image name="ic_wait_check" width="401" height="401"/>
+        <image name="ic_weihuodezhibaojihua" width="318" height="318"/>
         <image name="me_next" width="21" height="21"/>
         <image name="me_sexCircle" width="14" height="14"/>
         <image name="me_sexCircleSel" width="14" height="14"/>

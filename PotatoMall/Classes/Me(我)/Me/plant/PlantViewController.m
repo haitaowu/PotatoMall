@@ -13,10 +13,12 @@
 #import "PlantSetting0ViewController.h"
 #import "PlanthandleViewController.h"
 #import "NSDictionary+Extension.h"
+#import "UnionedPlanOptStateController.h"
 
 @interface PlantViewController ()
 @property (nonatomic,assign)BOOL isUnioned;
 @property (nonatomic,assign)BOOL isAddedPlaned;
+@property (nonatomic,copy)NSString *planState;
 @end
 
 @implementation PlantViewController
@@ -34,6 +36,10 @@
     if ([segue.identifier isEqualToString:@"plantmanage"]) {
         PlantManageViewController *vc = segue.destinationViewController;
         vc.unionId =unionId;
+    }else if ([segue.identifier isEqualToString:@"planStateSegue"]) {
+        UnionedPlanOptStateController *vc = segue.destinationViewController;
+//            vc.planState = self.planState;
+        vc.planState = @"1";
     }
 }
 
@@ -95,25 +101,9 @@
                     [self.mstatebutton addTarget:self action:@selector(stateclick:) forControlEvents:UIControlEventTouchUpInside];
                 }
                 
-//                if ([data objectForKey:@"unionId"]) {
-//                    NSLog(@"字典包含key:name");
-//                    unionId=[data objectForKey:@"unionId"];
-//                    selection0=NO;
-//                }else{
-//                    unionId=@"";
-//                    NSLog(@"字典不包含key:name");
-//                }
-//
-//                message=[data objectForKey:@"message"];
-//                if([[data objectForKey:@"message"] isEqualToString:@"审核通过"]){
-//                    unionId=[data objectForKey:@"unionId"];
-//                    selection0=NO;
-//                }
-                
                 if(self.isUnioned == NO){
                     [self.tableView reloadData];
                 }
-//                NSLog(@"selection0==%d",selection0);
                 NSLog(@"msg==%@",data);
                 NSLog(@"msg==%@",[data objectForKey:@"message"]);
             }else{
@@ -138,6 +128,7 @@
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
         [SVProgressHUD dismiss];
         if (status == StatusTypSuccess) {
+            /*0暂无模板 1正在审核 2审核通过 3 申请被驳回 4 该用户以个体户进行植保计划，无法加入联合体*/
 //            [SVProgressHUD showSuccessWithStatus:msg];
             data=[plantmodel plantWithData:data];
             NSString *statusStr = [data strValueForKey:@"status"];
@@ -148,6 +139,7 @@
             }else{
                 self.isAddedPlaned = NO;
             }
+            self.planState = statusStr;
         }else{
             self.isAddedPlaned = NO;
         }
@@ -249,10 +241,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if(indexPath.section==0){
         if (indexPath.row==1) {
-            PlantSetting0ViewController *_PlantSetting0ViewController = [[PlantSetting0ViewController alloc] init];
+            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
             //        _PlanWebViewViewController.murl = murl;
             //        _PlantUserViewController.unionId =self.unionId;
-            [self.navigationController pushViewController:_PlantSetting0ViewController animated:YES];
+            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
         }
         
         if (indexPath.row==2) {
@@ -260,10 +252,13 @@
         }
     }else if(indexPath.section==1){
         if (indexPath.row==0) {
-            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
-            //        _PlanWebViewViewController.murl = murl;
-            //        _PlantUserViewController.unionId =self.unionId;
-            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
+            if (self.isUnioned) {
+                if (self.isAddedPlaned) {
+                    NSLog(@"已经加入植保计划");
+                }else{
+                    [self performSegueWithIdentifier:@"planStateSegue" sender:nil];
+                }
+            }
         }else if (indexPath.row==1) {
             NSLog(@"message===%@",message);
 //            if([message isEqualToString:@"审核通过"]){

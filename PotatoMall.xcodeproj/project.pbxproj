@@ -106,6 +106,7 @@
 		BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5ED7F71E62B90900C4B1D0 /* Login.storyboard */; };
 		BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */; };
 		BE652F721E696D6F003ABEC3 /* MeInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */; };
+		BE6688BD1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6688BC1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.m */; };
 		BE6DAEE41E73971500E82C47 /* SpringGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */; };
 		BE6DAEE61E73CE9700E82C47 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */; };
 		BE7F9A2C1E6D7BE300DD21CF /* ProductDetailTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */; };
@@ -387,6 +388,8 @@
 		BE652F6E1E696A4E003ABEC3 /* MeUserIDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeUserIDController.m; sourceTree = "<group>"; };
 		BE652F701E696D6F003ABEC3 /* MeInfoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeInfoTableController.h; sourceTree = "<group>"; };
 		BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeInfoTableController.m; sourceTree = "<group>"; };
+		BE6688BB1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnionedPlanOptStateController.h; sourceTree = "<group>"; };
+		BE6688BC1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnionedPlanOptStateController.m; sourceTree = "<group>"; };
 		BE6DAEE21E73971500E82C47 /* SpringGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringGoodsModel.h; sourceTree = "<group>"; };
 		BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringGoodsModel.m; sourceTree = "<group>"; };
 		BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -630,6 +633,8 @@
 				378A60A31F74031900D73138 /* PlantDoneViewController.xib */,
 				BEAC41B11F8DB856000C5F6D /* CreateUnionTableViewController.h */,
 				BEAC41B21F8DB856000C5F6D /* CreateUnionTableViewController.m */,
+				BE6688BB1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.h */,
+				BE6688BC1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.m */,
 			);
 			path = plant;
 			sourceTree = "<group>";
@@ -1691,6 +1696,7 @@
 				BE0B09971E8622E200635E71 /* HTAlertView.m in Sources */,
 				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
 				3771FD901F6A157800A8413D /* PlanWebViewViewController.m in Sources */,
+				BE6688BD1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
 				BEB7F6DD1F8F4E1A0067944F /* AddAdrFuncCell.m in Sources */,
 				BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */,

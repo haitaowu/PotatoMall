@@ -68,6 +68,17 @@ static UserModelUtil *instance = nil;
 }
 
 #pragma mark - public methods
+/**
+ *是否为管理员角色
+ */
+- (BOOL)isAdminRole
+{
+    if ([self.userModel.userType isEqualToString:@"1"]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
 - (BOOL)isUserLogin
 {
     if (self.userModel != nil) {
