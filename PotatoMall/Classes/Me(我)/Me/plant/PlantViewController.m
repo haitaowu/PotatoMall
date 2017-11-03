@@ -255,6 +255,7 @@
             if (self.isUnioned) {
                 if (self.isAddedPlaned) {
                     NSLog(@"已经加入植保计划");
+                    [self performSegueWithIdentifier:@"unionedPlanedSegue" sender:nil];
                 }else{
                     [self performSegueWithIdentifier:@"planStateSegue" sender:nil];
                 }

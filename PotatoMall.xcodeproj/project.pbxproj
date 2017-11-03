@@ -142,6 +142,14 @@
 		BEB7F6D91F8F46C50067944F /* AddressListTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F6D71F8F46C40067944F /* AddressListTableController.m */; };
 		BEB7F6DD1F8F4E1A0067944F /* AddAdrFuncCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB7F6DC1F8F4E1A0067944F /* AddAdrFuncCell.m */; };
 		BEB7F6DE1F8F4F220067944F /* AddAdrFuncCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB7F6DB1F8F4E1A0067944F /* AddAdrFuncCell.xib */; };
+		BEBD653B1FAC05A1005B16AF /* PlanOptHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD653A1FAC05A1005B16AF /* PlanOptHeader.m */; };
+		BEBD653D1FAC084C005B16AF /* PlanOptHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBD653C1FAC084C005B16AF /* PlanOptHeader.xib */; };
+		BEBD65401FAC09C1005B16AF /* UnionedPlanedRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD653F1FAC09C0005B16AF /* UnionedPlanedRecordController.m */; };
+		BEBD65431FAC1247005B16AF /* ImgAdjHoriAlignBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD65411FAC1246005B16AF /* ImgAdjHoriAlignBtn.m */; };
+		BEBD65471FAC1465005B16AF /* PlanOptFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD65451FAC1464005B16AF /* PlanOptFooter.m */; };
+		BEBD654B1FAC358B005B16AF /* PlanOptFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBD654A1FAC358B005B16AF /* PlanOptFooter.xib */; };
+		BEBD654F1FAC38B5005B16AF /* PlanFollowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD654D1FAC38B5005B16AF /* PlanFollowHeader.m */; };
+		BEBD65501FAC38B5005B16AF /* PlanFollowHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBD654E1FAC38B5005B16AF /* PlanFollowHeader.xib */; };
 		BEBDA6061F7B369C00996488 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBDA6051F7B369C00996488 /* NSDictionary+Extension.m */; };
 		BEC06DB51E5C76D300667D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DAE1E5C76D300667D73 /* AppDelegate.m */; };
 		BEC06DB91E5C76F500667D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DB81E5C76F500667D73 /* main.m */; };
@@ -454,6 +462,19 @@
 		BEB7F6DA1F8F4E190067944F /* AddAdrFuncCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddAdrFuncCell.h; sourceTree = "<group>"; };
 		BEB7F6DB1F8F4E1A0067944F /* AddAdrFuncCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAdrFuncCell.xib; sourceTree = "<group>"; };
 		BEB7F6DC1F8F4E1A0067944F /* AddAdrFuncCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddAdrFuncCell.m; sourceTree = "<group>"; };
+		BEBD65391FAC05A0005B16AF /* PlanOptHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanOptHeader.h; sourceTree = "<group>"; };
+		BEBD653A1FAC05A1005B16AF /* PlanOptHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanOptHeader.m; sourceTree = "<group>"; };
+		BEBD653C1FAC084C005B16AF /* PlanOptHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanOptHeader.xib; sourceTree = "<group>"; };
+		BEBD653E1FAC09C0005B16AF /* UnionedPlanedRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionedPlanedRecordController.h; sourceTree = "<group>"; };
+		BEBD653F1FAC09C0005B16AF /* UnionedPlanedRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionedPlanedRecordController.m; sourceTree = "<group>"; };
+		BEBD65411FAC1246005B16AF /* ImgAdjHoriAlignBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgAdjHoriAlignBtn.m; sourceTree = "<group>"; };
+		BEBD65421FAC1247005B16AF /* ImgAdjHoriAlignBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgAdjHoriAlignBtn.h; sourceTree = "<group>"; };
+		BEBD65441FAC1464005B16AF /* PlanOptFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanOptFooter.h; sourceTree = "<group>"; };
+		BEBD65451FAC1464005B16AF /* PlanOptFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanOptFooter.m; sourceTree = "<group>"; };
+		BEBD654A1FAC358B005B16AF /* PlanOptFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanOptFooter.xib; sourceTree = "<group>"; };
+		BEBD654C1FAC38B4005B16AF /* PlanFollowHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanFollowHeader.h; sourceTree = "<group>"; };
+		BEBD654D1FAC38B5005B16AF /* PlanFollowHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanFollowHeader.m; sourceTree = "<group>"; };
+		BEBD654E1FAC38B5005B16AF /* PlanFollowHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanFollowHeader.xib; sourceTree = "<group>"; };
 		BEBDA6041F7B369C00996488 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		BEBDA6051F7B369C00996488 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		BEC06DAD1E5C76D300667D73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
@@ -635,6 +656,8 @@
 				BEAC41B21F8DB856000C5F6D /* CreateUnionTableViewController.m */,
 				BE6688BB1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.h */,
 				BE6688BC1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.m */,
+				BEBD653E1FAC09C0005B16AF /* UnionedPlanedRecordController.h */,
+				BEBD653F1FAC09C0005B16AF /* UnionedPlanedRecordController.m */,
 			);
 			path = plant;
 			sourceTree = "<group>";
@@ -950,6 +973,8 @@
 			children = (
 				BE3954431FA2DC3B00D5E06D /* VertiImgTitleBtn.h */,
 				BE3954441FA2DC3B00D5E06D /* VertiImgTitleBtn.m */,
+				BEBD65421FAC1247005B16AF /* ImgAdjHoriAlignBtn.h */,
+				BEBD65411FAC1246005B16AF /* ImgAdjHoriAlignBtn.m */,
 				BECC9FA21E6EE5F9001DE8F1 /* HorizonAlignBtn.h */,
 				BECC9FA31E6EE5F9001DE8F1 /* HorizonAlignBtn.m */,
 				BE3052C81E66C94000C74300 /* StateRadiusBtn.h */,
@@ -1355,6 +1380,15 @@
 				378A60A61F74047700D73138 /* plantdoneTableViewCell.h */,
 				378A60A71F74047700D73138 /* plantdoneTableViewCell.m */,
 				378A60A81F74047700D73138 /* plantdoneTableViewCell.xib */,
+				BEBD65391FAC05A0005B16AF /* PlanOptHeader.h */,
+				BEBD653A1FAC05A1005B16AF /* PlanOptHeader.m */,
+				BEBD653C1FAC084C005B16AF /* PlanOptHeader.xib */,
+				BEBD65441FAC1464005B16AF /* PlanOptFooter.h */,
+				BEBD65451FAC1464005B16AF /* PlanOptFooter.m */,
+				BEBD654A1FAC358B005B16AF /* PlanOptFooter.xib */,
+				BEBD654C1FAC38B4005B16AF /* PlanFollowHeader.h */,
+				BEBD654D1FAC38B5005B16AF /* PlanFollowHeader.m */,
+				BEBD654E1FAC38B5005B16AF /* PlanFollowHeader.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1501,6 +1535,7 @@
 				BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */,
 				374B997C1F666F2A008DC328 /* PlantTimeTableViewCell.xib in Resources */,
 				BEFFEE291E7591FA003E6240 /* OrderDetailFooter.xib in Resources */,
+				BEBD653D1FAC084C005B16AF /* PlanOptHeader.xib in Resources */,
 				BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */,
 				BED95E021E6EF82100054F45 /* HotCollectionCell.xib in Resources */,
 				BEF0EE381E71484F003E06DB /* OrderStateFooter.xib in Resources */,
@@ -1533,6 +1568,7 @@
 				37EDA6581F6AC001008C31CF /* plantlistViewController.xib in Resources */,
 				37789DA11F584EAF007F1FA0 /* MeMenuCollectionViewCell.xib in Resources */,
 				3759C1211F6A547900E9A358 /* plantuserTableViewCell.xib in Resources */,
+				BEBD65501FAC38B5005B16AF /* PlanFollowHeader.xib in Resources */,
 				3774A5381F6E39A300B39A2D /* PlantSetting0ViewController.xib in Resources */,
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
 				BEDECE341E72967200EEA29B /* CancelOrderCell.xib in Resources */,
@@ -1543,6 +1579,7 @@
 				3759C11C1F6A23FD00E9A358 /* PlantUserViewController.xib in Resources */,
 				BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */,
 				BE93AF2D1E65B88E001F99BC /* SearchCell.xib in Resources */,
+				BEBD654B1FAC358B005B16AF /* PlanOptFooter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1624,6 +1661,7 @@
 				BE5ED7A01E619FAC00C4B1D0 /* AritcleDetailController.m in Sources */,
 				BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */,
 				BECC9F9E1E6EDE80001DE8F1 /* PurAdModel.m in Sources */,
+				BEBD65471FAC1465005B16AF /* PlanOptFooter.m in Sources */,
 				371D2A611F6269AE0082B91E /* plantmodel.m in Sources */,
 				BED84A041E6FD905001E7A27 /* PreOrderTableController.m in Sources */,
 				BE3052CA1E66C94000C74300 /* StateRadiusBtn.m in Sources */,
@@ -1671,6 +1709,7 @@
 				3771FD8B1F690D5200A8413D /* PlantPlanViewController.m in Sources */,
 				BED84A191E7004B7001E7A27 /* TransportTableController.m in Sources */,
 				3774A5321F6BA44E00B39A2D /* PlantAddViewController.m in Sources */,
+				BEBD65431FAC1247005B16AF /* ImgAdjHoriAlignBtn.m in Sources */,
 				BE0DDB421E6D0B4300F15168 /* HTCalculatorToolBar.m in Sources */,
 				BEF0EE1C1E711E41003E06DB /* OrderDetailCell.m in Sources */,
 				374B997B1F666F2A008DC328 /* PlantTimeTableViewCell.m in Sources */,
@@ -1707,6 +1746,7 @@
 				BEAC41B31F8DB856000C5F6D /* CreateUnionTableViewController.m in Sources */,
 				BE5ED7C31E62579700C4B1D0 /* NSString+Extentsion.m in Sources */,
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
+				BEBD654F1FAC38B5005B16AF /* PlanFollowHeader.m in Sources */,
 				37789DA01F584EAF007F1FA0 /* MeMenuCollectionViewCell.m in Sources */,
 				BEAC41B71F8E6223000C5F6D /* PayTypeCell.m in Sources */,
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Extension.m in Sources */,
@@ -1724,6 +1764,7 @@
 				BE7F9A2C1E6D7BE300DD21CF /* ProductDetailTableController.m in Sources */,
 				BE93AF281E65B7BF001F99BC /* SeachSectionHeader.m in Sources */,
 				BED84A081E6FD9C4001E7A27 /* CarryCell.m in Sources */,
+				BEBD653B1FAC05A1005B16AF /* PlanOptHeader.m in Sources */,
 				BED84A121E6FEF91001E7A27 /* OrderFeedCell.m in Sources */,
 				BE077A721E6A9ADA006F0EFB /* PlustField.m in Sources */,
 				BE0CFD481E6DB85B00003FE1 /* SpecButton.m in Sources */,
@@ -1735,6 +1776,7 @@
 				37EDA6661F6AD513008C31CF /* PlantSettingViewController.m in Sources */,
 				BE5ED7AA1E61B3F700C4B1D0 /* Reachability.m in Sources */,
 				BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */,
+				BEBD65401FAC09C1005B16AF /* UnionedPlanedRecordController.m in Sources */,
 				378A60A41F74031900D73138 /* PlantDoneViewController.m in Sources */,
 				378A60A91F74047700D73138 /* plantdoneTableViewCell.m in Sources */,
 				BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */,
