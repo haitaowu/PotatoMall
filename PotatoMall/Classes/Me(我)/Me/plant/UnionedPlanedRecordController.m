@@ -10,6 +10,7 @@
 #import "PlanOptHeader.h"
 #import "PlanFollowHeader.h"
 #import "PlanOptFooter.h"
+#import "plantmodel.h"
 
 #define kPlanedInfoSectionIdx             0
 #define kOptHelpSectionIdx                1
@@ -21,21 +22,20 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 
 @interface UnionedPlanedRecordController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *platAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *platAreaLabel;
+@property (weak, nonatomic) IBOutlet UILabel *catalogNameLabel;
+@property(nonatomic,strong) NSArray *plaRecords;
+@property(nonatomic,strong) NSArray *planTypes;
+@property(nonatomic,strong) NSDictionary *planInfo;
 @end
 
 @implementation UnionedPlanedRecordController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UINib *PlanOptHeaderNib = [UINib nibWithNibName:@"PlanOptHeader" bundle:nil];
-    [self.tableView registerNib:PlanOptHeaderNib forHeaderFooterViewReuseIdentifier:PlanOptHeaderID];
-
-    UINib *PlanFollowHeaderNib = [UINib nibWithNibName:@"PlanFollowHeader" bundle:nil];
-    [self.tableView registerNib:PlanFollowHeaderNib forHeaderFooterViewReuseIdentifier:PlanFollowHeaderID];
-    
-    UINib *PlanOptFooterNib = [UINib nibWithNibName:@"PlanOptFooter" bundle:nil];
-    [self.tableView registerNib:PlanOptFooterNib forHeaderFooterViewReuseIdentifier:PlanOptFooterID];
+    [self setupUI];
+    [self setupBase];
 }
 
 #pragma mark - private methods
@@ -48,7 +48,58 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     }
 }
 
+- (void)setupUI
+{
+     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成记录" style:UIBarButtonItemStylePlain target:self action:@selector(finishedRecords)];
+    
+    UINib *PlanOptHeaderNib = [UINib nibWithNibName:@"PlanOptHeader" bundle:nil];
+    [self.tableView registerNib:PlanOptHeaderNib forHeaderFooterViewReuseIdentifier:PlanOptHeaderID];
+    
+    UINib *PlanFollowHeaderNib = [UINib nibWithNibName:@"PlanFollowHeader" bundle:nil];
+    [self.tableView registerNib:PlanFollowHeaderNib forHeaderFooterViewReuseIdentifier:PlanFollowHeaderID];
+    
+    UINib *PlanOptFooterNib = [UINib nibWithNibName:@"PlanOptFooter" bundle:nil];
+    [self.tableView registerNib:PlanOptFooterNib forHeaderFooterViewReuseIdentifier:PlanOptFooterID];
+}
 
+- (void)setupBase
+{
+    //1.种植信息类型查询
+    NSDictionary *paramPlantedType = [self paramPlantedType];
+    [self findSysDictByType:paramPlantedType];
+    //2.查询种植信息
+    NSDictionary *paramsPlantedInfo = [self userParams];
+    [self detailUserPlat:paramsPlantedInfo];
+    //3.植保记录- 请求参数
+    NSDictionary *userRecordParams = [self userRecordParams];
+    [self findUserPlatRecord:userRecordParams];
+}
+
+- (void)updateUIAfterReq
+{
+    if ((self.planInfo == nil) || (self.planTypes == nil) || (self.plaRecords == nil)){
+        return;
+    }
+    
+    NSString *platAddress = [self.planInfo strValueForKey:@"platAddress"];
+    NSString *platArea = [self.planInfo strValueForKey:@"platArea"];
+    NSString *platType = [self.planInfo strValueForKey:@"platType"];
+    NSString *catalogName = @"";
+    for (plantmodel *obj in self.planTypes) {
+        if ([obj.uid isEqualToString:platType]) {
+            catalogName = obj.name;
+            break;
+        }
+    }
+    self.catalogNameLabel.text = catalogName;
+    self.platAreaLabel.text = platArea;
+    self.platAddressLabel.text = platAddress;
+}
+#pragma mark - selectors
+- (void)finishedRecords
+{
+    [self.navigationController performSegueWithIdentifier:@"finishedSegue" sender:nil];
+}
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -132,6 +183,115 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     }
 }
 
+
+#pragma mark - requset server
+ //1.种植信息类型查询 - 请求参数
+ - (NSDictionary *)paramPlantedType
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"type"] = @"2";
+    return params;
+}
+
+ //1.种植信息类型查询
+- (void)findSysDictByType:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"/system/findSysDictByType";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                [SVProgressHUD showSuccessWithStatus:msg];
+            }else{
+                [SVProgressHUD showErrorWithStatus:msg];
+            }
+            NSMutableArray *type =[plantmodel plantWithDataArray:data];
+            self.planTypes = type;
+            [self updateUIAfterReq];
+            NSLog(@"planted type =%@",type);
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+        
+    }
+}
+
+//2.查询种植信息-请求参数
+- (NSDictionary *)userParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    params[@"unionId"] = self.unionId;
+    return params;
+}
+
+
+//2.查询种植信息
+- (void)detailUserPlat:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"/user/detailUserPlat";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                [SVProgressHUD showSuccessWithStatus:msg];
+                NSDictionary *plantedInfo = [plantmodel plantWithData:data];
+                self.planInfo = plantedInfo;
+                NSLog(@"plantedInfo=%@",plantedInfo);
+                [self updateUIAfterReq];
+            }else{
+                [SVProgressHUD showErrorWithStatus:msg];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+        
+    }
+}
+
+
+//3.植保记录- 请求参数
+- (NSDictionary *)userRecordParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    params[@"unionId"] = self.unionId;
+    return params;
+}
+
+
+
+//3.植保记录
+- (void)findUserPlatRecord:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"/plat/findUserPlatRecord";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                [SVProgressHUD showSuccessWithStatus:msg];
+                NSMutableArray *list =[plantmodel plantWithDataArray1:data];
+                self.plaRecords = list;
+                [self updateUIAfterReq];
+                NSLog(@"planted record list =%@",list);
+//                [_mtableview reloadData];
+            }else{
+                [SVProgressHUD showErrorWithStatus:msg];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+        
+    }
+}
 
 
 

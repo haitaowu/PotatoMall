@@ -12,7 +12,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Unioned Planed Record Controller-->
+        <!--Table View Controller-->
+        <scene sceneID="URk-1o-bsA">
+            <objects>
+                <tableViewController id="p6M-fu-2c9" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="COQ-lB-gfV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0Xw-hW-j2G">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Xw-hW-j2G" id="2QS-TH-hE9">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="p6M-fu-2c9" id="XBZ-tE-HPT"/>
+                            <outlet property="delegate" destination="p6M-fu-2c9" id="J5J-Vc-WSy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UOc-tP-IR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="651" y="-1951"/>
+        </scene>
+        <!--植保操作-->
         <scene sceneID="hB2-M9-18M">
             <objects>
                 <tableViewController id="7ji-HA-tHh" customClass="UnionedPlanedRecordController" sceneMemberID="viewController">
@@ -171,6 +199,12 @@
                             <outlet property="delegate" destination="7ji-HA-tHh" id="NsQ-iw-L3K"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="植保操作" id="ByU-lw-6PT"/>
+                    <connections>
+                        <outlet property="catalogNameLabel" destination="IB8-lE-EgQ" id="tBi-1W-ca9"/>
+                        <outlet property="platAddressLabel" destination="DMW-ec-nz7" id="uAC-7r-Uag"/>
+                        <outlet property="platAreaLabel" destination="rGM-BR-08G" id="InA-Bv-JKS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Mt-nE-5M3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,11 +14,13 @@
 #import "PlanthandleViewController.h"
 #import "NSDictionary+Extension.h"
 #import "UnionedPlanOptStateController.h"
+#import "UnionedPlanedRecordController.h"
 
 @interface PlantViewController ()
 @property (nonatomic,assign)BOOL isUnioned;
 @property (nonatomic,assign)BOOL isAddedPlaned;
 @property (nonatomic,copy)NSString *planState;
+@property (nonatomic,copy)NSString *unionId;
 @end
 
 @implementation PlantViewController
@@ -40,6 +42,9 @@
         UnionedPlanOptStateController *vc = segue.destinationViewController;
 //            vc.planState = self.planState;
         vc.planState = @"1";
+    }else if ([segue.identifier isEqualToString:@"unionedPlanedSegue"]) {
+        UnionedPlanedRecordController *vc = segue.destinationViewController;
+        vc.unionId = self.unionId;
     }
 }
 
@@ -74,6 +79,7 @@
 //                [SVProgressHUD showSuccessWithStatus:msg];
                 data=[plantmodel plantWithData:data];
                 NSString *unionID=[data strValueForKey:@"unionId"];
+                self.unionId = unionID;
                 NSString *statusStr = [data strValueForKey:@"status"];
                 if([statusStr isEqualToString:@"5"]){
 //                    selection0=YES;
