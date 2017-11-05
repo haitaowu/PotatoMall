@@ -123,6 +123,12 @@
 		BE93C2F81E680E0000CC0B96 /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE93C2F71E680E0000CC0B96 /* CityModel.m */; };
 		BE93C3001E681C2800CC0B96 /* CityTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE93C2FD1E681C2800CC0B96 /* CityTableController.m */; };
 		BE93C3011E681C2800CC0B96 /* DistriTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE93C2FF1E681C2800CC0B96 /* DistriTableController.m */; };
+		BEA640791FAF18DD00A370AE /* TitleImgAdjHoriAlignBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA640771FAF18DC00A370AE /* TitleImgAdjHoriAlignBtn.m */; };
+		BEA6407D1FAF199200A370AE /* PlantRecordHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA6407A1FAF199100A370AE /* PlantRecordHeader.m */; };
+		BEA6407E1FAF199200A370AE /* PlantRecordHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA6407B1FAF199200A370AE /* PlantRecordHeader.xib */; };
+		BEA640811FAF1A3D00A370AE /* PlanRecordTableViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA640801FAF1A3D00A370AE /* PlanRecordTableViewControl.m */; };
+		BEA640851FAF458E00A370AE /* PlantRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA640831FAF458E00A370AE /* PlantRecordCell.m */; };
+		BEA640861FAF458E00A370AE /* PlantRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA640841FAF458E00A370AE /* PlantRecordCell.xib */; };
 		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
 		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
 		BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */; };
@@ -428,6 +434,16 @@
 		BE93C2FD1E681C2800CC0B96 /* CityTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableController.m; sourceTree = "<group>"; };
 		BE93C2FE1E681C2800CC0B96 /* DistriTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistriTableController.h; sourceTree = "<group>"; };
 		BE93C2FF1E681C2800CC0B96 /* DistriTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistriTableController.m; sourceTree = "<group>"; };
+		BEA640771FAF18DC00A370AE /* TitleImgAdjHoriAlignBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleImgAdjHoriAlignBtn.m; sourceTree = "<group>"; };
+		BEA640781FAF18DD00A370AE /* TitleImgAdjHoriAlignBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleImgAdjHoriAlignBtn.h; sourceTree = "<group>"; };
+		BEA6407A1FAF199100A370AE /* PlantRecordHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlantRecordHeader.m; sourceTree = "<group>"; };
+		BEA6407B1FAF199200A370AE /* PlantRecordHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlantRecordHeader.xib; sourceTree = "<group>"; };
+		BEA6407C1FAF199200A370AE /* PlantRecordHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantRecordHeader.h; sourceTree = "<group>"; };
+		BEA6407F1FAF1A3C00A370AE /* PlanRecordTableViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanRecordTableViewControl.h; sourceTree = "<group>"; };
+		BEA640801FAF1A3D00A370AE /* PlanRecordTableViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanRecordTableViewControl.m; sourceTree = "<group>"; };
+		BEA640821FAF458E00A370AE /* PlantRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantRecordCell.h; sourceTree = "<group>"; };
+		BEA640831FAF458E00A370AE /* PlantRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantRecordCell.m; sourceTree = "<group>"; };
+		BEA640841FAF458E00A370AE /* PlantRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantRecordCell.xib; sourceTree = "<group>"; };
 		BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNavgationController.h; sourceTree = "<group>"; };
 		BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNavgationController.m; sourceTree = "<group>"; };
 		BEAAA5F61E5D8069008943EC /* HomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableController.h; sourceTree = "<group>"; };
@@ -658,6 +674,8 @@
 				BE6688BC1FAB6AD2003AD0F9 /* UnionedPlanOptStateController.m */,
 				BEBD653E1FAC09C0005B16AF /* UnionedPlanedRecordController.h */,
 				BEBD653F1FAC09C0005B16AF /* UnionedPlanedRecordController.m */,
+				BEA6407F1FAF1A3C00A370AE /* PlanRecordTableViewControl.h */,
+				BEA640801FAF1A3D00A370AE /* PlanRecordTableViewControl.m */,
 			);
 			path = plant;
 			sourceTree = "<group>";
@@ -971,6 +989,8 @@
 		BE5ED7BD1E6256C300C4B1D0 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				BEA640781FAF18DD00A370AE /* TitleImgAdjHoriAlignBtn.h */,
+				BEA640771FAF18DC00A370AE /* TitleImgAdjHoriAlignBtn.m */,
 				BE3954431FA2DC3B00D5E06D /* VertiImgTitleBtn.h */,
 				BE3954441FA2DC3B00D5E06D /* VertiImgTitleBtn.m */,
 				BEBD65421FAC1247005B16AF /* ImgAdjHoriAlignBtn.h */,
@@ -1389,6 +1409,12 @@
 				BEBD654C1FAC38B4005B16AF /* PlanFollowHeader.h */,
 				BEBD654D1FAC38B5005B16AF /* PlanFollowHeader.m */,
 				BEBD654E1FAC38B5005B16AF /* PlanFollowHeader.xib */,
+				BEA6407C1FAF199200A370AE /* PlantRecordHeader.h */,
+				BEA6407A1FAF199100A370AE /* PlantRecordHeader.m */,
+				BEA6407B1FAF199200A370AE /* PlantRecordHeader.xib */,
+				BEA640821FAF458E00A370AE /* PlantRecordCell.h */,
+				BEA640831FAF458E00A370AE /* PlantRecordCell.m */,
+				BEA640841FAF458E00A370AE /* PlantRecordCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1530,6 +1556,7 @@
 				BEAC41BD1F8E644A000C5F6D /* OrderTypeCell.xib in Resources */,
 				BEAC41B81F8E6375000C5F6D /* PayTypeCell.xib in Resources */,
 				BE077A7A1E6AC606006F0EFB /* ChartSectionHeader.xib in Resources */,
+				BEA640861FAF458E00A370AE /* PlantRecordCell.xib in Resources */,
 				BEF0EE301E7137CF003E06DB /* OrderDetailTransHeader.xib in Resources */,
 				3771FD911F6A157800A8413D /* PlanWebViewViewController.xib in Resources */,
 				BE5ED7FD1E62B90900C4B1D0 /* Login.storyboard in Resources */,
@@ -1573,6 +1600,7 @@
 				BEE8EED81E63CAB0008FD2D4 /* Me.storyboard in Resources */,
 				BEDECE341E72967200EEA29B /* CancelOrderCell.xib in Resources */,
 				37EDA6671F6AD513008C31CF /* PlantSettingViewController.xib in Resources */,
+				BEA6407E1FAF199200A370AE /* PlantRecordHeader.xib in Resources */,
 				BEF0EE2B1E7136FB003E06DB /* OrderStateHeader.xib in Resources */,
 				BEC06DD71E5C796D00667D73 /* Purchase.storyboard in Resources */,
 				375CA4991F794B5E009AA629 /* PlantStateViewController.xib in Resources */,
@@ -1645,6 +1673,7 @@
 				BEC7F99C1E69A44E0029E6D6 /* ArticleDetailModel.m in Sources */,
 				BEFFEE1E1E7536B4003E6240 /* CommHelper.m in Sources */,
 				BEF0EE231E712AF8003E06DB /* OrderModel.m in Sources */,
+				BEA640851FAF458E00A370AE /* PlantRecordCell.m in Sources */,
 				BE5ED7E61E62B29000C4B1D0 /* README.md in Sources */,
 				BE0CFD451E6DA13B00003FE1 /* ProductSpecificationCell.m in Sources */,
 				BEFFEE281E7591FA003E6240 /* OrderDetailFooter.m in Sources */,
@@ -1771,6 +1800,9 @@
 				BE257E281E71AD7D00AA277B /* OrderDetailTableController.m in Sources */,
 				BE93C2EC1E67C5E300CC0B96 /* UserIDController.m in Sources */,
 				BED84A0D1E6FDB9E001E7A27 /* OrderPayFooter.m in Sources */,
+				BEA640811FAF1A3D00A370AE /* PlanRecordTableViewControl.m in Sources */,
+				BEA6407D1FAF199200A370AE /* PlantRecordHeader.m in Sources */,
+				BEA640791FAF18DD00A370AE /* TitleImgAdjHoriAlignBtn.m in Sources */,
 				BE652F6F1E696A4E003ABEC3 /* MeUserIDController.m in Sources */,
 				BEBDA6061F7B369C00996488 /* NSDictionary+Extension.m in Sources */,
 				37EDA6661F6AD513008C31CF /* PlantSettingViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "PlanFollowHeader.h"
 #import "PlanOptFooter.h"
 #import "plantmodel.h"
+#import "PlanRecordTableViewControl.h"
 
 #define kPlanedInfoSectionIdx             0
 #define kOptHelpSectionIdx                1
@@ -32,10 +33,23 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 @implementation UnionedPlanedRecordController
 
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self setupBase];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"finishedSegue"]) {
+        PlanRecordTableViewControl *vc = segue.destinationViewController;
+        vc.platRecords = self.plaRecords;
+    }
 }
 
 #pragma mark - private methods
@@ -50,8 +64,6 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 - (void)setupUI
 {
-     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成记录" style:UIBarButtonItemStylePlain target:self action:@selector(finishedRecords)];
-    
     UINib *PlanOptHeaderNib = [UINib nibWithNibName:@"PlanOptHeader" bundle:nil];
     [self.tableView registerNib:PlanOptHeaderNib forHeaderFooterViewReuseIdentifier:PlanOptHeaderID];
     
@@ -95,11 +107,9 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     self.platAreaLabel.text = platArea;
     self.platAddressLabel.text = platAddress;
 }
+
+
 #pragma mark - selectors
-- (void)finishedRecords
-{
-    [self.navigationController performSegueWithIdentifier:@"finishedSegue" sender:nil];
-}
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

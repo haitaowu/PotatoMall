@@ -23,6 +23,7 @@
 @property (nonatomic,copy) NSString *userType;
 @property (nonatomic,copy) NSString *unionType;
 @property (nonatomic,copy) NSString *status;
+@property(nonatomic,assign) BOOL isOpened;
 
 + (NSDictionary*)plantWithData:(id)data;
 + (NSMutableArray*)plantWithDataArray:(id)data;
