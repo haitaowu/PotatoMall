@@ -26,10 +26,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vop-Dw-KbB">
-                        <rect key="frame" x="8" y="25" width="80" height="80"/>
+                        <rect key="frame" x="8" y="25" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vop-Dw-KbB" secondAttribute="height" multiplier="1:1" id="Fk7-3p-jxe"/>
-                            <constraint firstAttribute="width" constant="80" id="nDW-Zw-pgT"/>
+                            <constraint firstAttribute="width" constant="100" id="nDW-Zw-pgT"/>
                         </constraints>
                     </imageView>
                 </subviews>

@@ -12,6 +12,7 @@
 #import "PlanOptFooter.h"
 #import "plantmodel.h"
 #import "PlanRecordTableViewControl.h"
+#import "PlanWebViewViewController.h"
 
 #define kPlanedInfoSectionIdx             0
 #define kOptHelpSectionIdx                1
@@ -157,9 +158,12 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 {
     if (section == kOptHelpSectionIdx) {
         PlanOptFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PlanOptFooterID];
-        //    __block typeof(self) blockSelf = self;
+//        __block typeof(self) blockSelf = self;
         footer.confirmBlock = ^{
             NSLog(@"tap on confirm btn ");
+//            PlanWebViewViewController *webViewController = [[PlanWebViewViewController alloc] init];
+//            webViewController.murl = murl;
+//            [blockSelf.navigationController pushViewController:webViewController animated:YES];
         };
         return footer;
     }else{

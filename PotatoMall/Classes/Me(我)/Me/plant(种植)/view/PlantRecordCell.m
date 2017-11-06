@@ -28,7 +28,7 @@
 {
     _model = model;
     self.contentLabel.text = model.content;
-    NSURL *url = [NSURL URLWithString:model.headPic];
+    NSURL *url = [NSURL URLWithString:model.imagesUrls];
     UIImage *holderPlace = [UIImage imageNamed:@"goods_placehodler"];
     [self.imgView sd_setImageWithURL:url placeholderImage:holderPlace];
 }

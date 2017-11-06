@@ -47,7 +47,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 - (CGFloat)cellHeightWithContent:(NSString*)contentStr
 {
     CGFloat height = 16;
-    CGFloat imgVH = 80;
+    CGFloat imgVH = 100;
     UIFont *font = [UIFont systemFontOfSize:14];
     CGFloat labelWidth = kScreenWidth - 8 * 2;
     if ([contentStr containsString:@"\r\n"]) {
