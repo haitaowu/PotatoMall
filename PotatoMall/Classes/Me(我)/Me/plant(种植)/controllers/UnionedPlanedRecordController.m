@@ -13,11 +13,14 @@
 #import "plantmodel.h"
 #import "PlanRecordTableViewControl.h"
 #import "PlanWebViewViewController.h"
+#import "PlantRecordCell.h"
+#import "NSDate+Extension.h"
 
 #define kPlanedInfoSectionIdx             0
 #define kOptHelpSectionIdx                1
 #define kFllowPlanSectionIdx              2
 
+static NSString *PlantRecordCellID = @"PlantRecordCellID";
 static NSString *PlanOptHeaderID = @"PlanOptHeaderNibID";
 static NSString *PlanFollowHeaderID = @"PlanFollowHeaderNibID";
 static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
@@ -29,7 +32,10 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 @property (weak, nonatomic) IBOutlet UILabel *catalogNameLabel;
 @property(nonatomic,strong) NSArray *plaRecords;
 @property(nonatomic,strong) NSArray *planTypes;
+@property(nonatomic,strong) NSMutableArray *marchRecords;
+@property(nonatomic,strong) NSMutableArray *followRecords;
 @property(nonatomic,strong) NSDictionary *planInfo;
+@property(nonatomic,assign) BOOL followOpend;
 @end
 
 @implementation UnionedPlanedRecordController
@@ -49,7 +55,8 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"finishedSegue"]) {
         PlanRecordTableViewControl *vc = segue.destinationViewController;
-        vc.platRecords = self.plaRecords;
+        vc.unionId = self.unionId;
+//        vc.platRecords = self.plaRecords;
     }
 }
 
@@ -73,6 +80,9 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     
     UINib *PlanOptFooterNib = [UINib nibWithNibName:@"PlanOptFooter" bundle:nil];
     [self.tableView registerNib:PlanOptFooterNib forHeaderFooterViewReuseIdentifier:PlanOptFooterID];
+    
+    UINib *PlantRecordCellNib = [UINib nibWithNibName:@"PlantRecordCell" bundle:nil];
+    [self.tableView registerNib:PlantRecordCellNib forCellReuseIdentifier:PlantRecordCellID];
 }
 
 - (void)setupBase
@@ -90,7 +100,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 - (void)updateUIAfterReq
 {
-    if ((self.planInfo == nil) || (self.planTypes == nil) || (self.plaRecords == nil)){
+    if ((self.planInfo == nil) || (self.planTypes == nil)){
         return;
     }
     
@@ -107,6 +117,62 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     self.catalogNameLabel.text = catalogName;
     self.platAreaLabel.text = platArea;
     self.platAddressLabel.text = platAddress;
+}
+
+- (void)sortRecordsWithArray:(NSArray*)array
+{
+    NSDate *today = [NSDate date];
+    NSDate *ymdToday = [today ymdDate];
+    NSMutableArray *marchRecords = [NSMutableArray array];
+    self.marchRecords = marchRecords;
+    NSMutableArray *followRecords = [NSMutableArray array];
+    self.followRecords = followRecords;
+    for (plantmodel *model in array) {
+        NSString *intervalStr = model.platDate;
+        NSTimeInterval interval = [intervalStr doubleValue] / 1000;
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
+        NSDate *ymdDate = [date ymdDate];
+        NSTimeInterval betInterval = [ymdToday timeIntervalSinceDate:ymdDate];
+        if (betInterval <= 0) {
+            [marchRecords addObject:model];
+        }else{
+            [followRecords addObject:model];
+        }
+    }
+    
+    for(int i = 0 ; i < marchRecords.count ; i ++){
+        plantmodel *iModel = marchRecords[i];
+        NSTimeInterval iTimeInterval = [iModel.platDate doubleValue];
+        for (int j = i + 1; j < marchRecords.count; j++) {
+            plantmodel *jModel = marchRecords[j];
+            NSTimeInterval jTimeInterval = [jModel.platDate doubleValue];
+            if (iTimeInterval < jTimeInterval) {
+                [marchRecords exchangeObjectAtIndex:i withObjectAtIndex:j];
+            }
+        }
+    }
+    [self.tableView reloadData];
+}
+
+
+- (CGFloat)cellHeightWithContent:(NSString*)contentStr
+{
+    CGFloat height = 16;
+    CGFloat imgVH = 100;
+    UIFont *font = [UIFont systemFontOfSize:14];
+    CGFloat labelWidth = kScreenWidth - 8 * 2;
+    if ([contentStr containsString:@"\r\n"]) {
+        NSArray *countArray = [contentStr componentsSeparatedByString:@"\r\n"];
+        for (NSString *str in countArray) {
+            NSString *replStr = [str stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
+            CGFloat rowHeight = [CommHelper strHeightWithStr:replStr font:font width:labelWidth];
+            height += rowHeight;
+        }
+    }else{
+        height = [CommHelper strHeightWithStr:contentStr font:font width:16];
+    }
+    height += imgVH;
+    return height;
 }
 
 
@@ -128,16 +194,24 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 {
     if (section == kOptHelpSectionIdx) {
         PlanOptHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PlanOptHeaderID];
-        //    __block typeof(self) blockSelf = self;
+        __block typeof(self) blockSelf = self;
         header.helpBlock = ^{
-            NSLog(@"tap on option help block");
+            plantmodel *model = [blockSelf.marchRecords firstObject];
+            if (model != nil) {
+                PlanWebViewViewController *webViewController = [[PlanWebViewViewController alloc] init];
+                webViewController.murl = model.helpUrl;
+                [blockSelf.navigationController pushViewController:webViewController animated:YES];
+                NSLog(@"tap on option help block");
+            }
         };
         return header;
     }else if (section == kFllowPlanSectionIdx) {
         PlanFollowHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PlanFollowHeaderID];
-        //    __block typeof(self) blockSelf = self;
+            __block typeof(self) blockSelf = self;
         header.helpBlock = ^{
             NSLog(@"tap on option help block");
+            blockSelf.followOpend = !blockSelf.followOpend;
+            [blockSelf.tableView reloadData];
         };
         return header;
     }else {
@@ -161,9 +235,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 //        __block typeof(self) blockSelf = self;
         footer.confirmBlock = ^{
             NSLog(@"tap on confirm btn ");
-//            PlanWebViewViewController *webViewController = [[PlanWebViewViewController alloc] init];
-//            webViewController.murl = murl;
-//            [blockSelf.navigationController pushViewController:webViewController animated:YES];
+
         };
         return footer;
     }else{
@@ -173,7 +245,19 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+     if (indexPath.section == kFllowPlanSectionIdx) {
+         plantmodel *model = self.followRecords[indexPath.row];
+         NSString *content = model.content;
+         CGFloat height = [self cellHeightWithContent:content];
+         return height;
+     }else if (indexPath.section == kOptHelpSectionIdx){
+         plantmodel *model = [self.marchRecords firstObject];
+         NSString *content = model.content;
+         CGFloat height = [self cellHeightWithContent:content];
+         return height;
+     }else{
+         return 50;
+     }
 }
 
 #pragma mark - Table view data source
@@ -182,14 +266,34 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    if (section == kPlanedInfoSectionIdx) {
+        return 3;
+    }else if (section == kOptHelpSectionIdx){
+        if (self.marchRecords.count > 0) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }else{
+        if (self.followOpend == YES) {
+            return [self.followRecords count];
+        }else{
+            return 0;
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == kFllowPlanSectionIdx) {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cellID"];
-        cell.textLabel.text = [NSString stringWithFormat:@"indxRow = %ld",indexPath.row];
+        PlantRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:PlantRecordCellID];
+        plantmodel *model = self.followRecords[indexPath.row];
+        cell.model = model;
+        return cell;
+    }else if (indexPath.section == kOptHelpSectionIdx) {
+        PlantRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:PlantRecordCellID];
+        plantmodel *model = [self.marchRecords firstObject];
+        cell.model = model;
         return cell;
     }else{
         UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -294,7 +398,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
                 [SVProgressHUD showSuccessWithStatus:msg];
                 NSMutableArray *list =[plantmodel plantWithDataArray1:data];
                 self.plaRecords = list;
-                [self updateUIAfterReq];
+                [self sortRecordsWithArray:list];
                 NSLog(@"planted record list =%@",list);
 //                [_mtableview reloadData];
             }else{

@@ -69,9 +69,6 @@
 - (NSDate*)dateStrWithIntStr:(NSString*)intervalStr
 {
     //时间戳转化为时间NSDate
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"YYYY-MM-dd";
-    
     NSTimeInterval interval = [intervalStr doubleValue] / 1000;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
     return date;

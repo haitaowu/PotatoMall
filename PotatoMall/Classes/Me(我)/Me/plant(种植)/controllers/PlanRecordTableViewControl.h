@@ -9,7 +9,7 @@
 #import "BaseTableViewController.h"
 
 @interface PlanRecordTableViewControl : BaseTableViewController
-@property(nonatomic,strong) NSArray  *platRecords;
+//@property(nonatomic,strong) NSArray  *platRecords;
 @property (nonatomic,copy)NSString *planState;
 @property(nonatomic,copy) NSString *unionId;
 

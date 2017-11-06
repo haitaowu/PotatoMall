@@ -11,5 +11,6 @@
 @interface UnionedPlanOptStateController : BaseTableViewController
 @property (nonatomic,assign)BOOL isUnioned;
 @property (nonatomic,copy)NSString *planState;
+@property(nonatomic,copy) NSString *unionId;
 
 @end

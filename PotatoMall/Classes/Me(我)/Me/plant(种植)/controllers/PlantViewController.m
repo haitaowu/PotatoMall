@@ -10,7 +10,7 @@
 #import "plantmodel.h"
 #import "PlantManageViewController.h"
 #import "PlantSettingViewController.h"
-#import "PlantSetting0ViewController.h"
+//#import "PlantSetting0ViewController.h"
 #import "PlanthandleViewController.h"
 #import "NSDictionary+Extension.h"
 #import "UnionedPlanOptStateController.h"

@@ -2869,6 +2869,9 @@
                                                                 <constraint firstAttribute="height" constant="30" id="nqw-xj-8Bf"/>
                                                             </constraints>
                                                             <state key="normal" title="以个人种植户身份申请植保计划&gt;&gt;"/>
+                                                            <connections>
+                                                                <action selector="tapApplyBtn:" destination="O0m-uh-sg9" eventType="touchUpInside" id="qVq-GV-l7s"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.加入联合体种植后，将会受到联合体的统一植保计划，无需自行申请。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VU-it-TS9">
                                                             <rect key="frame" x="8" y="33" width="304" height="53.5"/>

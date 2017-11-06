@@ -41,7 +41,11 @@
     }
 }
 
-
+#pragma mark - selectors
+- (IBAction)tapApplyBtn:(id)sender {
+    NSDictionary *params = [self paramPlanted];
+    [self reqPlantedPlanWith:params];
+}
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -103,6 +107,45 @@
         }
     }
 }
+
+#pragma mark - requset server
+//.申请植保计划 - 请求参数
+- (NSDictionary *)paramPlanted
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"type"] = @"2";
+    params[@"unionId"] = self.unionId;
+    params[@"userId"] = model.userId;
+    //1 联合体 2 个体户
+    params[@"type"] = @"1";
+    //植保品种
+    params[@"planType"] = @"1";
+    return params;
+}
+
+//申请植保计划
+- (void)reqPlantedPlanWith:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"plat/applyPlan";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                [SVProgressHUD showSuccessWithStatus:msg];
+            }else{
+                [SVProgressHUD showErrorWithStatus:msg];
+            }
+//            NSLog(@"planted type =%@",type);
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+        
+    }
+}
+
 
 
 

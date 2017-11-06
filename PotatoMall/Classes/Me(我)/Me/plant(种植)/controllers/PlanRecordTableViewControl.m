@@ -22,6 +22,8 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 @property (weak, nonatomic) IBOutlet UILabel *platAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *platAreaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *catalogNameLabel;
+@property(nonatomic,strong) NSArray *plaRecords;
+@property(nonatomic,strong) NSArray *finishedRecords;
 @end
 
 @implementation PlanRecordTableViewControl
@@ -43,7 +45,23 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 - (void)setupBase
 {
+    NSDictionary *params = [self userRecordParams];
+    [self reqUserPlatRecord:params];
 }
+
+- (void)fileterFinishedRecordsUpdateUIWithRecords:(NSArray*)records
+{
+    NSMutableArray *array = [NSMutableArray array];
+    //1 未审核 2 已审核 3无效
+    for (plantmodel *model in records) {
+        if ([model.status isEqualToString:@"2"]) {
+            [array addObject:model];
+        }
+    }
+    self.finishedRecords = array;
+    [self.tableView reloadData];
+}
+
 - (CGFloat)cellHeightWithContent:(NSString*)contentStr
 {
     CGFloat height = 16;
@@ -74,7 +92,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     PlantRecordHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PlantRecordHeaderID];
-    plantmodel *model = self.platRecords[section];
+    plantmodel *model = self.finishedRecords[section];
     header.model = model;
     __block typeof(self) blockSelf = self;
     header.optBlock = ^(plantmodel *model){
@@ -86,8 +104,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    plantmodel *model = self.platRecords[indexPath.section];
-//    CGFloat height = ;
+    plantmodel *model = self.finishedRecords[indexPath.section];
     NSString *content = model.content;
     CGFloat height = [self cellHeightWithContent:content];
     return height;
@@ -95,11 +112,11 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.platRecords count];
+    return [self.finishedRecords count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    plantmodel *model = self.platRecords[section];
+    plantmodel *model = self.finishedRecords[section];
     if (model.isOpened == YES) {
         return 1;
     }else{
@@ -110,13 +127,47 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PlantRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:PlantRecordCellID];
-    plantmodel *model = self.platRecords[indexPath.section];
+    plantmodel *model = self.finishedRecords[indexPath.section];
     cell.model = model;
     return cell;
 }
 
 
 #pragma mark - requset server
+//3.植保记录- 请求参数
+- (NSDictionary *)userRecordParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    params[@"unionId"] = self.unionId;
+    return params;
+}
+
+
+//3.植保记录
+- (void)reqUserPlatRecord:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"/plat/findUserPlatRecord";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
+            if (status == StatusTypSuccess) {
+                NSMutableArray *list =[plantmodel plantWithDataArray1:data];
+//                self.plaRecords = list;
+                [self fileterFinishedRecordsUpdateUIWithRecords:list];
+                NSLog(@"planted record list =%@",list);
+            }else{
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+        
+    }
+}
 
 
 

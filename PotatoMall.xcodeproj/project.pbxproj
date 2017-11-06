@@ -216,6 +216,7 @@
 		BEF0EE381E71484F003E06DB /* OrderStateFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE361E71484F003E06DB /* OrderStateFooter.xib */; };
 		BEF0EE3C1E714B7E003E06DB /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF0EE3A1E714B7E003E06DB /* OrderCell.m */; };
 		BEF0EE3D1E714B7E003E06DB /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE3B1E714B7E003E06DB /* OrderCell.xib */; };
+		BEF15DAC1FB0319600D39903 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF15DAB1FB0319600D39903 /* NSDate+Extension.m */; };
 		BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEFBCB721E7B732C005A333D /* InfoPlist.strings */; };
 		BEFFAB991E6E8F43006D1FDE /* ProdCateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFAB981E6E8F43006D1FDE /* ProdCateModel.m */; };
 		BEFFEE1E1E7536B4003E6240 /* CommHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE1D1E7536B4003E6240 /* CommHelper.m */; };
@@ -590,6 +591,8 @@
 		BEF0EE391E714B7E003E06DB /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
 		BEF0EE3A1E714B7E003E06DB /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
 		BEF0EE3B1E714B7E003E06DB /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		BEF15DAA1FB0319600D39903 /* NSDate+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		BEF15DAB1FB0319600D39903 /* NSDate+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		BEFBCB711E7B732C005A333D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEFBCB731E7B732F005A333D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BEFBCB741E7B7331005A333D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1072,6 +1075,8 @@
 				BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */,
 				BE5ED7AE1E61C06000C4B1D0 /* UIImage+Extension.h */,
 				BE5ED7AF1E61C06000C4B1D0 /* UIImage+Extension.m */,
+				BEF15DAA1FB0319600D39903 /* NSDate+Extension.h */,
+				BEF15DAB1FB0319600D39903 /* NSDate+Extension.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -1798,6 +1803,7 @@
 				BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */,
 				37789DA01F584EAF007F1FA0 /* MeMenuCollectionViewCell.m in Sources */,
 				BEAC41B71F8E6223000C5F6D /* PayTypeCell.m in Sources */,
+				BEF15DAC1FB0319600D39903 /* NSDate+Extension.m in Sources */,
 				BE5ED7B01E61C06000C4B1D0 /* UIImage+Extension.m in Sources */,
 				BE59845D1E8547F700166B70 /* TopScrollView.m in Sources */,
 				BEAC41BC1F8E63EA000C5F6D /* OrderTypeCell.m in Sources */,

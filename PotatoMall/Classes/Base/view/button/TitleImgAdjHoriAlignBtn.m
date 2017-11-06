@@ -8,6 +8,7 @@
 /**
  *imageView 的高等于title的高，
  *imageView的高则根据图片自己的宽高比率 * title的高相乘计算
+ *对齐方式是 文字-图片 右对齐
  */
 
 #import "TitleImgAdjHoriAlignBtn.h"
@@ -30,17 +31,20 @@
     CGFloat imgWHRatio = imgSize.width / imgSize.height;
     CGFloat imageH = labelSize.height * kImgHPer;
     CGFloat imageW = imageH * imgWHRatio;
+    
+    //image  frame
+    CGFloat imageVX = viewSize.width - imageW - kMarginDelta;
+    CGFloat imageVY = (viewSize.height - imageH) * 0.5;
+    CGRect imgvF = {{imageVX,imageVY},{imageW,imageH}};
+    self.imageView.frame = imgvF;
+    
     //label frame
-    CGFloat labelX = (viewSize.width - labelSize.width - imageW - kMarginDelta) * 0.5;
+    CGFloat labelX = CGRectGetMinX(imgvF) - kMarginDelta - labelSize.width;
     CGFloat labelY = (viewSize.height - labelSize.height) * 0.5;
     CGRect labelF = {{labelX,labelY},labelSize};
     self.titleLabel.frame = labelF;
     
-    //image  frame
-    CGFloat imageVX = CGRectGetMaxX(labelF) + kMarginDelta;
-    CGFloat imageVY = (viewSize.height - imageH) * 0.5;
-    CGRect imgvF = {{imageVX,imageVY},{imageW,imageH}};
-    self.imageView.frame = imgvF;
+   
     
    
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Singer. All rights reserved.
 //
 /**
+ *右对齐
  *imageView 的高等于title的高，
  *imageView的高则根据图片自己的宽高比率 * title的高相乘计算
  */
@@ -30,17 +31,20 @@
     CGFloat imgWHRatio = imgSize.width / imgSize.height;
     CGFloat imageH = labelSize.height;
     CGFloat imageW = imageH * imgWHRatio;
+    
+    //label frame
+    CGFloat labelX =  viewSize.width - labelSize.width ;
+    CGFloat labelY = (viewSize.height - labelSize.height) * 0.5;
+    CGRect labelF = {{labelX,labelY},labelSize};
+    self.titleLabel.frame = labelF;
+    
     //image  frame
-    CGFloat imageVX = (viewSize.width - labelSize.width - imageW - kMarginDelta) * 0.5;
+    CGFloat imageVX = CGRectGetMinX(labelF) - kMarginDelta - imageW;
     CGFloat imageVY = (viewSize.height - imageH) * 0.5;
     CGRect imgvF = {{imageVX,imageVY},{imageW,imageH}};
     self.imageView.frame = imgvF;
     
-    //label frame
-    CGFloat labelX = CGRectGetMaxX(imgvF) + kMarginDelta;
-    CGFloat labelY = (viewSize.height - labelSize.height) * 0.5;
-    CGRect labelF = {{labelX,labelY},labelSize};
-    self.titleLabel.frame = labelF;
+    
 }
 
 @end
