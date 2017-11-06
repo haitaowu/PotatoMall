@@ -12,6 +12,7 @@
 @interface PlanOptFooter()
 @property (nonatomic,weak)UILabel  *dataLabel;
 @property (nonatomic,weak)UIButton  *helpView;
+@property(nonatomic,assign) CGFloat imgViewHeight;
 @end
 
 
@@ -23,6 +24,15 @@
     if(self != nil){
     }
     return self;
+}
+
+#pragma mark - set up
+- (void)setupBase
+{
+    __block typeof(self) blockSelf = self;
+    self.imgsView.imgChangeBlock = ^(NSArray *imgs, CGFloat height) {
+        blockSelf.imgViewHeight = height;
+    };
 }
 
 #pragma mark - selectors

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTPickedImagesView.h"
 
 typedef void(^OptConfirmBlock)();
 
 @interface PlanOptFooter : UITableViewHeaderFooterView
+@property (weak, nonatomic) IBOutlet HTPickedImagesView *imgsView;
 @property (nonatomic,copy) OptConfirmBlock confirmBlock;
 @end

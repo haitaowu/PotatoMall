@@ -36,6 +36,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 @property(nonatomic,strong) NSMutableArray *followRecords;
 @property(nonatomic,strong) NSDictionary *planInfo;
 @property(nonatomic,assign) BOOL followOpend;
+@property(nonatomic,strong)  PlanOptFooter *optFooter;
 @end
 
 @implementation UnionedPlanedRecordController
@@ -228,7 +229,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
      if (section == kOptHelpSectionIdx) {
-         return 50;
+         return [self.optFooter.imgsView itemsWHeight] + 50;
      }else{
          return 0.001;
      }
@@ -237,13 +238,20 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     if (section == kOptHelpSectionIdx) {
-        PlanOptFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PlanOptFooterID];
-//        __block typeof(self) blockSelf = self;
-        footer.confirmBlock = ^{
-            NSLog(@"tap on confirm btn ");
-
-        };
-        return footer;
+        if (self.optFooter == nil) {
+            PlanOptFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PlanOptFooterID];
+            footer.imgsView.currentController = self;
+            __block typeof(self) blockSelf = self;
+            footer.confirmBlock = ^{
+                NSLog(@"tap on confirm btn ");
+                plantmodel *model = [blockSelf.marchRecords firstObject];
+                if (model != nil) {
+                    [blockSelf updatePlateRecordWith:model];
+                }
+            };
+            self.optFooter = footer;
+        }
+        return self.optFooter;
     }else{
         return [UIView new];
     }
@@ -397,7 +405,39 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     if ([RequestUtil networkAvaliable] == NO) {
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
-        NSString *subUrl = @"/plat/findUserPlatRecord";
+        NSString *subUrl = @"plat/findUserPlatRecord";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            [SVProgressHUD dismiss];
+            if (status == StatusTypSuccess) {
+//                [SVProgressHUD showSuccessWithStatus:msg];
+                NSMutableArray *list =[plantmodel plantWithDataArray1:data];
+                self.plaRecords = list;
+                [self sortRecordsWithArray:list];
+                NSLog(@"planted record list =%@",list);
+//                [_mtableview reloadData];
+            }else{
+//                [SVProgressHUD showErrorWithStatus:msg];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+        
+    }
+}
+
+- (void)updatePlateRecordWith:(plantmodel*)model
+{
+    
+}
+
+//更新植保记录
+- (void)updatePlateRecordWithParams:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"plat/updateUserPlatRecord";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
@@ -406,7 +446,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
                 self.plaRecords = list;
                 [self sortRecordsWithArray:list];
                 NSLog(@"planted record list =%@",list);
-//                [_mtableview reloadData];
+                //                [_mtableview reloadData];
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
@@ -416,7 +456,4 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
         
     }
 }
-
-
-
 @end

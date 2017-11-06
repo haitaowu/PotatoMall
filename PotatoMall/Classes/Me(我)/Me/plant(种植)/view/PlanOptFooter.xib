@@ -12,41 +12,61 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlanOptFooter">
-            <rect key="frame" x="0.0" y="0.0" width="323" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQH-0a-NFl">
-                    <rect key="frame" x="0.0" y="0.0" width="323" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="350" height="170"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLinePixel" translatesAutoresizingMaskIntoConstraints="NO" id="yKb-aP-6yH">
-                            <rect key="frame" x="0.0" y="0.0" width="323" height="0.5"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdS-j1-OWT">
+                            <rect key="frame" x="0.0" y="120" width="350" height="50"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLinePixel" translatesAutoresizingMaskIntoConstraints="NO" id="kyc-y0-fWk">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="0.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="jaR-Fl-OdH"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flK-Fj-etj">
+                                    <rect key="frame" x="254" y="10" width="80" height="30"/>
+                                    <color key="backgroundColor" red="0.83137254900000002" green="0.61568627450000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="6zr-Nd-tgM"/>
+                                        <constraint firstAttribute="height" constant="30" id="dcC-rv-zmc"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="确认完成"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="0.5" id="Zae-6q-7pc"/>
+                                <constraint firstItem="kyc-y0-fWk" firstAttribute="leading" secondItem="mdS-j1-OWT" secondAttribute="leading" id="Fyk-Z8-Jds"/>
+                                <constraint firstAttribute="trailing" secondItem="kyc-y0-fWk" secondAttribute="trailing" id="JP7-JF-Lvp"/>
+                                <constraint firstItem="kyc-y0-fWk" firstAttribute="top" secondItem="mdS-j1-OWT" secondAttribute="top" id="PUW-kp-9jO"/>
+                                <constraint firstAttribute="trailing" secondItem="flK-Fj-etj" secondAttribute="trailing" constant="16" id="RHx-A1-RFy"/>
+                                <constraint firstItem="flK-Fj-etj" firstAttribute="centerY" secondItem="mdS-j1-OWT" secondAttribute="centerY" id="ZWB-ZN-1G2"/>
+                                <constraint firstAttribute="height" constant="50" id="uQc-0G-Hzb"/>
                             </constraints>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agO-5H-xo6">
-                            <rect key="frame" x="227" y="5" width="80" height="30"/>
-                            <color key="backgroundColor" red="0.83137254900000002" green="0.61568627450000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="80" id="Pr3-v7-GXd"/>
-                                <constraint firstAttribute="height" constant="30" id="oqu-h1-d0I"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="确认完成"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                    <integer key="value" value="5"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfj-6k-Z0f" customClass="HTPickedImagesView">
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="120"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="agO-5H-xo6" secondAttribute="trailing" constant="16" id="CLf-T3-D0z"/>
-                        <constraint firstItem="yKb-aP-6yH" firstAttribute="top" secondItem="pQH-0a-NFl" secondAttribute="top" id="PSP-sw-Z81"/>
-                        <constraint firstItem="agO-5H-xo6" firstAttribute="centerY" secondItem="pQH-0a-NFl" secondAttribute="centerY" id="Piu-Pn-uoe"/>
-                        <constraint firstAttribute="trailing" secondItem="yKb-aP-6yH" secondAttribute="trailing" id="i3v-hg-DMw"/>
-                        <constraint firstItem="yKb-aP-6yH" firstAttribute="leading" secondItem="pQH-0a-NFl" secondAttribute="leading" id="p0A-S3-pBC"/>
+                        <constraint firstItem="hfj-6k-Z0f" firstAttribute="top" secondItem="pQH-0a-NFl" secondAttribute="top" id="3as-y4-YbD"/>
+                        <constraint firstAttribute="trailing" secondItem="mdS-j1-OWT" secondAttribute="trailing" id="ALn-Xe-Vnl"/>
+                        <constraint firstAttribute="bottom" secondItem="mdS-j1-OWT" secondAttribute="bottom" id="K4C-BU-ehT"/>
+                        <constraint firstItem="hfj-6k-Z0f" firstAttribute="leading" secondItem="pQH-0a-NFl" secondAttribute="leading" id="Uew-Po-pxu"/>
+                        <constraint firstItem="mdS-j1-OWT" firstAttribute="top" secondItem="hfj-6k-Z0f" secondAttribute="bottom" id="hrf-kS-V0K"/>
+                        <constraint firstItem="mdS-j1-OWT" firstAttribute="leading" secondItem="pQH-0a-NFl" secondAttribute="leading" id="lhK-bY-YsC"/>
+                        <constraint firstAttribute="trailing" secondItem="hfj-6k-Z0f" secondAttribute="trailing" id="zUu-N8-VB8"/>
                     </constraints>
                 </view>
             </subviews>
@@ -58,7 +78,10 @@
                 <constraint firstAttribute="bottom" secondItem="pQH-0a-NFl" secondAttribute="bottom" id="acM-po-rz7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="42.5" y="-72.5"/>
+            <connections>
+                <outlet property="imgsView" destination="hfj-6k-Z0f" id="5JN-0i-EFp"/>
+            </connections>
+            <point key="canvasLocation" x="56" y="-8"/>
         </view>
     </objects>
     <resources>
