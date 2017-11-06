@@ -121,13 +121,19 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 - (void)sortRecordsWithArray:(NSArray*)array
 {
+    NSMutableArray *unFinishedArray = [NSMutableArray array];
+    for (plantmodel *model in array) {
+        if ([model.status isEqualToString:@"0"]) {
+            [unFinishedArray addObject:model];
+        }
+    }
     NSDate *today = [NSDate date];
     NSDate *ymdToday = [today ymdDate];
     NSMutableArray *marchRecords = [NSMutableArray array];
     self.marchRecords = marchRecords;
     NSMutableArray *followRecords = [NSMutableArray array];
     self.followRecords = followRecords;
-    for (plantmodel *model in array) {
+    for (plantmodel *model in unFinishedArray) {
         NSString *intervalStr = model.platDate;
         NSTimeInterval interval = [intervalStr doubleValue] / 1000;
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
@@ -208,9 +214,9 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     }else if (section == kFllowPlanSectionIdx) {
         PlanFollowHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PlanFollowHeaderID];
             __block typeof(self) blockSelf = self;
-        header.helpBlock = ^{
+        header.openStateBlock = ^(BOOL isOpen){
             NSLog(@"tap on option help block");
-            blockSelf.followOpend = !blockSelf.followOpend;
+            blockSelf.followOpend = isOpen;
             [blockSelf.tableView reloadData];
         };
         return header;

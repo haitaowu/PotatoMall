@@ -28,8 +28,9 @@
 #pragma mark - selectors
 - (IBAction)tapOptionHelp:(UIButton*)sender
 {
-    if (self.helpBlock != nil) {
-        self.helpBlock();
+    sender.selected = !sender.selected;
+    if (self.openStateBlock != nil) {
+        self.openStateBlock(sender.selected);
     }
 }
 

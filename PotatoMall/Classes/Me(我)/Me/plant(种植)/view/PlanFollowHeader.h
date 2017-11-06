@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^OptHelpBlock)();
+typedef void(^FllowOpenStateBlock)(BOOL isOpen);
 
 @interface PlanFollowHeader : UITableViewHeaderFooterView
-@property (nonatomic,copy) OptHelpBlock helpBlock;
+@property (nonatomic,copy) FllowOpenStateBlock openStateBlock;
 @end
