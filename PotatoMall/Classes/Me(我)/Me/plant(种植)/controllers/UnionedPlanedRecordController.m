@@ -276,7 +276,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
          height = height - imgVH;
          return height;
      }else{
-         return 50;
+         return 30;
      }
 }
 
