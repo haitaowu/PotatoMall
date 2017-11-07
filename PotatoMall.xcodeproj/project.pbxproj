@@ -60,6 +60,7 @@
 		BE041D1B1FB0A19A00B471DA /* LGPhotoPickerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE041CE31FB0A19A00B471DA /* LGPhotoPickerImageView.m */; };
 		BE041D1C1FB0A19A00B471DA /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE041CE81FB0A19A00B471DA /* DACircularProgressView.m */; };
 		BE041D1D1FB0A19A00B471DA /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = BE041CED1FB0A19A00B471DA /* UIView+Layout.m */; };
+		BE041D1F1FB0AD8E00B471DA /* UserInfoRef.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE041D1E1FB0AD8E00B471DA /* UserInfoRef.storyboard */; };
 		BE077A5B1E6A967C006F0EFB /* PurchaseTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE077A5A1E6A967C006F0EFB /* PurchaseTableController.m */; };
 		BE077A651E6A975F006F0EFB /* ChartTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE077A621E6A975F006F0EFB /* ChartTableController.m */; };
 		BE077A6E1E6A9998006F0EFB /* ChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE077A6C1E6A9998006F0EFB /* ChartCell.m */; };
@@ -363,6 +364,7 @@
 		BE041CED1FB0A19A00B471DA /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		BE041CEE1FB0A19A00B471DA /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		BE041CEF1FB0A19A00B471DA /* LGPhotoPickerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGPhotoPickerCommon.h; sourceTree = "<group>"; };
+		BE041D1E1FB0AD8E00B471DA /* UserInfoRef.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserInfoRef.storyboard; sourceTree = "<group>"; };
 		BE077A591E6A967C006F0EFB /* PurchaseTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseTableController.h; sourceTree = "<group>"; };
 		BE077A5A1E6A967C006F0EFB /* PurchaseTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseTableController.m; sourceTree = "<group>"; };
 		BE077A611E6A975F006F0EFB /* ChartTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartTableController.h; sourceTree = "<group>"; };
@@ -1776,6 +1778,7 @@
 			isa = PBXGroup;
 			children = (
 				BEE8EED61E63CAB0008FD2D4 /* Me.storyboard */,
+				BE041D1E1FB0AD8E00B471DA /* UserInfoRef.storyboard */,
 				37789D9D1F584EAF007F1FA0 /* MeMenuCollectionViewCell.h */,
 				37789D9E1F584EAF007F1FA0 /* MeMenuCollectionViewCell.m */,
 				37789D9F1F584EAF007F1FA0 /* MeMenuCollectionViewCell.xib */,
@@ -1951,6 +1954,7 @@
 				BE041CF21FB0A19A00B471DA /* broswerPic3.jpg in Resources */,
 				BE041CF51FB0A19A00B471DA /* X.png in Resources */,
 				BEF0EE3D1E714B7E003E06DB /* OrderCell.xib in Resources */,
+				BE041D1F1FB0AD8E00B471DA /* UserInfoRef.storyboard in Resources */,
 				BE041CF11FB0A19A00B471DA /* broswerPic4.jpg in Resources */,
 				BE041CF91FB0A19A00B471DA /* shanguangdeng2.png in Resources */,
 				BE041CFC1FB0A19A00B471DA /* btn_back_imagePicker@2x.png in Resources */,
