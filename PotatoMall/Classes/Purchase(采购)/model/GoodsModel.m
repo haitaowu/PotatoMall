@@ -18,6 +18,32 @@
         return self.goodsId;
     }
 }
+- (NSString*)goodsPrice
+{
+    if (_goodsPrice == nil) {
+        return _price;
+    }else{
+        return _goodsPrice;
+    }
+}
+
+- (NSString*)goodsImg
+{
+    if (_goodsImg == nil) {
+        return _imageSrc;
+    }else{
+        return _goodsImg;
+    }
+}
+
+- (NSString*)goodsName
+{
+    if (_goodsName == nil) {
+        return _goodsInfoName;
+    }else{
+        return _goodsName;
+    }
+}
 
 + (NSMutableArray*)goodsWithData:(id)data
 {

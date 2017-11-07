@@ -81,8 +81,8 @@
             if (status == StatusTypSuccess) {
                 [SVProgressHUD showSuccessWithStatus:msg];
                 data=[plantmodel plantWithData:data];
-                [self.mdetail setText:[NSString stringWithFormat:@"联合体余额：%@",[data objectForKey:@"totalAmount"]]];
-                NSLog(@"findWalletDetail==%@",data);
+                [self.mdetail setText:[NSString stringWithFormat:@"联合体余额：%@",[data objectForKey:@"availableBalance"]]];
+//                NSLog(@"findWalletDetail==%@",data);
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
@@ -181,8 +181,7 @@
     
     if (indexPath.row==3) {
         plantlistViewController *_plantlistViewController = [[plantlistViewController alloc] init];
-        //        _PlanWebViewViewController.murl = murl;
-//        _PlantUserViewController.unionId =self.unionId;
+        _plantlistViewController.unionId = self.unionId;
         [self.navigationController pushViewController:_plantlistViewController animated:YES];
     }
 }

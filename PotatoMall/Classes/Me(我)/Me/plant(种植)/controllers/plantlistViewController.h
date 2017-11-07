@@ -12,5 +12,6 @@
 @interface plantlistViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet TopScrollView *topview;
 @property (weak, nonatomic) IBOutlet UITableView *mtableview;
+@property(nonatomic,copy) NSString *unionId;
 
 @end
