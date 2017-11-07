@@ -9,13 +9,13 @@
 #import "PlantViewController.h"
 #import "plantmodel.h"
 #import "PlantManageViewController.h"
-#import "PlantSettingViewController.h"
+//#import "PlantSettingViewController.h"
 //#import "PlantSetting0ViewController.h"
-#import "PlanthandleViewController.h"
+//#import "PlanthandleViewController.h"
 #import "NSDictionary+Extension.h"
 #import "UnionedPlanOptStateController.h"
 #import "UnionedPlanedRecordController.h"
-#import "PersonPlanOptController.h"
+#import "PersonPlanApplyOptController.h"
 
 @interface PlantViewController ()
 @property (nonatomic,assign)BOOL isUnioned;
@@ -31,6 +31,11 @@
     [super viewDidLoad];
     self.title = @"我的种植";
     _unionId=@"";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     NSDictionary *parama=[self whetherUserUnionParams];
     [self whetherUserUnion:parama];
 }
@@ -47,7 +52,7 @@
         UnionedPlanedRecordController *vc = segue.destinationViewController;
         vc.unionId = self.unionId;
     }else if ([segue.identifier isEqualToString:@"personPlanSegue"]) {
-        PersonPlanOptController *vc = segue.destinationViewController;
+        PersonPlanApplyOptController *vc = segue.destinationViewController;
         vc.planState = self.planState;
     }
 }
@@ -132,7 +137,7 @@
     if ((unionId != nil) && (unionId.length > 0)) {
         params[kUnionIDKey] = unionId;
     }
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+//    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
     NSString *subUrl = @"/plat/whetherPlan";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
     [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
@@ -190,11 +195,11 @@
             }
         }else{
             return 0;
-            if (self.isAddedPlaned == YES){
-                return 0;
-            }else{
-                return 0;
-            }
+//            if (self.isAddedPlaned == YES){
+//                return 0;
+//            }else{
+//                return 0;
+//            }
         }
     }else{
         if(self.isUnioned == YES){

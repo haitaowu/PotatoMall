@@ -1,5 +1,5 @@
 //
-//  PersonPlanOptController.h
+//  PersonPlanApplyOptController.h
 //  PotatoMall
 //
 //  Created by taotao on 2017/11/2.
@@ -8,7 +8,7 @@
 
 #import "BaseTableViewController.h"
 
-@interface PersonPlanOptController : BaseTableViewController
+@interface PersonPlanApplyOptController : BaseTableViewController
 @property (nonatomic,assign)BOOL isUnioned;
 @property (nonatomic,copy)NSString *planState;
 @property(nonatomic,copy) NSString *unionId;

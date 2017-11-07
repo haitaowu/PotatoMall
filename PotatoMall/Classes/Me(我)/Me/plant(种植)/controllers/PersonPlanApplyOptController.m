@@ -1,26 +1,36 @@
 //
-//  PersonPlanOptController.m
+//  PersonPlanApplyOptController.m
 //  PotatoMall
 //
 //  Created by taotao on 2017/11/2.
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
-#import "PersonPlanOptController.h"
+#import "PersonPlanApplyOptController.h"
+#import "plantmodel.h"
+
 
 #define kNoPlanedSectionIdx             0
 #define kPlaningSectionIdx                   1
 
-@interface PersonPlanOptController ()<UIAlertViewDelegate>
+@interface PersonPlanApplyOptController ()<UIAlertViewDelegate>
 @property(nonatomic,assign) BOOL isNoticedReused;
+@property(nonatomic,strong) NSDictionary *planInfo;
 
 @end
 
-@implementation PersonPlanOptController
+@implementation PersonPlanApplyOptController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //2.查询种植信息
+    __block typeof(self) blockSelf = self;
+    NSDictionary *paramsPlantedInfo = [self platInfoParams];
+    [self detailUserPlat:paramsPlantedInfo withBlock:^(NSDictionary *info) {
+        blockSelf.planInfo = info;
+    }];
 }
+
 #pragma mark - private methods
 /*0暂无模板 1正在审核 2审核通过 3 申请被驳回 4 该用户以个体户进行植保计划，无法加入联合体*/
 //审核通过
@@ -51,11 +61,23 @@
         return NO;
     }
 }
+
 //submit
 - (void)submitPersonPlanApply
 {
-    NSDictionary *params = [self paramPlanted];
-    [self reqPlantedPlanWith:params];
+    if (self.planInfo != nil) {
+        NSDictionary *params = [self paramPlanted];
+        [self reqPlantedPlanWith:params];
+    }else{
+        //2.查询种植信息
+        __block typeof(self) blockSelf = self;
+        NSDictionary *paramsPlantedInfo = [self platInfoParams];
+        [self detailUserPlat:paramsPlantedInfo withBlock:^(NSDictionary *info) {
+            blockSelf.planInfo = info;
+            NSDictionary *params = [self paramPlanted];
+            [self reqPlantedPlanWith:params];
+        }];
+    }
 }
 
 #pragma mark - selectors
@@ -163,7 +185,8 @@
     //1 联合体 2 个体户
     params[@"type"] = @"2";
     //植保品种
-    params[@"planType"] = @"2";
+    NSString *platType = [self.planInfo strValueForKey:@"platType"];
+    params[@"planType"] = platType;
     return params;
 }
 
@@ -177,7 +200,9 @@
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
+                [self.navigationController popViewControllerAnimated:YES];
+//                [SVProgressHUD showSuccessWithStatus:msg];
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
@@ -189,6 +214,45 @@
     }
 }
 
+
+
+//查询种植信息-请求参数
+- (NSDictionary *)platInfoParams
+{
+    UserModel *model = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kUserIdKey] = model.userId;
+    params[@"unionId"] = self.unionId;
+    return params;
+}
+
+
+//查询种植信息
+- (void)detailUserPlat:(NSDictionary*)params withBlock:(void(^)(NSDictionary *info))resultBlock
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"/user/detailUserPlat";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+//                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
+                NSDictionary *plantedInfo = [plantmodel plantWithData:data];
+                NSLog(@"plantedInfo=%@",plantedInfo);
+                resultBlock(plantedInfo);
+            }else{
+                resultBlock(nil);
+                [SVProgressHUD showErrorWithStatus:msg];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            resultBlock(nil);
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+        
+    }
+}
 
 
 
