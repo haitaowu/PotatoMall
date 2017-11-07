@@ -23,10 +23,18 @@
     [super awakeFromNib];
 }
 
+#pragma mark - public methods
+- (void)updateUIWithOutImg:(plantmodel*)model
+{
+    _model = model;
+    self.imgView.hidden = YES;
+    self.contentLabel.text = model.content;
+}
 #pragma mark - setter mothods
 - (void)setModel:(plantmodel *)model
 {
     _model = model;
+    self.imgView.hidden = NO;
     self.contentLabel.text = model.content;
     NSURL *url = [NSURL URLWithString:model.imagesUrls];
     UIImage *holderPlace = [UIImage imageNamed:@"goods_placehodler"];

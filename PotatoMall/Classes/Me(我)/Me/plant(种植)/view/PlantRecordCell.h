@@ -11,4 +11,5 @@
 
 @interface PlantRecordCell : UITableViewCell
 @property(nonatomic,strong) plantmodel *model;
+- (void)updateUIWithOutImg:(plantmodel*)model;
 @end

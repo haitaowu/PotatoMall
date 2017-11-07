@@ -124,7 +124,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 {
     NSMutableArray *unFinishedArray = [NSMutableArray array];
     for (plantmodel *model in array) {
-        if ([model.status isEqualToString:@"0"]) {
+        if ([model.status isEqualToString:@"1"]) {
             [unFinishedArray addObject:model];
         }
     }
@@ -135,15 +135,19 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     NSMutableArray *followRecords = [NSMutableArray array];
     self.followRecords = followRecords;
     for (plantmodel *model in unFinishedArray) {
-        NSString *intervalStr = model.platDate;
-        NSTimeInterval interval = [intervalStr doubleValue] / 1000;
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
-        NSDate *ymdDate = [date ymdDate];
-        NSTimeInterval betInterval = [ymdToday timeIntervalSinceDate:ymdDate];
-        if (betInterval <= 0) {
+        if (model.platDate == nil) {
             [marchRecords addObject:model];
         }else{
-            [followRecords addObject:model];
+            NSString *intervalStr = model.platDate;
+            NSTimeInterval interval = [intervalStr doubleValue] / 1000;
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
+            NSDate *ymdDate = [date ymdDate];
+            NSTimeInterval betInterval = [ymdToday timeIntervalSinceDate:ymdDate];
+            if (betInterval <= 0) {
+                [marchRecords addObject:model];
+            }else{
+                [followRecords addObject:model];
+            }
         }
     }
     
@@ -267,7 +271,9 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
      }else if (indexPath.section == kOptHelpSectionIdx){
          plantmodel *model = [self.marchRecords firstObject];
          NSString *content = model.content;
+         CGFloat imgVH = 100;
          CGFloat height = [self cellHeightWithContent:content];
+         height = height - imgVH;
          return height;
      }else{
          return 50;
@@ -307,7 +313,8 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     }else if (indexPath.section == kOptHelpSectionIdx) {
         PlantRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:PlantRecordCellID];
         plantmodel *model = [self.marchRecords firstObject];
-        cell.model = model;
+//        cell.model = model;
+        [cell updateUIWithOutImg:model];
         return cell;
     }else{
         UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];

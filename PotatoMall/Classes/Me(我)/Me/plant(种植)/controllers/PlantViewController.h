@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 @interface PlantViewController : BaseTableViewController{
-    NSString *unionId;
+//    NSString *unionId;
 //    Boolean selection0;
     NSString *message;
 }

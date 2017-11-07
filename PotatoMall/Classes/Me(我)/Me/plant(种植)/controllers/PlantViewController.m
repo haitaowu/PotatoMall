@@ -15,6 +15,7 @@
 #import "NSDictionary+Extension.h"
 #import "UnionedPlanOptStateController.h"
 #import "UnionedPlanedRecordController.h"
+#import "PersonPlanOptController.h"
 
 @interface PlantViewController ()
 @property (nonatomic,assign)BOOL isUnioned;
@@ -29,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的种植";
-    unionId=@"";
+    _unionId=@"";
     NSDictionary *parama=[self whetherUserUnionParams];
     [self whetherUserUnion:parama];
 }
@@ -37,7 +38,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"plantmanage"]) {
         PlantManageViewController *vc = segue.destinationViewController;
-        vc.unionId =unionId;
+        vc.unionId =_unionId;
     }else if ([segue.identifier isEqualToString:@"planStateSegue"]) {
         UnionedPlanOptStateController *vc = segue.destinationViewController;
 //            vc.planState = self.planState;
@@ -45,6 +46,9 @@
     }else if ([segue.identifier isEqualToString:@"unionedPlanedSegue"]) {
         UnionedPlanedRecordController *vc = segue.destinationViewController;
         vc.unionId = self.unionId;
+    }else if ([segue.identifier isEqualToString:@"personPlanSegue"]) {
+        PersonPlanOptController *vc = segue.destinationViewController;
+        vc.planState = self.planState;
     }
 }
 
@@ -87,29 +91,27 @@
                     [self.mstatebutton setTitle:@"创建联合体种正在审核中>>" forState:UIControlStateNormal];
                 } else if([statusStr isEqualToString:@"4"]){
                     self.isUnioned = NO;
-                    [self requestAddedPlanStateWithUnionId:unionID];
                 } else if([statusStr isEqualToString:@"3"]){
                     self.isUnioned = NO;
-                    [self requestAddedPlanStateWithUnionId:unionID];
+//                    [self requestAddedPlanStateWithUnionId:unionID];
                 }else if([statusStr isEqualToString:@"2"]){
                     self.isUnioned = YES;
-                    [self requestAddedPlanStateWithUnionId:unionID];
+//                    [self requestAddedPlanStateWithUnionId:unionID];
                 }else if([statusStr isEqualToString:@"1"]){
                     self.isUnioned = NO;
                     [self.mstatebutton setTitle:@"创建申请审核中......>>" forState:UIControlStateNormal];
-                    
-                    
-                    [self requestAddedPlanStateWithUnionId:unionID];
+
+//                    [self requestAddedPlanStateWithUnionId:unionID];
                 }else if([statusStr isEqualToString:@"0"]){
                     self.isUnioned = NO;
                     self.mstatebutton.tag=-1;
                     [self.mstatebutton setTitle:@"创建联合体种植体>>" forState:UIControlStateNormal];
                     [self.mstatebutton addTarget:self action:@selector(stateclick:) forControlEvents:UIControlEventTouchUpInside];
                 }
-                
                 if(self.isUnioned == NO){
                     [self.tableView reloadData];
                 }
+                [self requestAddedPlanStateWithUnionId:unionID];
                 NSLog(@"msg==%@",data);
                 NSLog(@"msg==%@",[data objectForKey:@"message"]);
             }else{
@@ -127,7 +129,9 @@
     UserModel *model = [UserModelUtil sharedInstance].userModel;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[kUserIdKey] = model.userId;
-    params[kUnionIDKey] = unionId;
+    if ((unionId != nil) && (unionId.length > 0)) {
+        params[kUnionIDKey] = unionId;
+    }
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
     NSString *subUrl = @"/plat/whetherPlan";
     NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
@@ -185,8 +189,9 @@
                 return 0;
             }
         }else{
+            return 0;
             if (self.isAddedPlaned == YES){
-                return 3;
+                return 0;
             }else{
                 return 0;
             }
@@ -225,8 +230,8 @@
     }
     if(indexPath.section==1){
         if(indexPath.row==0){
-            NSLog(@"unionId==%@",unionId);
-            if(unionId!=nil){
+            NSLog(@"unionId==%@",_unionId);
+            if(_unionId!=nil){
                 return 44;
             }else{
                 return 0;
@@ -247,10 +252,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if(indexPath.section==0){
         if (indexPath.row==1) {
-            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
+//            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
             //        _PlanWebViewViewController.murl = murl;
             //        _PlantUserViewController.unionId =self.unionId;
-            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
+//            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
+            [self performSegueWithIdentifier:@"personPlanSegue" sender:nil];
         }
         
         if (indexPath.row==2) {
@@ -281,11 +287,13 @@
         }
     }else{
         if (indexPath.row==0) {
-            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
-            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
+            [self performSegueWithIdentifier:@"personPlanSegue" sender:nil];
+//            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
+//            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
         }
         if (indexPath.row == 1) {
-            [self performSegueWithIdentifier:@"plantinfoidentifier" sender:nil];
+//            [self performSegueWithIdentifier:@"plantinfoidentifier" sender:nil];
+            [self performSegueWithIdentifier:@"personPlanedSegue" sender:nil];
         }
     }
 }

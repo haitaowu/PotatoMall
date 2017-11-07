@@ -82,6 +82,7 @@
 		BE0DDB4E1E6D46FA00F15168 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0DDB4C1E6D46FA00F15168 /* GoodsCell.xib */; };
 		BE0DDB5A1E6D63A100F15168 /* HTPurchaseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0DDB581E6D63A100F15168 /* HTPurchaseBar.m */; };
 		BE0DDB5B1E6D63A100F15168 /* HTPurchaseBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0DDB591E6D63A100F15168 /* HTPurchaseBar.xib */; };
+		BE0F155F1FB1439900A58FEE /* PersonPlanOptController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0F155D1FB1439800A58FEE /* PersonPlanOptController.m */; };
 		BE1076CB1E67AAAF00304436 /* HTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1076CA1E67AAAF00304436 /* HTTextField.m */; };
 		BE132DB21F8F06E4002E9A9A /* AddMofityAdrTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE132DB11F8F06E3002E9A9A /* AddMofityAdrTableController.m */; };
 		BE257E281E71AD7D00AA277B /* OrderDetailTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE257E271E71AD7D00AA277B /* OrderDetailTableController.m */; };
@@ -268,6 +269,7 @@
 		BEF0EE3D1E714B7E003E06DB /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF0EE3B1E714B7E003E06DB /* OrderCell.xib */; };
 		BEF15DAC1FB0319600D39903 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF15DAB1FB0319600D39903 /* NSDate+Extension.m */; };
 		BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEFBCB721E7B732C005A333D /* InfoPlist.strings */; };
+		BEFDCBE11FB17DE700BEAE1E /* PersonPlanedOptController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFDCBE01FB17DE600BEAE1E /* PersonPlanedOptController.m */; };
 		BEFFAB991E6E8F43006D1FDE /* ProdCateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFAB981E6E8F43006D1FDE /* ProdCateModel.m */; };
 		BEFFEE1E1E7536B4003E6240 /* CommHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE1D1E7536B4003E6240 /* CommHelper.m */; };
 		BEFFEE211E753D1A003E6240 /* GoodsDetailTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEFFEE201E753D1A003E6240 /* GoodsDetailTableHeader.m */; };
@@ -400,6 +402,8 @@
 		BE0DDB571E6D63A100F15168 /* HTPurchaseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTPurchaseBar.h; sourceTree = "<group>"; };
 		BE0DDB581E6D63A100F15168 /* HTPurchaseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTPurchaseBar.m; sourceTree = "<group>"; };
 		BE0DDB591E6D63A100F15168 /* HTPurchaseBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTPurchaseBar.xib; sourceTree = "<group>"; };
+		BE0F155D1FB1439800A58FEE /* PersonPlanOptController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonPlanOptController.m; sourceTree = "<group>"; };
+		BE0F155E1FB1439900A58FEE /* PersonPlanOptController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonPlanOptController.h; sourceTree = "<group>"; };
 		BE1076C91E67AAAF00304436 /* HTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTextField.h; sourceTree = "<group>"; };
 		BE1076CA1E67AAAF00304436 /* HTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTextField.m; sourceTree = "<group>"; };
 		BE132DB01F8F06E3002E9A9A /* AddMofityAdrTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMofityAdrTableController.h; sourceTree = "<group>"; };
@@ -726,6 +730,8 @@
 		BEFBCB711E7B732C005A333D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEFBCB731E7B732F005A333D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BEFBCB741E7B7331005A333D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEFDCBDF1FB17DE600BEAE1E /* PersonPlanedOptController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonPlanedOptController.h; sourceTree = "<group>"; };
+		BEFDCBE01FB17DE600BEAE1E /* PersonPlanedOptController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonPlanedOptController.m; sourceTree = "<group>"; };
 		BEFFAB971E6E8F43006D1FDE /* ProdCateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProdCateModel.h; sourceTree = "<group>"; };
 		BEFFAB981E6E8F43006D1FDE /* ProdCateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProdCateModel.m; sourceTree = "<group>"; };
 		BEFFEE1C1E7536B4003E6240 /* CommHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommHelper.h; sourceTree = "<group>"; };
@@ -1740,6 +1746,10 @@
 				BEE116A91FAFED3A005FF2CD /* UnionedPlanedRecordController.m */,
 				BEE116CD1FAFED3A005FF2CD /* UnionedPlanOptStateController.h */,
 				BEE116B31FAFED3A005FF2CD /* UnionedPlanOptStateController.m */,
+				BE0F155E1FB1439900A58FEE /* PersonPlanOptController.h */,
+				BE0F155D1FB1439800A58FEE /* PersonPlanOptController.m */,
+				BEFDCBDF1FB17DE600BEAE1E /* PersonPlanedOptController.h */,
+				BEFDCBE01FB17DE600BEAE1E /* PersonPlanedOptController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -2082,6 +2092,7 @@
 				BE5ED7A01E619FAC00C4B1D0 /* AritcleDetailController.m in Sources */,
 				BEE116EE1FAFED3A005FF2CD /* PlantManageViewController.m in Sources */,
 				BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */,
+				BEFDCBE11FB17DE700BEAE1E /* PersonPlanedOptController.m in Sources */,
 				BECC9F9E1E6EDE80001DE8F1 /* PurAdModel.m in Sources */,
 				BE041D1B1FB0A19A00B471DA /* LGPhotoPickerImageView.m in Sources */,
 				371D2A611F6269AE0082B91E /* plantmodel.m in Sources */,
@@ -2174,6 +2185,7 @@
 				BE0B09971E8622E200635E71 /* HTAlertView.m in Sources */,
 				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
+				BE0F155F1FB1439900A58FEE /* PersonPlanOptController.m in Sources */,
 				BEB7F6DD1F8F4E1A0067944F /* AddAdrFuncCell.m in Sources */,
 				BED84A161E6FEFE5001E7A27 /* CustomTextView.m in Sources */,
 				BE0DDB4D1E6D46FA00F15168 /* GoodsCell.m in Sources */,
