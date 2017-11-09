@@ -62,7 +62,8 @@
         vc.unionId =self.unionId;
     }else if ([segue.identifier isEqualToString:@"unionedPlanApplySegue"]) {
         UnionedPlanApplyController *vc = segue.destinationViewController;
-        vc.unionId =self.unionId;
+        vc.unionId = self.unionId;
+        vc.planState = self.planState;
 //    }else if ([segue.identifier isEqualToString:@"planReviewSegue"]) {
 //        UnionedPlanOptStateController *vc = segue.destinationViewController;
 //        vc.unionId = self.unionId;

@@ -12,7 +12,7 @@
 
 
 
-@interface UnionedPlanApplyController ()
+@interface UnionedPlanApplyController ()<UIAlertViewDelegate>
 @property(nonatomic,strong) NSDictionary *planInfo;
 @property(nonatomic,strong) NSMutableArray *cateArray;
 @property(nonatomic,strong)  plantmodel *selectedCate;
@@ -35,9 +35,20 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if ([self.planState isEqualToString:@"3"]) {
+        [self showRejectNotice];
+    }
 }
 
 #pragma mark - private methods
+- (void)showRejectNotice
+{
+    NSString *title = @"注意";
+    NSString *message = @"您上一次的个人植保计划申请被官方驳回，请联系客服询问原因，或者尝试再次提交申请";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认",nil];
+    [alert show];
+}
+
 - (void)setupPickViewWithTitles:(NSArray*)titles title:(NSString*)title defaultTitle:(NSString*)defaultTitle block:(void(^)(NSInteger))block
 {
     [BRStringPickerView showSPickerWithTitle:title dataSource:titles resultBlock:^(NSInteger idx, id selectValue) {
@@ -56,6 +67,17 @@
         return NO;
     }
 }
+
+#pragma mark - alertView delegate
+//按钮点击事件的代理
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"clickButtonAtIndex:%d",(int)buttonIndex);
+    //index为0则是取消，
+    if(buttonIndex == 0){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 
 #pragma mark - selectors
 //选择品种
