@@ -69,7 +69,7 @@ static UserModelUtil *instance = nil;
 
 #pragma mark - public methods
 /**
- *是否为管理员角色
+ *是否为管理员角色/创建人
  */
 - (BOOL)isAdminRole
 {

@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *mdetail;
 @property (nonatomic,strong)NSString * unionId;
 
+@property (nonatomic,copy)NSString *planState;
+
 @end

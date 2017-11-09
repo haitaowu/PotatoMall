@@ -80,15 +80,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == kAdminNoPlanedSectionIdx) {
-        if ([[UserModelUtil sharedInstance] isAdminRole]) {
-            if ([self isReviewing] == YES) {
-                return 0;
-            }else{
-                return 2;
-            }
-        }else{
-            return 0;
-        }
+        return 0;
+//        if ([[UserModelUtil sharedInstance] isAdminRole]) {
+//            if ([self isReviewing] == YES) {
+//                return 0;
+//            }else{
+//                return 2;
+//            }
+//        }else{
+//        }
     }else if (section == kPlaningSectionIdx) {
         if ([self isReviewing] == YES) {
             return 1;
@@ -96,15 +96,15 @@
             return 0;
         }
     }else{
-        if ([[UserModelUtil sharedInstance] isAdminRole] == NO) {
+//        if ([[UserModelUtil sharedInstance] isAdminRole] == NO) {
             if ([self isReviewing] == NO) {
                 return 1;
             }else{
                 return 0;
             }
-        }else{
-            return 0;
-        }
+//        }else{
+//            return 0;
+//        }
     }
 }
 

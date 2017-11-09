@@ -20,9 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"合作社植保计划";
-    [self.mtableview setHidden:YES];
+//    [self.mtableview setHidden:YES];
      [_mtableview registerNib:[UINib nibWithNibName:@"PlantListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listIdentifier"];
-
     [self reqUserUnionInformation];
 }
 
@@ -85,7 +84,7 @@
     if ([RequestUtil networkAvaliable] == NO) {
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
-        NSString *subUrl = @"/user_union/findUnionUserByUserId";
+        NSString *subUrl = @"user_union/findUnionUserByUserId";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
@@ -107,24 +106,24 @@
     }
     
 }
-
+//查询用户植保记录
 - (void)findUserPlatRecord:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
-        NSString *subUrl = @"/plat/findUserPlatRecord";
+        NSString *subUrl = @"plat/findUserPlatRecord";
 //        NSString *subUrl = @"/user_union/findUnionUserByUserId";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
                 [SVProgressHUD showSuccessWithStatus:msg];
                 mlistdata=[plantmodel plantWithDataArray1:data];
-                [self.mtableview setHidden:NO];
+//                [self.mtableview setHidden:NO];
                 [self.mtableview reloadData];
-                if([mlistdata count]==0){
-                    [self.infoview setHidden:NO];
-                }
+//                if([mlistdata count]==0){
+//                    [self.infoview setHidden:NO];
+//                }
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }

@@ -14,6 +14,10 @@
 #import "plantlistViewController.h"
 #import "plantlistViewController.h"
 #import "PlantInfomationTableViewController.h"
+#import "UnionedPlanApplyController.h"
+#import "UnionedPlanOptStateController.h"
+
+
 @interface PlantManageViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *mtableview;
 
@@ -50,16 +54,19 @@
         PlantPlanTableViewController *vc = segue.destinationViewController;
         vc.unionId =self.unionId;
         vc.createDate=time;
-    }
-    
-    if ([segue.identifier isEqualToString:@"planinfo"]) {
+    }else if ([segue.identifier isEqualToString:@"planinfo"]) {
         PlantInfoControllerViewController *vc = segue.destinationViewController;
         vc.canclick=@"1";
-    }
-    
-    if ([segue.identifier isEqualToString:@"plantinfomation"]) {
+    }else if ([segue.identifier isEqualToString:@"plantinfomation"]) {
         PlantInfomationTableViewController *vc = segue.destinationViewController;
         vc.unionId =self.unionId;
+    }else if ([segue.identifier isEqualToString:@"unionedPlanApplySegue"]) {
+        UnionedPlanApplyController *vc = segue.destinationViewController;
+        vc.unionId =self.unionId;
+//    }else if ([segue.identifier isEqualToString:@"planReviewSegue"]) {
+//        UnionedPlanOptStateController *vc = segue.destinationViewController;
+//        vc.unionId = self.unionId;
+//        vc.planState = self.planState;
     }
 }
 
@@ -69,6 +76,26 @@
 }
 
 #pragma mark - Privates
+/*0暂无模板 1正在审核 2审核通过 3 申请被驳回 4 该用户以个体户进行植保计划，无法加入联合体*/
+- (BOOL)isPlaned
+{
+    if ([self.planState isEqualToString:@"2"]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (BOOL)isReviewing
+{
+    if ([self.planState isEqualToString:@"1"]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+#pragma mark - requset server
 - (void)findWalletDetail:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
@@ -95,7 +122,6 @@
 - (void)detailUserUnion:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
-        
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         NSString *subUrl = @"/user_union/detailUserUnion";
@@ -165,10 +191,16 @@
 {
     
     if (indexPath.row==0) {
-         [self performSegueWithIdentifier:@"plantplan" sender:nil];
+/*0暂无模板 1正在审核 2审核通过 3 申请被驳回 4 该用户以个体户进行植保计划，无法加入联合体*/
+        if ([self.planState isEqualToString:@"1"]) {
+            [self performSegueWithIdentifier:@"planReviewSegue" sender:nil];
+        }else if ([self.planState isEqualToString:@"2"]) {
+            [self performSegueWithIdentifier:@"plantplan" sender:nil];
+        }else{
+            [self performSegueWithIdentifier:@"unionedPlanApplySegue" sender:nil];
+        }
     }
     if (indexPath.row==1) {
-        
         [self performSegueWithIdentifier:@"plantinfomation" sender:nil];
     }
     

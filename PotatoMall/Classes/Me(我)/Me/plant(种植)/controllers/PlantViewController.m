@@ -16,6 +16,7 @@
 #import "UnionedPlanOptStateController.h"
 #import "UnionedPlanedRecordController.h"
 #import "PersonPlanApplyOptController.h"
+#import "JoinedPlanedOptionController.h"
 
 @interface PlantViewController ()
 @property (nonatomic,assign)BOOL isUnioned;
@@ -44,16 +45,19 @@
     if ([segue.identifier isEqualToString:@"plantmanage"]) {
         PlantManageViewController *vc = segue.destinationViewController;
         vc.unionId =_unionId;
-    }else if ([segue.identifier isEqualToString:@"planStateSegue"]) {
-        UnionedPlanOptStateController *vc = segue.destinationViewController;
-//            vc.planState = self.planState;
-        vc.planState = @"1";
+        vc.planState = self.planState;
+//    }else if ([segue.identifier isEqualToString:@"planStateSegue"]) {
+//        UnionedPlanOptStateController *vc = segue.destinationViewController;
+//        vc.planState = self.planState;
     }else if ([segue.identifier isEqualToString:@"unionedPlanedSegue"]) {
         UnionedPlanedRecordController *vc = segue.destinationViewController;
         vc.unionId = self.unionId;
-    }else if ([segue.identifier isEqualToString:@"personPlanSegue"]) {
+    }else if ([segue.identifier isEqualToString:@"personPlanApplySegue"]) {
         PersonPlanApplyOptController *vc = segue.destinationViewController;
         vc.planState = self.planState;
+    }else if ([segue.identifier isEqualToString:@"platePlanedOptSegue"]) {
+        JoinedPlanedOptionController *vc = segue.destinationViewController;
+        vc.unionId = self.unionId;
     }
 }
 
@@ -148,7 +152,7 @@
             data=[plantmodel plantWithData:data];
             NSString *statusStr = [data strValueForKey:@"status"];
             if([statusStr isEqualToString:@"1"]){
-                self.isAddedPlaned = YES;
+                self.isAddedPlaned = NO;
             } else if([statusStr isEqualToString:@"2"]){
                 self.isAddedPlaned = YES;
             }else{
@@ -174,11 +178,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section==0){
         if(self.isUnioned == YES){
-            if (self.isAddedPlaned == YES){
-               return 0;
-            }else{
-                return 3;
-            }
+//            if (self.isAddedPlaned == YES){
+            return 0;
+//            }else{
+//                return 3;
+//            }
         }else{
             if (self.isAddedPlaned == YES){
                 return 0;
@@ -188,11 +192,11 @@
         }
     }else if(section==1){
         if(self.isUnioned == YES){
-            if (self.isAddedPlaned == YES){
+//            if (self.isAddedPlaned == YES){
                 return 3;
-            }else{
-                return 0;
-            }
+//            }else{
+//                return 0;
+//            }
         }else{
             return 0;
 //            if (self.isAddedPlaned == YES){
@@ -266,7 +270,7 @@
             //        _PlanWebViewViewController.murl = murl;
             //        _PlantUserViewController.unionId =self.unionId;
 //            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
-            [self performSegueWithIdentifier:@"personPlanSegue" sender:nil];
+            [self performSegueWithIdentifier:@"personPlanApplySegue" sender:nil];
         }
         
         if (indexPath.row==2) {
@@ -277,33 +281,29 @@
             if (self.isUnioned) {
                 if (self.isAddedPlaned) {
                     NSLog(@"已经加入植保计划");
-                    [self performSegueWithIdentifier:@"unionedPlanedSegue" sender:nil];
+                    [self performSegueWithIdentifier:@"platePlanedOptSegue" sender:nil];
                 }else{
-                    [self performSegueWithIdentifier:@"planStateSegue" sender:nil];
+                    [self performSegueWithIdentifier:@"hasNoPlanSegue" sender:nil];
                 }
             }
         }else if (indexPath.row==1) {
             NSLog(@"message===%@",message);
-//            if([message isEqualToString:@"审核通过"]){
-                [self performSegueWithIdentifier:@"plantmanage" sender:nil];
-//            }else{
-//                PlanthandleViewController *_PlanthandleViewController= [[PlanthandleViewController alloc] init];
-//                //        _PlanWebViewViewController.murl = murl;
-//                _PlanthandleViewController.unionId =unionId;
-//                [self.navigationController pushViewController:_PlanthandleViewController animated:YES];
-//            }
+            [self performSegueWithIdentifier:@"plantmanage" sender:nil];
         }else {
             [self performSegueWithIdentifier:@"plantinfoidentifier" sender:nil];
         }
     }else{
         if (indexPath.row==0) {
-            [self performSegueWithIdentifier:@"personPlanSegue" sender:nil];
+             if (self.isAddedPlaned) {
+                 [self performSegueWithIdentifier:@"platePlanedOptSegue" sender:nil];
+             }else{
+                 [self performSegueWithIdentifier:@"personPlanApplySegue" sender:nil];
+             }
 //            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
 //            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
         }
         if (indexPath.row == 1) {
-//            [self performSegueWithIdentifier:@"plantinfoidentifier" sender:nil];
-            [self performSegueWithIdentifier:@"personPlanedSegue" sender:nil];
+            [self performSegueWithIdentifier:@"plantinfoidentifier" sender:nil];
         }
     }
 }

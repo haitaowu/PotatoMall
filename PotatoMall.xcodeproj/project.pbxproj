@@ -237,6 +237,8 @@
 		BEE116FC1FAFED3A005FF2CD /* PlantUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE116C31FAFED3A005FF2CD /* PlantUserViewController.xib */; };
 		BEE117021FAFED3A005FF2CD /* plantlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE116D11FAFED3A005FF2CD /* plantlistViewController.xib */; };
 		BEE117041FAFED3A005FF2CD /* PlanWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE116D41FAFED3A005FF2CD /* PlanWebViewViewController.m */; };
+		BEE1E7001FB297AB00C30625 /* JoinedPlanedOptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE1E6FE1FB297AA00C30625 /* JoinedPlanedOptionController.m */; };
+		BEE1E7031FB331C800C30625 /* UnionedPlanApplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE1E7021FB331C700C30625 /* UnionedPlanApplyController.m */; };
 		BEE2602A1E7A531F006AE48E /* SubTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE260291E7A531F006AE48E /* SubTitleLabel.m */; };
 		BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE29C5B1E5E814800DF3782 /* HTSearchHistoryController.m */; };
 		BEE29C5E1E5E814800DF3782 /* HTSearchHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE29C5C1E5E814800DF3782 /* HTSearchHistoryController.xib */; };
@@ -666,6 +668,10 @@
 		BEE116D11FAFED3A005FF2CD /* plantlistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = plantlistViewController.xib; sourceTree = "<group>"; };
 		BEE116D31FAFED3A005FF2CD /* PlantInfomationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantInfomationTableViewController.h; sourceTree = "<group>"; };
 		BEE116D41FAFED3A005FF2CD /* PlanWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanWebViewViewController.m; sourceTree = "<group>"; };
+		BEE1E6FE1FB297AA00C30625 /* JoinedPlanedOptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinedPlanedOptionController.m; sourceTree = "<group>"; };
+		BEE1E6FF1FB297AB00C30625 /* JoinedPlanedOptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinedPlanedOptionController.h; sourceTree = "<group>"; };
+		BEE1E7011FB331C700C30625 /* UnionedPlanApplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionedPlanApplyController.h; sourceTree = "<group>"; };
+		BEE1E7021FB331C700C30625 /* UnionedPlanApplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionedPlanApplyController.m; sourceTree = "<group>"; };
 		BEE260281E7A531F006AE48E /* SubTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTitleLabel.h; sourceTree = "<group>"; };
 		BEE260291E7A531F006AE48E /* SubTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTitleLabel.m; sourceTree = "<group>"; };
 		BEE29C5A1E5E814800DF3782 /* HTSearchHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSearchHistoryController.h; sourceTree = "<group>"; };
@@ -1669,6 +1675,8 @@
 		BEE116A51FAFED3A005FF2CD /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BEE1E6FF1FB297AB00C30625 /* JoinedPlanedOptionController.h */,
+				BEE1E6FE1FB297AA00C30625 /* JoinedPlanedOptionController.m */,
 				BEE116C01FAFED3A005FF2CD /* CreateUnionTableViewController.h */,
 				BEE116A71FAFED3A005FF2CD /* CreateUnionTableViewController.m */,
 				BEE116C51FAFED3A005FF2CD /* PlanRecordTableViewControl.h */,
@@ -1702,6 +1710,8 @@
 				BE0F155D1FB1439800A58FEE /* PersonPlanApplyOptController.m */,
 				BEFDCBDF1FB17DE600BEAE1E /* PersonPlanedOptController.h */,
 				BEFDCBE01FB17DE600BEAE1E /* PersonPlanedOptController.m */,
+				BEE1E7011FB331C700C30625 /* UnionedPlanApplyController.h */,
+				BEE1E7021FB331C700C30625 /* UnionedPlanApplyController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -2057,6 +2067,7 @@
 				BE93C3011E681C2800CC0B96 /* DistriTableController.m in Sources */,
 				BE0DDB441E6D0B4300F15168 /* HTSubmitBar.m in Sources */,
 				BEE116E61FAFED3A005FF2CD /* PlantRecordCell.m in Sources */,
+				BEE1E7031FB331C800C30625 /* UnionedPlanApplyController.m in Sources */,
 				BE041D091FB0A19A00B471DA /* LGPhotoPickerBrowserPhotoView.m in Sources */,
 				BE93C2EF1E67F9B300CC0B96 /* AccountInfoTableController.m in Sources */,
 				BE93C2F81E680E0000CC0B96 /* CityModel.m in Sources */,
@@ -2126,6 +2137,7 @@
 				BEE116DD1FAFED3A005FF2CD /* PlantListTableCell1TableViewCell.m in Sources */,
 				BEF0EE3C1E714B7E003E06DB /* OrderCell.m in Sources */,
 				BE0B09971E8622E200635E71 /* HTAlertView.m in Sources */,
+				BEE1E7001FB297AB00C30625 /* JoinedPlanedOptionController.m in Sources */,
 				BE5ED7FB1E62B90900C4B1D0 /* RegisterController.m in Sources */,
 				BEE29C5D1E5E814800DF3782 /* HTSearchHistoryController.m in Sources */,
 				BE0F155F1FB1439900A58FEE /* PersonPlanApplyOptController.m in Sources */,

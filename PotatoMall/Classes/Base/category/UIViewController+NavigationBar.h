@@ -11,5 +11,8 @@
 @interface UIViewController (NavigationBar)
 - (void)setNavigationBarMainStyle;
 - (void)showLoginView;
-
+/**
+ *pop current viewController after seconds delay
+ */
+- (void)popCurrentViewControllerAfterDelay;
 @end

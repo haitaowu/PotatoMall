@@ -153,15 +153,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == kNoPlanedSectionIdx) {
-        if ([[UserModelUtil sharedInstance] isAdminRole]) {
-            if ([self isReviewing] == YES) {
-                return 0;
-            }else{
-                return 2;
-            }
-        }else{
+//        if ([[UserModelUtil sharedInstance] isAdminRole]) {
+        if ([self isReviewing] == YES) {
             return 0;
+        }else{
+            return 2;
         }
+//        }else{
+//            return 0;
+//        }
     }else {
         if ([self isReviewing] == YES) {
             return 1;
