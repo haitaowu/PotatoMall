@@ -204,6 +204,7 @@
 		BED95E011E6EF82100054F45 /* HotCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED95DFF1E6EF82100054F45 /* HotCollectionCell.m */; };
 		BED95E021E6EF82100054F45 /* HotCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED95E001E6EF82100054F45 /* HotCollectionCell.xib */; };
 		BEDB660B1FB7392100A507B4 /* ReValidMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDB66091FB7392000A507B4 /* ReValidMemberController.m */; };
+		BEDB660E1FB745B700A507B4 /* AddMemberValidController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDB660D1FB745B700A507B4 /* AddMemberValidController.m */; };
 		BEDBC9921FB4254C000E2F36 /* UnionedMembersController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEDBC9911FB4254C000E2F36 /* UnionedMembersController.xib */; };
 		BEDBC9961FB42609000E2F36 /* UnionedMemHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDBC9931FB42608000E2F36 /* UnionedMemHeader.m */; };
 		BEDBC9971FB42609000E2F36 /* UnionedMemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEDBC9941FB42609000E2F36 /* UnionedMemHeader.xib */; };
@@ -624,6 +625,8 @@
 		BED95E001E6EF82100054F45 /* HotCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotCollectionCell.xib; sourceTree = "<group>"; };
 		BEDB66091FB7392000A507B4 /* ReValidMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReValidMemberController.m; sourceTree = "<group>"; };
 		BEDB660A1FB7392000A507B4 /* ReValidMemberController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReValidMemberController.h; sourceTree = "<group>"; };
+		BEDB660C1FB745B500A507B4 /* AddMemberValidController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberValidController.h; sourceTree = "<group>"; };
+		BEDB660D1FB745B700A507B4 /* AddMemberValidController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberValidController.m; sourceTree = "<group>"; };
 		BEDBC9911FB4254C000E2F36 /* UnionedMembersController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnionedMembersController.xib; sourceTree = "<group>"; };
 		BEDBC9931FB42608000E2F36 /* UnionedMemHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionedMemHeader.m; sourceTree = "<group>"; };
 		BEDBC9941FB42609000E2F36 /* UnionedMemHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnionedMemHeader.xib; sourceTree = "<group>"; };
@@ -1751,6 +1754,8 @@
 				BE3C6B931FB70A3300A24ABD /* WaitingMembersController.m */,
 				BEDB660A1FB7392000A507B4 /* ReValidMemberController.h */,
 				BEDB66091FB7392000A507B4 /* ReValidMemberController.m */,
+				BEDB660C1FB745B500A507B4 /* AddMemberValidController.h */,
+				BEDB660D1FB745B700A507B4 /* AddMemberValidController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -2078,6 +2083,7 @@
 				BEFFEE281E7591FA003E6240 /* OrderDetailFooter.m in Sources */,
 				BE041D0F1FB0A19A00B471DA /* LGCameraImageView.m in Sources */,
 				BE652F721E696D6F003ABEC3 /* MeInfoTableController.m in Sources */,
+				BEDB660E1FB745B700A507B4 /* AddMemberValidController.m in Sources */,
 				BEF0EE261E71365D003E06DB /* OrdersTableController.m in Sources */,
 				BE5ED7E71E62B29000C4B1D0 /* NSData+AES.m in Sources */,
 				BEE116ED1FAFED3A005FF2CD /* PlanRecordTableViewControl.m in Sources */,

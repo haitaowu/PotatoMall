@@ -1,21 +1,23 @@
 //
-//  UnionAddMemberController.m
+//  AddMemberValidController.m
 //  PotatoMall
 //
 //  Created by taotao on 2017/10/11.
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
-#import "UnionAddMemberController.h"
+#import "AddMemberValidController.h"
 #import "SVProgressHUD.h"
 
 
-@interface UnionAddMemberController ()
+@interface AddMemberValidController ()
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UITextField *memPhoneField;
+
 
 @end
 
-@implementation UnionAddMemberController
+@implementation AddMemberValidController
 
 #pragma mark - override methods
 - (void)viewDidLoad {
@@ -34,9 +36,10 @@
 }
 
 #pragma mark - selectors
-//提交审核
-- (IBAction)tapAddBtn:(UIButton*)sender{
-    [self performSegueWithIdentifier:@"validateCodeSegue" sender:nil];
+- (IBAction)tapContinueBtn:(UIButton*)sender{
+}
+//提交
+- (IBAction)tapValidateBtn:(UIButton*)sender{
 //    NSString *unionName = self.unionNameField.text;
 //    NSString *detailAdr = self.detailAdrField.text;
 //    NSString *areaStr = self.areaField.text;
