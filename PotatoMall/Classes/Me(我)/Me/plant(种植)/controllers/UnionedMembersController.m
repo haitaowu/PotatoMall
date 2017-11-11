@@ -85,7 +85,6 @@ static NSString *MemberCellID = @"MemberCellID";
 - (void)setupBase
 {
     self.title = @"联合体成员";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加成员" style:UIBarButtonItemStylePlain target:self action:@selector(addMembers:)];
     NSDictionary *params = [self umionedMembersParams];
     [self reqUnionedMembers:params];
 }
@@ -105,10 +104,6 @@ static NSString *MemberCellID = @"MemberCellID";
 #pragma mark - selectors
 - (IBAction)managebuttonclick:(id)sender {
 //     [SVProgressHUD showErrorWithStatus:@"您不是管理员,无法操作"];
-}
-
-- (void)addMembers:(id)sender
-{
 }
 
 

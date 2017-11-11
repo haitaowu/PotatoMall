@@ -92,6 +92,10 @@
 		BE3052CA1E66C94000C74300 /* StateRadiusBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3052C91E66C94000C74300 /* StateRadiusBtn.m */; };
 		BE30997F1E5C71AE0062EBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */; };
 		BE3954451FA2DC3C00D5E06D /* VertiImgTitleBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3954441FA2DC3B00D5E06D /* VertiImgTitleBtn.m */; };
+		BE3C6B921FB69CDE00A24ABD /* UnionAddMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3C6B901FB69CDD00A24ABD /* UnionAddMemberController.m */; };
+		BE3C6B951FB70A3400A24ABD /* WaitingMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3C6B931FB70A3300A24ABD /* WaitingMembersController.m */; };
+		BE3C6B991FB70D6400A24ABD /* WatingValidMemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3C6B961FB70D6300A24ABD /* WatingValidMemCell.xib */; };
+		BE3C6B9A1FB70D6400A24ABD /* WatingValidMemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3C6B981FB70D6400A24ABD /* WatingValidMemCell.m */; };
 		BE5496AA1E60321C00A19940 /* RequestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5496A91E60321C00A19940 /* RequestUtil.m */; };
 		BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE55354A1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m */; };
 		BE5908111E74E66600D77152 /* CateGoryNModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5908101E74E66600D77152 /* CateGoryNModel.m */; };
@@ -417,6 +421,13 @@
 		BE30997E1E5C71AE0062EBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE3954431FA2DC3B00D5E06D /* VertiImgTitleBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertiImgTitleBtn.h; sourceTree = "<group>"; };
 		BE3954441FA2DC3B00D5E06D /* VertiImgTitleBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertiImgTitleBtn.m; sourceTree = "<group>"; };
+		BE3C6B901FB69CDD00A24ABD /* UnionAddMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionAddMemberController.m; sourceTree = "<group>"; };
+		BE3C6B911FB69CDE00A24ABD /* UnionAddMemberController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionAddMemberController.h; sourceTree = "<group>"; };
+		BE3C6B931FB70A3300A24ABD /* WaitingMembersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingMembersController.m; sourceTree = "<group>"; };
+		BE3C6B941FB70A3400A24ABD /* WaitingMembersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingMembersController.h; sourceTree = "<group>"; };
+		BE3C6B961FB70D6300A24ABD /* WatingValidMemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatingValidMemCell.xib; sourceTree = "<group>"; };
+		BE3C6B971FB70D6300A24ABD /* WatingValidMemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatingValidMemCell.h; sourceTree = "<group>"; };
+		BE3C6B981FB70D6400A24ABD /* WatingValidMemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatingValidMemCell.m; sourceTree = "<group>"; };
 		BE5496A81E60321C00A19940 /* RequestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestUtil.h; sourceTree = "<group>"; };
 		BE5496A91E60321C00A19940 /* RequestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUtil.m; sourceTree = "<group>"; };
 		BE5535491E5EA17A0021E2C6 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -1684,6 +1695,9 @@
 				BEF3A8FA1FB58B2B007E5B29 /* UnionedObserHeader.h */,
 				BEF3A8FB1FB58B2B007E5B29 /* UnionedObserHeader.m */,
 				BEF3A8FC1FB58B2B007E5B29 /* UnionedObserHeader.xib */,
+				BE3C6B971FB70D6300A24ABD /* WatingValidMemCell.h */,
+				BE3C6B981FB70D6400A24ABD /* WatingValidMemCell.m */,
+				BE3C6B961FB70D6300A24ABD /* WatingValidMemCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1728,6 +1742,10 @@
 				BEFDCBE01FB17DE600BEAE1E /* PersonPlanedOptController.m */,
 				BEE1E7011FB331C700C30625 /* UnionedPlanApplyController.h */,
 				BEE1E7021FB331C700C30625 /* UnionedPlanApplyController.m */,
+				BE3C6B911FB69CDE00A24ABD /* UnionAddMemberController.h */,
+				BE3C6B901FB69CDD00A24ABD /* UnionAddMemberController.m */,
+				BE3C6B941FB70A3400A24ABD /* WaitingMembersController.h */,
+				BE3C6B931FB70A3300A24ABD /* WaitingMembersController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -1977,6 +1995,7 @@
 				BE041D021FB0A19A00B471DA /* checkbox_pic_non2@2x.png in Resources */,
 				BE041CFB1FB0A19A00B471DA /* icon_pic_break@2x.png in Resources */,
 				BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */,
+				BE3C6B991FB70D6400A24ABD /* WatingValidMemCell.xib in Resources */,
 				BE041D001FB0A19A00B471DA /* xiang@2x.png in Resources */,
 				BE041CF61FB0A19A00B471DA /* broswerPic1.jpg in Resources */,
 				BEE116FA1FAFED3A005FF2CD /* PlanWebViewViewController.xib in Resources */,
@@ -2078,6 +2097,7 @@
 				BE3052CA1E66C94000C74300 /* StateRadiusBtn.m in Sources */,
 				BE1076CB1E67AAAF00304436 /* HTTextField.m in Sources */,
 				BE5ED7E51E62B29000C4B1D0 /* GTMBase64.m in Sources */,
+				BE3C6B951FB70A3400A24ABD /* WaitingMembersController.m in Sources */,
 				BE5ED7D31E628DD800C4B1D0 /* AppInfoHelper.m in Sources */,
 				BE5B80391E5F15CD005FDE1A /* SearchTableController.m in Sources */,
 				BEE116EC1FAFED3A005FF2CD /* PlantInfoControllerViewController.m in Sources */,
@@ -2093,6 +2113,7 @@
 				BE93C2F81E680E0000CC0B96 /* CityModel.m in Sources */,
 				BE55354B1E5EA17A0021E2C6 /* UIViewController+NavigationBar.m in Sources */,
 				BEADCF731E7645AA00EFFA01 /* AccountTableController.m in Sources */,
+				BE3C6B921FB69CDE00A24ABD /* UnionAddMemberController.m in Sources */,
 				BEE116F51FAFED3A005FF2CD /* PlantInfomationTableViewController.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */,
@@ -2185,6 +2206,7 @@
 				BE041D101FB0A19A00B471DA /* ZLCameraView.m in Sources */,
 				BE041D0E1FB0A19A00B471DA /* ZLCamera.m in Sources */,
 				BEDECE331E72967200EEA29B /* CancelOrderCell.m in Sources */,
+				BE3C6B9A1FB70D6400A24ABD /* WatingValidMemCell.m in Sources */,
 				BEF0EE2F1E7137CF003E06DB /* OrderDetailTransHeader.m in Sources */,
 				BE93AF2C1E65B88E001F99BC /* SearchCell.m in Sources */,
 				BE8FA4E51E6460F500F92C46 /* User.m in Sources */,
