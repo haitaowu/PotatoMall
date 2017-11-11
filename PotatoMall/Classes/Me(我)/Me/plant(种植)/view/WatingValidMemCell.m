@@ -38,6 +38,9 @@
 #pragma mark - selectors
 - (IBAction)tapValidateBtn:(UIButton*)sender {
     sender.selected = !sender.selected;
+    if (self.validBlock != nil) {
+        self.validBlock(self.model);
+    }
 }
 
 #pragma mark - setters

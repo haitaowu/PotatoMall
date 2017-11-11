@@ -65,6 +65,10 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
     WatingValidMemCell *cell = [tableView dequeueReusableCellWithIdentifier:MemValidateCelID];
 //    plantmodel *model=[self.membersArray objectAtIndex:indexPath.row];
 //    cell.model = model;
+    __block typeof(self) blockSelf = self;
+    cell.validBlock = ^(id model) {
+        [blockSelf performSegueWithIdentifier:@"reValidateSegue" sender:nil];
+    };
     return cell;
 }
 

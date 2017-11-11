@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class plantmodel;
+typedef void(^ReValidCodeBlock)(id model);
 
 @interface WatingValidMemCell : UITableViewCell
 @property(nonatomic,strong) plantmodel *model;
+@property(nonatomic,copy) ReValidCodeBlock validBlock;
 
 @end
