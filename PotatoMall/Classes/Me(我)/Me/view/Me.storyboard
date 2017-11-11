@@ -37,7 +37,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOc-tP-IR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5267" y="738"/>
+            <point key="canvasLocation" x="5051" y="939"/>
         </scene>
         <!--植保操作-->
         <scene sceneID="hB2-M9-18M">
@@ -858,6 +858,7 @@
                         <segue destination="tzJ-jS-rFD" kind="show" identifier="plantinfomation" id="lBp-RM-xDU"/>
                         <segue destination="blE-SY-FyT" kind="show" identifier="unionedPlanApplySegue" id="lIt-Cx-XPq"/>
                         <segue destination="QwQ-hz-uBH" kind="show" identifier="planReviewSegue" id="w5P-m1-Gpd"/>
+                        <segue destination="O2j-M1-tZK" kind="show" identifier="membersSegue" id="jGA-a6-ogM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTj-34-InU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1039,7 +1040,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXx-LU-Mjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5753" y="-194"/>
+            <point key="canvasLocation" x="5053" y="36"/>
         </scene>
         <!--Plant View Controller-->
         <scene sceneID="jNI-Wv-JBT">
@@ -1358,7 +1359,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCR-Ci-DFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7215" y="36"/>
+            <point key="canvasLocation" x="8145" y="836"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Zj8-BY-SjK">
@@ -1612,7 +1613,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8e-VC-jAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5756" y="-1743"/>
+            <point key="canvasLocation" x="5865" y="-2176"/>
         </scene>
         <!--创建联合体-->
         <scene sceneID="wVk-Y5-t1F">
@@ -2255,7 +2256,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MlK-YC-zsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5754" y="-1060"/>
+            <point key="canvasLocation" x="6915" y="-1826"/>
         </scene>
         <!--植保操作-->
         <scene sceneID="cmL-1P-HbL">
@@ -2310,7 +2311,44 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ylb-Df-XVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5094" y="-518"/>
+            <point key="canvasLocation" x="6975" y="-912"/>
+        </scene>
+        <!--Unioned Members Controller-->
+        <scene sceneID="D5D-Lg-dxW">
+            <objects>
+                <viewController id="O2j-M1-tZK" customClass="UnionedMembersController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="odl-9z-LkO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Omm-sZ-r41"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QgU-9d-TCq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Nad-6D-TBb">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="O2j-M1-tZK" id="KXk-8L-l6d"/>
+                                    <outlet property="delegate" destination="O2j-M1-tZK" id="xdT-tj-bVa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Omm-sZ-r41" firstAttribute="top" secondItem="Nad-6D-TBb" secondAttribute="bottom" id="4H9-ls-GN2"/>
+                            <constraint firstItem="Nad-6D-TBb" firstAttribute="top" secondItem="odl-9z-LkO" secondAttribute="bottom" id="CQY-ft-cnD"/>
+                            <constraint firstItem="Nad-6D-TBb" firstAttribute="leading" secondItem="QgU-9d-TCq" secondAttribute="leading" id="W8E-PF-YSA"/>
+                            <constraint firstAttribute="trailing" secondItem="Nad-6D-TBb" secondAttribute="trailing" id="tqg-Lh-Bix"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Nad-6D-TBb" id="sXf-Vc-a4m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3e-Bw-Eup" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5865" y="-519"/>
         </scene>
     </scenes>
     <resources>
@@ -2328,6 +2366,6 @@
         <image name="temp1" width="750" height="356"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VvW-Pq-Z5y"/>
+        <segue reference="pvT-Mc-ioW"/>
     </inferredMetricsTieBreakers>
 </document>

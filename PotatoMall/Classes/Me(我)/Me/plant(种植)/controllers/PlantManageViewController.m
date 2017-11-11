@@ -10,12 +10,12 @@
 #import "plantmodel.h"
 #import "PlantPlanTableViewController.h"
 #import "PlantInfoControllerViewController.h"
-#import "PlantUserViewController.h"
+#import "UnionedMembersController.h"
 #import "plantlistViewController.h"
 #import "plantlistViewController.h"
 #import "PlantInfomationTableViewController.h"
 #import "UnionedPlanApplyController.h"
-#import "UnionedPlanOptStateController.h"
+#import "UnionedMembersController.h"
 
 
 @interface PlantManageViewController ()
@@ -64,10 +64,9 @@
         UnionedPlanApplyController *vc = segue.destinationViewController;
         vc.unionId = self.unionId;
         vc.planState = self.planState;
-//    }else if ([segue.identifier isEqualToString:@"planReviewSegue"]) {
-//        UnionedPlanOptStateController *vc = segue.destinationViewController;
-//        vc.unionId = self.unionId;
-//        vc.planState = self.planState;
+    }else if ([segue.identifier isEqualToString:@"membersSegue"]) {
+        UnionedMembersController *vc = segue.destinationViewController;
+        vc.unionId = self.unionId;
     }
 }
 
@@ -107,7 +106,7 @@
         
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+               [SVProgressHUD dismiss];
                 data=[plantmodel plantWithData:data];
                 [self.mdetail setText:[NSString stringWithFormat:@"联合体余额：%@",[data objectForKey:@"availableBalance"]]];
 //                NSLog(@"findWalletDetail==%@",data);
@@ -130,11 +129,11 @@
         
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
                 data=[plantmodel plantWithData:data];
                 [self.mtitle setText:[data objectForKey:@"unionName"]];
                 time=[data objectForKey:@"createDate"];
-                NSLog(@"msg==%@",data);
+//                NSLog(@"msg==%@",data);
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
@@ -206,10 +205,11 @@
     }
     
     if (indexPath.row==2) {
-        PlantUserViewController *_PlantUserViewController = [[PlantUserViewController alloc] init];
-//        _PlanWebViewViewController.murl = murl;
-        _PlantUserViewController.unionId =self.unionId;
-        [self.navigationController pushViewController:_PlantUserViewController animated:YES];
+        [self performSegueWithIdentifier:@"membersSegue" sender:nil];
+//        UnionedMembersController *_UnionedMembersController = [[UnionedMembersController alloc] init];
+////        _PlanWebViewViewController.murl = murl;
+//        _UnionedMembersController.unionId =self.unionId;
+//        [self.navigationController pushViewController:_UnionedMembersController animated:YES];
     }
     
     if (indexPath.row==3) {

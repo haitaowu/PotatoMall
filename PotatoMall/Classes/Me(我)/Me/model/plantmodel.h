@@ -26,6 +26,13 @@
 @property (nonatomic,copy) NSString *imagesUrls;
 @property(nonatomic,assign) BOOL isOpened;
 
+/**
+ *merber cell status property
+ */
+@property(nonatomic,assign) BOOL isEditing;
+@property(nonatomic,assign) BOOL isSetAdmin;
+
+
 + (NSDictionary*)plantWithData:(id)data;
 + (NSMutableArray*)plantWithDataArray:(id)data;
 + (NSMutableArray*)plantWithDataArray1:(id)data;

@@ -206,9 +206,6 @@
                         [self.laiyuanbutton setTitle:Model.name forState:UIControlStateNormal];
                     }
                 }
-//
-                
-                NSLog(@"msg==%@",data);
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }

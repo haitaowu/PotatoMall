@@ -121,8 +121,8 @@
                     [self.tableView reloadData];
                 }
                 [self requestAddedPlanStateWithUnionId:unionID];
-                NSLog(@"msg==%@",data);
-                NSLog(@"msg==%@",[data objectForKey:@"message"]);
+//                NSLog(@"msg==%@",data);
+//                NSLog(@"msg==%@",[data objectForKey:@"message"]);
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
@@ -268,7 +268,7 @@
         if (indexPath.row==1) {
 //            PlantSettingViewController *_PlantSettingViewController = [[PlantSettingViewController alloc] init];
             //        _PlanWebViewViewController.murl = murl;
-            //        _PlantUserViewController.unionId =self.unionId;
+            //        _UnionedMembersController.unionId =self.unionId;
 //            [self.navigationController pushViewController:_PlantSettingViewController animated:YES];
             [self performSegueWithIdentifier:@"personPlanApplySegue" sender:nil];
         }
