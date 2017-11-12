@@ -49,9 +49,9 @@
 //    }else if ([segue.identifier isEqualToString:@"planStateSegue"]) {
 //        UnionedPlanOptStateController *vc = segue.destinationViewController;
 //        vc.planState = self.planState;
-    }else if ([segue.identifier isEqualToString:@"unionedPlanedSegue"]) {
-        UnionedPlanedRecordController *vc = segue.destinationViewController;
-        vc.unionId = self.unionId;
+//    }else if ([segue.identifier isEqualToString:@"unionedPlanedSegue"]) {
+//        UnionedPlanedRecordController *vc = segue.destinationViewController;
+//        vc.unionId = self.unionId;
     }else if ([segue.identifier isEqualToString:@"personPlanApplySegue"]) {
         PersonPlanApplyOptController *vc = segue.destinationViewController;
         vc.planState = self.planState;

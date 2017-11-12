@@ -340,7 +340,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="植保操作" id="E3i-Ff-MQ5">
-                        <barButtonItem key="rightBarButtonItem" title="完成记录" style="plain" id="1P5-yL-GD9"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成记录" style="plain" id="1P5-yL-GD9">
+                            <connections>
+                                <segue destination="p6M-fu-2c9" kind="show" identifier="finishedSegue" id="2uV-yi-vXB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="catalogNameLabel" destination="e8r-V7-q42" id="rJD-Ve-JKp"/>
@@ -2920,5 +2924,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VvW-Pq-Z5y"/>
+        <segue reference="2uV-yi-vXB"/>
     </inferredMetricsTieBreakers>
 </document>

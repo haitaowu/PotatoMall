@@ -37,6 +37,12 @@ static NSString *MemberCellID = @"MemberCellID";
     [self setupTableview];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"addMemSegue"]) {
         UnionAddMemberController *vc = segue.destinationViewController;
@@ -83,6 +89,7 @@ static NSString *MemberCellID = @"MemberCellID";
     }
     self.originMembersArray = members;
     self.membersArray = self.originMembersArray;
+#warning test add 
     self.obsersArray = members;
 //    self.obsersArray = obsers;
     [self.tableView reloadData];
@@ -135,6 +142,7 @@ static NSString *MemberCellID = @"MemberCellID";
             };
 
             header.memEditConfirmBlock = ^{
+                [blockSelf reqSetAdministrators];
                 [blockSelf updateCellEditStatue:NO];
             };
             
@@ -189,7 +197,7 @@ static NSString *MemberCellID = @"MemberCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == kMemberSectionIdx) {
         UnionedMemCell *cell = [tableView dequeueReusableCellWithIdentifier:MemberCellID];
-        plantmodel *model=[self.membersArray objectAtIndex:indexPath.row];
+        plantmodel *model = [self.membersArray objectAtIndex:indexPath.row];
         __block typeof(self) blockSelf = self;
         cell.addAdminBlock = ^(plantmodel *model) {
             [blockSelf.tableView reloadData];
@@ -229,7 +237,7 @@ static NSString *MemberCellID = @"MemberCellID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
                 NSArray *array = [plantmodel plantWithDataArray:data];
                 [self sortMemberObersByAllUsers:array];
 //                self.originMembersArray = [NSMutableArray arrayWithArray:array];
@@ -244,6 +252,57 @@ static NSString *MemberCellID = @"MemberCellID";
     }
 }
 
+//设置管理员的请求参数
+- (NSMutableArray *)adminMembersParams
+{
+    NSMutableArray *params = [NSMutableArray array];
+    //成员类别 1种植用户 2观察员
+    for (plantmodel *obj in self.membersArray) {
+        if ([obj.unionType isEqualToString:@"2"]) {
+            NSMutableDictionary *admin = [NSMutableDictionary dictionary];
+            admin[@"unionType"] = obj.unionType;
+            admin[@"uid"] = obj.uid;
+            [params addObject:admin];
+        }
+    }
+    return params;
+}
 
+//请求设置管理员
+- (void)reqSetAdministrators
+{
+    NSArray *params = [self adminMembersParams];
+    if (params.count <= 0) {
+        [SVProgressHUD showInfoWithStatus:@"请选择要设置的成员"];
+        return;
+    }
+    
+    if ([RequestUtil networkAvaliable] == NO) {
+    }else{
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        NSString *subUrl = @"user_union/updateBatchUnionUsers";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+                NSString *obj = [dict strValueForKey:@"obj"];
+                if ([obj isEqualToString:@"1"]) {
+                    [SVProgressHUD dismiss];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"设置失败"];
+                    self.membersArray = self.originMembersArray;
+                }
+            }else{
+                [SVProgressHUD showErrorWithStatus:msg];
+                self.membersArray = self.originMembersArray;
+            }
+            [self.tableView reloadData];
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+            self.membersArray = self.originMembersArray;
+            [self.tableView reloadData];
+        }];
+    }
+}
 
 @end
