@@ -10,5 +10,6 @@
 #import "BaseTableViewController.h"
 
 @interface AddMemberValidController : BaseTableViewController
+@property(nonatomic,copy) NSString *phoneNum;
 
 @end

@@ -80,14 +80,21 @@
             self.roleType.hidden = NO;
         }
     }else {
-        [self.roleType setBackgroundColor:[UIColor blueColor]];
-        [self.roleType setTitle:@"普通用户" forState:UIControlStateNormal];
-        if (model.isEditing == YES) {
-            self.leadingMargin.constant = kImgNameMargin;
-            self.roleType.hidden = YES;
-        }else{
+        if ([model.verifyStatu isEqualToString:@"1"]) {
+            self.roleType.hidden = NO;
             self.leadingMargin.constant = 0;
-            self.roleType.hidden = YES;
+            [self.roleType setBackgroundColor:[UIColor redColor]];
+            [self.roleType setTitle:@"未验证" forState:UIControlStateNormal];
+        }else{
+            [self.roleType setBackgroundColor:[UIColor blueColor]];
+            [self.roleType setTitle:@"普通用户" forState:UIControlStateNormal];
+            if (model.isEditing == YES) {
+                self.leadingMargin.constant = kImgNameMargin;
+                self.roleType.hidden = YES;
+            }else{
+                self.leadingMargin.constant = 0;
+                self.roleType.hidden = YES;
+            }
         }
     }
     

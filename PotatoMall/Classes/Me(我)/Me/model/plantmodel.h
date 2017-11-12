@@ -24,6 +24,7 @@
 @property (nonatomic,copy) NSString *unionType;
 @property (nonatomic,copy) NSString *status;
 @property (nonatomic,copy) NSString *imagesUrls;
+@property (nonatomic,copy) NSString *verifyStatu;
 @property(nonatomic,assign) BOOL isOpened;
 
 /**

@@ -29,6 +29,7 @@
     model.unionType = [self.unionType mutableCopy];
     model.status = [self.status mutableCopy];
     model.imagesUrls = [self.status mutableCopy];
+    model.verifyStatu = [self.verifyStatu mutableCopy];
     model.isOpened = self.isOpened;
     model.isEditing = self.isEditing;
     model.isSetAdmin = self.isSetAdmin;

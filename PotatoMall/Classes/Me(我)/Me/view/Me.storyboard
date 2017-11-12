@@ -2355,7 +2355,7 @@
                                                     <rect key="frame" x="16" y="8" width="288" height="49"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -2794,7 +2794,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVj-sj-6yU" customClass="RadiusButton">
                                                     <rect key="frame" x="210" y="2.5" width="80" height="49"/>
@@ -2889,7 +2889,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="添加成员" id="9rV-Gq-Bv8"/>
                     <connections>
-                        <outlet property="memPhoneField" destination="29q-Up-77P" id="MS8-8c-EFJ"/>
+                        <outlet property="codeField" destination="29q-Up-77P" id="87z-sR-w7s"/>
                         <outlet property="phoneLabel" destination="xby-wM-gFq" id="9qL-jP-Kqz"/>
                     </connections>
                 </tableViewController>

@@ -12,7 +12,7 @@
 
 @interface AddMemberValidController ()
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UITextField *memPhoneField;
+@property (weak, nonatomic) IBOutlet UITextField *codeField;
 
 
 @end
@@ -22,73 +22,69 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.memPhoneField.layer.borderColor = RGBA(217, 217, 217, 0.8).CGColor;
-    self.memPhoneField.layer.borderWidth = 0.8;
+    
+    self.phoneLabel.text = self.phoneNum;
+    
+    self.codeField.layer.borderColor = RGBA(217, 217, 217, 0.8).CGColor;
+    self.codeField.layer.borderWidth = 0.8;
     
     UIView *leftView = [[UIView alloc] init];
     CGFloat viewW = 10;
     CGFloat viewH = 50;
     CGRect leftF = CGRectMake(0, 0, viewW, viewH);
     leftView.frame = leftF;
-    self.memPhoneField.leftView = leftView;
-    self.memPhoneField.leftViewMode = UITextFieldViewModeAlways;
+    self.codeField.leftView = leftView;
+    self.codeField.leftViewMode = UITextFieldViewModeAlways;
     
 }
 
 #pragma mark - selectors
+//继续添加成员
 - (IBAction)tapContinueBtn:(UIButton*)sender{
+    [self.view endEditing:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //提交
 - (IBAction)tapValidateBtn:(UIButton*)sender{
-//    NSString *unionName = self.unionNameField.text;
-//    NSString *detailAdr = self.detailAdrField.text;
-//    NSString *areaStr = self.areaField.text;
-//    if (unionName.length <= 0) {
-//        [SVProgressHUD showInfoWithStatus:@"输入名称"];
-//        return;
-//    }else if(self.adrInfo == nil){
-//        [SVProgressHUD showInfoWithStatus:@"选择地址"];
-//        return;
-//    }else if(detailAdr.length <= 0){
-//        [SVProgressHUD showInfoWithStatus:@"输入详细地址"];
-//        return;
-//    }else if(areaStr.length <= 0){
-//        [SVProgressHUD showInfoWithStatus:@"输入种植面积"];
-//        return;
-//    }else{
-//        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//        params[@"unionName"] = unionName;
-//        params[@"infoProvince"] = [self.adrInfo objectForKey:@"infoProvince"];
-//        params[@"infoCity"] = [self.adrInfo objectForKey:@"infoCity"];
-//        params[@"infoCounty"] = [self.adrInfo objectForKey:@"infoCounty"];
-//        params[@"infoAddress"] = detailAdr;
-//        params[@"applyArea"] = areaStr;
-//        params[@"checkStatus"] = @"1";
-//        UserModel *model = [UserModelUtil sharedInstance].userModel;
-//        params[@"belongUserId"] = model.userId;
-//        [self submitCreateUnionWith:params];
-//    }
-    HTLog(@"tapSubmitReqBtn");
+    NSString *codeStr = self.codeField.text;
+    if (codeStr.length <= 0) {
+        [SVProgressHUD showInfoWithStatus:@"输入验证码"];
+        return;
+    }
+   [self.view endEditing:YES];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.phoneNum,kPhone,codeStr,kVerfiyCode,nil];
+    [self requestValidateCodeWithParams:params];
 }
+
 
 
 
 #pragma mark - requset server
-- (void)submitCreateUnionWith:(NSDictionary*)params
+//验证验证码
+- (void)requestValidateCodeWithParams:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView reloadData];
     }else{
-        NSString *subUrl = @"user_union/saveOrUpdateUserUnion";
+        [SVProgressHUD showWithStatus:@"验证验证码"];
+        NSString *subUrl = @"user/checkVerfiyCode";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-        [RequestUtil POSTWithURL:reqUrl params:params attach:nil reqSuccess:^(int status, NSString *msg, id data) {
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:@"创建联合体成功"];
+                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+                NSLog(@"request validate code data =%@",dict);
+                NSString *obj = [dict strValueForKey:@"obj"];
+                if ([obj isEqualToString:@"true"]) {
+                    [SVProgressHUD dismiss];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"验证失败"];
+                }
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
         } reqFail:^(int type, NSString *msg) {
-            HTLog(@"error msg = %@",msg);
+            [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
