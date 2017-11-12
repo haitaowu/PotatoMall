@@ -9,7 +9,7 @@
 #import "WaitingMembersController.h"
 #import "plantmodel.h"
 #import "WatingValidMemCell.h"
-
+#import "ReValidMemberController.h"
 
 static NSString *MemValidateCelID = @"MemValidateCelID";
 
@@ -22,17 +22,47 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
 
 
 @implementation WaitingMembersController
-
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self setupBase];
     [self setupTableview];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self reqUnValidMembers];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"reValidateSegue"]) {
+        ReValidMemberController *vc = segue.destinationViewController;
+        vc.model = sender;
+    }
+}
+
 #pragma mark - private methods
+- (void)filterUnValidateMembersWith:(NSArray*)array
+{
+    NSMutableArray *unValiMems = [NSMutableArray array];
+    //verifyStatu : 1未验证 2已验证
+    for (plantmodel *obj in array) {
+        if ([obj.verifyStatu isEqualToString:@"1"]) {
+            [unValiMems addObject:obj];
+        }
+    }
+    self.membersArray = unValiMems;
+    [self.tableView reloadData];
+}
 
 #pragma mark - setup
-- (void)setupBase
+- (void)reqUnValidMembers
 {
     NSDictionary *params = [self umionedMembersParams];
     [self reqUnionedMembers:params];
@@ -57,17 +87,16 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [self.membersArray count];
-    return 5;
+    return [self.membersArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WatingValidMemCell *cell = [tableView dequeueReusableCellWithIdentifier:MemValidateCelID];
-//    plantmodel *model=[self.membersArray objectAtIndex:indexPath.row];
-//    cell.model = model;
+    plantmodel *model=[self.membersArray objectAtIndex:indexPath.row];
+    cell.model = model;
     __block typeof(self) blockSelf = self;
     cell.validBlock = ^(id model) {
-        [blockSelf performSegueWithIdentifier:@"reValidateSegue" sender:nil];
+        [blockSelf performSegueWithIdentifier:@"reValidateSegue" sender:model];
     };
     return cell;
 }
@@ -91,17 +120,19 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
                 NSArray *array = [plantmodel plantWithDataArray:data];
+                [self filterUnValidateMembersWith:array];
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
         }];
     }
 }
+
 
 
 

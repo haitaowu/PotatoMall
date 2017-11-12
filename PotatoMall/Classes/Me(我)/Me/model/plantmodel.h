@@ -25,6 +25,7 @@
 @property (nonatomic,copy) NSString *status;
 @property (nonatomic,copy) NSString *imagesUrls;
 @property (nonatomic,copy) NSString *verifyStatu;
+@property (nonatomic,copy) NSString *createDate;
 @property(nonatomic,assign) BOOL isOpened;
 
 /**

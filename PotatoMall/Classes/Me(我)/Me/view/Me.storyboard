@@ -2414,7 +2414,7 @@
                     <navigationItem key="navigationItem" title="添加成员" id="Kmh-O2-h0Y">
                         <barButtonItem key="rightBarButtonItem" title="等待验证" id="ihF-j6-qJv">
                             <connections>
-                                <segue destination="EXO-uu-zS2" kind="show" id="hLI-lb-Xjp"/>
+                                <segue destination="EXO-uu-zS2" kind="show" identifier="waitValidSegue" id="hLI-lb-Xjp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2491,7 +2491,7 @@
                     <navigationItem key="navigationItem" title="联合体成员" id="oY9-ia-nVq">
                         <barButtonItem key="rightBarButtonItem" title="添加成员" style="plain" id="D9E-hT-fiw">
                             <connections>
-                                <segue destination="l1R-9t-b8y" kind="show" id="dal-ZG-I4Z"/>
+                                <segue destination="l1R-9t-b8y" kind="show" identifier="addMemSegue" id="dal-ZG-I4Z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2597,7 +2597,7 @@
                                                     <rect key="frame" x="16" y="8" width="288" height="49"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -2621,6 +2621,9 @@
                                                     <state key="normal" title="重发验证码">
                                                         <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="tapReqValidateCodeBtn:" destination="V3h-eT-Th2" eventType="touchUpInside" id="8s8-8K-Ysc"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2670,6 +2673,7 @@
                     <connections>
                         <outlet property="codeField" destination="cYA-SY-wTd" id="s8n-Qh-Rtv"/>
                         <outlet property="dateLabel" destination="s7h-MX-gyz" id="rd9-8o-arw"/>
+                        <outlet property="phoneLabel" destination="mKV-gY-LgG" id="XTc-dk-CsB"/>
                         <outlet property="sendCodeBtn" destination="Beq-Ug-ii6" id="KaP-Xp-mYZ"/>
                     </connections>
                 </tableViewController>

@@ -9,6 +9,7 @@
 #import "UnionAddMemberController.h"
 #import "SVProgressHUD.h"
 #import "AddMemberValidController.h"
+#import "WaitingMembersController.h"
 
 @interface UnionAddMemberController ()
 @property (weak, nonatomic) IBOutlet UITextField *memPhoneField;
@@ -36,6 +37,9 @@
     if ([segue.identifier isEqualToString:@"validateCodeSegue"]) {
         AddMemberValidController *vc = segue.destinationViewController;
         vc.phoneNum = self.memPhoneField.text;
+    }else if ([segue.identifier isEqualToString:@"waitValidSegue"]) {
+        WaitingMembersController *vc = segue.destinationViewController;
+        vc.unionId = self.unionId;
     }
 }
 

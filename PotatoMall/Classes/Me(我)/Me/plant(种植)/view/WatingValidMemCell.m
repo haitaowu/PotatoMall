@@ -47,8 +47,8 @@
 - (void)setModel:(plantmodel *)model
 {
     _model = model;
-//    self.nameLabel.text = model.userName;
-//    self.phoneLabel.text = model.phone;
+    self.dateLabel.text = model.createDate;
+    self.phoneLabel.text = model.phone;
 }
 
 

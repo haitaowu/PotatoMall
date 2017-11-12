@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 
-@interface ReValidMemberController : BaseTableViewController
+@class plantmodel;
 
+@interface ReValidMemberController : BaseTableViewController
+@property(nonatomic,strong) plantmodel *model;
 @end

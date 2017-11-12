@@ -10,5 +10,5 @@
 #import "BaseTableViewController.h"
 
 @interface UnionAddMemberController : BaseTableViewController
-
+@property (nonatomic,strong)NSString * unionId;
 @end

@@ -11,7 +11,7 @@
 #import "UnionedMemCell.h"
 #import "UnionedMemHeader.h"
 #import "UnionedObserHeader.h"
-
+#import "UnionAddMemberController.h"
 
 static NSString *UnionedMemHeaderID = @"UnionedMemHeaderID";
 static NSString *UnionedObserHeaderID = @"UnionedObserHeaderID";
@@ -30,11 +30,18 @@ static NSString *MemberCellID = @"MemberCellID";
 
 
 @implementation UnionedMembersController
-
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupBase];
     [self setupTableview];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"addMemSegue"]) {
+        UnionAddMemberController *vc = segue.destinationViewController;
+        vc.unionId = self.unionId;
+    }
 }
 
 #pragma mark - private methods
