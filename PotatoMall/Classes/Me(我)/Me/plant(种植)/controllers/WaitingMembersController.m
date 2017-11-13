@@ -16,7 +16,7 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
 
 #define kMemberSectionIdx               0
 
-@interface WaitingMembersController ()
+@interface WaitingMembersController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property(nonatomic,strong) NSArray *membersArray;
 @end
 
@@ -44,6 +44,7 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
     if ([segue.identifier isEqualToString:@"reValidateSegue"]) {
         ReValidMemberController *vc = segue.destinationViewController;
         vc.model = sender;
+        vc.unionId = self.unionId;
     }
 }
 
@@ -72,6 +73,9 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
 {
     UINib *memNib = [UINib nibWithNibName:@"WatingValidMemCell" bundle:nil];
     [self.tableView registerNib:memNib forCellReuseIdentifier:MemValidateCelID];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
 }
 
 #pragma mark - selectors
@@ -101,6 +105,29 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
     return cell;
 }
 
+
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else if ((self.membersArray != nil) && (self.membersArray.count == 0)){
+        [self.tableView.mj_footer setHidden:YES];
+        NSString *text = @"暂无待验证成员";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
+}
+
 #pragma mark - requset server
 - (NSDictionary *)umionedMembersParams
 {
@@ -125,10 +152,12 @@ static NSString *MemValidateCelID = @"MemValidateCelID";
                 [self filterUnValidateMembersWith:array];
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
+                self.membersArray = [NSMutableArray array];
             }
 //            [self.tableView reloadData];
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
+            self.membersArray = [NSMutableArray array];
         }];
     }
 }

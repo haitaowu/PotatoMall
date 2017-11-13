@@ -17,11 +17,17 @@
 
 
 @implementation PlanOptFooter
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self setupBase];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if(self != nil){
+        [self setupBase];
     }
     return self;
 }
@@ -32,6 +38,9 @@
     __block typeof(self) blockSelf = self;
     self.imgsView.imgChangeBlock = ^(NSArray *imgs, CGFloat height) {
         blockSelf.imgViewHeight = height;
+        if (imgs.count > 0) {
+            self.imgs = [NSMutableArray arrayWithArray:imgs];
+        }
     };
 }
 

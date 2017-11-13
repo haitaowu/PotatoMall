@@ -29,7 +29,19 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setupUI];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.countTimer invalidate];
+    self.countTimer = nil;
+}
+
+#pragma mark - private methods
+- (void)setupUI
+{
     self.dateLabel.text = self.model.createDate;
     self.phoneLabel.text = self.model.phone;
     
@@ -43,16 +55,8 @@
     leftView.frame = leftF;
     self.codeField.leftView = leftView;
     self.codeField.leftViewMode = UITextFieldViewModeAlways;
-    
-}
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.countTimer invalidate];
-    self.countTimer = nil;
 }
 
-#pragma mark - private methods
 - (void)cuntingDown
 {
     [self updateCodeBtnUIWith:NO];
@@ -88,6 +92,11 @@
     }
 }
 
+- (void)updateMemberStatue
+{
+    NSDictionary *params = [self paramUpdateMemberStatue];
+    [self requestUpdateMemberWithParams:params];
+}
 
 #pragma mark - selectors
 //点击请求验证码
@@ -95,8 +104,10 @@
     [self reqValidateCode];
 }
 
-//提交验证
+//提交验证验证码
 - (IBAction)tapSubmitCodeBtn:(UIButton*)sender{
+    [self updateMemberStatue];
+    
     NSString *codeStr = self.codeField.text;
     if (codeStr.length <= 0) {
         [SVProgressHUD showInfoWithStatus:@"输入验证码"];
@@ -106,6 +117,12 @@
     NSString *phone = self.model.phone;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phone,kPhone,codeStr,kVerfiyCode,nil];
     [self requestValidateCodeWithParams:params];
+}
+
+#pragma mark - UIScorllView delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:NO];
 }
 
 #pragma mark - requset server
@@ -130,7 +147,7 @@
     }];
 }
 
-//验证验证码
+//验证验证码是否正确
 - (void)requestValidateCodeWithParams:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
@@ -138,6 +155,50 @@
     }else{
         [SVProgressHUD showWithStatus:@"验证验证码"];
         NSString *subUrl = @"user/checkVerfiyCode";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+                NSString *obj = [dict strValueForKey:@"obj"];
+                if ([obj isEqualToString:@"true"]) {
+                    [SVProgressHUD dismiss];
+                    [self updateMemberStatue];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"验证失败"];
+                }
+            }else{
+                [SVProgressHUD showErrorWithStatus:msg];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
+//更新合作社成员参数
+- (NSDictionary *)paramUpdateMemberStatue
+{
+    UserModel *userModel = [UserModelUtil sharedInstance].userModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"uid"] = self.model.uid;
+    params[@"unionId"] = self.unionId;
+    params[@"userId"] = userModel.userId;
+    params[@"phone"] = self.model.phone;
+    //1 创建人 2 管理员 3普通用户
+    params[@"unionType"] = @"3";
+    //成员类别 1种植用户 2观察员
+    params[@"userType"] = @"1";
+    return params;
+}
+
+//更新合作社成员状态
+- (void)requestUpdateMemberWithParams:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView reloadData];
+    }else{
+        [SVProgressHUD showWithStatus:@""];
+        NSString *subUrl = @"user_union/saveOrUpdateUnionUsers";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
@@ -158,16 +219,15 @@
     }
 }
 
-#pragma mark - UIScorllView delegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    [self.view endEditing:NO];
-}
-
-#pragma mark - UITableView --- Table view  delegate
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 16;
-//}
-
+/**
+ {
+ createDate = "";
+ phone = 13900000004;
+ uid = 247;
+ unionId = 100;
+ unionType = 3;
+ userId = 2428;
+ userType = 1;
+ }
+ */
 @end

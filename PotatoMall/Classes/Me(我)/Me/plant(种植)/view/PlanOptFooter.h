@@ -14,4 +14,5 @@ typedef void(^OptConfirmBlock)();
 @interface PlanOptFooter : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet HTPickedImagesView *imgsView;
 @property (nonatomic,copy) OptConfirmBlock confirmBlock;
+@property(nonatomic,strong) NSMutableArray *imgs;
 @end

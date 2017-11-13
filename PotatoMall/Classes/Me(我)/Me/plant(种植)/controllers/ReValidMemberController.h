@@ -13,4 +13,5 @@
 
 @interface ReValidMemberController : BaseTableViewController
 @property(nonatomic,strong) plantmodel *model;
+@property(nonatomic,copy) NSString *unionId;
 @end

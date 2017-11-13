@@ -85,9 +85,41 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     
     [collectionView registerClass:[MeMenuCollectionViewCell class] forCellWithReuseIdentifier:MeMenuCellID];
 }
+
+
+- (void)updateUserInfoUI
+{
+    
+    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
+        UserModel *model = [UserModelUtil sharedInstance].userModel;
+        NSString *nickName = model.nickName;
+        self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
+        NSString *roleTitle ;
+        if ((nickName.length <= 0) || (nickName == nil)) {
+            roleTitle = model.phone;
+        }else{
+            roleTitle = model.nickName;
+        }
+        self.nickNameLabel.text = [NSString stringWithFormat:@"%@",roleTitle];
+        
+        [[UserModelUtil sharedInstance] avatarImageWithBlock:^(UIImage *img) {
+            self.avatarView.image = img;
+        }];
+        
+    }else{
+        self.nickNameLabel.text = @"游客";
+        self.roleLabel.text = @"";
+        NSString *availableBalance = @"账户余额:0.00元";
+        self.moneyLabel.text = availableBalance;
+        self.avatarView.image = [UIImage imageNamed:@"avatar"];
+    }
+}
+
+#pragma mark - UICollectionView Data source
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 5;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     MeMenuCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MeMenuCellID forIndexPath:indexPath];
@@ -100,13 +132,11 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
     }else{
             [cell.logoimage setImage:[UIImage imageNamed:[self.menusDataImage objectAtIndex:indexPath.row]]];
     }
-    
     return cell;
-    
-    
 }
 
-// 选中某item
+
+#pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -130,33 +160,6 @@ static NSString *MeMenuCellID = @"MeMenuCellID";
         }else{
             [self showLoginView];
         }
-    }
-    
-    
-}
-
-
-- (void)updateUserInfoUI
-{
-    [[UserModelUtil sharedInstance] avatarImageWithBlock:^(UIImage *img) {
-        self.avatarView.image = img;
-    }];
-    if ([[UserModelUtil sharedInstance] isUserLogin] == YES) {
-        UserModel *model = [UserModelUtil sharedInstance].userModel;
-        NSString *nickName = model.nickName;
-        self.roleLabel.text = [UserModelUtil userRoleWithType:model.userType];
-        NSString *roleTitle ;
-        if ((nickName.length <= 0) || (nickName == nil)) {
-            roleTitle = model.phone;
-        }else{
-            roleTitle = model.nickName;
-        }
-        self.nickNameLabel.text = [NSString stringWithFormat:@"%@",roleTitle];
-    }else{
-        self.nickNameLabel.text = @"游客";
-        self.roleLabel.text = @"";
-        NSString *availableBalance = @"账户余额:0.00元";
-        self.moneyLabel.text = availableBalance;
     }
 }
 

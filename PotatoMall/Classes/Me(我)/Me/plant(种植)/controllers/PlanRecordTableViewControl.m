@@ -17,7 +17,7 @@ static NSString *PlantRecordHeaderID = @"PlantRecordHeaderNibID";
 static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 
-@interface PlanRecordTableViewControl ()
+@interface PlanRecordTableViewControl ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (weak, nonatomic) IBOutlet UILabel *platAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *platAreaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *catalogNameLabel;
@@ -40,6 +40,9 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     [self.tableView registerNib:PlantRecordHeaderNib forHeaderFooterViewReuseIdentifier:PlantRecordHeaderID];
     UINib *PlantRecordCellNib = [UINib nibWithNibName:@"PlantRecordCell" bundle:nil];
     [self.tableView registerNib:PlantRecordCellNib forCellReuseIdentifier:PlantRecordCellID];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
 }
 
 - (void)setupBase
@@ -80,7 +83,28 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     height += imgVH;
     return height;
 }
-#pragma mark - selectors
+
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else if ((self.finishedRecords != nil) && (self.finishedRecords.count == 0)){
+        [self.tableView.mj_footer setHidden:YES];
+        NSString *text = @"暂无植保记录";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
+}
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -160,9 +184,13 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
                 [self fileterFinishedRecordsUpdateUIWithRecords:list];
                 NSLog(@"planted record list =%@",list);
             }else{
+                self.finishedRecords = [NSArray array];
+                [self.tableView reloadData];
             }
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
+            self.finishedRecords = [NSArray array];
+            [self.tableView reloadData];
         }];
         
     }

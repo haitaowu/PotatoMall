@@ -72,7 +72,6 @@
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
                 NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
-                NSLog(@"request validate code data =%@",dict);
                 NSString *obj = [dict strValueForKey:@"obj"];
                 if ([obj isEqualToString:@"true"]) {
                     [SVProgressHUD dismiss];

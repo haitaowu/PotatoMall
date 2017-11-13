@@ -79,6 +79,16 @@
     }];
 }
 
+/**
+ *无数据string
+ */
++ (NSAttributedString*)emptyTitleWithTxt:(NSString*)txt
+{
+    NSDictionary *attributes = @{NSFontAttributeName: kEmptyDataTitleFont,
+                                 NSForegroundColorAttributeName: UIColorFromRGB(0x888888)};
+    return [[NSAttributedString alloc] initWithString:txt attributes:attributes];
+}
+
 #pragma mark - private methods
 + (void)shareImageWithUrl:(NSString*)imgUrl finishedBlock:(void(^)(UIImage *img))finishedBlock
 {

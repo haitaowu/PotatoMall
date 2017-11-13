@@ -33,8 +33,14 @@ static NSString *MemberCellID = @"MemberCellID";
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupBase];
+    self.title = @"联合体成员";
     [self setupTableview];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setupBase];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -98,7 +104,6 @@ static NSString *MemberCellID = @"MemberCellID";
 #pragma mark - setup
 - (void)setupBase
 {
-    self.title = @"联合体成员";
     NSDictionary *params = [self umionedMembersParams];
     [self reqUnionedMembers:params];
 }

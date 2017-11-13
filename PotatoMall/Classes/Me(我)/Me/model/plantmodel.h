@@ -23,9 +23,12 @@
 @property (nonatomic,copy) NSString *userType;
 @property (nonatomic,copy) NSString *unionType;
 @property (nonatomic,copy) NSString *status;
+@property (nonatomic,copy) NSString *sort;
+@property (nonatomic,copy) NSString *score;
 @property (nonatomic,copy) NSString *imagesUrls;
 @property (nonatomic,copy) NSString *verifyStatu;
 @property (nonatomic,copy) NSString *createDate;
+@property (nonatomic,copy) NSString *platTemplateDetailId;
 @property(nonatomic,assign) BOOL isOpened;
 
 /**

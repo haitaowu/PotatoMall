@@ -78,8 +78,8 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableDictionary *finalParams = [self globalParamsWith:params];
-    NSData *imgData = UIImagePNGRepresentation(img);
-    finalParams[@"avatar"] = [[NSString alloc] initWithData:imgData encoding:NSUTF8StringEncoding];
+//    NSData *imgData = UIImagePNGRepresentation(img);
+//    finalParams[@"avatar"] = [[NSString alloc] initWithData:imgData encoding:NSUTF8StringEncoding];
     manager.requestSerializer.timeoutInterval = kRequestTimerout;
     [manager POST:url parameters:finalParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSData *imgData = UIImagePNGRepresentation(img);
@@ -103,6 +103,52 @@
     }];
 }
 
+
+/**
+ *  发送一个POST请求 请求服务器 带有多个图片
+ *
+ *  @param url     请求路径
+ *  @param params  请求参数
+ *  @param success 请求成功后的回调
+ *  @param fail 请求失败后的回调
+ */
++ (void)POSTWithURL:(NSString *)url params:(id)params attachs:(NSArray*)attachs reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail
+{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableDictionary *finalParams = [self globalParamsWith:params];
+    NSMutableArray *imgDatas = [NSMutableArray array];
+    for (UIImage *img in attachs) {
+        NSData *oneData = UIImagePNGRepresentation(img);
+        [imgDatas addObject:oneData];
+    }
+    manager.requestSerializer.timeoutInterval = kRequestTimerout;
+    [manager POST:url parameters:finalParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        for (int i = 0; i < imgDatas.count; i++) {
+            NSData *imgData = imgDatas[i];
+            // 可以在上传时使用当前的系统事件作为文件名
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            // 设置时间格式
+            [formatter setDateFormat:@"yyyyMMddHHmmss"];
+            NSString *dateString = [formatter stringFromDate:[NSDate date]];
+            NSString *fileName = [NSString  stringWithFormat:@"%@.png", dateString];
+            [formData appendPartWithFileData:imgData name:@"picfiles" fileName:fileName mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSNumber *codeNum = responseObject[@"code"];
+        NSString *msg = responseObject[@"msg"];
+        id data = responseObject[@"data"];
+        if ([codeNum intValue] == StatusTypSuccess) {
+            success(StatusTypSuccess,msg,data);
+        }else{
+            fail([codeNum intValue],msg);
+        }
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        fail(StatusTypNetWorkError,@"网络连接问题");
+    }];
+}
 
 
 //ht重新登录获取

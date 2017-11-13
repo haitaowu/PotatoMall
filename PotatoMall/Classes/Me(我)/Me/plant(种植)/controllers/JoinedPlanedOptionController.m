@@ -32,7 +32,7 @@ static NSString *PlanFollowHeaderID = @"PlanFollowHeaderNibID";
 static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 
-@interface JoinedPlanedOptionController ()
+@interface JoinedPlanedOptionController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (weak, nonatomic) IBOutlet UILabel *platAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *platAreaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *catalogNameLabel;
@@ -93,6 +93,9 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     [self.tableView registerNib:PlantRecordCellNib forCellReuseIdentifier:PlantRecordCellID];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PlantListTableViewCell" bundle:nil] forCellReuseIdentifier:FollowRecordCellID];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
 }
 
 - (void)setupBase
@@ -203,7 +206,18 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     [self.navigationController pushViewController:_PlanWebViewViewController animated:YES];
 }
 
-
+- (BOOL)shouldDisplayEmptyTitle
+{
+    if ((self.marchRecords != nil) && (self.marchRecords.count == 0)){
+        if ((self.followRecords != nil) && (self.followRecords.count == 0)){
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        return NO;
+    }
+}
 
 #pragma mark - selectors
 
@@ -357,6 +371,28 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 }
 
 
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else if ([self shouldDisplayEmptyTitle]){
+        [self.tableView.mj_footer setHidden:YES];
+        NSString *text = @"暂无植保记录";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
+}
+
 #pragma mark - requset server
  //1.种植信息类型查询 - 请求参数
  - (NSDictionary *)paramPlantedType
@@ -465,10 +501,15 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 //                [_mtableview reloadData];
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
+                self.marchRecords = [NSMutableArray array];
+                self.followRecords = [NSMutableArray array];
+                [self.tableView reloadData];
             }
 
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
+            self.marchRecords = [NSMutableArray array];
+            self.followRecords = [NSMutableArray array];
         }];
         
     }
@@ -476,31 +517,43 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 
 - (void)updatePlateRecordWith:(plantmodel*)model
 {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"platTemplateDetailId"] = model.platTemplateDetailId;
+    params[@"uid"] = model.uid;
+    params[@"catalogName"] = model.catalogName;
+    params[@"content"] = model.content;
+    params[@"imagesUrls"] = model.imagesUrls;
+    params[@"score"] = model.score;
+    params[@"sort"] = model.sort;
+    params[@"status"] = model.status;
+    params[@"platDate"] = model.platDate;
+    params[@"purchase"] = @"purchase";
+    [self updatePlateRecordWithParams:params];
 }
 
 //更新植保记录
 - (void)updatePlateRecordWithParams:(NSDictionary*)params
 {
+    NSMutableArray *imgs = self.optFooter.imgs;
+    [imgs removeLastObject];
     if ([RequestUtil networkAvaliable] == NO) {
     }else{
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
         NSString *subUrl = @"plat/updateUserPlatRecord";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+        [RequestUtil POSTWithURL:reqUrl params:params attachs:imgs reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
                 NSMutableArray *list =[plantmodel plantWithDataArray1:data];
                 self.plaRecords = list;
                 [self sortRecordsWithArray:list];
                 NSLog(@"planted record list =%@",list);
-                //                [_mtableview reloadData];
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showErrorWithStatus:msg];
         }];
-        
     }
 }
 @end
