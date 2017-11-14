@@ -413,7 +413,8 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+//                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
             }else{
                 [SVProgressHUD showErrorWithStatus:msg];
             }
@@ -511,7 +512,6 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
             self.marchRecords = [NSMutableArray array];
             self.followRecords = [NSMutableArray array];
         }];
-        
     }
 }
 
@@ -528,6 +528,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     params[@"status"] = model.status;
     params[@"platDate"] = model.platDate;
     params[@"purchase"] = @"purchase";
+    params[@"platSendRecordId"] = @"platSendRecordId";
     [self updatePlateRecordWithParams:params];
 }
 

@@ -11,7 +11,7 @@
 #import "plantmodel.h"
 #import "PlanWebViewViewController.h"
 
-@interface PlantPlanViewController ()
+@interface PlantPlanViewController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 
 @end
 
@@ -21,6 +21,8 @@
     [super viewDidLoad];
     self.title=@"合作社植保计划";
 //    [self.mtableview setHidden:YES];
+    _mtableview.emptyDataSetSource = self;
+    _mtableview.emptyDataSetDelegate = self;
      [_mtableview registerNib:[UINib nibWithNibName:@"PlantListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listIdentifier"];
     [self reqUserUnionInformation];
 }
@@ -88,7 +90,7 @@
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-               [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
                 NSDictionary *dataDict = [DataUtil dictionaryWithJsonStr:data];
                 NSDictionary *obj = dataDict[@"obj"];
                 NSLog(@"obj = %@ data = %@",obj,dataDict);
@@ -125,9 +127,11 @@
 //                    [self.infoview setHidden:NO];
 //                }
             }else{
+                mlistdata = [NSMutableArray array];
                 [SVProgressHUD showErrorWithStatus:msg];
             }
         } reqFail:^(int type, NSString *msg) {
+            mlistdata = [NSMutableArray array];
             [SVProgressHUD showErrorWithStatus:msg];
         }];
         
@@ -180,6 +184,27 @@
     return cell;
 }
 
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else if ((mlistdata != nil) && (mlistdata.count == 0)){
+        [_mtableview.mj_footer setHidden:YES];
+        NSString *text = @"暂无植保操作";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
+}
 
 
 @end

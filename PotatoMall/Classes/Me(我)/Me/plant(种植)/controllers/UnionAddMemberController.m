@@ -42,6 +42,13 @@
         vc.unionId = self.unionId;
     }
 }
+#pragma mark - private methods
+//保存/更新合作社成员状态
+- (void)updateMemberStatue
+{
+    NSDictionary *params = [self paramUpdateMemberStatue];
+    [self requestUpdateMemberWithParams:params];
+}
 
 #pragma mark - selectors
 //确认添加成员
@@ -56,7 +63,6 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phoneTxt,kPhone,@"3",kReqType,nil];
     [self requestCodeWithParams:params];
 }
-
 
 
 #pragma mark - requset server
@@ -76,7 +82,7 @@
                 NSString *obj = [dict strValueForKey:@"obj"];
                 if ([obj isEqualToString:@"1"]) {
                     [SVProgressHUD dismiss];
-                    [self performSegueWithIdentifier:@"validateCodeSegue" sender:nil];
+                    [self updateMemberStatue];
                 }else{
                     [SVProgressHUD showErrorWithStatus:@"用户不存在"];
                 }
@@ -89,6 +95,50 @@
         }];
     }
 }
+
+//保存/更新合作社成员参数
+- (NSDictionary *)paramUpdateMemberStatue
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *phone = self.memPhoneField.text;
+    params[@"unionId"] = self.unionId;
+    params[@"phone"] = phone;
+    //1 创建人 2 管理员 3普通用户
+    params[@"unionType"] = @"3";
+    //成员类别 1种植用户 2观察员
+    params[@"userType"] = @"1";
+    return params;
+}
+
+//保存/更新合作社成员状态
+- (void)requestUpdateMemberWithParams:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView reloadData];
+    }else{
+        [SVProgressHUD showWithStatus:@""];
+        NSString *subUrl = @"user_union/saveOrUpdateUnionUsers";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+                NSString *obj = [dict valueForKey:@"obj"];
+                if (obj != nil) {
+                    [SVProgressHUD dismiss];
+                    [self performSegueWithIdentifier:@"validateCodeSegue" sender:nil];
+//                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    [SVProgressHUD showErrorWithStatus:@"验证失败"];
+                }
+            }else{
+                [SVProgressHUD showErrorWithStatus:msg];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }];
+    }
+}
+
 
 #pragma mark - UIScorllView delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView

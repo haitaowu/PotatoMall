@@ -22,7 +22,7 @@ static NSString *MemberCellID = @"MemberCellID";
 
 @interface UnionedMembersController ()
 @property(nonatomic,weak) IBOutlet UITableView *tableView;
-@property(nonatomic,strong) NSArray *membersArray;
+@property(nonatomic,strong) NSMutableArray *membersArray;
 @property(nonatomic,strong) NSMutableArray *originMembersArray;
 @property(nonatomic,strong) NSMutableArray *obsersArray;
 @property(nonatomic,strong) UnionedMemHeader *memHeader;
@@ -263,12 +263,12 @@ static NSString *MemberCellID = @"MemberCellID";
     NSMutableArray *params = [NSMutableArray array];
     //成员类别 1种植用户 2观察员
     for (plantmodel *obj in self.membersArray) {
-        if ([obj.unionType isEqualToString:@"2"]) {
-            NSMutableDictionary *admin = [NSMutableDictionary dictionary];
-            admin[@"unionType"] = obj.unionType;
-            admin[@"uid"] = obj.uid;
-            [params addObject:admin];
-        }
+//        if ([obj.unionType isEqualToString:@"2"]) {
+        NSMutableDictionary *admin = [NSMutableDictionary dictionary];
+        admin[@"unionType"] = obj.unionType;
+        admin[@"uid"] = obj.uid;
+        [params addObject:admin];
+//        }
     }
     return params;
 }
@@ -293,6 +293,7 @@ static NSString *MemberCellID = @"MemberCellID";
                 NSString *obj = [dict strValueForKey:@"obj"];
                 if ([obj isEqualToString:@"1"]) {
                     [SVProgressHUD dismiss];
+                    self.originMembersArray = self.membersArray;
                 }else{
                     [SVProgressHUD showErrorWithStatus:@"设置失败"];
                     self.membersArray = self.originMembersArray;

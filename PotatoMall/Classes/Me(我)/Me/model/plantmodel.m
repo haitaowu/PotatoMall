@@ -31,6 +31,7 @@
     model.imagesUrls = [self.status mutableCopy];
     model.verifyStatu = [self.verifyStatu mutableCopy];
     model.platTemplateDetailId = [self.platTemplateDetailId mutableCopy];
+    model.platSendRecordId = [self.platSendRecordId mutableCopy];
     model.isOpened = self.isOpened;
     model.isEditing = self.isEditing;
     model.isSetAdmin = self.isSetAdmin;

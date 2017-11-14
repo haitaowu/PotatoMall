@@ -94,8 +94,8 @@
 
 - (void)updateMemberStatue
 {
-    NSDictionary *params = [self paramUpdateMemberStatue];
-    [self requestUpdateMemberWithParams:params];
+    NSDictionary *params = [self paramsValidCode];
+//    [self requestUpdateMemberWithParams:params];
 }
 
 #pragma mark - selectors
@@ -114,8 +114,9 @@
         return;
     }
     [self.view endEditing:YES];
-    NSString *phone = self.model.phone;
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phone,kPhone,codeStr,kVerfiyCode,nil];
+//    NSString *phone = self.model.phone;
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:phone,kPhone,codeStr,kVerfiyCode,nil];
+    NSDictionary *params = [self paramsValidCode];
     [self requestValidateCodeWithParams:params];
 }
 
@@ -147,58 +148,25 @@
     }];
 }
 
-//验证验证码是否正确
+//验证成员验证码的参数
+- (NSDictionary *)paramsValidCode
+{
+    NSString *phone = self.model.phone;
+    NSString *code = self.codeField.text;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kVerfiyCode] = code;
+    params[kPhone] = phone;
+    return params;
+}
+
+//验证验证码
 - (void)requestValidateCodeWithParams:(NSDictionary*)params
 {
     if ([RequestUtil networkAvaliable] == NO) {
         [self.tableView reloadData];
     }else{
         [SVProgressHUD showWithStatus:@"验证验证码"];
-        NSString *subUrl = @"user/checkVerfiyCode";
-        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
-        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
-            if (status == StatusTypSuccess) {
-                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
-                NSString *obj = [dict strValueForKey:@"obj"];
-                if ([obj isEqualToString:@"true"]) {
-                    [SVProgressHUD dismiss];
-                    [self updateMemberStatue];
-                }else{
-                    [SVProgressHUD showErrorWithStatus:@"验证失败"];
-                }
-            }else{
-                [SVProgressHUD showErrorWithStatus:msg];
-            }
-        } reqFail:^(int type, NSString *msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
-        }];
-    }
-}
-
-//更新合作社成员参数
-- (NSDictionary *)paramUpdateMemberStatue
-{
-    UserModel *userModel = [UserModelUtil sharedInstance].userModel;
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"uid"] = self.model.uid;
-    params[@"unionId"] = self.unionId;
-    params[@"userId"] = userModel.userId;
-    params[@"phone"] = self.model.phone;
-    //1 创建人 2 管理员 3普通用户
-    params[@"unionType"] = @"3";
-    //成员类别 1种植用户 2观察员
-    params[@"userType"] = @"1";
-    return params;
-}
-
-//更新合作社成员状态
-- (void)requestUpdateMemberWithParams:(NSDictionary*)params
-{
-    if ([RequestUtil networkAvaliable] == NO) {
-        [self.tableView reloadData];
-    }else{
-        [SVProgressHUD showWithStatus:@""];
-        NSString *subUrl = @"user_union/saveOrUpdateUnionUsers";
+        NSString *subUrl = @"user_union/checkUserVerfiyCode";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
@@ -218,6 +186,81 @@
         }];
     }
 }
+
+
+//验证验证码是否正确
+//- (void)requestValidateCodeWithParams:(NSDictionary*)params
+//{
+//    if ([RequestUtil networkAvaliable] == NO) {
+//        [self.tableView reloadData];
+//    }else{
+//        [SVProgressHUD showWithStatus:@"验证验证码"];
+//        NSString *subUrl = @"user/checkVerfiyCode";
+//        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+//        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+//            if (status == StatusTypSuccess) {
+//                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+//                NSString *obj = [dict strValueForKey:@"obj"];
+//                if ([obj isEqualToString:@"true"]) {
+//                    [SVProgressHUD dismiss];
+//                    [self updateMemberStatue];
+//                }else{
+//                    [SVProgressHUD showErrorWithStatus:@"验证失败"];
+//                }
+//            }else{
+//                [SVProgressHUD showErrorWithStatus:msg];
+//            }
+//        } reqFail:^(int type, NSString *msg) {
+//            [SVProgressHUD showErrorWithStatus:msg];
+//        }];
+//    }
+//}
+
+
+//更新合作社成员参数
+//- (NSDictionary *)paramsValidCode
+//{
+//    UserModel *userModel = [UserModelUtil sharedInstance].userModel;
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    params[@"uid"] = self.model.uid;
+//    params[@"unionId"] = self.unionId;
+//    params[@"userId"] = userModel.userId;
+//    params[@"phone"] = self.model.phone;
+//    //1 创建人 2 管理员 3普通用户
+//    params[@"unionType"] = @"3";
+//    //成员类别 1种植用户 2观察员
+//    params[@"userType"] = @"1";
+//    return params;
+//}
+//
+////更新合作社成员状态
+//- (void)requestUpdateMemberWithParams:(NSDictionary*)params
+//{
+//    if ([RequestUtil networkAvaliable] == NO) {
+//        [self.tableView reloadData];
+//    }else{
+//        [SVProgressHUD showWithStatus:@""];
+//        NSString *subUrl = @"user_union/saveOrUpdateUnionUsers";
+//        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+//        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+//            if (status == StatusTypSuccess) {
+//                NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+////                NSString *obj = [dict strValueForKey:@"obj"];
+//                NSString *obj = [dict valueForKey:@"obj"];
+//                if (obj != nil) {
+//                    [SVProgressHUD dismiss];
+//                    [self.navigationController popViewControllerAnimated:YES];
+//                }else{
+//                    [SVProgressHUD showErrorWithStatus:@"验证失败"];
+//                }
+//            }else{
+//                [SVProgressHUD showErrorWithStatus:msg];
+//            }
+//        } reqFail:^(int type, NSString *msg) {
+//            [SVProgressHUD showErrorWithStatus:msg];
+//        }];
+//    }
+//}
 
 /**
  {

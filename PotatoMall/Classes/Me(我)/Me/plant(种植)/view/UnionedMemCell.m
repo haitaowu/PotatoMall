@@ -70,11 +70,12 @@
         [self.roleType setTitle:@"管理员" forState:UIControlStateNormal];
         if (model.isEditing == YES){
             self.leadingMargin.constant = kImgNameMargin;
-            if (model.isSetAdmin == YES){
+            self.choiceBtn.selected = YES;
+//            if (model.isSetAdmin == YES){
                 self.roleType.hidden = NO;
-            }else{
-                self.roleType.hidden = YES;
-            }
+//            }else{
+//                self.roleType.hidden = YES;
+//            }
         }else{
             self.leadingMargin.constant = 0;
             self.roleType.hidden = NO;

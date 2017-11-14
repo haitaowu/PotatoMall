@@ -38,6 +38,10 @@
     
     self.mtableview.tableFooterView = [[UIView alloc] init];
     // Do any additional setup after loading the view.
+    
+//    NSString *data = @"873AABF7C3106AEFFA8E75EC5605CEF6FC74325C09F39802B6234ED193811D1BE0001921257BA131740576CDBBE6A695";
+//    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+//    NSLog(@"response data = %@",dict);
 }
 
 

@@ -29,6 +29,7 @@
 @property (nonatomic,copy) NSString *verifyStatu;
 @property (nonatomic,copy) NSString *createDate;
 @property (nonatomic,copy) NSString *platTemplateDetailId;
+@property (nonatomic,copy) NSString *platSendRecordId;
 @property(nonatomic,assign) BOOL isOpened;
 
 /**

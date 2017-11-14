@@ -57,6 +57,17 @@
 }
 
 
+//验证成员验证码的参数
+- (NSDictionary *)paramUpdateMemberStatue
+{
+    NSString *phone = self.phoneNum;
+    NSString *code = self.codeField.text;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kVerfiyCode] = code;
+    params[kPhone] = phone;
+    return params;
+}
+
 
 
 #pragma mark - requset server
@@ -67,7 +78,7 @@
         [self.tableView reloadData];
     }else{
         [SVProgressHUD showWithStatus:@"验证验证码"];
-        NSString *subUrl = @"user/checkVerfiyCode";
+        NSString *subUrl = @"user_union/checkUserVerfiyCode";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
