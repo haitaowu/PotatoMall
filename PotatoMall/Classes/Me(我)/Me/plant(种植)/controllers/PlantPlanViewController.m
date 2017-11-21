@@ -11,6 +11,9 @@
 #import "plantmodel.h"
 #import "PlanWebViewViewController.h"
 
+static NSString *PlatePlanCellID = @"PlatePlanCellID";
+
+
 @interface PlantPlanViewController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 
 @end
@@ -20,12 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"合作社植保计划";
-//    [self.mtableview setHidden:YES];
     _mtableview.emptyDataSetSource = self;
     _mtableview.emptyDataSetDelegate = self;
-     [_mtableview registerNib:[UINib nibWithNibName:@"PlantListTableViewCell" bundle:nil] forCellReuseIdentifier:@"listIdentifier"];
+    UINib *recordNib = [UINib nibWithNibName:@"PlantListTableViewCell" bundle:nil];
+     [_mtableview registerNib:recordNib forCellReuseIdentifier:PlatePlanCellID];
     [self reqUserUnionInformation];
 }
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 }
@@ -119,8 +123,8 @@
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
-                mlistdata=[plantmodel plantWithDataArray1:data];
+                [SVProgressHUD dismiss];
+                mlistdata = [plantmodel plantWithDataArray1:data];
 //                [self.mtableview setHidden:NO];
                 [self.mtableview reloadData];
 //                if([mlistdata count]==0){
@@ -134,9 +138,7 @@
             mlistdata = [NSMutableArray array];
             [SVProgressHUD showErrorWithStatus:msg];
         }];
-        
     }
-    
 }
 
 #pragma mark - selectors
@@ -169,8 +171,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString  *listCellID = @"listIdentifier";
-    PlantListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:listCellID forIndexPath:indexPath];
+    PlantListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PlatePlanCellID forIndexPath:indexPath];
     plantmodel *model=[mlistdata objectAtIndex:indexPath.row];
     cell.model = model;
     __block typeof(self) blockSelf = self;

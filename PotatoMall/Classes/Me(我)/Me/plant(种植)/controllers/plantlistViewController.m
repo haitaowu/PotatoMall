@@ -12,22 +12,26 @@
 #import "GoodsModel.h"
 #import "OrderStateHeader.h"
 #import "OrderStateFooter.h"
+#import "OrderDetailTableController.h"
 
 static NSString *OrderCellID = @"OrderCell";
 static NSString *OrderStateHeaderID = @"OrderStateHeaderID";
 static NSString *OrderStateFooterID = @"OrderStateFooterID";
 
-@interface plantlistViewController ()
+@interface plantlistViewController ()<DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong)NSMutableArray *ordersArray;
 
 @end
 
 @implementation plantlistViewController
-
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupCateGoryView];
-    self.title=@"联合体订单";
+    self.title=@"合作社订单";
+
+    self.mtableview.emptyDataSetSource = self;
+    self.mtableview.emptyDataSetDelegate = self;
     
     UINib *cellNib = [UINib nibWithNibName:@"OrderCell" bundle:nil];
     [self.mtableview registerNib:cellNib forCellReuseIdentifier:OrderCellID];
@@ -39,16 +43,24 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     UINib *footerNib = [UINib nibWithNibName:@"OrderStateFooter" bundle:nil];
     [self.mtableview registerNib:footerNib forHeaderFooterViewReuseIdentifier:OrderStateFooterID];
     
-    NSDictionary *ordersParams=[self ordersParams];
+    NSMutableDictionary *ordersParams=[self ordersParams];
+    ordersParams[@"orderStatus"] = @[@19,@0,@1,@2,@3,@4,@8,@14];
     [self reqOrdersWithParams:ordersParams];
     
     _mtableview.tableFooterView = [[UIView alloc]init];
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 #pragma mark - setup ui
 - (void)setupCateGoryView
 {
+    //全部[19,0,1,2,3,4,8,14] 待提货 1  已完成 3
     self.topview.titles = [NSMutableArray arrayWithObjects:@"全部",@"待提货",@"已完成",nil];
     [self.topview showSeparatorLine];
     [self.topview scrollVisibleTo:0];
@@ -57,19 +69,30 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     self.topview.sliderColor = kMainNavigationBarColor;
     self.topview.sliderWidthPercent = 0.8;
     self.topview.selectedItemTitleBlock = ^(NSInteger idx ,NSString *title){
-        NSDictionary *ordersParams= [self ordersParams];
+        NSMutableDictionary *ordersParams= [self ordersParams];
         if (idx == 0) {
+            ordersParams[@"orderStatus"] = @[@19,@0,@1,@2,@3,@4,@8,@14];
             [self reqOrdersWithParams:ordersParams];
         }
         if (idx == 1) {
+            ordersParams[@"orderStatus"] = @[@1];
             [self reqOrdersWithParams:ordersParams];
         }
+        
         if (idx == 2) {
+            ordersParams[@"orderStatus"] = @[@3];
             [self reqOrdersWithParams:ordersParams];
         }
     };
 }
 
+
+- (void)showOrderDetailWithModel:(OrderModel*)model{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+    OrderDetailTableController *destinationControl = [storyBoard instantiateViewControllerWithIdentifier:@"OrderDetailTableController"];
+    destinationControl.orderModel = model;
+    [self.navigationController pushViewController:destinationControl animated:YES];
+}
 
 #pragma mark - UITableView --- Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -97,8 +120,11 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
     OrderModel *orderModel = self.ordersArray[section];
     OrderStateFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:OrderStateFooterID];
     [footer setOrderModel:orderModel];
+    __block typeof(self) blockSelf = self;
+    footer.detailBlock = ^(){
+        [blockSelf showOrderDetailWithModel:orderModel];
+    };
     return footer;
-    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -133,9 +159,32 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
 }
 
 
+#pragma mark - DZNEmptyDataSetSource Methods
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -144;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        NSString *text = @"咦！断网了";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else if ((self.ordersArray != nil) && (self.ordersArray.count == 0)){
+        [_mtableview.mj_footer setHidden:YES];
+        NSString *text = @"暂无订单";
+        NSAttributedString *txt = [CommHelper emptyTitleWithTxt:text];
+        return txt;
+    }else{
+        return [[NSAttributedString alloc] init];
+    }
+}
+
+
 #pragma mark - requset server
 //查询订单参数
-- (NSDictionary *)ordersParams
+- (NSMutableDictionary *)ordersParams
 {
     UserModel *model = [UserModelUtil sharedInstance].userModel;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -144,7 +193,8 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
         params[@"unionId"] = self.unionId;
     }
     params[@"type"] = @"2";
-    params[@"orderStatus"] = @[@0,@1, @2, @3, @10, @11,@19];
+//    params[@"orderStatus"] = @[@0,@1, @2, @3, @10, @11,@19];
+
     return params;
 }
 
@@ -166,12 +216,15 @@ static NSString *OrderStateFooterID = @"OrderStateFooterID";
                 }else{
                     [self.mtableview.mj_footer setHidden:YES];
                 }
+            }else{
+                self.ordersArray = [NSMutableArray array];
             }
             [self.mtableview reloadData];
 //            [self.mtableview.mj_header endRefreshing];
         } reqFail:^(int type, NSString *msg) {
             [SVProgressHUD showInfoWithStatus:msg];
             [self.mtableview.mj_header endRefreshing];
+            self.ordersArray = [NSMutableArray array];
 //            self.firstReqFinished = YES;
         }];
     }

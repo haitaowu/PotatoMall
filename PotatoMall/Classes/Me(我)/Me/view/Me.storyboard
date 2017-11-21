@@ -311,7 +311,7 @@
                                     <constraint firstItem="e8r-V7-q42" firstAttribute="leading" secondItem="TYR-DR-GEh" secondAttribute="trailing" constant="8" id="xvy-IF-OLQ"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oI6-Ei-ED7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oI6-Ei-ED7">
                                 <rect key="frame" x="0.0" y="120" width="320" height="448"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
@@ -730,7 +730,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="l1D-Oj-cKX"/>
                                                         <constraint firstAttribute="width" constant="200" id="wAv-9v-eQU"/>
                                                     </constraints>
-                                                    <state key="normal" title="提交">
+                                                    <state key="normal" title="确定保存">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <variation key="default">
@@ -1386,7 +1386,7 @@
         <!--订单详情-->
         <scene sceneID="91P-fd-aQF">
             <objects>
-                <tableViewController id="U5X-Vm-aJ1" customClass="OrderDetailTableController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="OrderDetailTableController" id="U5X-Vm-aJ1" customClass="OrderDetailTableController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tbN-lQ-wCh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2923,7 +2923,7 @@
         <image name="temp1" width="750" height="356"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VvW-Pq-Z5y"/>
+        <segue reference="pvT-Mc-ioW"/>
         <segue reference="2uV-yi-vXB"/>
     </inferredMetricsTieBreakers>
 </document>

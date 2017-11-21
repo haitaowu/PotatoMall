@@ -96,8 +96,8 @@ static NSString *MemberCellID = @"MemberCellID";
     self.originMembersArray = members;
     self.membersArray = self.originMembersArray;
 #warning test add 
-    self.obsersArray = members;
-//    self.obsersArray = obsers;
+//    self.obsersArray = members;
+    self.obsersArray = obsers;
     [self.tableView reloadData];
 }
 

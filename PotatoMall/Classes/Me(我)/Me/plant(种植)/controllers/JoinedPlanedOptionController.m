@@ -92,7 +92,8 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
     UINib *PlantRecordCellNib = [UINib nibWithNibName:@"PlantRecordCell" bundle:nil];
     [self.tableView registerNib:PlantRecordCellNib forCellReuseIdentifier:PlantRecordCellID];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"PlantListTableViewCell" bundle:nil] forCellReuseIdentifier:FollowRecordCellID];
+    UINib *recordNib = [UINib nibWithNibName:@"PlantListTableViewCell" bundle:nil];
+    [self.tableView registerNib:recordNib forCellReuseIdentifier:FollowRecordCellID];
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
@@ -226,13 +227,13 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
 {
     if (section == kOptHelpSectionIdx) {
         if (self.marchRecords.count > 0) {
-            return 50;
+            return 60;
         }else{
             return 0.01;
         }
     }else {
         if (self.followRecords.count > 0) {
-            return 50;
+            return 60;
         }else{
             return 0.01;
         }
@@ -451,7 +452,7 @@ static NSString *PlanOptFooterID = @"PlanOptFooterNibID";
         NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
         [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
             if (status == StatusTypSuccess) {
-                [SVProgressHUD showSuccessWithStatus:msg];
+                [SVProgressHUD dismiss];
                 NSDictionary *plantedInfo = [plantmodel plantWithData:data];
                 self.planInfo = plantedInfo;
                 NSLog(@"plantedInfo=%@",plantedInfo);
