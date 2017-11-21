@@ -144,6 +144,11 @@
 		BE93C3001E681C2800CC0B96 /* CityTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE93C2FD1E681C2800CC0B96 /* CityTableController.m */; };
 		BE93C3011E681C2800CC0B96 /* DistriTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE93C2FF1E681C2800CC0B96 /* DistriTableController.m */; };
 		BEA640791FAF18DD00A370AE /* TitleImgAdjHoriAlignBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA640771FAF18DC00A370AE /* TitleImgAdjHoriAlignBtn.m */; };
+		BEA771E11FC4544400033A9B /* UnionedBillsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA771E01FC4544400033A9B /* UnionedBillsController.m */; };
+		BEA771E51FC455F600033A9B /* UnionedBillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA771E31FC455F600033A9B /* UnionedBillCell.m */; };
+		BEA771E61FC455F600033A9B /* UnionedBillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA771E41FC455F600033A9B /* UnionedBillCell.xib */; };
+		BEA771EA1FC45E1900033A9B /* UnionBillFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA771E81FC45E1900033A9B /* UnionBillFooter.xib */; };
+		BEA771EB1FC45E1900033A9B /* UnionBillFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA771E91FC45E1900033A9B /* UnionBillFooter.m */; };
 		BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */; };
 		BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5F71E5D8069008943EC /* HomeTableController.m */; };
 		BEAAA5FB1E5D85E8008943EC /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAAA5FA1E5D85E8008943EC /* UIView+PositionExt.m */; };
@@ -522,6 +527,14 @@
 		BE93C2FF1E681C2800CC0B96 /* DistriTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistriTableController.m; sourceTree = "<group>"; };
 		BEA640771FAF18DC00A370AE /* TitleImgAdjHoriAlignBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleImgAdjHoriAlignBtn.m; sourceTree = "<group>"; };
 		BEA640781FAF18DD00A370AE /* TitleImgAdjHoriAlignBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleImgAdjHoriAlignBtn.h; sourceTree = "<group>"; };
+		BEA771DF1FC4544300033A9B /* UnionedBillsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionedBillsController.h; sourceTree = "<group>"; };
+		BEA771E01FC4544400033A9B /* UnionedBillsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionedBillsController.m; sourceTree = "<group>"; };
+		BEA771E21FC455F500033A9B /* UnionedBillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionedBillCell.h; sourceTree = "<group>"; };
+		BEA771E31FC455F600033A9B /* UnionedBillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionedBillCell.m; sourceTree = "<group>"; };
+		BEA771E41FC455F600033A9B /* UnionedBillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnionedBillCell.xib; sourceTree = "<group>"; };
+		BEA771E71FC45E1900033A9B /* UnionBillFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionBillFooter.h; sourceTree = "<group>"; };
+		BEA771E81FC45E1900033A9B /* UnionBillFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnionBillFooter.xib; sourceTree = "<group>"; };
+		BEA771E91FC45E1900033A9B /* UnionBillFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionBillFooter.m; sourceTree = "<group>"; };
 		BEAAA5F31E5D7D84008943EC /* HTNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNavgationController.h; sourceTree = "<group>"; };
 		BEAAA5F41E5D7D84008943EC /* HTNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNavgationController.m; sourceTree = "<group>"; };
 		BEAAA5F61E5D8069008943EC /* HomeTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableController.h; sourceTree = "<group>"; };
@@ -1704,6 +1717,12 @@
 				BE3C6B971FB70D6300A24ABD /* WatingValidMemCell.h */,
 				BE3C6B981FB70D6400A24ABD /* WatingValidMemCell.m */,
 				BE3C6B961FB70D6300A24ABD /* WatingValidMemCell.xib */,
+				BEA771E21FC455F500033A9B /* UnionedBillCell.h */,
+				BEA771E31FC455F600033A9B /* UnionedBillCell.m */,
+				BEA771E41FC455F600033A9B /* UnionedBillCell.xib */,
+				BEA771E71FC45E1900033A9B /* UnionBillFooter.h */,
+				BEA771E91FC45E1900033A9B /* UnionBillFooter.m */,
+				BEA771E81FC45E1900033A9B /* UnionBillFooter.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1756,6 +1775,8 @@
 				BEDB66091FB7392000A507B4 /* ReValidMemberController.m */,
 				BEDB660C1FB745B500A507B4 /* AddMemberValidController.h */,
 				BEDB660D1FB745B700A507B4 /* AddMemberValidController.m */,
+				BEA771DF1FC4544300033A9B /* UnionedBillsController.h */,
+				BEA771E01FC4544400033A9B /* UnionedBillsController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -1980,6 +2001,7 @@
 				BE041C951FB0A19400B471DA /* ImgItemCell.xib in Resources */,
 				BE041CFA1FB0A19A00B471DA /* paizhao.png in Resources */,
 				BEE116D71FAFED3A005FF2CD /* plantdoneTableViewCell.xib in Resources */,
+				BEA771E61FC455F600033A9B /* UnionedBillCell.xib in Resources */,
 				BE041CF31FB0A19A00B471DA /* broswerPic2.jpg in Resources */,
 				BE041CF01FB0A19A00B471DA /* lock@2x.png in Resources */,
 				BED84A091E6FD9C4001E7A27 /* CarryCell.xib in Resources */,
@@ -2006,6 +2028,7 @@
 				BE041CFB1FB0A19A00B471DA /* icon_pic_break@2x.png in Resources */,
 				BEFBCB701E7B732C005A333D /* InfoPlist.strings in Resources */,
 				BE3C6B991FB70D6400A24ABD /* WatingValidMemCell.xib in Resources */,
+				BEA771EA1FC45E1900033A9B /* UnionBillFooter.xib in Resources */,
 				BE041D001FB0A19A00B471DA /* xiang@2x.png in Resources */,
 				BE041CF61FB0A19A00B471DA /* broswerPic1.jpg in Resources */,
 				BEE116FA1FAFED3A005FF2CD /* PlanWebViewViewController.xib in Resources */,
@@ -2128,6 +2151,7 @@
 				BEE116F51FAFED3A005FF2CD /* PlantInfomationTableViewController.m in Sources */,
 				BEAAA5F81E5D8069008943EC /* HomeTableController.m in Sources */,
 				BE5ED7FC1E62B90900C4B1D0 /* UserModel.m in Sources */,
+				BEA771E51FC455F600033A9B /* UnionedBillCell.m in Sources */,
 				BED84A011E6FCCDF001E7A27 /* PurchaseMoresController.m in Sources */,
 				BECC9FA41E6EE5F9001DE8F1 /* HorizonAlignBtn.m in Sources */,
 				BE041D1C1FB0A19A00B471DA /* DACircularProgressView.m in Sources */,
@@ -2150,6 +2174,7 @@
 				BECC9F9A1E6EDCC2001DE8F1 /* PurchaseAdsCell.m in Sources */,
 				BEE116F91FAFED3A005FF2CD /* plantlistViewController.m in Sources */,
 				BE077A781E6AC581006F0EFB /* ChartSectionHeader.m in Sources */,
+				BEA771EB1FC45E1900033A9B /* UnionBillFooter.m in Sources */,
 				BE077A651E6A975F006F0EFB /* ChartTableController.m in Sources */,
 				BEAAA5F51E5D7D84008943EC /* HTNavgationController.m in Sources */,
 				BEE8EED71E63CAB0008FD2D4 /* MeController.m in Sources */,
@@ -2235,6 +2260,7 @@
 				BE257E281E71AD7D00AA277B /* OrderDetailTableController.m in Sources */,
 				BE93C2EC1E67C5E300CC0B96 /* UserIDController.m in Sources */,
 				BEDB660B1FB7392100A507B4 /* ReValidMemberController.m in Sources */,
+				BEA771E11FC4544400033A9B /* UnionedBillsController.m in Sources */,
 				BEE116DF1FAFED3A005FF2CD /* plantdoneTableViewCell.m in Sources */,
 				BE041D041FB0A19A00B471DA /* LGPhotoRect.m in Sources */,
 				BE041D151FB0A19A00B471DA /* LGPhotoPickerViewController.m in Sources */,

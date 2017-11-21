@@ -49,8 +49,6 @@
 {
     NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
     NSArray *obj = [dict objectForKey:@"obj"];
-    
-    NSLog(@"obj==%@",obj);
     return [self ordersWithArray:obj];
 }
 

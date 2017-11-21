@@ -832,6 +832,9 @@
                                 <state key="normal" title="账单">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Yxy-D0-69p" kind="show" identifier="billsSegue" id="XSA-pf-gWS"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="so9-MN-t5r">
                                 <rect key="frame" x="0.0" y="300" width="320" height="10"/>
@@ -2904,6 +2907,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJF-Mo-Usk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7470" y="737.32394366197184"/>
+        </scene>
+        <!--联合种植账单-->
+        <scene sceneID="1no-xa-9qN">
+            <objects>
+                <viewController id="Yxy-D0-69p" customClass="UnionedBillsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8aA-I5-ToO"/>
+                        <viewControllerLayoutGuide type="bottom" id="8lH-cf-D00"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0XN-mh-R6h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qmK-tD-DSi">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Yxy-D0-69p" id="uIn-VR-ZyK"/>
+                                    <outlet property="delegate" destination="Yxy-D0-69p" id="Gnv-9c-IqV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qmK-tD-DSi" firstAttribute="leading" secondItem="0XN-mh-R6h" secondAttribute="leading" id="N5z-VM-g9c"/>
+                            <constraint firstItem="8lH-cf-D00" firstAttribute="top" secondItem="qmK-tD-DSi" secondAttribute="bottom" id="eWg-Nb-GMI"/>
+                            <constraint firstItem="qmK-tD-DSi" firstAttribute="top" secondItem="8aA-I5-ToO" secondAttribute="bottom" id="nP4-kr-B1V"/>
+                            <constraint firstAttribute="trailing" secondItem="qmK-tD-DSi" secondAttribute="trailing" id="qkP-pI-4KF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="联合种植账单" id="nUb-no-YKQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="qmK-tD-DSi" id="bEU-j2-UYG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u5D-vt-FPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="联合体成员" id="h0Y-w2-xvT">
+                    <barButtonItem key="rightBarButtonItem" title="添加成员" style="plain" id="Iy6-gS-wpl"/>
+                </navigationItem>
+            </objects>
+            <point key="canvasLocation" x="4478" y="-1971"/>
         </scene>
     </scenes>
     <resources>

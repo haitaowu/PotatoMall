@@ -16,6 +16,7 @@
 #import "PlantInfomationTableViewController.h"
 #import "UnionedPlanApplyController.h"
 #import "UnionedMembersController.h"
+#import "UnionedBillsController.h"
 
 
 @interface PlantManageViewController ()
@@ -70,6 +71,9 @@
         vc.planState = self.planState;
     }else if ([segue.identifier isEqualToString:@"membersSegue"]) {
         UnionedMembersController *vc = segue.destinationViewController;
+        vc.unionId = self.unionId;
+    }else if ([segue.identifier isEqualToString:@"billsSegue"]) {
+        UnionedBillsController *vc = segue.destinationViewController;
         vc.unionId = self.unionId;
     }
 }
