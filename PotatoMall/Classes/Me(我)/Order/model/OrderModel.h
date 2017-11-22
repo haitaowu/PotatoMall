@@ -59,4 +59,9 @@
 
 + (NSMutableArray*)ordersWithData:(id)data;
 
+/**
+ 返回一个model
+ */
++ (OrderModel*)orderModelWithData:(id)data;
+
 @end

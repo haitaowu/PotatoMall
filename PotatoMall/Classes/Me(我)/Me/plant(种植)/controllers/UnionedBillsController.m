@@ -11,6 +11,7 @@
 #import "UnionedBillCell.h"
 #import "UnionBillFooter.h"
 #import "UnionedObserHeader.h"
+#import "OrderDetailTableController.h"
 #import "UnionAddMemberController.h"
 
 static NSString *BillFooterID = @"BillFooterID";
@@ -75,7 +76,13 @@ static NSString *UnionBillCellID = @"UnionBillCellID";
 - (void)showBillDetailWithModel:(NSDictionary*)billModel
 {
     NSLog(@"show bill order detail...");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Me" bundle:nil];
+    OrderDetailTableController *detail = [storyboard instantiateViewControllerWithIdentifier:@"OrderDetailTableController"];
+    NSString *changeCode = [billModel strValueForKey:@"changeCode"];
+    detail.changeCode = changeCode;
+    [self.navigationController pushViewController:detail animated:YES];
 }
+
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -126,7 +133,6 @@ static NSString *UnionBillCellID = @"UnionBillCellID";
 //    return [self.billsArray count];
 }
 
-//1 创建人 2 管理员 3普通用户
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UnionedBillCell *cell = [tableView dequeueReusableCellWithIdentifier:UnionBillCellID];
     NSDictionary *model = [self.billsArray objectAtIndex:indexPath.section];

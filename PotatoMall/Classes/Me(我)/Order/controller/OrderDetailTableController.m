@@ -41,7 +41,12 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
+    if ((self.orderModel == nil) &&(self.changeCode != nil)) {
+       NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:self.changeCode,kOrderIdKey, nil];
+        [self reqOrderDetailWithParams:params];
+    }
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -234,6 +239,26 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
         }];
     }
 }
+
+- (void)reqOrderDetailWithParams:(NSDictionary*)params
+{
+    if ([RequestUtil networkAvaliable] == NO) {
+        [self.tableView reloadData];
+    }else{
+        NSString *subUrl = @"order/detail";
+        NSString *reqUrl = [NSString stringWithFormat:@"%@%@",BASEURL,subUrl];
+        [RequestUtil POSTWithURL:reqUrl params:params reqSuccess:^(int status, NSString *msg, id data) {
+            if (status == StatusTypSuccess) {
+                self.orderModel =  [OrderModel orderModelWithData:data];
+                [self.tableView reloadData];
+            }
+        } reqFail:^(int type, NSString *msg) {
+            
+        }];
+    }
+}
+
+
 #pragma mark - UIAlertViewDelegate delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -266,7 +291,11 @@ static NSString *OrderDetailFooterID = @"OrderDetailFooterID";
     if (section == 0) {
         return [self.orderModel.list count];
     }else{
-        return 1;
+        if (self.changeCode == nil) {
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }
 

@@ -15,7 +15,16 @@
     NSDictionary *mapDict = @{@"list": @"GoodsModel"};
     return mapDict;
 }
-
+/**
+ 返回一个model
+ */
++ (OrderModel*)orderModelWithData:(id)data
+{
+    NSDictionary *dict = [DataUtil dictionaryWithJsonStr:data];
+    id obj = [dict objectForKey:@"obj"];
+    OrderModel *model = [OrderModel mj_objectWithKeyValues:obj];
+    return model;
+}
 
 
 + (NSMutableArray*)ordersWithData:(id)data

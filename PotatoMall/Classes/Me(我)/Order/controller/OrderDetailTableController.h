@@ -12,4 +12,5 @@
 
 @interface OrderDetailTableController : BaseTableViewController
 @property (nonatomic,strong)OrderModel *orderModel;
+@property(nonatomic,copy) NSString *changeCode;
 @end
