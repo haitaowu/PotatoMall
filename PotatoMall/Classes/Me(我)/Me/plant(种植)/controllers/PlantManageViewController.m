@@ -17,6 +17,7 @@
 #import "UnionedPlanApplyController.h"
 #import "UnionedMembersController.h"
 #import "UnionedBillsController.h"
+#import "UnionRemitController.h"
 
 
 @interface PlantManageViewController ()
@@ -74,6 +75,9 @@
         vc.unionId = self.unionId;
     }else if ([segue.identifier isEqualToString:@"billsSegue"]) {
         UnionedBillsController *vc = segue.destinationViewController;
+        vc.unionId = self.unionId;
+    }else if ([segue.identifier isEqualToString:@"unionRemitSegue"]) {
+        UnionRemitController *vc = segue.destinationViewController;
         vc.unionId = self.unionId;
     }
 }

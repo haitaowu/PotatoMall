@@ -32,6 +32,8 @@
             success(StatusTypSuccess,msg,data);
         }else if ([codeNum intValue] == StatusTypLoginTimeout) {
             [self reLoginWith:url params:finalParams reqSuccess:success reqFail:fail];
+        }else if ([codeNum intValue] == 3008) {
+            success(StatusTypSuccess,msg,data);
         }else{
             fail([codeNum intValue],msg);
         }

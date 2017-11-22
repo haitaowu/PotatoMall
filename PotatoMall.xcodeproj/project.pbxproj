@@ -129,6 +129,7 @@
 		BE652F721E696D6F003ABEC3 /* MeInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE652F711E696D6F003ABEC3 /* MeInfoTableController.m */; };
 		BE6DAEE41E73971500E82C47 /* SpringGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */; };
 		BE6DAEE61E73CE9700E82C47 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */; };
+		BE788D4E1FC5453900BFD12D /* UnionRemitController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE788D4C1FC5453800BFD12D /* UnionRemitController.m */; };
 		BE7F9A2C1E6D7BE300DD21CF /* ProductDetailTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */; };
 		BE7F9A2F1E6D80FD00DD21CF /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9A2E1E6D80FD00DD21CF /* GoodsDetailModel.m */; };
 		BE8FA4E21E645E6B00F92C46 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8FA4E11E645E6B00F92C46 /* DataUtil.m */; };
@@ -176,6 +177,7 @@
 		BEC06DDC1E5C79C700667D73 /* HTTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC06DDB1E5C79C700667D73 /* HTTabbarController.m */; };
 		BEC06DE11E5C81A000667D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE30997B1E5C71AE0062EBA9 /* Main.storyboard */; };
 		BEC7F99C1E69A44E0029E6D6 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7F99B1E69A44E0029E6D6 /* ArticleDetailModel.m */; };
+		BECA8F8B1FC597D300D2FB2F /* UnionRemitDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BECA8F8A1FC597D200D2FB2F /* UnionRemitDetailController.m */; };
 		BECC9F951E6ED2B8001DE8F1 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9F931E6ED2B8001DE8F1 /* CategoryCell.m */; };
 		BECC9F961E6ED2B8001DE8F1 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BECC9F941E6ED2B8001DE8F1 /* CategoryCell.xib */; };
 		BECC9F9A1E6EDCC2001DE8F1 /* PurchaseAdsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC9F981E6EDCC2001DE8F1 /* PurchaseAdsCell.m */; };
@@ -498,6 +500,8 @@
 		BE6DAEE21E73971500E82C47 /* SpringGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringGoodsModel.h; sourceTree = "<group>"; };
 		BE6DAEE31E73971500E82C47 /* SpringGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringGoodsModel.m; sourceTree = "<group>"; };
 		BE6DAEE51E73CE9700E82C47 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BE788D4C1FC5453800BFD12D /* UnionRemitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionRemitController.m; sourceTree = "<group>"; };
+		BE788D4D1FC5453900BFD12D /* UnionRemitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionRemitController.h; sourceTree = "<group>"; };
 		BE7F9A2A1E6D7BE300DD21CF /* ProductDetailTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTableController.h; sourceTree = "<group>"; };
 		BE7F9A2B1E6D7BE300DD21CF /* ProductDetailTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTableController.m; sourceTree = "<group>"; };
 		BE7F9A2D1E6D80FD00DD21CF /* GoodsDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
@@ -583,6 +587,8 @@
 		BEC06DDF1E5C7AD400667D73 /* TuDouPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TuDouPrefixHeader.pch; sourceTree = "<group>"; };
 		BEC7F99A1E69A44E0029E6D6 /* ArticleDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailModel.h; sourceTree = "<group>"; };
 		BEC7F99B1E69A44E0029E6D6 /* ArticleDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailModel.m; sourceTree = "<group>"; };
+		BECA8F891FC597D200D2FB2F /* UnionRemitDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnionRemitDetailController.h; sourceTree = "<group>"; };
+		BECA8F8A1FC597D200D2FB2F /* UnionRemitDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnionRemitDetailController.m; sourceTree = "<group>"; };
 		BECC9F921E6ED2B8001DE8F1 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		BECC9F931E6ED2B8001DE8F1 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		BECC9F941E6ED2B8001DE8F1 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
@@ -1777,6 +1783,10 @@
 				BEDB660D1FB745B700A507B4 /* AddMemberValidController.m */,
 				BEA771DF1FC4544300033A9B /* UnionedBillsController.h */,
 				BEA771E01FC4544400033A9B /* UnionedBillsController.m */,
+				BE788D4D1FC5453900BFD12D /* UnionRemitController.h */,
+				BE788D4C1FC5453800BFD12D /* UnionRemitController.m */,
+				BECA8F891FC597D200D2FB2F /* UnionRemitDetailController.h */,
+				BECA8F8A1FC597D200D2FB2F /* UnionRemitDetailController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -2188,6 +2198,7 @@
 				BED84A191E7004B7001E7A27 /* TransportTableController.m in Sources */,
 				BEBD65431FAC1247005B16AF /* ImgAdjHoriAlignBtn.m in Sources */,
 				BE041D131FB0A19A00B471DA /* LGPhotoAssets.m in Sources */,
+				BECA8F8B1FC597D300D2FB2F /* UnionRemitDetailController.m in Sources */,
 				BE0DDB421E6D0B4300F15168 /* HTCalculatorToolBar.m in Sources */,
 				BEF0EE1C1E711E41003E06DB /* OrderDetailCell.m in Sources */,
 				BEB7F6D51F8F3EB30067944F /* EditAddressCell.m in Sources */,
@@ -2262,6 +2273,7 @@
 				BEDB660B1FB7392100A507B4 /* ReValidMemberController.m in Sources */,
 				BEA771E11FC4544400033A9B /* UnionedBillsController.m in Sources */,
 				BEE116DF1FAFED3A005FF2CD /* plantdoneTableViewCell.m in Sources */,
+				BE788D4E1FC5453900BFD12D /* UnionRemitController.m in Sources */,
 				BE041D041FB0A19A00B471DA /* LGPhotoRect.m in Sources */,
 				BE041D151FB0A19A00B471DA /* LGPhotoPickerViewController.m in Sources */,
 				BE041D121FB0A19A00B471DA /* LGPhotoPickerGroup.m in Sources */,
